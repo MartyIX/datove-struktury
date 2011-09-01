@@ -1,0 +1,347 @@
+%
+% Datove struktury - skripta
+%
+%
+% M. Vidner 
+% V. Kotal, 2003-2004
+%
+
+
+%\documentclass[10pt,a4paper]{report}
+\documentclass[a4paper]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[latin2]{inputenc}
+\usepackage[czech]{babel}
+\usepackage[bookmarks,bookmarksopen]{hyperref}
+\usepackage{graphicx} % graphic files
+\usepackage{a4wide}
+
+% nechci aby se ToC objevoval v ToC
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+
+% poznamky na okraji
+\usepackage[textwidth=15cm, marginparwidth=2cm]{geometry}
+\marginparsep=0.7cm
+
+\usepackage{placeins} % \FloatBarrier
+
+% nechci aby se poznamky pod carou prelevaly na dalsi stranku (footnote
+% split)
+% default je 100, cim vic, tim min se bude splitovat
+% hodnota 10000 splitovani vypne
+\interfootnotelinepenalty=10000
+
+\usepackage{url}% \path
+
+\usepackage{algorithmic}
+\usepackage[chapter]{algorithm}
+\floatname{algorithm}{Algoritmus}
+\renewcommand{\listalgorithmname}{Seznam algoritmù}
+
+\makeatletter
+  \newcommand\figcaption{\def\@captype{figure}\caption}
+  \newcommand\tabcaption{\def\@captype{table}\caption}
+\makeatother
+
+
+% lepsi prostredi pro enumerate:
+\newcounter{okol}
+%\newenvironment{ok}[1]{\begin{list}{\rmfamily\upshape\arabic{okol}.}%
+%\newenvironment{enumerate2}[1][]{\begin{list}{#1{\bf \arabic{okol}}.}%
+\renewenvironment{enumerate}[1][]{\begin{list}{#1{\bf \arabic{okol}}.}%
+{\usecounter{okol}
+%\vspace{-8pt}
+%\topsep=0pt\partopsep=0pt\itemsep=3pt\parsep=0pt%
+% \labelsep ovlivuje vzdalenost labelu od textu v item
+%   - tj. jak bude cislo vzdaleno od textu
+%     1.AAAAtext  (velikost mezery dane znaky A)
+%\hspace{5mm}
+\settowidth{\labelwidth}{\rmfamily\upshape #1}\labelsep=1.5mm
+\leftmargin=\labelwidth\advance\leftmargin\labelsep
+%\renewcommand{\makelabel}[1]{\hfill\rmfamily\upshape ##1}}}%
+% hspace v nasledujicim prikazu ovlivuje odsazeni jednotlivych 
+% items od leveho kraje
+\renewcommand{\makelabel}[1]{\hspace{5mm} ##1}}}%
+{
+%\vspace{-3pt}
+\end{list}}
+
+\newcommand{\pr}{{\cal P}}
+\newcommand{\rozvoj}[3]{\binom{#1}{#2}\left(#3\right)^{#2}\left(1-#3\right)^{#1-#2}}
+\newcommand{\invm}{\frac{1}{m}}
+\newcommand{\intrange}[2]{\{{#1}\ ..\ {#2}\}}
+\def\<#1>{\text{\it #1}} % viceznakova jmena promennych
+
+\newcommand{\lparen}{(}
+\newcommand{\rparen}{)}
+{
+\catcode`\(=13
+\catcode`\)=13
+\gdef({\left\lparen\begingroup}
+\gdef){\endgroup\right\rparen}
+\gdef\bigparens{%
+	\catcode`\(=13%
+	\catcode`\)=13%
+}
+}
+
+
+%\DeclareFontFamily{OT1}{cmtex}{}
+%\DeclareFontShape{OT1}{cmtex}{m}{n}
+%  {<5><6><7><8>cmtex8
+%   <9>cmtex9
+%   <10><10.95><12><14.4><17.28><20.74><24.88>cmtex10}{}
+%\DeclareFontShape{OT1}{cmtex}{m}{it}
+%  {<-> ssub * cmtt/m/it}{}
+%\newcommand{\texfamily}{\fontfamily{cmtex}\selectfont}
+%\DeclareFontShape{OT1}{cmtt}{bx}{n}
+%  {<5><6><7><8>cmtt8
+%   <9>cmbtt9
+%   <10><10.95><12><14.4><17.28><20.74><24.88>cmbtt10}{}
+%\DeclareFontShape{OT1}{cmtex}{bx}{n}
+%  {<-> ssub * cmtt/bx/n}{}
+%\newcommand{\tex}[1]{\text{\texfamily#1}}      % NEU
+%\newcommand{\Sp}{\hskip.33334em\relax}
+
+
+
+\newcommand{\mnote}[1]{\marginpar{\scriptsize\raggedright #1}}
+\newcommand{\exercise}[2]{\mnote{Cvièení: #1}} %TODO: co s odpovìdí?
+
+\newtheorem{theorem}{Vìta}[section]
+\newtheorem{tvrzeni}{Tvrzení}[section]
+\newtheorem{lemma}{Lemma}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definice}[section]
+
+% following macros by V. Kotal
+\newtheorem{pozn}{Poznámka}[section]
+\newtheorem{pozorov}{Pozorování}[section]
+\newtheorem{priklad}{Pøíklad}[section]
+
+\pagestyle{myheadings}
+
+\begin{document}
+
+%\begin{center}
+%\title{{\Huge\bf Datové struktury}}
+
+\begin{titlepage}
+  \begin{center}
+  % \texfamily
+  % \newfont{\mujfont}{csss8}
+  % \selectfont{\mujfont}{ abc }
+  % XXX nadpis jinym fontem
+  {\Huge\bf Datové struktury}
+
+\vskip 0 pt plus .1 fill\relax
+
+{\Large pøedná¹í RNDr. Václav Koubek, DrSc.}
+
+\vskip 0 pt plus .05 fill\relax
+
+{\large z\TeX ali a doplnili 
+\vskip 0 pt plus .005 fill\relax
+Martin Vidner {\tt <mvidner@atlas.cz>}}
+\vskip 0 pt plus .005 fill\relax
+{\large Vladimír Kotal {\tt <vlada@devnull.cz>}}
+
+%\author
+%{pøedná¹í RNDr. Václav Koubek, DrSc.\and
+%z\TeX ali Martin Vidner {\tt <mvidner@atlas.cz>}, \\
+%Vladimír Kotal {\tt <vlada@devnull.cz>}
+% \footnote{\tt martin@artax.karlin.mff.cuni.cz, mvidner@atlas.cz}
+% XXX udelat podekovani
+% \thanks{Pøispìli: Li¹ák, Jéòa, ®abièka, Jindøich, Martin Mare¹, 
+%	Pavel Machek, Jakub Èerný \ldots}
+%}
+%\end{center}
+% \maketitle
+
+  \vskip 0 pt plus .5 fill\relax
+
+  %\hline
+  {\Large\bf Universita Karlova} 
+  \vskip 5 pt\relax
+  {\large\bf Matematicko-fyzikální fakulta}
+
+  \vskip 10 pt\relax
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics{pics/by-nc-sa.pdf}
+\end{center}
+\end{figure}
+
+  {\large 2004}
+
+  \end{center}
+\end{titlepage}
+
+
+
+\tableofcontents
+%\listofalgorithms
+
+% uvod ke skriptum
+\chapter*{Pøedmluva\markboth{Pøedmluva}{}}
+
+Kdy¾ jsem se nìkdy na zaèátku r. 2002 rozhodl doplnit pùvodní 
+neúplná skripta Martina Vidnera,
+netu¹il jsem, kolik èasu to zabere. Pùvodnì jsem na nich zaèal pracovat 
+proto, ¾e jsem nemìl ¾ádné rozumné poznámky z pøedná¹ek a vìdìl jsem, ¾e pøi
+uèení na státnice nebudu chtít trávit èas hledáním a tøídìním poznámek z
+rùzných zdrojù. Nakonec jsem skonèil dopsáním chybìjících kapitol,
+dokreslením obrázkù a opravením v¹ech chyb, které jsem na¹el,
+
+%Dlouhou dobu se mì lidi ptali na to,
+%jestli se ze skript dá uèit i na státnice a poka¾dé jsem odpovídal, ¾e bych
+%to pøíli¹ nedoporuèoval. Teï, na zaèátku zimního semestru akad. roku
+%2004/2005, po pár 
+%mìsících práce u¾ se dá øíct, ¾e je celkem mo¾né se ze skript uèit nejen 
+%na zkou¹ky, ale i ke státnicím.
+
+Stále je ov¹em pravdìpodobné, ¾e skripta obsahují i vá¾nìj¹í chyby. Pokud 
+nìjaké pøi uèení najdete, zkuste mi napsat.
+
+Skripta mù¾e èíst prakticky ka¾dý, kdo je obeznámen se základy teoretické
+informatiky, rozhodnì ale doporuèuji absolvovat pøedmìty '\emph{Úvod do teorie
+pravdìpodobnosti}' a '\emph{Úvod do slo¾itosti a NP-úplnosti}' nebo jejich
+ekvivalenty. 
+První se vám bude hodit pøi dùkazech, druhý pøi obecném chápání algoritmù.
+
+Obsahovì skripta pokrývají pøedná¹ky Datové struktury I a II 
+RNDr. Václava Koubka, DrSc. Navíc jsou pøidány nìkteré vìci, pøedná¹ené
+okrajovì nebo probírané pouze na cvièení. (napø. AVL stromy
+nebo skorooptimální binární vyhledávací stromy)
+Nìkteré kapitoly byly psány nezávisle na pøedná¹kách. (napø. splay stromy)
+
+Øekl bych "u¾ijte si to", ale ono to zase tak lehké ètivo není :)
+
+\vspace{2cm}
+
+
+V. Kotal
+
+
+\pagebreak
+
+Podìkování patøí následujícím lidem:
+
+\begin{itemize}
+  \item Martin Vidner \\ 
+  	pùvodní verze skript (kapitoly Ha¹ování I,II, XXX)
+  \item Li¹ák, Jéòa, ®abièka, Jindøich\footnote{Lidé, kterým dìkoval
+  	Martin Vidner. Identita tìchto jedincù zøejmì zùstane nav¾dy
+	utajena.}, 
+  	Martin Mare¹, Pavel Machek, Jakub Èerný \\
+	opravy a dodatky v pùvodní verzi skript
+  \item Martin Maèok \\
+  	faktické opravy
+  \item Tomá¹ Matou¹ek \\
+  	mno¾ství faktických oprav
+  \item Ladislav Pro¹ek \\
+  	pøeklepy, faktické opravy
+  \item Jana Skotáková, Martin Malý \\
+  	zapùjèení poznámek
+  \item Vojtìch Fried \\
+  	algoritmus pro INSERT v semidyn. systémech
+  \item Michal Kováè \\
+  	pøeklepy, faktické opravy
+  \item Vojta Havránek \\
+  	faktické opravy
+\end{itemize}
+
+
+Nìkteré èásti skript byly volnì pøevzaty ze zdrojù jiných ne¾ z 
+originální pøedná¹ky Datové struktury. Konkrétnì èásti sekcí o
+binomiálních a fibonacciho haldách byly inspirovány pøedná¹kou O. Èepka,
+sekce o splay stromech byla èásteènì pøevzata z textù FIT VUTBR.
+Sekce o semi-optimálních vyhledávacích stromech je tvoøena referátem L.
+Strojila. Sekce o AVL stromech vznikla kompilací a doplnìním materiálù z
+% www.ms/~vmuc7377/avl/avl.html
+webu, základ tvoøí referát Vojtìcha Muchy.
+
+Skripta jsou uverejnena pod licencí Creative Commons
+\href{http://creativecommons.org/licenses/by-nc-sa/3.0/cz/}{Uvedte
+autora - Nevyuzivejte dilo komercne - Zachovejte licenci 3.0 Cesko}.
+
+Stránky skript které obsahují poslední verzi a repository se zdrojovými
+kódy lze nalézt na \href{http://code.google.com/p/datove-struktury/}{http://code.google.com/p/datove-struktury/}
+
+% ==========================================================================
+\include{intro}
+% ==========================================================================
+\include{hash1}
+% ==========================================================================
+\include{hash2}
+% ==========================================================================
+\include{tries}
+% ==========================================================================
+\include{array}
+% ==========================================================================
+\include{treesbin}
+% ==========================================================================
+\include{trees-ab}
+% ==========================================================================
+\include{samoop}
+% ==========================================================================
+\include{heaps}
+% ==========================================================================
+\include{dynam}
+% ==========================================================================
+
+% \chapter{Vícedimenzionální vyhledávání}
+
+% vykládalo se to vùbec ? \\
+% ("Ne, tohle uz nestihl. Jenom nakousl, o co tam jde, ale myslim, ze neni
+% poradne co z toho zkouset")
+
+
+% ==========================================================================
+
+\begin{thebibliography}{X}
+%\begin{thebibliography}{99}
+\bibitem{mehlhorn} 
+Mehlhorn, Kurt. (1983): \emph{Data Structures And Algorithms}, 
+Springer Verlag
+
+\bibitem{mehlhorn-overmars} 
+Mehlhorn K., Overmars M. H. (XXX):
+\emph{Optimal Dynamization of Decomposable Searching Problems}
+
+\bibitem{douglas-GPERF}
+Douglas C. Schmidt (1990): 
+\emph{GPERF: A Perfect Hash Function Generator},
+in Proceedings of the 2nd C++ Conference, 
+San Francisco, California, USENIX, pp. 87--102.
+Èlánek se dá stáhnout z 
+\htmladdnormallink
+{citeseer}
+{http://citeseer.nj.nec.com/schmidt90gperf.html}.
+
+\bibitem{AVL-trees}
+% reference z http://penguin.ewu.edu/~trolfe/DSWpaper/
+Adel'son-Velskii G. M., Landis E. M. (1962): \emph{An Algorithm for the
+Organization of Information}, Soviet Math. Dockl.
+
+\bibitem{Topfer}
+Topfer P. (1995): Algoritmy a programovací techniky, nakl. Prometheus,
+ISBN 80-85849-83-6
+
+\bibitem{Vitter-Chen}
+% http://portal.acm.org/citation.cfm?id=2205
+% existuji jeste dalsi papers od Vitter a Chena ktere porovnavaji
+% hashovaci matody:
+% http://scholar.google.com/scholar?q=vitter+chen&ie=UTF-8&oe=UTF-8&hl=en&btnG=Search
+Chen Wen-Chin, Vitter Jeffrey Scott (1984): \emph{Analysis of new variants
+of coalesced hashing}, ACM Transactions on Database Systems (TODS) archive
+Volume 9 ,  Issue 4  (December 1984) table of contents
+Pages: 616 - 645, Year of Publication: 1984, ISSN:0362-5915, Publisher	
+ACM Press New York, NY, USA.
+
+\end{thebibliography}
+
+\end{document}
