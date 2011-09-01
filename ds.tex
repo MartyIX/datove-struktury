@@ -12,7 +12,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage[latin2]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[czech]{babel}
 \usepackage[bookmarks,bookmarksopen]{hyperref}
 \usepackage{graphicx} % graphic files
@@ -38,7 +38,7 @@
 \usepackage{algorithmic}
 \usepackage[chapter]{algorithm}
 \floatname{algorithm}{Algoritmus}
-\renewcommand{\listalgorithmname}{Seznam algoritmù}
+\renewcommand{\listalgorithmname}{Seznam algoritmÅ¯}
 
 \makeatletter
   \newcommand\figcaption{\def\@captype{figure}\caption}
@@ -108,25 +108,25 @@
 
 
 \newcommand{\mnote}[1]{\marginpar{\scriptsize\raggedright #1}}
-\newcommand{\exercise}[2]{\mnote{Cvièení: #1}} %TODO: co s odpovìdí?
+\newcommand{\exercise}[2]{\mnote{CviÄenÃ­: #1}} %TODO: co s odpovÄ›dÃ­?
 
-\newtheorem{theorem}{Vìta}[section]
-\newtheorem{tvrzeni}{Tvrzení}[section]
+\newtheorem{theorem}{VÄ›ta}[section]
+\newtheorem{tvrzeni}{TvrzenÃ­}[section]
 \newtheorem{lemma}{Lemma}[section]
 \theoremstyle{definition}
 \newtheorem{defn}{Definice}[section]
 
 % following macros by V. Kotal
-\newtheorem{pozn}{Poznámka}[section]
-\newtheorem{pozorov}{Pozorování}[section]
-\newtheorem{priklad}{Pøíklad}[section]
+\newtheorem{pozn}{PoznÃ¡mka}[section]
+\newtheorem{pozorov}{PozorovÃ¡nÃ­}[section]
+\newtheorem{priklad}{PÅ™Ã­klad}[section]
 
 \pagestyle{myheadings}
 
 \begin{document}
 
 %\begin{center}
-%\title{{\Huge\bf Datové struktury}}
+%\title{{\Huge\bf DatovÃ© struktury}}
 
 \begin{titlepage}
   \begin{center}
@@ -134,11 +134,11 @@
   % \newfont{\mujfont}{csss8}
   % \selectfont{\mujfont}{ abc }
   % XXX nadpis jinym fontem
-  {\Huge\bf Datové struktury}
+  {\Huge\bf DatovÃ© struktury}
 
 \vskip 0 pt plus .1 fill\relax
 
-{\Large pøedná¹í RNDr. Václav Koubek, DrSc.}
+{\Large pÅ™ednÃ¡Å¡Ã­ RNDr. VÃ¡clav Koubek, DrSc.}
 
 \vskip 0 pt plus .05 fill\relax
 
@@ -146,16 +146,16 @@
 \vskip 0 pt plus .005 fill\relax
 Martin Vidner {\tt <mvidner@atlas.cz>}}
 \vskip 0 pt plus .005 fill\relax
-{\large Vladimír Kotal {\tt <vlada@devnull.cz>}}
+{\large VladimÃ­r Kotal {\tt <vlada@devnull.cz>}}
 
 %\author
-%{pøedná¹í RNDr. Václav Koubek, DrSc.\and
+%{pÅ™ednÃ¡Å¡Ã­ RNDr. VÃ¡clav Koubek, DrSc.\and
 %z\TeX ali Martin Vidner {\tt <mvidner@atlas.cz>}, \\
-%Vladimír Kotal {\tt <vlada@devnull.cz>}
+%VladimÃ­r Kotal {\tt <vlada@devnull.cz>}
 % \footnote{\tt martin@artax.karlin.mff.cuni.cz, mvidner@atlas.cz}
 % XXX udelat podekovani
-% \thanks{Pøispìli: Li¹ák, Jéòa, ®abièka, Jindøich, Martin Mare¹, 
-%	Pavel Machek, Jakub Èernı \ldots}
+% \thanks{PÅ™ispÄ›li: LiÅ¡Ã¡k, JÃ©Åˆa, Å½abiÄka, JindÅ™ich, Martin MareÅ¡, 
+%	Pavel Machek, Jakub ÄŒernÃ½ \ldots}
 %}
 %\end{center}
 % \maketitle
@@ -165,7 +165,7 @@ Martin Vidner {\tt <mvidner@atlas.cz>}}
   %\hline
   {\Large\bf Universita Karlova} 
   \vskip 5 pt\relax
-  {\large\bf Matematicko-fyzikální fakulta}
+  {\large\bf Matematicko-fyzikÃ¡lnÃ­ fakulta}
 
   \vskip 10 pt\relax
 
@@ -186,39 +186,39 @@ Martin Vidner {\tt <mvidner@atlas.cz>}}
 %\listofalgorithms
 
 % uvod ke skriptum
-\chapter*{Pøedmluva\markboth{Pøedmluva}{}}
+\chapter*{PÅ™edmluva\markboth{PÅ™edmluva}{}}
 
-Kdy¾ jsem se nìkdy na zaèátku r. 2002 rozhodl doplnit pùvodní 
-neúplná skripta Martina Vidnera,
-netu¹il jsem, kolik èasu to zabere. Pùvodnì jsem na nich zaèal pracovat 
-proto, ¾e jsem nemìl ¾ádné rozumné poznámky z pøedná¹ek a vìdìl jsem, ¾e pøi
-uèení na státnice nebudu chtít trávit èas hledáním a tøídìním poznámek z
-rùznıch zdrojù. Nakonec jsem skonèil dopsáním chybìjících kapitol,
-dokreslením obrázkù a opravením v¹ech chyb, které jsem na¹el,
+KdyÅ¾ jsem se nÄ›kdy na zaÄÃ¡tku r. 2002 rozhodl doplnit pÅ¯vodnÃ­ 
+neÃºplnÃ¡ skripta Martina Vidnera,
+netuÅ¡il jsem, kolik Äasu to zabere. PÅ¯vodnÄ› jsem na nich zaÄal pracovat 
+proto, Å¾e jsem nemÄ›l Å¾Ã¡dnÃ© rozumnÃ© poznÃ¡mky z pÅ™ednÃ¡Å¡ek a vÄ›dÄ›l jsem, Å¾e pÅ™i
+uÄenÃ­ na stÃ¡tnice nebudu chtÃ­t trÃ¡vit Äas hledÃ¡nÃ­m a tÅ™Ã­dÄ›nÃ­m poznÃ¡mek z
+rÅ¯znÃ½ch zdrojÅ¯. Nakonec jsem skonÄil dopsÃ¡nÃ­m chybÄ›jÃ­cÃ­ch kapitol,
+dokreslenÃ­m obrÃ¡zkÅ¯ a opravenÃ­m vÅ¡ech chyb, kterÃ© jsem naÅ¡el,
 
-%Dlouhou dobu se mì lidi ptali na to,
-%jestli se ze skript dá uèit i na státnice a poka¾dé jsem odpovídal, ¾e bych
-%to pøíli¹ nedoporuèoval. Teï, na zaèátku zimního semestru akad. roku
-%2004/2005, po pár 
-%mìsících práce u¾ se dá øíct, ¾e je celkem mo¾né se ze skript uèit nejen 
-%na zkou¹ky, ale i ke státnicím.
+%Dlouhou dobu se mÄ› lidi ptali na to,
+%jestli se ze skript dÃ¡ uÄit i na stÃ¡tnice a pokaÅ¾dÃ© jsem odpovÃ­dal, Å¾e bych
+%to pÅ™Ã­liÅ¡ nedoporuÄoval. TeÄ, na zaÄÃ¡tku zimnÃ­ho semestru akad. roku
+%2004/2005, po pÃ¡r 
+%mÄ›sÃ­cÃ­ch prÃ¡ce uÅ¾ se dÃ¡ Å™Ã­ct, Å¾e je celkem moÅ¾nÃ© se ze skript uÄit nejen 
+%na zkouÅ¡ky, ale i ke stÃ¡tnicÃ­m.
 
-Stále je ov¹em pravdìpodobné, ¾e skripta obsahují i vá¾nìj¹í chyby. Pokud 
-nìjaké pøi uèení najdete, zkuste mi napsat.
+StÃ¡le je ovÅ¡em pravdÄ›podobnÃ©, Å¾e skripta obsahujÃ­ i vÃ¡Å¾nÄ›jÅ¡Ã­ chyby. Pokud 
+nÄ›jakÃ© pÅ™i uÄenÃ­ najdete, zkuste mi napsat.
 
-Skripta mù¾e èíst prakticky ka¾dı, kdo je obeznámen se základy teoretické
-informatiky, rozhodnì ale doporuèuji absolvovat pøedmìty '\emph{Úvod do teorie
-pravdìpodobnosti}' a '\emph{Úvod do slo¾itosti a NP-úplnosti}' nebo jejich
+Skripta mÅ¯Å¾e ÄÃ­st prakticky kaÅ¾dÃ½, kdo je obeznÃ¡men se zÃ¡klady teoretickÃ©
+informatiky, rozhodnÄ› ale doporuÄuji absolvovat pÅ™edmÄ›ty '\emph{Ãšvod do teorie
+pravdÄ›podobnosti}' a '\emph{Ãšvod do sloÅ¾itosti a NP-Ãºplnosti}' nebo jejich
 ekvivalenty. 
-První se vám bude hodit pøi dùkazech, druhı pøi obecném chápání algoritmù.
+PrvnÃ­ se vÃ¡m bude hodit pÅ™i dÅ¯kazech, druhÃ½ pÅ™i obecnÃ©m chÃ¡pÃ¡nÃ­ algoritmÅ¯.
 
-Obsahovì skripta pokrıvají pøedná¹ky Datové struktury I a II 
-RNDr. Václava Koubka, DrSc. Navíc jsou pøidány nìkteré vìci, pøedná¹ené
-okrajovì nebo probírané pouze na cvièení. (napø. AVL stromy
-nebo skorooptimální binární vyhledávací stromy)
-Nìkteré kapitoly byly psány nezávisle na pøedná¹kách. (napø. splay stromy)
+ObsahovÄ› skripta pokrÃ½vajÃ­ pÅ™ednÃ¡Å¡ky DatovÃ© struktury I a II 
+RNDr. VÃ¡clava Koubka, DrSc. NavÃ­c jsou pÅ™idÃ¡ny nÄ›kterÃ© vÄ›ci, pÅ™ednÃ¡Å¡enÃ©
+okrajovÄ› nebo probÃ­ranÃ© pouze na cviÄenÃ­. (napÅ™. AVL stromy
+nebo skorooptimÃ¡lnÃ­ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ stromy)
+NÄ›kterÃ© kapitoly byly psÃ¡ny nezÃ¡visle na pÅ™ednÃ¡Å¡kÃ¡ch. (napÅ™. splay stromy)
 
-Øekl bych "u¾ijte si to", ale ono to zase tak lehké ètivo není :)
+Å˜ekl bych "uÅ¾ijte si to", ale ono to zase tak lehkÃ© Ätivo nenÃ­ :)
 
 \vspace{2cm}
 
@@ -228,48 +228,48 @@ V. Kotal
 
 \pagebreak
 
-Podìkování patøí následujícím lidem:
+PodÄ›kovÃ¡nÃ­ patÅ™Ã­ nÃ¡sledujÃ­cÃ­m lidem:
 
 \begin{itemize}
   \item Martin Vidner \\ 
-  	pùvodní verze skript (kapitoly Ha¹ování I,II, XXX)
-  \item Li¹ák, Jéòa, ®abièka, Jindøich\footnote{Lidé, kterım dìkoval
-  	Martin Vidner. Identita tìchto jedincù zøejmì zùstane nav¾dy
+  	pÅ¯vodnÃ­ verze skript (kapitoly HaÅ¡ovÃ¡nÃ­ I,II, XXX)
+  \item LiÅ¡Ã¡k, JÃ©Åˆa, Å½abiÄka, JindÅ™ich\footnote{LidÃ©, kterÃ½m dÄ›koval
+  	Martin Vidner. Identita tÄ›chto jedincÅ¯ zÅ™ejmÄ› zÅ¯stane navÅ¾dy
 	utajena.}, 
-  	Martin Mare¹, Pavel Machek, Jakub Èernı \\
-	opravy a dodatky v pùvodní verzi skript
-  \item Martin Maèok \\
-  	faktické opravy
-  \item Tomá¹ Matou¹ek \\
-  	mno¾ství faktickıch oprav
-  \item Ladislav Pro¹ek \\
-  	pøeklepy, faktické opravy
-  \item Jana Skotáková, Martin Malı \\
-  	zapùjèení poznámek
-  \item Vojtìch Fried \\
-  	algoritmus pro INSERT v semidyn. systémech
-  \item Michal Kováè \\
-  	pøeklepy, faktické opravy
-  \item Vojta Havránek \\
-  	faktické opravy
+  	Martin MareÅ¡, Pavel Machek, Jakub ÄŒernÃ½ \\
+	opravy a dodatky v pÅ¯vodnÃ­ verzi skript
+  \item Martin MaÄok \\
+  	faktickÃ© opravy
+  \item TomÃ¡Å¡ MatouÅ¡ek \\
+  	mnoÅ¾stvÃ­ faktickÃ½ch oprav
+  \item Ladislav ProÅ¡ek \\
+  	pÅ™eklepy, faktickÃ© opravy
+  \item Jana SkotÃ¡kovÃ¡, Martin MalÃ½ \\
+  	zapÅ¯jÄenÃ­ poznÃ¡mek
+  \item VojtÄ›ch Fried \\
+  	algoritmus pro INSERT v semidyn. systÃ©mech
+  \item Michal KovÃ¡Ä \\
+  	pÅ™eklepy, faktickÃ© opravy
+  \item Vojta HavrÃ¡nek \\
+  	faktickÃ© opravy
 \end{itemize}
 
 
-Nìkteré èásti skript byly volnì pøevzaty ze zdrojù jinıch ne¾ z 
-originální pøedná¹ky Datové struktury. Konkrétnì èásti sekcí o
-binomiálních a fibonacciho haldách byly inspirovány pøedná¹kou O. Èepka,
-sekce o splay stromech byla èásteènì pøevzata z textù FIT VUTBR.
-Sekce o semi-optimálních vyhledávacích stromech je tvoøena referátem L.
-Strojila. Sekce o AVL stromech vznikla kompilací a doplnìním materiálù z
+NÄ›kterÃ© ÄÃ¡sti skript byly volnÄ› pÅ™evzaty ze zdrojÅ¯ jinÃ½ch neÅ¾ z 
+originÃ¡lnÃ­ pÅ™ednÃ¡Å¡ky DatovÃ© struktury. KonkrÃ©tnÄ› ÄÃ¡sti sekcÃ­ o
+binomiÃ¡lnÃ­ch a fibonacciho haldÃ¡ch byly inspirovÃ¡ny pÅ™ednÃ¡Å¡kou O. ÄŒepka,
+sekce o splay stromech byla ÄÃ¡steÄnÄ› pÅ™evzata z textÅ¯ FIT VUTBR.
+Sekce o semi-optimÃ¡lnÃ­ch vyhledÃ¡vacÃ­ch stromech je tvoÅ™ena referÃ¡tem L.
+Strojila. Sekce o AVL stromech vznikla kompilacÃ­ a doplnÄ›nÃ­m materiÃ¡lÅ¯ z
 % www.ms/~vmuc7377/avl/avl.html
-webu, základ tvoøí referát Vojtìcha Muchy.
+webu, zÃ¡klad tvoÅ™Ã­ referÃ¡t VojtÄ›cha Muchy.
 
-Skripta jsou uverejnena pod licencí Creative Commons
+Skripta jsou uverejnena pod licencÃ­ Creative Commons
 \href{http://creativecommons.org/licenses/by-nc-sa/3.0/cz/}{Uvedte
 autora - Nevyuzivejte dilo komercne - Zachovejte licenci 3.0 Cesko}.
 
-Stránky skript které obsahují poslední verzi a repository se zdrojovımi
-kódy lze nalézt na \href{http://code.google.com/p/datove-struktury/}{http://code.google.com/p/datove-struktury/}
+StrÃ¡nky skript kterÃ© obsahujÃ­ poslednÃ­ verzi a repository se zdrojovÃ½mi
+kÃ³dy lze nalÃ©zt na \href{http://code.google.com/p/datove-struktury/}{http://code.google.com/p/datove-struktury/}
 
 % ==========================================================================
 \include{intro}
@@ -293,9 +293,9 @@ kódy lze nalézt na \href{http://code.google.com/p/datove-struktury/}{http://code
 \include{dynam}
 % ==========================================================================
 
-% \chapter{Vícedimenzionální vyhledávání}
+% \chapter{VÃ­cedimenzionÃ¡lnÃ­ vyhledÃ¡vÃ¡nÃ­}
 
-% vykládalo se to vùbec ? \\
+% vyklÃ¡dalo se to vÅ¯bec ? \\
 % ("Ne, tohle uz nestihl. Jenom nakousl, o co tam jde, ale myslim, ze neni
 % poradne co z toho zkouset")
 
@@ -317,7 +317,7 @@ Douglas C. Schmidt (1990):
 \emph{GPERF: A Perfect Hash Function Generator},
 in Proceedings of the 2nd C++ Conference, 
 San Francisco, California, USENIX, pp. 87--102.
-Èlánek se dá stáhnout z 
+ÄŒlÃ¡nek se dÃ¡ stÃ¡hnout z 
 \htmladdnormallink
 {citeseer}
 {http://citeseer.nj.nec.com/schmidt90gperf.html}.
@@ -328,7 +328,7 @@ Adel'son-Velskii G. M., Landis E. M. (1962): \emph{An Algorithm for the
 Organization of Information}, Soviet Math. Dockl.
 
 \bibitem{Topfer}
-Topfer P. (1995): Algoritmy a programovací techniky, nakl. Prometheus,
+Topfer P. (1995): Algoritmy a programovacÃ­ techniky, nakl. Prometheus,
 ISBN 80-85849-83-6
 
 \bibitem{Vitter-Chen}

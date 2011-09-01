@@ -1,0 +1,14 @@
+
+# Ignored directories:
+
+
+# Ignore files with extensions:
+
+*.aux
+Makefile~
+*.gz
+*.out
+*.toc
+*.log
+ds.pdf
+

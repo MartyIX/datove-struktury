@@ -8,8 +8,8 @@
 
 # name of output file
 MAIN=ds
-ERRFILE=/tmp/ds.$$
-DISTDIR=../Documents/webt/skola/ds
+ERRFILE=./output/tmp/ds.$$
+DISTDIR=./output/ds
 HTMLFILE=$(DISTDIR)/ds.html
 
 SRCFILES= array.tex \

@@ -1,63 +1,63 @@
-% Souèást skript na Datové struktury. Viz main.tex
+% SouÄÃ¡st skript na DatovÃ© struktury. Viz main.tex
 \markright{$ $Id$ $}
 
-\chapter{Ha¹ování II}
+\chapter{HaÅ¡ovÃ¡nÃ­ II}
 
 % --------------------------------------------------------------------------
-\section{Univerzální ha¹ování}
+\section{UniverzÃ¡lnÃ­ haÅ¡ovÃ¡nÃ­}
 
-Idea univerzálního ha¹ovaní má odstranit po¾adavek na rovnomìrné 
-rozlo¾ení vstupních dat. Tento po¾adavek chceme nahradit tím, ¾e 
-budeme mít soubor $H$ ha¹ovacích funkcí do tabulky velikosti $m$ takovı,
-¾e pro ka¾dou podmno¾inu $S$ univerza $U$ je pravdìpodobnost, ¾e funkce z 
-$H$ se chová dobøe, hodnì velká (tj. je jen málo kolizí). V tomto pøípadì, 
-kdy¾ vybereme $h$ z $H$ náhodnì s rovnomìrnım rozlo¾ením, pak pro ka¾dou 
-podmno¾inu $S\subseteq U$ takovou, ¾e $|S|\leq m$, bude oèekávanı èas 
-(poèítanı pøes v¹echny funkce z $H$) konstantní. Rozdíl proti tradiènímu 
-ha¹ovaní je, ¾e pøedpoklad rovnomìrného vıbìru ha¹ovací funkce z mno¾iny 
-$H$ mù¾eme zajistit (nebo se k splnìní tohoto po¾adavku pøiblí¾it), ale 
-vıbìr vstupních dat ovlivnit nemù¾eme. Nyní tuto ideu zformalizujeme. 
-\mnote{zajímá nás jednak $c$, jednak velikost systému (tj. poèet funkcí v
-systému)}
+Idea univerzÃ¡lnÃ­ho haÅ¡ovanÃ­ mÃ¡ odstranit poÅ¾adavek na rovnomÄ›rnÃ© 
+rozloÅ¾enÃ­ vstupnÃ­ch dat. Tento poÅ¾adavek chceme nahradit tÃ­m, Å¾e 
+budeme mÃ­t soubor $H$ haÅ¡ovacÃ­ch funkcÃ­ do tabulky velikosti $m$ takovÃ½,
+Å¾e pro kaÅ¾dou podmnoÅ¾inu $S$ univerza $U$ je pravdÄ›podobnost, Å¾e funkce z 
+$H$ se chovÃ¡ dobÅ™e, hodnÄ› velkÃ¡ (tj. je jen mÃ¡lo kolizÃ­). V tomto pÅ™Ã­padÄ›, 
+kdyÅ¾ vybereme $h$ z $H$ nÃ¡hodnÄ› s rovnomÄ›rnÃ½m rozloÅ¾enÃ­m, pak pro kaÅ¾dou 
+podmnoÅ¾inu $S\subseteq U$ takovou, Å¾e $|S|\leq m$, bude oÄekÃ¡vanÃ½ Äas 
+(poÄÃ­tanÃ½ pÅ™es vÅ¡echny funkce z $H$) konstantnÃ­. RozdÃ­l proti tradiÄnÃ­mu 
+haÅ¡ovanÃ­ je, Å¾e pÅ™edpoklad rovnomÄ›rnÃ©ho vÃ½bÄ›ru haÅ¡ovacÃ­ funkce z mnoÅ¾iny 
+$H$ mÅ¯Å¾eme zajistit (nebo se k splnÄ›nÃ­ tohoto poÅ¾adavku pÅ™iblÃ­Å¾it), ale 
+vÃ½bÄ›r vstupnÃ­ch dat ovlivnit nemÅ¯Å¾eme. NynÃ­ tuto ideu zformalizujeme. 
+\mnote{zajÃ­mÃ¡ nÃ¡s jednak $c$, jednak velikost systÃ©mu (tj. poÄet funkcÃ­ v
+systÃ©mu)}
 
 \begin{defn}
 \label{c-us}
-Tøída ha¹ovacích funkcí 
+TÅ™Ã­da haÅ¡ovacÃ­ch funkcÃ­ 
 \( H \subseteq \{h | h: \intrange{0}{N-1} \rightarrow \intrange{0}{m-1}\} \)
-je \emph{c-univerzální} systém, kde $c\in\mathbb{R}^+$, jestli¾e 
+je \emph{c-univerzÃ¡lnÃ­} systÃ©m, kde $c\in\mathbb{R}^+$, jestliÅ¾e 
 \begin{equation*}
 \forall x\neq y\in \intrange{0}{N-1} :
 \left |\{h\in H : h(x)=h(y)\}\right| \leq c\frac{|H|}{m}, 
 \end{equation*}
 \end{defn}
 
-%Dolní mez pro $c$, dk na cvièení.
-% rádi bychom \( c \) co nejmen¹í, ale dá se dokázat,
-% ¾e neexistují \( c \)-univerzální tøídy pro
+%DolnÃ­ mez pro $c$, dk na cviÄenÃ­.
+% rÃ¡di bychom \( c \) co nejmenÅ¡Ã­, ale dÃ¡ se dokÃ¡zat,
+% Å¾e neexistujÃ­ \( c \)-univerzÃ¡lnÃ­ tÅ™Ã­dy pro
 % \( c<1-\frac{m}{N} \).
 
 % ..........................................................................
 
 \noindent
-Nejprve uká¾eme, ¾e $c$-univerzální systémy existují:
+Nejprve ukÃ¡Å¾eme, Å¾e $c$-univerzÃ¡lnÃ­ systÃ©my existujÃ­:
 
 \begin{theorem}
-Pøedpokládejme, ¾e $U = \intrange{0}{N-1}$, kde $N$ je prvoèíslo.
+PÅ™edpoklÃ¡dejme, Å¾e $U = \intrange{0}{N-1}$, kde $N$ je prvoÄÃ­slo.
 Definujme 
 \[ H=\{h_{ab}:h_{ab}(x)=((ax+b)\bmod N)\bmod m;
 \ a,b\in \intrange{0}{N-1}\} \]
 
-Potom $H$ je \( c \)-univerzální a 
+Potom $H$ je \( c \)-univerzÃ¡lnÃ­ a 
 \( c=\left( \left\lceil \frac{N}{m}\right\rceil /\frac{N}{m}\right) ^{2} \).
 \end{theorem}
 
 \begin{proof}
-\( |H|=N^{2} \), co¾ je poèet dvojic $(a,b)$.
+\( |H|=N^{2} \), coÅ¾ je poÄet dvojic $(a,b)$.
 
-Nech» $(x,y)$ jsou libovolné, ale pevné. 
+NechÅ¥ $(x,y)$ jsou libovolnÃ©, ale pevnÃ©. 
 % oprava x != y by V. Havranek
-Zároveò platí $x \neq y$.
-Kolize nastane v pøípadech, kdy¾:
+ZÃ¡roveÅˆ platÃ­ $x \neq y$.
+Kolize nastane v pÅ™Ã­padech, kdyÅ¾:
 
 \[
 h_{ab}(x)=h_{ab}(y),\]
@@ -67,18 +67,18 @@ ax+b & = & q+rm\pmod N\\
 ay+b & = & q+sm\pmod N
 \end{eqnarray*}
 
-kde $(a,b)$ jsou neznámé a parametry $(q,r,s)$ nabıvají v¹ech
-hodnot takovıch, ¾e
+kde $(a,b)$ jsou neznÃ¡mÃ© a parametry $(q,r,s)$ nabÃ½vajÃ­ vÅ¡ech
+hodnot takovÃ½ch, Å¾e
 \[
 q\in \intrange{0}{m-1}
 \land r,s\in \intrange{0}{\left\lceil N/m\right\rceil -1}.
 \]
 
 
-$N$ je prvoèíslo, tedy $\mathbb{Z}_N$ je tìleso a pro ka¾dou trojici parametrù
-$(q,r,s)$ má soustava právì jedno øe¹ení $(a,b)$. 
-Poèet kolidujících funkcí je pøesnì tolik, jako poèet trojic
-$(q,r,s)$, kterı je
+$N$ je prvoÄÃ­slo, tedy $\mathbb{Z}_N$ je tÄ›leso a pro kaÅ¾dou trojici parametrÅ¯
+$(q,r,s)$ mÃ¡ soustava prÃ¡vÄ› jedno Å™eÅ¡enÃ­ $(a,b)$. 
+PoÄet kolidujÃ­cÃ­ch funkcÃ­ je pÅ™esnÄ› tolik, jako poÄet trojic
+$(q,r,s)$, kterÃ½ je
 \( m\cdot \left\lceil N/m\right\rceil ^{2} \).
 
 \( 
@@ -87,25 +87,25 @@ $(q,r,s)$, kterı je
 =\frac{\left\lceil \frac{N}{m}\right\rceil ^{2}}{\left(\frac{N}{m}\right) ^{2}}\frac{N^{2}}{m}
 =c\frac{|H|}{m}
 \)
-\mnote{$m$ je poèet $q$, $\left\lceil \frac{N}{m}\right\rceil ^{2}$ je
-poèet $q,s$}
+\mnote{$m$ je poÄet $q$, $\left\lceil \frac{N}{m}\right\rceil ^{2}$ je
+poÄet $q,s$}
 
-$\Rightarrow$ tento univerzální systém lze zkonstruovat. Velikost $H$ je
+$\Rightarrow$ tento univerzÃ¡lnÃ­ systÃ©m lze zkonstruovat. Velikost $H$ je
 $N^2$.
 \end{proof}
 
 % ..........................................................................
 
-\subsection{Oèekávaná délka øetìzce}
+\subsection{OÄekÃ¡vanÃ¡ dÃ©lka Å™etÄ›zce}
 
 \begin{defn}
-Mìjme libovolnou pevnou $S \subseteq U$, libovolné pevné $x \in
+MÄ›jme libovolnou pevnou $S \subseteq U$, libovolnÃ© pevnÃ© $x \in
 U$ a funkci $h: U \to \intrange{0}{m-1}$. Definujme
 \begin{equation}
-S_{h,x}= \text{øetìzec prvkù $y \in S$, pro které platí $h(y) = h(x)$}.
+S_{h,x}= \text{Å™etÄ›zec prvkÅ¯ $y \in S$, pro kterÃ© platÃ­ $h(y) = h(x)$}.
 \end{equation}
 
-Zaveïme
+ZaveÄme
 \mnote{Iversonova konvence: [true]=1, [false]=0}
 \begin{align}
 \delta_h(x,y) & = [ x \neq y \land h(x) = h(y) ]\\
@@ -113,12 +113,12 @@ Zaveïme
 \end{align}
 \end{defn}
 
-Chceme spoèítat prùmìrnou délku $S_x$, kde prùmìr poèítáme pøes
-v¹echny $h \in H$, kde $H$ je $c$-univerzální systém.
+Chceme spoÄÃ­tat prÅ¯mÄ›rnou dÃ©lku $S_x$, kde prÅ¯mÄ›r poÄÃ­tÃ¡me pÅ™es
+vÅ¡echny $h \in H$, kde $H$ je $c$-univerzÃ¡lnÃ­ systÃ©m.
 
 \begin{theorem}
-Kdy¾ $H$ je c-universální systém, pak $\forall S \subseteq U$ a $\forall x \in
-U$ je oèekávaná hodnota \\
+KdyÅ¾ $H$ je c-universÃ¡lnÃ­ systÃ©m, pak $\forall S \subseteq U$ a $\forall x \in
+U$ je oÄekÃ¡vanÃ¡ hodnota \\
 \[
 % oprava \delta_h(x,y) -> \delta_h(x,S) by V. Havranek
 \delta_h(x,S) = 
@@ -128,7 +128,7 @@ U$ je oèekávaná hodnota \\
 \end{cases}
 \]
 \\
-kde prùmìr se bere pøes $h \in H$ a pøedpokládáme rovnomìrnı vıbìr fcí z
+kde prÅ¯mÄ›r se bere pÅ™es $h \in H$ a pÅ™edpoklÃ¡dÃ¡me rovnomÄ›rnÃ½ vÃ½bÄ›r fcÃ­ z
 $H$.
 \end{theorem}
 
@@ -146,33 +146,33 @@ $H$.
  \end{cases}
 \end{split}
 \end{equation*}
-Tedy  prùmìrná hodnota $\delta_h(x,S) \leq \frac{cn}m$.
+Tedy  prÅ¯mÄ›rnÃ¡ hodnota $\delta_h(x,S) \leq \frac{cn}m$.
 \end{proof}
 
 \begin{theorem}
 \label{veta-ocek-pocet}
-Pro ka¾dou mno¾inu $S \subseteq U$, $|S| = n$ a ka¾dé $x$ je oèekávanı
-èas operací MEMBER, INSERT, DELETE $O(c \cdot n/m)$, pøièem¾ je branı
-pøes v¹echny funkce $h \in H$ pøi jejich rovnomìrném rozdìlení.
+Pro kaÅ¾dou mnoÅ¾inu $S \subseteq U$, $|S| = n$ a kaÅ¾dÃ© $x$ je oÄekÃ¡vanÃ½
+Äas operacÃ­ MEMBER, INSERT, DELETE $O(c \cdot n/m)$, pÅ™iÄemÅ¾ je branÃ½
+pÅ™es vÅ¡echny funkce $h \in H$ pÅ™i jejich rovnomÄ›rnÃ©m rozdÄ›lenÃ­.
 \end{theorem}
 
 \begin{theorem}
-Markovova nerovnost: Nech» oèekávaná hodnota X je nenulová. Pak platí 
+Markovova nerovnost: NechÅ¥ oÄekÃ¡vanÃ¡ hodnota X je nenulovÃ¡. Pak platÃ­ 
 $\pr(X \geq t \mathrm{E}X) \leq 1/t$
 % oprava from V. Havranek - kdyby nebyla ocek. hodnota nenulova, tvrzeni
 % by neplatilo.
-\mnote{pokud by nebyl uveden pøedpoklad $X \neq 0$, Markovova 
+\mnote{pokud by nebyl uveden pÅ™edpoklad $X \neq 0$, Markovova 
 nerovnost by neplatila.}
 \end{theorem}
 
 \begin{pozn}
-Jiná formulace Markovovy nerovnosti (vìty) mù¾e bıt tato: \\
-Kdy¾ $X$ je náhodná velièina s oèekávanou hodnoutou $\mu$, pak 
+JinÃ¡ formulace Markovovy nerovnosti (vÄ›ty) mÅ¯Å¾e bÃ½t tato: \\
+KdyÅ¾ $X$ je nÃ¡hodnÃ¡ veliÄina s oÄekÃ¡vanou hodnoutou $\mu$, pak 
 $P(X \geq t \mu) \leq \frac{1}{t}$.
 \end{pozn}
 
 \begin{proof}                                                                   
-X je rovnomìrnì rozdìlená náhodná velièina nabıvající hodnot $\{x_i : i
+X je rovnomÄ›rnÄ› rozdÄ›lenÃ¡ nÃ¡hodnÃ¡ veliÄina nabÃ½vajÃ­cÃ­ hodnot $\{x_i : i
 \in     
 I \}$, $I \subset \Bbb N$,                                                      
 $I' = \{ i \in I : x_i \geq t \mu \}$, pak                                      
@@ -193,10 +193,10 @@ a tedy
 
 Varianta Markovovy nerovnosti:
 \begin{theorem}
-Za stejnıch pøedpokladù jako u 
-% pøedchozí 
-vìty \ref{veta-ocek-pocet}, kdy¾ $\mu$ je prùmìrná
-délka øetìzce $S_{h,x}$, pak 
+Za stejnÃ½ch pÅ™edpokladÅ¯ jako u 
+% pÅ™edchozÃ­ 
+vÄ›ty \ref{veta-ocek-pocet}, kdyÅ¾ $\mu$ je prÅ¯mÄ›rnÃ¡
+dÃ©lka Å™etÄ›zce $S_{h,x}$, pak 
 \[
 \forall t > 1\ 
  \pr(|S_{h,x}| \geq t \mu)
@@ -210,7 +210,7 @@ plyne z Markovovy nerovnosti.
 %
 % tohle je nejaky puvodni dukaz. (V. Kotal)
 %
-%H je $c$-univerzální systém. Nech» 
+%H je $c$-univerzÃ¡lnÃ­ systÃ©m. NechÅ¥ 
 %$H' = \{ h \in H; |S_{h,x}| \geq t \mu \}$. 
 %\begin{align*}
 %\mu  
@@ -229,33 +229,33 @@ plyne z Markovovy nerovnosti.
 
 
 % ..........................................................................
-\subsection{Velikost $c$-univerzálního systému}
+\subsection{Velikost $c$-univerzÃ¡lnÃ­ho systÃ©mu}
 
-\subsubsection{Dolní mez}
-Øekli jsme, ¾e pøi pou¾ití $c$-univerzálního systému z nìj ha¹ovací
-funkce vybíráme náhodnì. V praxi ale budeme vìt¹inou pou¾ívat
-pseudonáhodnı generátor, kterı se po urèité periodì opakuje. Abychom 
-zajistili co nejvìt¹í náhodnost,
-potøebujeme, aby systém \( H \) mìl co nejménì funkcí.
+\subsubsection{DolnÃ­ mez}
+Å˜ekli jsme, Å¾e pÅ™i pouÅ¾itÃ­ $c$-univerzÃ¡lnÃ­ho systÃ©mu z nÄ›j haÅ¡ovacÃ­
+funkce vybÃ­rÃ¡me nÃ¡hodnÄ›. V praxi ale budeme vÄ›tÅ¡inou pouÅ¾Ã­vat
+pseudonÃ¡hodnÃ½ generÃ¡tor, kterÃ½ se po urÄitÃ© periodÄ› opakuje. Abychom 
+zajistili co nejvÄ›tÅ¡Ã­ nÃ¡hodnost,
+potÅ™ebujeme, aby systÃ©m \( H \) mÄ›l co nejmÃ©nÄ› funkcÃ­.
 
 \begin{theorem}
-Kdy¾ $H$ je $c$-univerzální systém
-funkcí z univerza $U$ do $\intrange{0}{m-1}$, pak 
+KdyÅ¾ $H$ je $c$-univerzÃ¡lnÃ­ systÃ©m
+funkcÃ­ z univerza $U$ do $\intrange{0}{m-1}$, pak 
 \[ |H| \geq \frac{m}{c} \left\lceil (\log_m N) - 1 \right\rceil. \]
 \end{theorem}
 \begin{proof}
-% Mìjme $c$-univerzální systém \( H = \{h_1 \ldots h_{|H|-1} \} \).
+% MÄ›jme $c$-univerzÃ¡lnÃ­ systÃ©m \( H = \{h_1 \ldots h_{|H|-1} \} \).
 % h_{|H|-1} -> h_{|H|} by T.Matousek
-Mìjme $c$-univerzální systém \( H = \{h_1 \ldots h_{|H|} \} \).
-Nech» $U_0 = U$.
+MÄ›jme $c$-univerzÃ¡lnÃ­ systÃ©m \( H = \{h_1 \ldots h_{|H|} \} \).
+NechÅ¥ $U_0 = U$.
 
-Nech» $U_1$ je nejvìt¹í podmno¾ina $U_0$ taková ¾e $h_1$ je na $(U_1)$
-konstantní.
+NechÅ¥ $U_1$ je nejvÄ›tÅ¡Ã­ podmnoÅ¾ina $U_0$ takovÃ¡ Å¾e $h_1$ je na $(U_1)$
+konstantnÃ­.
 
-Nech» $U_2$ je nejvìt¹í podmno¾ina $U_1$ taková ¾e $h_2$ je na $(U_2)$
-konstantní. (Také $h_1$ je na $(U_2)$ konstantní) A tak dále.
+NechÅ¥ $U_2$ je nejvÄ›tÅ¡Ã­ podmnoÅ¾ina $U_1$ takovÃ¡ Å¾e $h_2$ je na $(U_2)$
+konstantnÃ­. (TakÃ© $h_1$ je na $(U_2)$ konstantnÃ­) A tak dÃ¡le.
 
-Platí
+PlatÃ­
 \begin{align*}
 |U_0| & = N \\
 |U_1| & \geq \left\lceil \frac Nm \right\rceil \\
@@ -263,38 +263,38 @@ Platí
 	\geq^\dag \left\lceil \frac N{m^2} \right\rceil \\
 |U_i| & \geq \left\lceil \frac N{m^i} \right\rceil \\
 \end{align*}
-\mnote{$^\dag$ vysvìtlit} 
+\mnote{$^\dag$ vysvÄ›tlit} 
 
-Nech» $t =  \left\lceil \log_m N \right\rceil - 1$. 
-Platí $\lceil x \rceil - 1 < x$ a $\log$ je rostoucí, tedy $m^t < N$ a 
+NechÅ¥ $t =  \left\lceil \log_m N \right\rceil - 1$. 
+PlatÃ­ $\lceil x \rceil - 1 < x$ a $\log$ je rostoucÃ­, tedy $m^t < N$ a 
 \[
 |U_t| \geq \left\lceil \frac N{m^t} \right\rceil > 1,
 \]
-neboli $U_t$ obsahuje alespoò 2 rùzné prvky, $a \ne b$
+neboli $U_t$ obsahuje alespoÅˆ 2 rÅ¯znÃ© prvky, $a \ne b$
 
-Nech» $* = |\{ h \in H : h(a) = h(b) \}|$. 
-Z definice $c$-univerzálního systému $* \leq \frac {c|H|}m$. 
-Proto¾e $h_1, \ldots, h_t$ jsou na $U_t$ konstantní, dostáváme $* \geq t$.
-Zbytek je jednoduchı.
+NechÅ¥ $* = |\{ h \in H : h(a) = h(b) \}|$. 
+Z definice $c$-univerzÃ¡lnÃ­ho systÃ©mu $* \leq \frac {c|H|}m$. 
+ProtoÅ¾e $h_1, \ldots, h_t$ jsou na $U_t$ konstantnÃ­, dostÃ¡vÃ¡me $* \geq t$.
+Zbytek je jednoduchÃ½.
 \end{proof}
 
-Nás zajímá $\log_2 |H|$, tedy kolik bitù potøebujeme od
-pseudonáhodného generátoru na urèení náhodné ha¹ovací funkce. Zjistili
-jsme, ¾e potøebujeme nejménì
-\( \log_2 m + \log_2 \lceil(\log_m N)-1\rceil -\log_2 c \) bitù.
+NÃ¡s zajÃ­mÃ¡ $\log_2 |H|$, tedy kolik bitÅ¯ potÅ™ebujeme od
+pseudonÃ¡hodnÃ©ho generÃ¡toru na urÄenÃ­ nÃ¡hodnÃ© haÅ¡ovacÃ­ funkce. Zjistili
+jsme, Å¾e potÅ™ebujeme nejmÃ©nÄ›
+\( \log_2 m + \log_2 \lceil(\log_m N)-1\rceil -\log_2 c \) bitÅ¯.
 
 %..........
-\subsubsection{Pøíklad malého $c$-univerzálního systému}
+\subsubsection{PÅ™Ã­klad malÃ©ho $c$-univerzÃ¡lnÃ­ho systÃ©mu}
 
-My známe \( c \)-univerzální systém velikosti \( N^{2} \),
-tedy \( \log _{2}|H|=2\log _{2}N \), co¾ je hodnì velké 
-proti právì spoèítanému dolnímu odhadu. Nyní zkonstruujeme $c$-univerzální 
-ha¹ovací systém, kterı tento dolní odhad v jistém smyslu nabıvá.
+My znÃ¡me \( c \)-univerzÃ¡lnÃ­ systÃ©m velikosti \( N^{2} \),
+tedy \( \log _{2}|H|=2\log _{2}N \), coÅ¾ je hodnÄ› velkÃ© 
+proti prÃ¡vÄ› spoÄÃ­tanÃ©mu dolnÃ­mu odhadu. NynÃ­ zkonstruujeme $c$-univerzÃ¡lnÃ­ 
+haÅ¡ovacÃ­ systÃ©m, kterÃ½ tento dolnÃ­ odhad v jistÃ©m smyslu nabÃ½vÃ¡.
 
-Buï \( p_{1},p_{2}\ldots \) rostoucí posloupnost v¹ech prvoèísel. Z
-teorie èísel bychom si mìli pamatovat, ¾e $p_t = O(t \log t)$.
+BuÄ \( p_{1},p_{2}\ldots \) rostoucÃ­ posloupnost vÅ¡ech prvoÄÃ­sel. Z
+teorie ÄÃ­sel bychom si mÄ›li pamatovat, Å¾e $p_t = O(t \log t)$.
 
-Zvolíme nejmen¹í \( t \) takové, ¾e 
+ZvolÃ­me nejmenÅ¡Ã­ \( t \) takovÃ©, Å¾e 
 \begin{equation}
 \label{deft}
 t \ln p_{t}  \geq m \ln N
@@ -310,115 +310,115 @@ pak \( |H|=t p_{2t}^2 \), a tedy
 $\log_2 |H| = \log_2 t + 2 \log_2 p_{2t} 
 = O( \log t + 2 \log 2t + 2 \log\log 2t)
 = O(\log t)
-= O(\log m + \log \log N)$, èím¾ jsme se dostali na dolní hranici
-odvozenou vı¹e.
+= O(\log m + \log \log N)$, ÄÃ­mÅ¾ jsme se dostali na dolnÃ­ hranici
+odvozenou vÃ½Å¡e.
 
-Doká¾eme, ¾e $H$ je 5-univerzální systém.
+DokÃ¡Å¾eme, Å¾e $H$ je 5-univerzÃ¡lnÃ­ systÃ©m.
 
-Zvolme \( x\neq y\in U\), spoèteme odhad 
+Zvolme \( x\neq y\in U\), spoÄteme odhad 
 \( |\{ h\in H : h_{c,d,l}(x) = h_{c,d,l}(y) \}|  \),
-tedy musíme odhadnout ze shora poèet trojic $c, d, l$ takovıch, ¾e 
+tedy musÃ­me odhadnout ze shora poÄet trojic $c, d, l$ takovÃ½ch, Å¾e 
 $h_{c,d,l}(x)=h_{c,d,l}(y)$.
-Rozdìlíme je do dvou skupin:
+RozdÄ›lÃ­me je do dvou skupin:
 
 \begin{enumerate}
-\item $c,d,l$ taková, ¾e $h_{c,d,l}(x) = h_{c,d,l}(y)$,
+\item $c,d,l$ takovÃ¡, Å¾e $h_{c,d,l}(x) = h_{c,d,l}(y)$,
 ale $x \bmod p_l \neq y \bmod p_l$
-\item $c,d,l$ taková, ¾e $h_{c,d,l}(x) = h_{c,d,l}(y)$,
+\item $c,d,l$ takovÃ¡, Å¾e $h_{c,d,l}(x) = h_{c,d,l}(y)$,
 a $x \bmod p_l = y \bmod p_l$
 \end{enumerate}
 
 \begin{enumerate}
 \item
-Platí
+PlatÃ­
 \begin{align*}
 c (x \bmod p_l) + d & = k + qm  \pmod {p_{2t}}\\
 c (y \bmod p_l) + d & = k + rm  \pmod {p_{2t}}
 \end{align*}
-pro nìjaká
+pro nÄ›jakÃ¡
 \( 
 k \in \intrange{0}{m-1},
 q,r \in \intrange{0}{\lceil \frac{p_{2t}}{m}\rceil - 1}
 \).
-Proto¾e $p_l$ je prvoèíslo, je poèet trojic splòujících (1) roven
+ProtoÅ¾e $p_l$ je prvoÄÃ­slo, je poÄet trojic splÅˆujÃ­cÃ­ch (1) roven
 \begin{align*}
-\text{poèet trojic} & \leq t m {\lceil \frac{p_{2t}}{m}\rceil}^2
+\text{poÄet trojic} & \leq t m {\lceil \frac{p_{2t}}{m}\rceil}^2
 	&& \#l \leq t, \# (c,d) = \# (k,q,r)  \\
 & \leq t m {\left( 1 + \frac{p_{2t}}{m}\right)}^2\\
 & = t m \frac{p_{2t}^2}{m^2} {\left( 1 + \frac m{p_{2t}} \right)}^2
-	&& \text{vytknutím}\\
+	&& \text{vytknutÃ­m}\\
 & = {\left( 1 + \frac m{p_{2t}} \right)}^2 \frac{|H|}m \\
 & \leq 4 \frac{|H|}m
-	&& \text{jestli¾e $m\leq p_{2t}$}
+	&& \text{jestliÅ¾e $m\leq p_{2t}$}
 \end{align*}
-Je¹tì tedy musíme ukázat, ¾e $m < p_{2t}$.
+JeÅ¡tÄ› tedy musÃ­me ukÃ¡zat, Å¾e $m < p_{2t}$.
 Kdyby ale $p_{2t} \leq m$, pak dostaneme tento spor:
 $t \ln p_t < p_{2t} \ln p_{2t} \leq m \ln m \leq m \ln N 
 \leq t \ln p_t$.
 
 \begin{pozn}
-$\forall (k,q,r) \exists! (c,d)$, které øe¹í rovnici, jeliko¾ 
-$\Bbb Z_{p_{2t}}$ je tìleso a $x$ {\tt mod} $p_l \neq y$ {\tt mod} $p_l$.
+$\forall (k,q,r) \exists! (c,d)$, kterÃ© Å™eÅ¡Ã­ rovnici, jelikoÅ¾ 
+$\Bbb Z_{p_{2t}}$ je tÄ›leso a $x$ {\tt mod} $p_l \neq y$ {\tt mod} $p_l$.
 \end{pozn}
 
 \item
-Nech» $L = \{ l : x \bmod p_l = y \bmod p_l \land t < l \leq 2t \}$. 
-Pak poèet trojic splòujících (2) je roven  
+NechÅ¥ $L = \{ l : x \bmod p_l = y \bmod p_l \land t < l \leq 2t \}$. 
+Pak poÄet trojic splÅˆujÃ­cÃ­ch (2) je roven  
 \begin{align*}
-\text{poèet trojic} & = |L| p_{2t}^2\\
+\text{poÄet trojic} & = |L| p_{2t}^2\\
 & \leq \frac{t p_{2t}^2}m
-	&& \text{jestli¾e $|L| \leq t/m$}\\
+	&& \text{jestliÅ¾e $|L| \leq t/m$}\\
 & = 1 \frac{|H|}m
 \end{align*}
 
-Pokud tedy je¹tì doká¾eme, ¾e $|L| \leq t/m$, pak 
+Pokud tedy jeÅ¡tÄ› dokÃ¡Å¾eme, Å¾e $|L| \leq t/m$, pak 
 \( 
 |\{ h\in H : h_{c,d,l}(x) = h_{c,d,l}(y) \}|  
 \leq 4 \frac{|H|}m + \frac{|H|}m = 5 \frac{|H|}m
 \)
-a H je 5-univerzální systém.
+a H je 5-univerzÃ¡lnÃ­ systÃ©m.
 \end{enumerate}
 
-Nech» $P = \prod_{l \in L} p_l$. 
-Z definice $L$ v¹echna $p_l$ dìlí $|x-y|$, 
-tedy i $P$ dìlí $|x-y|$, a proto $P \leq |x-y| \leq N$. Proto¾e
+NechÅ¥ $P = \prod_{l \in L} p_l$. 
+Z definice $L$ vÅ¡echna $p_l$ dÄ›lÃ­ $|x-y|$, 
+tedy i $P$ dÄ›lÃ­ $|x-y|$, a proto $P \leq |x-y| \leq N$. ProtoÅ¾e
 $P \geq p_t^{|L|}$, dostaneme $|L| \leq \ln N / \ln p_t$, a z definice
 $t$ \eqref{deft} plyne $|L| \leq t/m$.
 
 % ..........................................................................
 \subsection{Reprezentace $S$ a operace MEMBER, INSERT, DELETE}
 
-Máme $m$ a pro v¹echna $i = 0, 1, \ldots$ je dán $c_i$-univerzální
-systém funkcí $H_i$ ha¹ující do tabulky velikosti $2^i
+MÃ¡me $m$ a pro vÅ¡echna $i = 0, 1, \ldots$ je dÃ¡n $c_i$-univerzÃ¡lnÃ­
+systÃ©m funkcÃ­ $H_i$ haÅ¡ujÃ­cÃ­ do tabulky velikosti $2^i
 m$. Reprezentace $S \subseteq U$ :
 \begin{itemize}
 \item $|S|$ 
-\item $i$ takové, ¾e $2^{i-2} m < |S| < 2^i m$ 
+\item $i$ takovÃ©, Å¾e $2^{i-2} m < |S| < 2^i m$ 
 \item funkce $h \in H_i$ 
-\item reprezentace $S$ vùèi $h_i$ 
-\item $\forall j \in \{ 0 .. 2^i m -1\}$ je dána délka øetìzce
-reprezentujícího prvky s $h(x)=j$ 
-\item konstanty $d_i$ omezující délky øetìzce
+\item reprezentace $S$ vÅ¯Äi $h_i$ 
+\item $\forall j \in \{ 0 .. 2^i m -1\}$ je dÃ¡na dÃ©lka Å™etÄ›zce
+reprezentujÃ­cÃ­ho prvky s $h(x)=j$ 
+\item konstanty $d_i$ omezujÃ­cÃ­ dÃ©lky Å™etÄ›zce
 \end{itemize}
 
 \subsubsection{MEMBER}
 
-MEMBER pracuje normálnì.
+MEMBER pracuje normÃ¡lnÄ›.
 
 \subsubsection{INSERT}
 
 viz algoritmus \ref{alg:hash2.univ.insert}
 
 \begin{algorithm}[!htb]
-\caption{INSERT pro universální ha¹ování}
+\caption{INSERT pro universÃ¡lnÃ­ haÅ¡ovÃ¡nÃ­}
 \label{alg:hash2.univ.insert}
 \begin{enumerate}
-\item zjistíme, zda máme pøidat do $S$ 
-\item kdy¾ délka $j$-tého øetìzce $+ 1 > d_i$,\\
- pak spoèítáme novou reprezentaci
-\item kdy¾ $|S|+1 = 2^i m$,\\
- pak inkrementujeme $i$ a spoèítáme novou reprezentaci
-\item jinak pøidáme prvek do øetìzce $h(x)$ 
+\item zjistÃ­me, zda mÃ¡me pÅ™idat do $S$ 
+\item kdyÅ¾ dÃ©lka $j$-tÃ©ho Å™etÄ›zce $+ 1 > d_i$,\\
+ pak spoÄÃ­tÃ¡me novou reprezentaci
+\item kdyÅ¾ $|S|+1 = 2^i m$,\\
+ pak inkrementujeme $i$ a spoÄÃ­tÃ¡me novou reprezentaci
+\item jinak pÅ™idÃ¡me prvek do Å™etÄ›zce $h(x)$ 
 \end{enumerate}
 \end{algorithm}
 
@@ -427,63 +427,63 @@ viz algoritmus \ref{alg:hash2.univ.insert}
 viz algoritmus \ref{alg:hash2.univ.delete}
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro universální ha¹ování}
+\caption{DELETE pro universÃ¡lnÃ­ haÅ¡ovÃ¡nÃ­}
 \label{alg:hash2.univ.delete}
 \begin{enumerate}
-\item zjistíme, zda $x \in S$ 
-\item kdy¾ $x \in S$ a $|S|-1 = 2^{i-2} m$ a $i>0$,\\
- pak dekrementujeme $i$ a spoèítáme novou reprezentaci
-\item jinak $x$ odstraníme z $h(x)$ 
+\item zjistÃ­me, zda $x \in S$ 
+\item kdyÅ¾ $x \in S$ a $|S|-1 = 2^{i-2} m$ a $i>0$,\\
+ pak dekrementujeme $i$ a spoÄÃ­tÃ¡me novou reprezentaci
+\item jinak $x$ odstranÃ­me z $h(x)$ 
 \end{enumerate}
 \end{algorithm}
 
 
-\subsubsection{Spoèítání nové reprezentace}
+\subsubsection{SpoÄÃ­tÃ¡nÃ­ novÃ© reprezentace}
 
 \begin{algorithmic}
 \REPEAT
-  \STATE zvolíme náhodnì $h \in H_i$ 
-  \STATE spoèítáme reprezentaci $S$ vùèi $h$ 
-\UNTIL {v¹echny øetìzce mají délku $\leq d_i$}
+  \STATE zvolÃ­me nÃ¡hodnÄ› $h \in H_i$ 
+  \STATE spoÄÃ­tÃ¡me reprezentaci $S$ vÅ¯Äi $h$ 
+\UNTIL {vÅ¡echny Å™etÄ›zce majÃ­ dÃ©lku $\leq d_i$}
 \end{algorithmic}
 
 \noindent
-Kolikrát probìhne ten cyklus? Závisí to na více parametrech 
-% a Koubek to nikde uspokojivì spoèítané nevidìl.
-a není jisté, zda to bylo nìkdy pøesnì spoèítáno.
+KolikrÃ¡t probÄ›hne ten cyklus? ZÃ¡visÃ­ to na vÃ­ce parametrech 
+% a Koubek to nikde uspokojivÄ› spoÄÃ­tanÃ© nevidÄ›l.
+a nenÃ­ jistÃ©, zda to bylo nÄ›kdy pÅ™esnÄ› spoÄÃ­tÃ¡no.
 
 
 % --------------------------------------------------------------------------
-\section{Externí ha¹ování}
+\section{ExternÃ­ haÅ¡ovÃ¡nÃ­}
 
-Máme dáno universum $U$ a vnìj¹í pamì»ové medium, které je rozdìleno do
-stránek. Ka¾dá stránka mù¾e obsahovat nejvı¹e $b$ záznamù. Chceme navrhnout
-ukládání prvkù do stránek tak, aby operace MEMBER, INSERT, DELETE
-vy¾adovaly jen konstatní poèet pøístupù do externí pamìti, aby stránky
-byly dostateènì zaplnìné. Tedy jinımi slovy: chceme minimalizovat poèet
-pøístupù do vnìj¹í pamìti.
+MÃ¡me dÃ¡no universum $U$ a vnÄ›jÅ¡Ã­ pamÄ›Å¥ovÃ© medium, kterÃ© je rozdÄ›leno do
+strÃ¡nek. KaÅ¾dÃ¡ strÃ¡nka mÅ¯Å¾e obsahovat nejvÃ½Å¡e $b$ zÃ¡znamÅ¯. Chceme navrhnout
+uklÃ¡dÃ¡nÃ­ prvkÅ¯ do strÃ¡nek tak, aby operace MEMBER, INSERT, DELETE
+vyÅ¾adovaly jen konstatnÃ­ poÄet pÅ™Ã­stupÅ¯ do externÃ­ pamÄ›ti, aby strÃ¡nky
+byly dostateÄnÄ› zaplnÄ›nÃ©. Tedy jinÃ½mi slovy: chceme minimalizovat poÄet
+pÅ™Ã­stupÅ¯ do vnÄ›jÅ¡Ã­ pamÄ›ti.
 \par
-Vyhledáme v¾dy stránku ve vnìj¹í pamìti - natáhneme ji do vnitøní pamìti a
-tam provedeme vyhledávání - toto vyhledávání nás ale nezajímá.
+VyhledÃ¡me vÅ¾dy strÃ¡nku ve vnÄ›jÅ¡Ã­ pamÄ›ti - natÃ¡hneme ji do vnitÅ™nÃ­ pamÄ›ti a
+tam provedeme vyhledÃ¡vÃ¡nÃ­ - toto vyhledÃ¡vÃ¡nÃ­ nÃ¡s ale nezajÃ­mÃ¡.
 \par
-Nech» $U$ je universum, $S \subseteq U$. Externí medium má stránky o
-velikosti $b$. Je dána ha¹ovací funkce $h:U \rightarrow \{0,1\}^k$ prostá
-(kódovací funkce), k libovolné. Funkce $h$ tedy generuje binární kódy délky
+NechÅ¥ $U$ je universum, $S \subseteq U$. ExternÃ­ medium mÃ¡ strÃ¡nky o
+velikosti $b$. Je dÃ¡na haÅ¡ovacÃ­ funkce $h:U \rightarrow \{0,1\}^k$ prostÃ¡
+(kÃ³dovacÃ­ funkce), k libovolnÃ©. Funkce $h$ tedy generuje binÃ¡rnÃ­ kÃ³dy dÃ©lky
 $k$.
 \par
-Vytvoøíme strom mno¾iny $S$. Vrcholy stromu jsou v¹echny prefixy slov $h(s),
-s \in S$. Pro vrchol $\alpha$ jsou jeho synové $\alpha 0$ a $\alpha 1$
-(pokud existují). Listy jsou prvky $h(s), s \in S$.
+VytvoÅ™Ã­me strom mnoÅ¾iny $S$. Vrcholy stromu jsou vÅ¡echny prefixy slov $h(s),
+s \in S$. Pro vrchol $\alpha$ jsou jeho synovÃ© $\alpha 0$ a $\alpha 1$
+(pokud existujÃ­). Listy jsou prvky $h(s), s \in S$.
 
 \begin{defn}
-Pro $s \in S$ definujeme $\emph{d(s)} =$ délka nejkrat¹ího prefixu $\alpha$ 
-slova $h(s)$, ¾e pod $\alpha$ je nejvı¹e $b$ listù.
+Pro $s \in S$ definujeme $\emph{d(s)} =$ dÃ©lka nejkratÅ¡Ã­ho prefixu $\alpha$ 
+slova $h(s)$, Å¾e pod $\alpha$ je nejvÃ½Å¡e $b$ listÅ¯.
 \end{defn}
 
 \begin{pozn}
-Alternativní definice $d(s)$: $d(s) =$ délka nejkrat¹ího prefixu $h(s)$
-taková, ¾e poèet prvkù $t \in S$, jejich¾ prefix délky $d(s)$ je stejnı
-jako prefix $h(s)$, je nejvı¹e $b$.
+AlternativnÃ­ definice $d(s)$: $d(s) =$ dÃ©lka nejkratÅ¡Ã­ho prefixu $h(s)$
+takovÃ¡, Å¾e poÄet prvkÅ¯ $t \in S$, jejichÅ¾ prefix dÃ©lky $d(s)$ je stejnÃ½
+jako prefix $h(s)$, je nejvÃ½Å¡e $b$.
 \end{pozn}
 
 \begin{defn}
@@ -492,38 +492,38 @@ $d(S) = max\{d(s), s \in S\}$.
 
 \begin{priklad}
 \label{priklad:exthash.tree}
-Nech» $U = \{0,1\}^4, b = 2$ a
+NechÅ¥ $U = \{0,1\}^4, b = 2$ a
 $S = \{ 0100, 0001, 0000, 1001 \}$
 
-Tuto strukturu mù¾eme zobrazit do stromu, 
-kde bude lépe viditelná hodnota $d(S)$.
+Tuto strukturu mÅ¯Å¾eme zobrazit do stromu, 
+kde bude lÃ©pe viditelnÃ¡ hodnota $d(S)$.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/exthash-tree}
-\caption{Reprezentace mno¾iny $S$. Vrchol reprezentující prefix $0$, by ve
-svém podstromì mìl 3 prvky, co¾ je více, ne¾ po¾adujeme pomocí hodnoty
+\caption{Reprezentace mnoÅ¾iny $S$. Vrchol reprezentujÃ­cÃ­ prefix $0$, by ve
+svÃ©m podstromÄ› mÄ›l 3 prvky, coÅ¾ je vÃ­ce, neÅ¾ poÅ¾adujeme pomocÃ­ hodnoty
 $b$.}
 \label{fig.hash.extern}
 \end{figure}
 
-Z obr. \ref{fig.hash.extern} plyne, ¾e hodnota $d(S) = 2$.
+Z obr. \ref{fig.hash.extern} plyne, Å¾e hodnota $d(S) = 2$.
 \end{priklad}
 
 \begin{tvrzeni}
-Platí: Kdy¾ $d(s) = k$ a prvek $t$ má stejnı prefix délky $k$ jako $s$, 
+PlatÃ­: KdyÅ¾ $d(s) = k$ a prvek $t$ mÃ¡ stejnÃ½ prefix dÃ©lky $k$ jako $s$, 
 pak $d(s) = d(t)$. 
 \end{tvrzeni}
 
 Reprezentace: 
 \begin{itemize}
-\item adresáø: ke ka¾dému slovu $\alpha$ délky $d(S)$ je pøiøazena adresa 
-stránky, která obsahuje prvky $s \in S$, ¾e $h(s)$ má prefix $\alpha$.
-Tato slova délky $d(s)$ jsou lexikograficky uspoøádána.
-\item datová èást: stránky s pøiøazenımi prvky
+\item adresÃ¡Å™: ke kaÅ¾dÃ©mu slovu $\alpha$ dÃ©lky $d(S)$ je pÅ™iÅ™azena adresa 
+strÃ¡nky, kterÃ¡ obsahuje prvky $s \in S$, Å¾e $h(s)$ mÃ¡ prefix $\alpha$.
+Tato slova dÃ©lky $d(s)$ jsou lexikograficky uspoÅ™Ã¡dÃ¡na.
+\item datovÃ¡ ÄÃ¡st: strÃ¡nky s pÅ™iÅ™azenÃ½mi prvky
 \end{itemize}
 
 \begin{priklad}
-Pøíklad adresáøe pro mno¾inu $\{0000, 0001, 0100, 1001 \}$:
+PÅ™Ã­klad adresÃ¡Å™e pro mnoÅ¾inu $\{0000, 0001, 0100, 1001 \}$:
 
 \vspace{5mm}
 
@@ -537,12 +537,12 @@ Pøíklad adresáøe pro mno¾inu $\{0000, 0001, 0100, 1001 \}$:
 \end{priklad}
 
 \begin{pozn}
-Upøesnìní reprezentace stránky (stránek): \\
-Prvek $s \in S$ je ulo¾en na stránce, která obsahuje v¹echny prvky $t \in
-S$ takové, ¾e prefix $h(t)$ délky $d(s)$ bude je stejnı jako $h(s)$, tato stánka
-bude pøiøazena v¹em slovùm $\alpha$ délky $d(S)$ takovım, ¾e prefix $h(s)$ délky
+UpÅ™esnÄ›nÃ­ reprezentace strÃ¡nky (strÃ¡nek): \\
+Prvek $s \in S$ je uloÅ¾en na strÃ¡nce, kterÃ¡ obsahuje vÅ¡echny prvky $t \in
+S$ takovÃ©, Å¾e prefix $h(t)$ dÃ©lky $d(s)$ bude je stejnÃ½ jako $h(s)$, tato stÃ¡nka
+bude pÅ™iÅ™azena vÅ¡em slovÅ¯m $\alpha$ dÃ©lky $d(S)$ takovÃ½m, Å¾e prefix $h(s)$ dÃ©lky
 $d(s)$ je prefix $\alpha$. \\
-Pokud $\alpha$ neobsahuje ¾ádnı takovı prefix, tak je mu pøiøazena stránka
+Pokud $\alpha$ neobsahuje Å¾Ã¡dnÃ½ takovÃ½ prefix, tak je mu pÅ™iÅ™azena strÃ¡nka
 NIL.
 \end{pozn}
 
@@ -551,23 +551,23 @@ NIL.
 viz algoritmus \ref{alg:exthash.access}
 
 \begin{algorithm}[!htb]
-\caption{ACCESS pro externí ha¹ování}
+\caption{ACCESS pro externÃ­ haÅ¡ovÃ¡nÃ­}
 \label{alg:exthash.access}
 ACCESS(x)
 \begin{enumerate}
-\item Spoèítáme $h(x)$, natáhneme adresáø, nalezneme $d(S)$ a najdeme
-stránky odpovídající prefixu $h(x)$ délky $d(S)$
-\item Natáhneme odpovídající stránku do pamìti, zjistíme, zda obsahuje $x$ a
-kdy¾ ano, provedeme po¾adovené úpravy.
-\item Stránku ulo¾íme zpìt na stejné místo.
+\item SpoÄÃ­tÃ¡me $h(x)$, natÃ¡hneme adresÃ¡Å™, nalezneme $d(S)$ a najdeme
+strÃ¡nky odpovÃ­dajÃ­cÃ­ prefixu $h(x)$ dÃ©lky $d(S)$
+\item NatÃ¡hneme odpovÃ­dajÃ­cÃ­ strÃ¡nku do pamÄ›ti, zjistÃ­me, zda obsahuje $x$ a
+kdyÅ¾ ano, provedeme poÅ¾adovenÃ© Ãºpravy.
+\item StrÃ¡nku uloÅ¾Ã­me zpÄ›t na stejnÃ© mÃ­sto.
 \end{enumerate}
 \end{algorithm}
 
-Operace ACCESS vy¾aduje 3 pøístupy na externí medium. (za pøedpokladu, ¾e
-adresáø je také ulo¾en na externím mediu a zabírá jednu stránku) 
+Operace ACCESS vyÅ¾aduje 3 pÅ™Ã­stupy na externÃ­ medium. (za pÅ™edpokladu, Å¾e
+adresÃ¡Å™ je takÃ© uloÅ¾en na externÃ­m mediu a zabÃ­rÃ¡ jednu strÃ¡nku) 
 
-Pro rychlou implementaci aktualizaèních operací je vhodné mít u ka¾dé
-stránky ulo¾eno informaci kolik je prvkù na stránce.
+Pro rychlou implementaci aktualizaÄnÃ­ch operacÃ­ je vhodnÃ© mÃ­t u kaÅ¾dÃ©
+strÃ¡nky uloÅ¾eno informaci kolik je prvkÅ¯ na strÃ¡nce.
 
 
 \subsection{Operace INSERT}
@@ -576,47 +576,47 @@ viz algoritmus \ref{alg:exthash.insert}
 
 % pozn: \mnote nesmi byt uvnitr prostredi algorithm
 \begin{algorithm}[!htb]
-\caption{INSERT pro externí ha¹ování}
+\caption{INSERT pro externÃ­ haÅ¡ovÃ¡nÃ­}
 \label{alg:exthash.insert}
 INSERT(x)
 \begin{enumerate}
-\item Spoèítáme $h(x)$, natáhneme adresáø, nalezneme $d(S)$ a nalezneme adresu
-stránky odpovídající prefixu $h(x)$ délky $d(S)$. (XXX odkud vezmu $d(S)$ ?)
+\item SpoÄÃ­tÃ¡me $h(x)$, natÃ¡hneme adresÃ¡Å™, nalezneme $d(S)$ a nalezneme adresu
+strÃ¡nky odpovÃ­dajÃ­cÃ­ prefixu $h(x)$ dÃ©lky $d(S)$. (XXX odkud vezmu $d(S)$ ?)
 % XXX \mnote{$d(S)$ vezmu odkud ?}
-\item Natáhneme do pamìti odpovídající stránku. kdy¾ v ní existuje $x$ 
+\item NatÃ¡hneme do pamÄ›ti odpovÃ­dajÃ­cÃ­ strÃ¡nku. kdyÅ¾ v nÃ­ existuje $x$ 
 $\rightarrow$ konec
-\item Kdy¾ neobsahuje $x$ a má ménì prvkù ne¾ $b$, vlo¾íme $x$ do této stránky
-a ulo¾íme ji zpátky na stejné místo a aktualizujeme adresáø (poèty prvkù
-na stránce)
-\item Kdy¾ stránka prvek $x$ neobsahuje a má $b$ prvkù, stránku rozdìlíme
-(nalezneme nové $d(s)$ pro $s$ z této stránky i s pøidanım $x$), stránky 
-ulo¾íme a aktualizujeme adresáø.
+\item KdyÅ¾ neobsahuje $x$ a mÃ¡ mÃ©nÄ› prvkÅ¯ neÅ¾ $b$, vloÅ¾Ã­me $x$ do tÃ©to strÃ¡nky
+a uloÅ¾Ã­me ji zpÃ¡tky na stejnÃ© mÃ­sto a aktualizujeme adresÃ¡Å™ (poÄty prvkÅ¯
+na strÃ¡nce)
+\item KdyÅ¾ strÃ¡nka prvek $x$ neobsahuje a mÃ¡ $b$ prvkÅ¯, strÃ¡nku rozdÄ›lÃ­me
+(nalezneme novÃ© $d(s)$ pro $s$ z tÃ©to strÃ¡nky i s pÅ™idanÃ½m $x$), strÃ¡nky 
+uloÅ¾Ã­me a aktualizujeme adresÃ¡Å™.
 \end{enumerate}
 \end{algorithm}
-\mnote{pokud je novì nalezené $d(s) \leq d(S)$, adresáø se zvìt¹ovat nebude}
+\mnote{pokud je novÄ› nalezenÃ© $d(s) \leq d(S)$, adresÃ¡Å™ se zvÄ›tÅ¡ovat nebude}
 
-Operace INSERT vy¾aduje 6 pøístupù na externí medium.
+Operace INSERT vyÅ¾aduje 6 pÅ™Ã­stupÅ¯ na externÃ­ medium.
 
 \begin{pozn}
-Roz¹tìpení stránky nemusí nutnì znamenat zvìt¹ení adresáøe.
+RozÅ¡tÄ›penÃ­ strÃ¡nky nemusÃ­ nutnÄ› znamenat zvÄ›tÅ¡enÃ­ adresÃ¡Å™e.
 \end{pozn}
 
 \begin{priklad}
 \label{priklad:exthash.insert2}
-Do mno¾iny z pøíkladu \ref{priklad:exthash.tree} vlo¾íme pomocí operace
-INSERT prvek 1111. Hodnota $d(1100) = 1$ se po vlo¾ení prvku 1111
-nezmìní. Podstrom reprezentující prvky mno¾iny $S$ s prefixem 11
-bude mít po vlo¾ení prvku 1111 dva syny. (viz obr.
+Do mnoÅ¾iny z pÅ™Ã­kladu \ref{priklad:exthash.tree} vloÅ¾Ã­me pomocÃ­ operace
+INSERT prvek 1111. Hodnota $d(1100) = 1$ se po vloÅ¾enÃ­ prvku 1111
+nezmÄ›nÃ­. Podstrom reprezentujÃ­cÃ­ prvky mnoÅ¾iny $S$ s prefixem 11
+bude mÃ­t po vloÅ¾enÃ­ prvku 1111 dva syny. (viz obr.
 \ref{fig.hash.extern.ins})
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/exthash-ins}
-\caption{Podstrom reprezentující prvky mno¾iny $S$ s prefixem 11 po
-vlo¾ení prvku 1111}
+\caption{Podstrom reprezentujÃ­cÃ­ prvky mnoÅ¾iny $S$ s prefixem 11 po
+vloÅ¾enÃ­ prvku 1111}
 \label{fig.hash.extern.ins}
 \end{figure}
 
-Pokud vezmeme situaci danou po vlo¾ení prvku 1111, bude adresáø vypadat
+Pokud vezmeme situaci danou po vloÅ¾enÃ­ prvku 1111, bude adresÃ¡Å™ vypadat
 takto:
 
 \vspace{5mm}
@@ -633,7 +633,7 @@ takto:
 
 \vspace{5mm}
 
-Nyní vlo¾íme prvek 0010. V tomto pøípadì dojde ke zvìt¹ení adresáøe:
+NynÃ­ vloÅ¾Ã­me prvek 0010. V tomto pÅ™Ã­padÄ› dojde ke zvÄ›tÅ¡enÃ­ adresÃ¡Å™e:
 
 \vspace{5mm}
 
@@ -653,7 +653,7 @@ Nyní vlo¾íme prvek 0010. V tomto pøípadì dojde ke zvìt¹ení adresáøe:
 
 \vspace{5mm}
 
-Hodnota $d(S)$ je nyní 3.
+Hodnota $d(S)$ je nynÃ­ 3.
 \end{priklad}
 
 
@@ -662,44 +662,44 @@ Hodnota $d(S)$ je nyní 3.
 viz algoritmus \ref{alg:exthash.delete}
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro externí ha¹ování}
+\caption{DELETE pro externÃ­ haÅ¡ovÃ¡nÃ­}
 \label{alg:exthash.delete}
 DELETE(x)
 \begin{enumerate}
-\item spoèítáme $h(x)$, natáhneme adresáø, nalezneme $d(S)$, nalezneme adresu
-stránky odpovídající prefixu $h(x)$ délky $d(S)$, zjistíme zda po odebrání
-prvku $x$ mù¾e nastat spojování stránek a pokud ano, nalezneme adresu
-stránky, která se spojí s na¹í stránkou
-\item natáhneme odpovídající stránku do pamìti, zjistíme zda obsahuje $x$,
+\item spoÄÃ­tÃ¡me $h(x)$, natÃ¡hneme adresÃ¡Å™, nalezneme $d(S)$, nalezneme adresu
+strÃ¡nky odpovÃ­dajÃ­cÃ­ prefixu $h(x)$ dÃ©lky $d(S)$, zjistÃ­me zda po odebrÃ¡nÃ­
+prvku $x$ mÅ¯Å¾e nastat spojovÃ¡nÃ­ strÃ¡nek a pokud ano, nalezneme adresu
+strÃ¡nky, kterÃ¡ se spojÃ­ s naÅ¡Ã­ strÃ¡nkou
+\item natÃ¡hneme odpovÃ­dajÃ­cÃ­ strÃ¡nku do pamÄ›ti, zjistÃ­me zda obsahuje $x$,
 pokud ne, tak konec
-\item kdy¾ obsahuje $x$ a nemù¾e dojít ke slouèení stránek, tak odstraníme
-$x$, stránku ulo¾íme na stejné místo a aktualizujeme adresáø (poèty prvkù na
-stránce)
-\item kdy¾ obsahuje a dojde ke sluèování, pak odstraníme $x$, natáhneme
-druhou stránku a stránky slouèíme, ulo¾íme novou stránku a aktualizujeme
-adresáø.
+\item kdyÅ¾ obsahuje $x$ a nemÅ¯Å¾e dojÃ­t ke slouÄenÃ­ strÃ¡nek, tak odstranÃ­me
+$x$, strÃ¡nku uloÅ¾Ã­me na stejnÃ© mÃ­sto a aktualizujeme adresÃ¡Å™ (poÄty prvkÅ¯ na
+strÃ¡nce)
+\item kdyÅ¾ obsahuje a dojde ke sluÄovÃ¡nÃ­, pak odstranÃ­me $x$, natÃ¡hneme
+druhou strÃ¡nku a strÃ¡nky slouÄÃ­me, uloÅ¾Ã­me novou strÃ¡nku a aktualizujeme
+adresÃ¡Å™.
 \end{enumerate}
 \end{algorithm}
-\mnote{pro aktualizaci adresáøe to mohou bıt 2 operace - naètení a
-ulo¾ení. zøejmì proto, aby mohlo bıt souèasnì pu¹tìno víc operací.}
+\mnote{pro aktualizaci adresÃ¡Å™e to mohou bÃ½t 2 operace - naÄtenÃ­ a
+uloÅ¾enÃ­. zÅ™ejmÄ› proto, aby mohlo bÃ½t souÄasnÄ› puÅ¡tÄ›no vÃ­c operacÃ­.}
 
 \begin{priklad}
-Pro situaci z pøíkladu \ref{priklad:exthash.insert2} provedeme
-DELETE(0100). V adresáøi budou pak polo¾ky 010 a 011 ukazovat na prázdnou
-stránku (NIL). Adresáø zùstal po této operaci stejnı.
+Pro situaci z pÅ™Ã­kladu \ref{priklad:exthash.insert2} provedeme
+DELETE(0100). V adresÃ¡Å™i budou pak poloÅ¾ky 010 a 011 ukazovat na prÃ¡zdnou
+strÃ¡nku (NIL). AdresÃ¡Å™ zÅ¯stal po tÃ©to operaci stejnÃ½.
 
-Nyní sma¾eme prvek 0001.
+NynÃ­ smaÅ¾eme prvek 0001.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/exthash-del}
-\caption{Èást stromu reprezentujícího mno¾inu $S$ pøed smazáním prvku 0001}
+\caption{ÄŒÃ¡st stromu reprezentujÃ­cÃ­ho mnoÅ¾inu $S$ pÅ™ed smazÃ¡nÃ­m prvku 0001}
 \label{fig.hash.extern.del}
 \end{figure}
 
-Na obr. \ref{fig.hash.extern.del} je vidìt, ¾e po smazání prvku 
-0001 mù¾e bıt adresáø opìt zmen¹en.
+Na obr. \ref{fig.hash.extern.del} je vidÄ›t, Å¾e po smazÃ¡nÃ­ prvku 
+0001 mÅ¯Å¾e bÃ½t adresÃ¡Å™ opÄ›t zmenÅ¡en.
 
-Po provedení DELETE(0001) bude adresáø vypadat takto:
+Po provedenÃ­ DELETE(0001) bude adresÃ¡Å™ vypadat takto:
 
 \vspace{5mm}
 
@@ -718,7 +718,7 @@ Po provedení DELETE(0001) bude adresáø vypadat takto:
 
 \vspace{5mm}
 
-Nyní mù¾eme provést zmen¹ení adresáøe na:
+NynÃ­ mÅ¯Å¾eme provÃ©st zmenÅ¡enÃ­ adresÃ¡Å™e na:
 
 \vspace{5mm}
 
@@ -732,7 +732,7 @@ Nyní mù¾eme provést zmen¹ení adresáøe na:
 
 \vspace{5mm}
 
-Tento adresáø mù¾eme je¹tì zmen¹it:
+Tento adresÃ¡Å™ mÅ¯Å¾eme jeÅ¡tÄ› zmenÅ¡it:
 
 \vspace{5mm}
 
@@ -744,42 +744,42 @@ Tento adresáø mù¾eme je¹tì zmen¹it:
 \end{priklad}
 
 \begin{pozn}
-Pesimistickı odhad pro operaci DELETE je nejvı¹e 6 pøístupù na externí 
+PesimistickÃ½ odhad pro operaci DELETE je nejvÃ½Å¡e 6 pÅ™Ã­stupÅ¯ na externÃ­ 
 medium.
 \end{pozn}
 
-\subsubsection{Aktualizace adresáøe}
+\subsubsection{Aktualizace adresÃ¡Å™e}
 
-V posledním kroku DELETE se provádí aktualizace adresáøe. 
-Nejprve provedeme opravení odkazù na stránky: pokud u sudého záznamu v
-adresáøi dojde k vyprázdnìní stránky, bude tam odkaz na NIL. pokud dojde k
-vyprázdnìní u liché stránky, pøehodí se odkaz na pøedchozí (sudou)
-stránku.
+V poslednÃ­m kroku DELETE se provÃ¡dÃ­ aktualizace adresÃ¡Å™e. 
+Nejprve provedeme opravenÃ­ odkazÅ¯ na strÃ¡nky: pokud u sudÃ©ho zÃ¡znamu v
+adresÃ¡Å™i dojde k vyprÃ¡zdnÄ›nÃ­ strÃ¡nky, bude tam odkaz na NIL. pokud dojde k
+vyprÃ¡zdnÄ›nÃ­ u lichÃ© strÃ¡nky, pÅ™ehodÃ­ se odkaz na pÅ™edchozÃ­ (sudou)
+strÃ¡nku.
 
-Potom se testuje, zda jde adresáø zmen¹it. Zmen¹ování provádíme tak
+Potom se testuje, zda jde adresÃ¡Å™ zmenÅ¡it. ZmenÅ¡ovÃ¡nÃ­ provÃ¡dÃ­me tak
 dlouho, dokud to jde.
 
-\subsection{Reprezentace adresáøe}
+\subsection{Reprezentace adresÃ¡Å™e}
 
 \begin{itemize}
-\item reprezentovat jako posloupnost dvojic (adresa stránky, poèet prvkù na
-stránce), kde $i$-tá dvojice je pøiøazení $i$-tému slovu v lexikografickém
-uspoøádání.
-\item zvìt¹ování adresáøe znamená zdvojení prvkù
-\item test na zmen¹ování adresáøe - testujeme, zda adresa na lichém místì
-je stejná jako adresa na následujícím sudém místì - pokud ano, tak zmen¹ím
-adresáø vymazáním sudıch èlenù posloupnosti.
+\item reprezentovat jako posloupnost dvojic (adresa strÃ¡nky, poÄet prvkÅ¯ na
+strÃ¡nce), kde $i$-tÃ¡ dvojice je pÅ™iÅ™azenÃ­ $i$-tÃ©mu slovu v lexikografickÃ©m
+uspoÅ™Ã¡dÃ¡nÃ­.
+\item zvÄ›tÅ¡ovÃ¡nÃ­ adresÃ¡Å™e znamenÃ¡ zdvojenÃ­ prvkÅ¯
+\item test na zmenÅ¡ovÃ¡nÃ­ adresÃ¡Å™e - testujeme, zda adresa na lichÃ©m mÃ­stÄ›
+je stejnÃ¡ jako adresa na nÃ¡sledujÃ­cÃ­m sudÃ©m mÃ­stÄ› - pokud ano, tak zmenÅ¡Ã­m
+adresÃ¡Å™ vymazÃ¡nÃ­m sudÃ½ch ÄlenÅ¯ posloupnosti.
 \end{itemize}
 
-Oèekávané zaplnìní stránky pøi rovnomìrném rozlo¾ení dat je 
+OÄekÃ¡vanÃ© zaplnÄ›nÃ­ strÃ¡nky pÅ™i rovnomÄ›rnÃ©m rozloÅ¾enÃ­ dat je 
 $b \ln 2 \approx 0.69 b$
 
-Oèekávaná velikost adresáøe je $\frac{e}{b \ln 2} n^{1 + \frac{1}{b}}$ (pøi
-rovnomìrném rozlo¾ení dat)
+OÄekÃ¡vanÃ¡ velikost adresÃ¡Å™e je $\frac{e}{b \ln 2} n^{1 + \frac{1}{b}}$ (pÅ™i
+rovnomÄ›rnÃ©m rozloÅ¾enÃ­ dat)
 
 \begin{pozn}
-Èlen $n^{1 + \frac{1}{b}}$ není lineární, zde je problém, proto se to
-nehodí pro malá $b$.
+ÄŒlen $n^{1 + \frac{1}{b}}$ nenÃ­ lineÃ¡rnÃ­, zde je problÃ©m, proto se to
+nehodÃ­ pro malÃ¡ $b$.
 \end{pozn}
 
 \begin{tabular}{|l||l|l|l|l|}
@@ -795,75 +795,75 @@ b/n   	&$10^5$   &$10^6$ 	&$10^8$ 	&$10^{10}$    \\
 
 \vspace{5mm}
 
-Jak je vidìt, pro $b = 2$ se to nehodí, adresáø je vìt¹í ne¾ velikost dat.
+Jak je vidÄ›t, pro $b = 2$ se to nehodÃ­, adresÃ¡Å™ je vÄ›tÅ¡Ã­ neÅ¾ velikost dat.
 
 \begin{pozn}
-Kdy¾ pracujeme s velikostí $S$ kolem $10^{10}$, pak je vhodné, aby 
-$b \geq 100$. Pro vìt¹í mno¾iny $S$ musí bıt $b$ vìt¹í.
+KdyÅ¾ pracujeme s velikostÃ­ $S$ kolem $10^{10}$, pak je vhodnÃ©, aby 
+$b \geq 100$. Pro vÄ›tÅ¡Ã­ mnoÅ¾iny $S$ musÃ­ bÃ½t $b$ vÄ›tÅ¡Ã­.
 \end{pozn}
 
 % --------------------------------------------------------------------------
-\section{Perfektní ha¹ování}
+\section{PerfektnÃ­ haÅ¡ovÃ¡nÃ­}
 
-Perfektním ha¹ováním myslíme úlohu nalézt pro danou pevnou mno¾inu 
-$S \subseteq U, |S| = n$ perfektní ha¹ovací funkci, tj. funkci, která nemá na 
-mno¾inì $S$ kolize. Tato úloha nepøipou¹tí pøirozenou implementaci 
-operace INSERT, proto¾e pøidanı prvek mù¾e zpùsobit kolizi. 
-Typickı pøíklad pou¾ití je tabulka klíèovıch slov kompilátoru.
+PerfektnÃ­m haÅ¡ovÃ¡nÃ­m myslÃ­me Ãºlohu nalÃ©zt pro danou pevnou mnoÅ¾inu 
+$S \subseteq U, |S| = n$ perfektnÃ­ haÅ¡ovacÃ­ funkci, tj. funkci, kterÃ¡ nemÃ¡ na 
+mnoÅ¾inÄ› $S$ kolize. Tato Ãºloha nepÅ™ipouÅ¡tÃ­ pÅ™irozenou implementaci 
+operace INSERT, protoÅ¾e pÅ™idanÃ½ prvek mÅ¯Å¾e zpÅ¯sobit kolizi. 
+TypickÃ½ pÅ™Ã­klad pouÅ¾itÃ­ je tabulka klÃ­ÄovÃ½ch slov kompilÃ¡toru.
 
 \begin{defn}
-Funkce $h: U \to \intrange{0}{m-1}$ je perfektní pro $S$, kdy¾ je na S
-prostá ($\forall x\neq y \in S$ platí $h(x) \neq h(y)$).
+Funkce $h: U \to \intrange{0}{m-1}$ je perfektnÃ­ pro $S$, kdyÅ¾ je na S
+prostÃ¡ ($\forall x\neq y \in S$ platÃ­ $h(x) \neq h(y)$).
 \end{defn}
 
-Za jakıch podmínek lze povolit INSERT? Musí bıt málo
-pravdìpodobnı. Prvky navíc se dávají jinam a po jisté dobì se v¹e
-pøepoèítá do jedné tabulky pro novou perfektní ha¹ovací funkci.
+Za jakÃ½ch podmÃ­nek lze povolit INSERT? MusÃ­ bÃ½t mÃ¡lo
+pravdÄ›podobnÃ½. Prvky navÃ­c se dÃ¡vajÃ­ jinam a po jistÃ© dobÄ› se vÅ¡e
+pÅ™epoÄÃ­tÃ¡ do jednÃ© tabulky pro novou perfektnÃ­ haÅ¡ovacÃ­ funkci.
 
 \begin{samepage}
-Po¾adavky na hledanou ha¹ovací funkci:
+PoÅ¾adavky na hledanou haÅ¡ovacÃ­ funkci:
 \begin{enumerate}
-  \item $h$ je perfektní na $S$
-  \item $\forall x$ je $h(x)$ rychle spoèitatelná
-  \item $m$ øádovì srovnatelné s $n$
-  \item zakódování $h$ vy¾aduje málo prostoru
+  \item $h$ je perfektnÃ­ na $S$
+  \item $\forall x$ je $h(x)$ rychle spoÄitatelnÃ¡
+  \item $m$ Å™Ã¡dovÄ› srovnatelnÃ© s $n$
+  \item zakÃ³dovÃ¡nÃ­ $h$ vyÅ¾aduje mÃ¡lo prostoru
 \end{enumerate}
 \end{samepage}
 
-Po¾adavky 2) a 3) jdou proti sobì. A a¾ se nám je podaøí skloubit,
-budeme mít problémy s 4). A navíc hledání $h$ potrvá dlouho.
+PoÅ¾adavky 2) a 3) jdou proti sobÄ›. A aÅ¾ se nÃ¡m je podaÅ™Ã­ skloubit,
+budeme mÃ­t problÃ©my s 4). A navÃ­c hledÃ¡nÃ­ $h$ potrvÃ¡ dlouho.
 
 % ..........................................................................
-\subsection{Perfektní ha¹ovací funkce do tabulky velikosti $n^2$}
+\subsection{PerfektnÃ­ haÅ¡ovacÃ­ funkce do tabulky velikosti $n^2$}
 
-Vyu¾ijeme, co u¾ víme o univerzálním ha¹ování. Pro $k \in \intrange{1}{N-1}$ 
-a pro pevné $m$ definujme 
+VyuÅ¾ijeme, co uÅ¾ vÃ­me o univerzÃ¡lnÃ­m haÅ¡ovÃ¡nÃ­. Pro $k \in \intrange{1}{N-1}$ 
+a pro pevnÃ© $m$ definujme 
 \begin{equation}
-h_k(x) = ( kx \bmod N ) \bmod m, \quad\text{kde $N=|U|$ je prvoèíslo.}
+h_k(x) = ( kx \bmod N ) \bmod m, \quad\text{kde $N=|U|$ je prvoÄÃ­slo.}
 \end{equation}
-Budeme hledat vhodná $k$, $m$.
-Definujme míru perfektnosti
+Budeme hledat vhodnÃ¡ $k$, $m$.
+Definujme mÃ­ru perfektnosti
 \begin{equation}
 d = \sum_{k=1}^{N-1} \sum_{x \neq y \in S} \delta_{h_k}(x,y)
 \end{equation}
-a pro $k \in \intrange{1}{N-1}$ polo¾me
+a pro $k \in \intrange{1}{N-1}$ poloÅ¾me
 \begin{equation}
 b_k(i) = |\{ x \in S : h_k(x) = i \}|
 \end{equation}
 
-Jednak platí
+Jednak platÃ­
 \begin{align}
 \label{bki2}
 % vnitrni suma (s mocninou) dana do zavorky aby byly v poradku priority 
 % (from V. Havranek)
 d & = \sum_{k=1}^{N-1} \left( ( \sum_{i=0}^{m-1} ( b_k(i) )^2 ) -n \right)\\
-\intertext{a také}
+\intertext{a takÃ©}
 d & = \sum_{x \neq y \in S} |\{ k : h_k(x)=h_k(y) \}|
-	&&\text{prohozením sum}\\
+	&&\text{prohozenÃ­m sum}\\
 \end{align}
 
-Co znamená $h_k(x) = h_k(y)$ pro $x \neq y$? Následující tvrzení jsou
-ekvivalentní:
+Co znamenÃ¡ $h_k(x) = h_k(y)$ pro $x \neq y$? NÃ¡sledujÃ­cÃ­ tvrzenÃ­ jsou
+ekvivalentnÃ­:
 \begin{align*}
 kx \bmod N & = ky \bmod N && \pmod m\\
 k(x-y) \bmod N & = 0 && \pmod m\\
@@ -875,37 +875,37 @@ tedy
 \[
 d \leq \sum_{x \neq y \in S} 2 \frac Nm = \frac{2 n(n-1) N}m
 \]
-a dosazením do \eqref{bki2}, podle pøihrádkového principu
+a dosazenÃ­m do \eqref{bki2}, podle pÅ™ihrÃ¡dkovÃ©ho principu
 \begin{equation}
 \label{existsk}
 \exists k : \sum_{i=0}^{m-1} ( b_k(i) )^2 \leq n + \frac{2 n(n-1)}m
 \end{equation}
 
-Pro speciální velikosti tabulky dostáváme dosazením do \eqref{existsk}:
+Pro speciÃ¡lnÃ­ velikosti tabulky dostÃ¡vÃ¡me dosazenÃ­m do \eqref{existsk}:
 \begin{align}
 \label{3n}
 &\text{Pro } m = n: 
-&& \exists k \text{ nalezitelné v èase }O(nN): 
+&& \exists k \text{ nalezitelnÃ© v Äase }O(nN): 
 \sum_{i=0}^{m-1} ( b_k(i) )^2 < 3n\\
 \label{perf}
 &\text{Pro } m = 1 + n(n-1): 
-&& \exists k \text{ nalezitelné v èase }O(nN):  
-h_k \text{ je perfektní} 
+&& \exists k \text{ nalezitelnÃ© v Äase }O(nN):  
+h_k \text{ je perfektnÃ­} 
 \end{align}
 
 \begin{proof}
-Probíráme v¹echny mo¾nosti pro $k$, tìch je $O(N)$.
+ProbÃ­rÃ¡me vÅ¡echny moÅ¾nosti pro $k$, tÄ›ch je $O(N)$.
 \begin{enumerate}
 \item[\eqref{3n}]
-Pro dané $k$ spoèítáme $\sum ( b_k(i) )^2$ v èase $O(n) = O(m)$.
+Pro danÃ© $k$ spoÄÃ­tÃ¡me $\sum ( b_k(i) )^2$ v Äase $O(n) = O(m)$.
 \item[\eqref{perf}]
 $\sum ( b_k(i) )^2 \leq n + \frac{2 n(n-1)}{1+ n(n-1)} < n + 2$.
-Kdyby $h_k$ nebyla perfektní, pak 
+Kdyby $h_k$ nebyla perfektnÃ­, pak 
 $\exists j : b_k(j) \geq 2$
 a
 $\sum ( b_k(i) )^2 \geq (n-2) 1^2 + 1 \cdot 2^2 = n + 2$,
 spor.
-Pøi hledání $k$ ovìøíme perfektnost $h_k$ v èase $O(n)$.
+PÅ™i hledÃ¡nÃ­ $k$ ovÄ›Å™Ã­me perfektnost $h_k$ v Äase $O(n)$.
 % zmatek s indexy u k (T. Matousek):
 % Tohle by melo byt vporadku. k je jako scitaci index jen v (4.8) a (4.10)
 % a dal uz ne.
@@ -914,34 +914,34 @@ Pøi hledání $k$ ovìøíme perfektnost $h_k$ v èase $O(n)$.
 \end{enumerate}
 \end{proof}
 
-Nyní máme perfektní ha¹ovací funkci, která ale poru¹uje po¾adavek (3).
+NynÃ­ mÃ¡me perfektnÃ­ haÅ¡ovacÃ­ funkci, kterÃ¡ ale poruÅ¡uje poÅ¾adavek (3).
 % ..........................................................................
-\subsection{Perfektní ha¹ovací funkce do tabulky velikosti $3n$}
+\subsection{PerfektnÃ­ haÅ¡ovacÃ­ funkce do tabulky velikosti $3n$}
 
-Zkombinujeme oba vısledky z pøedchozí èásti.
-% --- nejprve první funkcí ha¹ujeme do tabulky velikosti $< 3n$
+Zkombinujeme oba vÃ½sledky z pÅ™edchozÃ­ ÄÃ¡sti.
+% --- nejprve prvnÃ­ funkcÃ­ haÅ¡ujeme do tabulky velikosti $< 3n$
 
-Podle \eqref{3n} nalezneme $k$ takové, ¾e
+Podle \eqref{3n} nalezneme $k$ takovÃ©, Å¾e
 $\sum ( b_k(i) )^2 < 3n$.
 
-Pro ka¾dé $i \in \intrange{0}{n-1}$ vezmeme mno¾inu kolidujících prvkù
+Pro kaÅ¾dÃ© $i \in \intrange{0}{n-1}$ vezmeme mnoÅ¾inu kolidujÃ­cÃ­ch prvkÅ¯
 $S_i = \{ s \in S : h_k(s) = i \}$.
-Oznaème $n_i = |S_i|$.
+OznaÄme $n_i = |S_i|$.
 
-Podle \eqref{perf} pro ka¾dé $i$ nalezneme $k_i$ takové, ¾e
-pro $m_i = 1 + n_i(n_i-1)$ je $h_{k_i}$ perfektní pro $S_i$.
+Podle \eqref{perf} pro kaÅ¾dÃ© $i$ nalezneme $k_i$ takovÃ©, Å¾e
+pro $m_i = 1 + n_i(n_i-1)$ je $h_{k_i}$ perfektnÃ­ pro $S_i$.
 
-Ka¾dou zaha¹ovanou mno¾inu $S_i$ ulo¾íme ve vısledné tabulce od pozice
+KaÅ¾dou zahaÅ¡ovanou mnoÅ¾inu $S_i$ uloÅ¾Ã­me ve vÃ½slednÃ© tabulce od pozice
 $d_i$: 
 \[
 d_i = \sum_{j=0}^{i-1}(1 + n_j(n_j-1)).
 \]
 
-Koneènì definujme
+KoneÄnÄ› definujme
 \[
 g(x) = d_i + h_{k_i}(x),\quad\text{kde } i = h_k(x),
 \]
-která je perfektní a velikost tabulky je
+kterÃ¡ je perfektnÃ­ a velikost tabulky je
 \[
 m = d_n = \sum_{j=0}^{n-1}(1 + n_j(n_j-1))
 \leq \sum_{j=0}^{n-1} n_j^2
@@ -949,71 +949,71 @@ m = d_n = \sum_{j=0}^{n-1}(1 + n_j(n_j-1))
 < 3n
 \]
 
-Ov¹em na zakódování této funkce potøebujeme hodnì pamìti: 
-nevadí nám $d_i$, 
-ale $k$ a ka¾dé $k_i$ je velikosti $O(N)$, 
-tedy potøebujeme $n \log_2 N$ bitù, co¾ odporuje na¹emu po¾adavku (4).
-V dal¹ích krocích budeme zmen¹ovat èísla definující ha¹ovací funkci.
+OvÅ¡em na zakÃ³dovÃ¡nÃ­ tÃ©to funkce potÅ™ebujeme hodnÄ› pamÄ›ti: 
+nevadÃ­ nÃ¡m $d_i$, 
+ale $k$ a kaÅ¾dÃ© $k_i$ je velikosti $O(N)$, 
+tedy potÅ™ebujeme $n \log_2 N$ bitÅ¯, coÅ¾ odporuje naÅ¡emu poÅ¾adavku (4).
+V dalÅ¡Ã­ch krocÃ­ch budeme zmenÅ¡ovat ÄÃ­sla definujÃ­cÃ­ haÅ¡ovacÃ­ funkci.
 % ..........................................................................
-\subsubsection{Podobná funkce daná èíslem velikosti $O(N)$}
+\subsubsection{PodobnÃ¡ funkce danÃ¡ ÄÃ­slem velikosti $O(N)$}
 
-\mnote{lep¹í jména promìnnıch!}
-Zvolme prvoèíslo $p_1$ takové, ¾e 
-$1 +n(n-1) \leq p_1 \leq 1+ 2n(n-1)$. Nìjaké takové musí existovat
-(Bertrandùv postulát: $\forall n>1 \exists$ provèíslo p, ¾e 
+\mnote{lepÅ¡Ã­ jmÃ©na promÄ›nnÃ½ch!}
+Zvolme prvoÄÃ­slo $p_1$ takovÃ©, Å¾e 
+$1 +n(n-1) \leq p_1 \leq 1+ 2n(n-1)$. NÄ›jakÃ© takovÃ© musÃ­ existovat
+(BertrandÅ¯v postulÃ¡t: $\forall n>1 \exists$ provÄÃ­slo p, Å¾e 
 $n < p < 2n$).
-Podle \eqref{perf} %TODO, musíme dokázat m \geq, co¾ mírnì zatemní dk.
+Podle \eqref{perf} %TODO, musÃ­me dokÃ¡zat m \geq, coÅ¾ mÃ­rnÄ› zatemnÃ­ dk.
 $\exists k : h_k(x) = ( kx \bmod N) \bmod p_1$ 
-je perfektní na $S$.
+je perfektnÃ­ na $S$.
 
-Vytvoøme
+VytvoÅ™me
 \[
 S_1 = \{ h_k(s) : s \in S\} \subset \intrange{0}{p_1 -1}
 \]
-a na $S_1$ aplikujme pøedchozí sekci, kde $N = p_1$.
+a na $S_1$ aplikujme pÅ™edchozÃ­ sekci, kde $N = p_1$.
 
-Dostáváme ha¹ovací funkci $g_1$, která
+DostÃ¡vÃ¡me haÅ¡ovacÃ­ funkci $g_1$, kterÃ¡
 \begin{itemize}
-\item je perfektní pro $S$
-\item je spoèitatelná v èase $O(1)$ 
-\item ha¹uje do tabulky $<3n$ 
-\item je urèena 1 èíslem velikosti $O(N)$ \\
- \quad a $O(n)$ èísly velikosti $O(n^2)$ 
+\item je perfektnÃ­ pro $S$
+\item je spoÄitatelnÃ¡ v Äase $O(1)$ 
+\item haÅ¡uje do tabulky $<3n$ 
+\item je urÄena 1 ÄÃ­slem velikosti $O(N)$ \\
+ \quad a $O(n)$ ÄÃ­sly velikosti $O(n^2)$ 
 \end{itemize}
 
 % ..........................................................................
-\subsubsection{Podobná funkce daná èíslem velikosti $O(n^2\log N)$}
-Pro extrémní pøípady typu $N = 2^{10^6}$ je¹tì postup vylep¹íme,
-èím¾ zmen¹íme velikost èísel kódujících perfektní ha¹ovací funkci 
+\subsubsection{PodobnÃ¡ funkce danÃ¡ ÄÃ­slem velikosti $O(n^2\log N)$}
+Pro extrÃ©mnÃ­ pÅ™Ã­pady typu $N = 2^{10^6}$ jeÅ¡tÄ› postup vylepÅ¡Ã­me,
+ÄÃ­mÅ¾ zmenÅ¡Ã­me velikost ÄÃ­sel kÃ³dujÃ­cÃ­ch perfektnÃ­ haÅ¡ovacÃ­ funkci 
 na $O(\log N)$.
 
 \begin{lemma}
 \label{n2logN}
-Pro ka¾dou mno¾inu $S \subseteq \intrange{0}{N-1}$ velikosti $n$ existuje
-prvoèíslo $p$ takové, ¾e $f_{p}(x) = x \bmod p$ je perfektní na
+Pro kaÅ¾dou mnoÅ¾inu $S \subseteq \intrange{0}{N-1}$ velikosti $n$ existuje
+prvoÄÃ­slo $p$ takovÃ©, Å¾e $f_{p}(x) = x \bmod p$ je perfektnÃ­ na
 $S$ a $p = O(n^2 \log N)$.
 \end{lemma}
 
-Vyu¾ití: pro $S$ najdeme prvoèíslo $p_0$ velikosti $O(n^2 \log N)$
-takové, ¾e $f_{p_0}$ je perfektní na $S$. Vytvoøíme 
+VyuÅ¾itÃ­: pro $S$ najdeme prvoÄÃ­slo $p_0$ velikosti $O(n^2 \log N)$
+takovÃ©, Å¾e $f_{p_0}$ je perfektnÃ­ na $S$. VytvoÅ™Ã­me 
 \[
 S_0 = \{ f_{p_0}(s) : s \in S\} \subset \intrange{0}{p_0-1}
 \]
-a na $S_0$ aplikujme pøedchozí postup, kde $N = p_0$.
+a na $S_0$ aplikujme pÅ™edchozÃ­ postup, kde $N = p_0$.
 
-Tedy pro ka¾dou mno¾inu $S$ velikosti $n$ existuje ha¹ovací funkce $f$, která
+Tedy pro kaÅ¾dou mnoÅ¾inu $S$ velikosti $n$ existuje haÅ¡ovacÃ­ funkce $f$, kterÃ¡
 \begin{itemize}
-\item je perfektní pro $S$
-\item je spoèitatelná v èase $O(1)$ 
-\item ha¹uje do tabulky $<3n$ 
-\item je urèena 2 èísly velikosti $O(n^2 \log N)$ \\
- \quad a $O(n)$ èísly velikosti $O(n^2)$ 
+\item je perfektnÃ­ pro $S$
+\item je spoÄitatelnÃ¡ v Äase $O(1)$ 
+\item haÅ¡uje do tabulky $<3n$ 
+\item je urÄena 2 ÄÃ­sly velikosti $O(n^2 \log N)$ \\
+ \quad a $O(n)$ ÄÃ­sly velikosti $O(n^2)$ 
 \end{itemize}
 
 \begin{lemma}
 \label{prvociselnidelitele}
-Nech» $r$ je èíslo a $p_1, \ldots, p_q$ jsou v¹echny jeho prvoèíselné
-dìlitele. Pak $q=O(\log r / \log\log r)$.
+NechÅ¥ $r$ je ÄÃ­slo a $p_1, \ldots, p_q$ jsou vÅ¡echny jeho prvoÄÃ­selnÃ©
+dÄ›litele. Pak $q=O(\log r / \log\log r)$.
 \end{lemma}
 \begin{proof}
 \begin{align*}
@@ -1029,17 +1029,17 @@ Tedy
 q \leq c \frac{\ln r}{\ln\ln r} \quad\text{pro vhodnou konstantu $c$.}
 \]
 \end{proof}
-\begin{proof}[Dùkaz lemmatu \ref{n2logN}]
-Pøedpokládejme $S = \{ x_1 < \ldots < x_n \}$.
-Ha¹ovací funkce $f_t(x) = x \bmod t$ je perfektní právì kdy¾ $t$ je
-nesoudìlné s èíslem
+\begin{proof}[DÅ¯kaz lemmatu \ref{n2logN}]
+PÅ™edpoklÃ¡dejme $S = \{ x_1 < \ldots < x_n \}$.
+HaÅ¡ovacÃ­ funkce $f_t(x) = x \bmod t$ je perfektnÃ­ prÃ¡vÄ› kdyÅ¾ $t$ je
+nesoudÄ›lnÃ© s ÄÃ­slem
 \[
 D = \prod_{i>j} (x_i - x_j) < N^{n^2}
 \]
-Podle \ref{prvociselnidelitele} je mezi prvními $(c \ln D / \ln\ln D)+1$
-prvoèísly alespoò jedno, které nedìlí $D$. Víme, ¾e $p_k = O(k \ln
+Podle \ref{prvociselnidelitele} je mezi prvnÃ­mi $(c \ln D / \ln\ln D)+1$
+prvoÄÃ­sly alespoÅˆ jedno, kterÃ© nedÄ›lÃ­ $D$. VÃ­me, Å¾e $p_k = O(k \ln
 k)$, tedy 
-$(c \ln D / \ln\ln D) +1$-ní prvoèíslo má velikost
+$(c \ln D / \ln\ln D) +1$-nÃ­ prvoÄÃ­slo mÃ¡ velikost
 $O(\ln D) = O( n^2 \ln N)$.
 \end{proof}
 \mnote{nalezeni prvocisla $p_0$ vyzaduje cas $O(n^2\log N)$.}
@@ -1047,23 +1047,23 @@ $O(\ln D) = O( n^2 \ln N)$.
 % ..........................................................................
 \subsection{GPERF}
 
-Jiná konstrukce perfektní ha¹ovací funkce je pou¾ita v programu
-{\tt gperf}. Distribuován pod GPL. 
-Jeho návrh je popsán v \cite{douglas-GPERF}.
+JinÃ¡ konstrukce perfektnÃ­ haÅ¡ovacÃ­ funkce je pouÅ¾ita v programu
+{\tt gperf}. DistribuovÃ¡n pod GPL. 
+Jeho nÃ¡vrh je popsÃ¡n v \cite{douglas-GPERF}.
 
 
 % --------------------------------------------------------------------------
 \def\xx{% commented out
-\section{Ha¹ování pro externí pamì»}
+\section{HaÅ¡ovÃ¡nÃ­ pro externÃ­ pamÄ›Å¥}
 
-\mnote{Tohle u¾ Koubek nepøedná¹í} % - zrejme komentar od M.Vidnera
+\mnote{Tohle uÅ¾ Koubek nepÅ™ednÃ¡Å¡Ã­} % - zrejme komentar od M.Vidnera
 % - sice to Koubek neprednasi (prednasi se to v predmetu OZD), 
 % ale u statnic se to zkousi
 % Externi hashovani je popsano v jine sekci.
-Adresáø.
+AdresÃ¡Å™.
 
 MEMBER, INSERT, DELETE
 
-Oèekávané zaplnìní stránky, poèet stránek, velikost adresáøe --- jen
-citace, tabulka pro nìkterá èísla.
+OÄekÃ¡vanÃ© zaplnÄ›nÃ­ strÃ¡nky, poÄet strÃ¡nek, velikost adresÃ¡Å™e --- jen
+citace, tabulka pro nÄ›kterÃ¡ ÄÃ­sla.
 }% commented out

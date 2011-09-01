@@ -1,10 +1,10 @@
-% Souèást skript na Datové struktury. Viz main.tex
+% SouÄÃ¡st skript na DatovÃ© struktury. Viz main.tex
 \markright{$ $Id$ $}
 
 \def\prazdnatabulka{
 \begin{tabular}{|l|l|}
 \hline
-& klíè\\
+& klÃ­Ä\\
 \hline
 0& \\
 1& \\
@@ -20,121 +20,121 @@
 \end{tabular}
 }
 
-\chapter{Ha¹ování I}
+\chapter{HaÅ¡ovÃ¡nÃ­ I}
 
-Je dáno universum $U$, reprezentovaná podmno¾ina $S, S \subseteq U, |S|=n$.
-Velikost tabulky, ve které budeme chtít $S$ reprezentovat je $m$. 
+Je dÃ¡no universum $U$, reprezentovanÃ¡ podmnoÅ¾ina $S, S \subseteq U, |S|=n$.
+Velikost tabulky, ve kterÃ© budeme chtÃ­t $S$ reprezentovat je $m$. 
 
-Máme ha¹ovací funkci $h: U \to \{0..m-1\}$. Mno¾ina $S$ je
-reprezentována tabulkou $T[0..m-1]$ tak, ¾e prvek $s \in S$ je ulo¾en na
-místì $h(s)$.
+MÃ¡me haÅ¡ovacÃ­ funkci $h: U \to \{0..m-1\}$. MnoÅ¾ina $S$ je
+reprezentovÃ¡na tabulkou $T[0..m-1]$ tak, Å¾e prvek $s \in S$ je uloÅ¾en na
+mÃ­stÄ› $h(s)$.
 
-Charakteristickou vlastností obecné ha¹ovací funkce je velké plıtvání 
-pamìtí pokud $n \ll |U|$, napø. pro $n = \log\log |U|$.
+Charakteristickou vlastnostÃ­ obecnÃ© haÅ¡ovacÃ­ funkce je velkÃ© plÃ½tvÃ¡nÃ­ 
+pamÄ›tÃ­ pokud $n \ll |U|$, napÅ™. pro $n = \log\log |U|$.
 
-S prvky, které nesou kladnou informaci ($x \in S$), moc
-nenadìláme. Ale záporné mù¾eme nìjak slouèit do jednoho nebo i
-pøekrıt s tìmi kladnımi. To je základní idea ha¹ování.
+S prvky, kterÃ© nesou kladnou informaci ($x \in S$), moc
+nenadÄ›lÃ¡me. Ale zÃ¡pornÃ© mÅ¯Å¾eme nÄ›jak slouÄit do jednoho nebo i
+pÅ™ekrÃ½t s tÄ›mi kladnÃ½mi. To je zÃ¡kladnÃ­ idea haÅ¡ovÃ¡nÃ­.
 
 
-Problémy:
+ProblÃ©my:
 \begin{enumerate}
-\item Jak rychle spoèítáme $h(s)$.
-\item Co znamená {\em ulo¾en na místì $h(s)$} ? Co kdy¾ platí $h(s)=h(t)$
-a zároveò $s \ne t$ ?
+\item Jak rychle spoÄÃ­tÃ¡me $h(s)$.
+\item Co znamenÃ¡ {\em uloÅ¾en na mÃ­stÄ› $h(s)$} ? Co kdyÅ¾ platÃ­ $h(s)=h(t)$
+a zÃ¡roveÅˆ $s \ne t$ ?
 \end{enumerate}
 
-Øe¹ení:
+Å˜eÅ¡enÃ­:
 \begin{enumerate}
-\item Omezíme se na rychle spoèitatelné ha¹ovací
-funkce. Pøedpokládáme, ¾e $h(s)$ spoèteme v èase $O(1)$.
-\item Tento pøípad se nazıvá {\em kolize} a jednotlivé druhy ha¹ování
-se dìlí podle toho, jak øe¹í kolize.
+\item OmezÃ­me se na rychle spoÄitatelnÃ© haÅ¡ovacÃ­
+funkce. PÅ™edpoklÃ¡dÃ¡me, Å¾e $h(s)$ spoÄteme v Äase $O(1)$.
+\item Tento pÅ™Ã­pad se nazÃ½vÃ¡ {\em kolize} a jednotlivÃ© druhy haÅ¡ovÃ¡nÃ­
+se dÄ›lÃ­ podle toho, jak Å™eÅ¡Ã­ kolize.
 \end{enumerate}
 
 % --------------------------------------------------------------------------
-\section{Ha¹ování se separovanımi øetìzci}
+\section{HaÅ¡ovÃ¡nÃ­ se separovanÃ½mi Å™etÄ›zci}
 
-Tento zpùsob ha¹ování øe¹í kolize tak, ¾e kolidující prvky ukládá na
-stejnou pozici do tabulky. Na této pozici jsou ulo¾eny v podobì 
-lineárních seznamù. Takovému seznamu kolidujících prvkù se øíká
-\emph{øetìzec}.
-Ha¹ovací tabulka je tedy pole lineárních seznamù, ne nutnì uspoøádanıch.
-Odtud plyne název této metody, proto¾e øetìzce prvkù nejsou mezi sebou
-promíchány - øetìzec, kterı je v tabulce ulo¾en na pozici $y$ v sobì 
-obsahuje pouze ty prvky, pro které platí $h(x) = y$.
+Tento zpÅ¯sob haÅ¡ovÃ¡nÃ­ Å™eÅ¡Ã­ kolize tak, Å¾e kolidujÃ­cÃ­ prvky uklÃ¡dÃ¡ na
+stejnou pozici do tabulky. Na tÃ©to pozici jsou uloÅ¾eny v podobÄ› 
+lineÃ¡rnÃ­ch seznamÅ¯. TakovÃ©mu seznamu kolidujÃ­cÃ­ch prvkÅ¯ se Å™Ã­kÃ¡
+\emph{Å™etÄ›zec}.
+HaÅ¡ovacÃ­ tabulka je tedy pole lineÃ¡rnÃ­ch seznamÅ¯, ne nutnÄ› uspoÅ™Ã¡danÃ½ch.
+Odtud plyne nÃ¡zev tÃ©to metody, protoÅ¾e Å™etÄ›zce prvkÅ¯ nejsou mezi sebou
+promÃ­chÃ¡ny - Å™etÄ›zec, kterÃ½ je v tabulce uloÅ¾en na pozici $y$ v sobÄ› 
+obsahuje pouze ty prvky, pro kterÃ© platÃ­ $h(x) = y$.
 
-Základní operace na této tabulce jsou MEMBER (viz algoritmus
+ZÃ¡kladnÃ­ operace na tÃ©to tabulce jsou MEMBER (viz algoritmus
 \ref{alg:hash1.separ.member}),
 INSERT (viz alg. \ref{alg:hash1.separ.insert}) a DELETE (viz alg. 
 \ref{alg:hash1.separ.delete}).
 
 \begin{algorithm}[!htb]
-\caption{MEMBER pro ha¹ování se separovanımi øetìzci}
+\caption{MEMBER pro haÅ¡ovÃ¡nÃ­ se separovanÃ½mi Å™etÄ›zci}
 \label{alg:hash1.separ.member}
 MEMBER(x):
 \begin{enumerate}
-\item Spoèítáme $h(x)$.
-\item Prohledáme $h(x)$-tı seznam.
-\item Kdy¾ tam $x$ je, vrátíme {\em true}, jinak {\em false}.
+\item SpoÄÃ­tÃ¡me $h(x)$.
+\item ProhledÃ¡me $h(x)$-tÃ½ seznam.
+\item KdyÅ¾ tam $x$ je, vrÃ¡tÃ­me {\em true}, jinak {\em false}.
 \end{enumerate}
 \end{algorithm}
 
 
 \begin{algorithm}[!htb]
-\caption{INSERT pro ha¹ování se separovanımi øetìzci}
+\caption{INSERT pro haÅ¡ovÃ¡nÃ­ se separovanÃ½mi Å™etÄ›zci}
 \label{alg:hash1.separ.insert}
 INSERT(x):
 \begin{enumerate}
-\item Spoèítáme $h(x)$. {\it (Jako MEMBER)}
-\item Prohledáme $h(x)$-tı seznam. {\it (Jako MEMBER)}
-\item Kdy¾ $x$ není v $h(x)$-tém seznamu, tak ho tam vlo¾íme.
+\item SpoÄÃ­tÃ¡me $h(x)$. {\it (Jako MEMBER)}
+\item ProhledÃ¡me $h(x)$-tÃ½ seznam. {\it (Jako MEMBER)}
+\item KdyÅ¾ $x$ nenÃ­ v $h(x)$-tÃ©m seznamu, tak ho tam vloÅ¾Ã­me.
 \end{enumerate}
 \end{algorithm}
 
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro ha¹ování se separovanımi øetìzci}
+\caption{DELETE pro haÅ¡ovÃ¡nÃ­ se separovanÃ½mi Å™etÄ›zci}
 \label{alg:hash1.separ.delete}
 DELETE(x):
 \begin{enumerate}
-\item Spoèítáme $h(x)$. {\it (Jako MEMBER)}
-\item Prohledáme $h(x)$-tı seznam. {\it (Jako MEMBER)}
-\item Kdy¾ $x$ je v $h(x)$-tém seznamu, tak ho odstraníme.
+\item SpoÄÃ­tÃ¡me $h(x)$. {\it (Jako MEMBER)}
+\item ProhledÃ¡me $h(x)$-tÃ½ seznam. {\it (Jako MEMBER)}
+\item KdyÅ¾ $x$ je v $h(x)$-tÃ©m seznamu, tak ho odstranÃ­me.
 \end{enumerate}
 \end{algorithm}
 
 
-Oèekávaná doba operace MEMBER, INSERT nebo DELETE 
-je stejná jako oèekávaná délka seznamu.
-Ale pozor na prázdnı seznam, u nìj nedosáhneme nulového èasu operace. 
-Uká¾eme, ¾e oèekávaná doba operace je konstantní.
+OÄekÃ¡vanÃ¡ doba operace MEMBER, INSERT nebo DELETE 
+je stejnÃ¡ jako oÄekÃ¡vanÃ¡ dÃ©lka seznamu.
+Ale pozor na prÃ¡zdnÃ½ seznam, u nÄ›j nedosÃ¡hneme nulovÃ©ho Äasu operace. 
+UkÃ¡Å¾eme, Å¾e oÄekÃ¡vanÃ¡ doba operace je konstantnÃ­.
 
 \begin{samepage}
-Pøedpoklady:
+PÅ™edpoklady:
 \begin{enumerate}
-\item $h$ rozdìluje prvky $U$ do seznamù nezávisle a rovnomìrnì
-(napø. $h(x) = x \bmod m$).\\
+\item $h$ rozdÄ›luje prvky $U$ do seznamÅ¯ nezÃ¡visle a rovnomÄ›rnÄ›
+(napÅ™. $h(x) = x \bmod m$).\\
 Tedy pro $\forall {i,j}:{0 \leq i,j < m}$ se 
-poèty prvkù $S$ zobrazenıch na $i$ a $j$ li¹í nejvı¹ o 1.
-\item Mno¾ina $S$ má rovnomìrné rozdìlení --- vıbìr konkrétní mno¾iny
-$S$ má stejnou pravdìpodobnost. To je dost omezující, proto¾e na
-rozdíl od ha¹ovací funkce nejsme schopni $S$ ovlivnit.
+poÄty prvkÅ¯ $S$ zobrazenÃ½ch na $i$ a $j$ liÅ¡Ã­ nejvÃ½Å¡ o 1.
+\item MnoÅ¾ina $S$ mÃ¡ rovnomÄ›rnÃ© rozdÄ›lenÃ­ --- vÃ½bÄ›r konkrÃ©tnÃ­ mnoÅ¾iny
+$S$ mÃ¡ stejnou pravdÄ›podobnost. To je dost omezujÃ­cÃ­, protoÅ¾e na
+rozdÃ­l od haÅ¡ovacÃ­ funkce nejsme schopni $S$ ovlivnit.
 \end{enumerate}
 \end{samepage}
 
 % ..........................................................................
-\subsection{Oèekávaná délka seznamu}
+\subsection{OÄekÃ¡vanÃ¡ dÃ©lka seznamu}
 
-Oznaème $p(\ell) = \pr(\hbox{seznam je dlouhı }\ell)$.
+OznaÄme $p(\ell) = \pr(\hbox{seznam je dlouhÃ½ }\ell)$.
 
-Z pøedpokladù má $p(\ell)$ binomické rozdìlení, neboli
+Z pÅ™edpokladÅ¯ mÃ¡ $p(\ell)$ binomickÃ© rozdÄ›lenÃ­, neboli
 \[
 p(\ell) = \rozvoj{n}{\ell}{\invm}
 \]
 
 \begin{samepage}
-tedy oèekávaná délka seznamu je
+tedy oÄekÃ¡vanÃ¡ dÃ©lka seznamu je
 \begin{multline}\bigparens
 \label{binom-uprava}
 E 
@@ -144,14 +144,14 @@ E
 = \sum_{\ell=0}^n \frac nm \binom{n-1}{\ell-1}(\invm)^{\ell-1} (1-\invm)^{(n-1)-(\ell-1)}
 = \frac nm \sum_{k=-1}^{n-1} \binom{n-1}{k} (\invm)^k
 (1-\invm)^{(n-1)-k}\\
-\text{README.1st: v¹echny úpravy smìøují k tomuto souètu podle binomické vìty}\\
+\text{README.1st: vÅ¡echny Ãºpravy smÄ›Å™ujÃ­ k tomuto souÄtu podle binomickÃ© vÄ›ty}\\
 = \frac nm ( \invm + (1-\invm) )^{n-1}
 = \frac nm
 = \alpha,
 \end{multline}
 
-kde $\alpha = n/m$ je tzv.~\emph{faktor naplnìní}\footnote{anglicky
-\emph{load factor}}, obvykle je dùle¾ité, je-li vìt¹í èi men¹í ne¾ 1.
+kde $\alpha = n/m$ je tzv.~\emph{faktor naplnÄ›nÃ­}\footnote{anglicky
+\emph{load factor}}, obvykle je dÅ¯leÅ¾itÃ©, je-li vÄ›tÅ¡Ã­ Äi menÅ¡Ã­ neÅ¾ 1.
 \end{samepage}
 
 \def\xx{
@@ -160,62 +160,62 @@ s rozptylem
 }
 
 % ..........................................................................
-\subsection{Oèekávanı èas posloupnosti operací}
+\subsection{OÄekÃ¡vanÃ½ Äas posloupnosti operacÃ­}
 
-Kdy¾ máme posloupnost $P$ operací MEMBER, INSERT, DELETE splòující
-pøedpoklad rovnomìrného rozdìlení a aplikovanou na prázdnou ha¹ovací
-tabulku, pak oèekávanı èas je \( O( |P| + \frac{|P|^2}{2m} ) \)
+KdyÅ¾ mÃ¡me posloupnost $P$ operacÃ­ MEMBER, INSERT, DELETE splÅˆujÃ­cÃ­
+pÅ™edpoklad rovnomÄ›rnÃ©ho rozdÄ›lenÃ­ a aplikovanou na prÃ¡zdnou haÅ¡ovacÃ­
+tabulku, pak oÄekÃ¡vanÃ½ Äas je \( O( |P| + \frac{|P|^2}{2m} ) \)
 
 % ..........................................................................
-\subsection{Oèekávanı poèet testù}
+\subsection{OÄekÃ¡vanÃ½ poÄet testÅ¯}
 
-\mnote{co je to test? porovnání klíèù, nahlédnutí do tabulky?}
-Slo¾itost prohledání seznamu se mù¾e li¹it podle toho, jestli tam hledanı
-prvek je nebo není. \emph{Úspì¹nım pøípadem} nazveme takovou Operaci(x), 
-kde $x \in S$, \emph{neúspì¹nı pøípad} je $x \notin S$. V úspì¹ném pøípadì
-prohledáváme prùmìrnì jenom polovinu seznamu.
+\mnote{co je to test? porovnÃ¡nÃ­ klÃ­ÄÅ¯, nahlÃ©dnutÃ­ do tabulky?}
+SloÅ¾itost prohledÃ¡nÃ­ seznamu se mÅ¯Å¾e liÅ¡it podle toho, jestli tam hledanÃ½
+prvek je nebo nenÃ­. \emph{ÃšspÄ›Å¡nÃ½m pÅ™Ã­padem} nazveme takovou Operaci(x), 
+kde $x \in S$, \emph{neÃºspÄ›Å¡nÃ½ pÅ™Ã­pad} je $x \notin S$. V ÃºspÄ›Å¡nÃ©m pÅ™Ã­padÄ›
+prohledÃ¡vÃ¡me prÅ¯mÄ›rnÄ› jenom polovinu seznamu.
 
 
-Oèekávanı èas pro neúspì¹nı pøípad 
-\( \text{EÈN} = O( {(1 - \invm)}^n + \frac nm ) \)
+OÄekÃ¡vanÃ½ Äas pro neÃºspÄ›Å¡nÃ½ pÅ™Ã­pad 
+\( \text{EÄŒN} = O( {(1 - \invm)}^n + \frac nm ) \)
 
-Oèekávanı èas pro úspì¹nı pøípad 
-\( \text{EÈÚ} = O(\frac n{2m}) \)
+OÄekÃ¡vanÃ½ Äas pro ÃºspÄ›Å¡nÃ½ pÅ™Ã­pad 
+\( \text{EÄŒÃš} = O(\frac n{2m}) \)
 
-\subsubsection{Neúspì¹nı pøípad}
+\subsubsection{NeÃºspÄ›Å¡nÃ½ pÅ™Ã­pad}
 
-Projdeme celı seznam, musíme nahlédnout i do prázdného seznamu.
+Projdeme celÃ½ seznam, musÃ­me nahlÃ©dnout i do prÃ¡zdnÃ©ho seznamu.
 
 $$ 
-\text{EÈN}
+\text{EÄŒN}
 = 1 \cdot p(0) + \sum_{\ell=1}^n \ell \cdot p(\ell)
 =         p(0) + \sum_{\ell=0}^n \ell \cdot p(\ell)
 = (1-\invm)^n + \frac nm
 \approx e^{-\alpha} + \alpha
 $$
 
-\subsubsection{Úspì¹nı pøípad}
+\subsubsection{ÃšspÄ›Å¡nÃ½ pÅ™Ã­pad}
 
-\mnote{Zde Koubková 1998. Koubek 2000 to má trochu jinak}
+\mnote{Zde KoubkovÃ¡ 1998. Koubek 2000 to mÃ¡ trochu jinak}
 
-Poèet testù pro vyhledání v¹ech prvkù v seznamu délky $\ell$ je\\
+PoÄet testÅ¯ pro vyhledÃ¡nÃ­ vÅ¡ech prvkÅ¯ v seznamu dÃ©lky $\ell$ je\\
 $1+2+\cdots+\ell = \binom{\ell+1}{2}$.
 
 \def\OcPocTst{\sum_\ell \binom{\ell+1}{2} p(\ell)}
-Oèekávanı poèet testù je $ \OcPocTst $, 
-oèekávanı poèet testù pro vyhledání v¹ech prvkù v tabulce je
+OÄekÃ¡vanÃ½ poÄet testÅ¯ je $ \OcPocTst $, 
+oÄekÃ¡vanÃ½ poÄet testÅ¯ pro vyhledÃ¡nÃ­ vÅ¡ech prvkÅ¯ v tabulce je
 $ m \cdot \OcPocTst $.
 
-Je¹tì budeme potøebovat následující sumu, kterou spoèítáme podobnì
+JeÅ¡tÄ› budeme potÅ™ebovat nÃ¡sledujÃ­cÃ­ sumu, kterou spoÄÃ­tÃ¡me podobnÄ›
 jako v \ref{binom-uprava}:
 $$ \sum_{l=0}^n l^2 \rozvoj{n}{l}{\invm}
 = \cdots =
 \frac{n}{m} (1-\invm) + (\frac{n}{m})^2
 $$
 
-Oèekávanı poèet testù pro vyhledání jednoho prvku
+OÄekÃ¡vanÃ½ poÄet testÅ¯ pro vyhledÃ¡nÃ­ jednoho prvku
 \begin{multline}
-\text{EÈÚ}
+\text{EÄŒÃš}
 = \frac{m}{n} \OcPocTst 
 = \frac{m}{n} \cdot \frac{1}{2} ( \sum_\ell \ell^2 p(\ell) + \sum_\ell \ell \cdot p(\ell) )\\
 = \frac{m}{2n} 
@@ -229,37 +229,37 @@ Oèekávanı poèet testù pro vyhledání jednoho prvku
 \end{multline}
 
 % ..........................................................................
-\subsection{Oèekávaná délka nejdel¹ího seznamu}
+\subsection{OÄekÃ¡vanÃ¡ dÃ©lka nejdelÅ¡Ã­ho seznamu}
 
 \begin{samepage}
-Známe oèekávané hodnoty, ale ty nám samy o sobì moc neøeknou. Hodila
-by se nám standardní odchylka, ta se ale slo¾itì poèítá. Místo toho
-vypoèteme oèekávanı nejhor¹í pøípad:
+ZnÃ¡me oÄekÃ¡vanÃ© hodnoty, ale ty nÃ¡m samy o sobÄ› moc neÅ™eknou. Hodila
+by se nÃ¡m standardnÃ­ odchylka, ta se ale sloÅ¾itÄ› poÄÃ­tÃ¡. MÃ­sto toho
+vypoÄteme oÄekÃ¡vanÃ½ nejhorÅ¡Ã­ pÅ™Ã­pad:
 
-Doká¾eme, ¾e
-za pøedpokladù 1 a 2 a $|S| = n \leq m$ je oèekávaná délka maximálního
+DokÃ¡Å¾eme, Å¾e
+za pÅ™edpokladÅ¯ 1 a 2 a $|S| = n \leq m$ je oÄekÃ¡vanÃ¡ dÃ©lka maximÃ¡lnÃ­ho
 seznamu $\text{EMS} = O( \frac{\log n}{\log\log n} )$.
 \end{samepage}
 
 Z definice 
 \[
-\text{EMS} = \sum_j j \cdot \pr(\text{maximální délka seznamu}=j). 
+\text{EMS} = \sum_j j \cdot \pr(\text{maximÃ¡lnÃ­ dÃ©lka seznamu}=j). 
 \]
-Pou¾ijeme trik: nech» 
+PouÅ¾ijeme trik: nechÅ¥ 
 \[
-q(j) = \pr(\text{existuje seznam, kterı má délku alespoò }j). 
+q(j) = \pr(\text{existuje seznam, kterÃ½ mÃ¡ dÃ©lku alespoÅˆ }j). 
 \]
 Pak 
-\[ \pr(\text{maximální délka seznamu}=j) = q(j) - q(j+1) \]
+\[ \pr(\text{maximÃ¡lnÃ­ dÃ©lka seznamu}=j) = q(j) - q(j+1) \]
 a
 \[
 \text{EMS} = \sum_j q(j) 
-\] (teleskopická suma) \mnote{vysvìtlit}
+\] (teleskopickÃ¡ suma) \mnote{vysvÄ›tlit}
 
-Spoèteme $q(j)$:
+SpoÄteme $q(j)$:
 \[
 q'(j) 
-= \pr( \text{danı seznam má délku alespoò }j ) 
+= \pr( \text{danÃ½ seznam mÃ¡ dÃ©lku alespoÅˆ }j ) 
 \leq \binom nj {(\frac 1m)}^j
 \]
 \[
@@ -272,7 +272,7 @@ q(j) \leq m \cdot q'(j)
 \leq \sum \min(1, \frac n{j!} )
 \]
 
-Nech»
+NechÅ¥
 \[
 j_0 
 =    \max\{k: k! \leq n \}
@@ -285,7 +285,7 @@ pak
 \leq \sum_{j+0}^{j_0} 1 + \sum_{j=j_0}^\infty \frac n{j!}
 =    j_0 + \sum_{j=j_0}^\infty \frac n{j_0!} \frac{j_0!}{j!}\\
 \leq j_0 + \sum_{j=j_0}^\infty \frac{j_0!}{j!}
-\leq j_0 + \sum_{j=j_0}^\infty (\frac 1{j_0})^{(j-j_0)} % geom øada
+\leq j_0 + \sum_{j=j_0}^\infty (\frac 1{j_0})^{(j-j_0)} % geom Å™ada
 \leq j_0 + \frac 1{1 - 1/j_0}\\
 = O(j_0) = O ( \frac{\log n}{\log\log n} )
 \qed
@@ -293,43 +293,43 @@ pak
 
 
 % --------------------------------------------------------------------------
-\section{Ha¹ování s uspoøádanımi øetìzci}
+\section{HaÅ¡ovÃ¡nÃ­ s uspoÅ™Ã¡danÃ½mi Å™etÄ›zci}
 
-Uspoøádání øetìzcù vylep¹í neúspì¹nı pøípad, proto¾e hledání v øetìzci
-mù¾eme zastavit v okamziku, kdy narazíme na prvek vìt¹í ne¾ hledanı prvek
-(za pøedpokladu, ¾e prvky v øetìzci jsou uspoøádány vzestupnì).
+UspoÅ™Ã¡dÃ¡nÃ­ Å™etÄ›zcÅ¯ vylepÅ¡Ã­ neÃºspÄ›Å¡nÃ½ pÅ™Ã­pad, protoÅ¾e hledÃ¡nÃ­ v Å™etÄ›zci
+mÅ¯Å¾eme zastavit v okamziku, kdy narazÃ­me na prvek vÄ›tÅ¡Ã­ neÅ¾ hledanÃ½ prvek
+(za pÅ™edpokladu, Å¾e prvky v Å™etÄ›zci jsou uspoÅ™Ã¡dÃ¡ny vzestupnÄ›).
 
-\subsection{Oèekávanı èas}
+\subsection{OÄekÃ¡vanÃ½ Äas}
 
-Oèekávanı èas v neúspì¹ném pøípadì se od èasu v úspì¹ném pøípadì li¹í
-jen o aditivní konstantu.
+OÄekÃ¡vanÃ½ Äas v neÃºspÄ›Å¡nÃ©m pÅ™Ã­padÄ› se od Äasu v ÃºspÄ›Å¡nÃ©m pÅ™Ã­padÄ› liÅ¡Ã­
+jen o aditivnÃ­ konstantu.
 
-%(Jenom citace vìty z \cite{Vitter-Chen})
+%(Jenom citace vÄ›ty z \cite{Vitter-Chen})
 
 % --------------------------------------------------------------------------
-\section{Ha¹ování s pøesuny}
+\section{HaÅ¡ovÃ¡nÃ­ s pÅ™esuny}
 
-Zatím jsme pøedpokládali, ¾e øetìzce kolidujících prvkù jsou ulo¾eny
-nìkde v dynamicky alokované pamìti. 
-To není vıhodné, proto¾e vy¾aduje pou¾ití dal¹í pamìti i kdy¾ nìkteré 
-øetìzce jsou prázdné.
-Proto nyní budeme ukádat øetìzce pøímo v tabulce.
+ZatÃ­m jsme pÅ™edpoklÃ¡dali, Å¾e Å™etÄ›zce kolidujÃ­cÃ­ch prvkÅ¯ jsou uloÅ¾eny
+nÄ›kde v dynamicky alokovanÃ© pamÄ›ti. 
+To nenÃ­ vÃ½hodnÃ©, protoÅ¾e vyÅ¾aduje pouÅ¾itÃ­ dalÅ¡Ã­ pamÄ›ti i kdyÅ¾ nÄ›kterÃ© 
+Å™etÄ›zce jsou prÃ¡zdnÃ©.
+Proto nynÃ­ budeme ukÃ¡dat Å™etÄ›zce pÅ™Ã­mo v tabulce.
 
-Øetìzec na $i$-tém místì ulo¾íme do tabulky tak, ¾e 
-první prvek je na $i$-tém místì a
-pro ka¾dı prvek øetìzce je v polo¾ce {\tt vpøed} adresa následujícího prvku
-øetìzce a v polo¾ce {\tt vzad} je adresa pøedchozího prvku. Zaèátek,
-resp. konec øetìzce má prázdnou polo¾ku {\tt vzad}, resp. {\tt vpøed}.
+Å˜etÄ›zec na $i$-tÃ©m mÃ­stÄ› uloÅ¾Ã­me do tabulky tak, Å¾e 
+prvnÃ­ prvek je na $i$-tÃ©m mÃ­stÄ› a
+pro kaÅ¾dÃ½ prvek Å™etÄ›zce je v poloÅ¾ce {\tt vpÅ™ed} adresa nÃ¡sledujÃ­cÃ­ho prvku
+Å™etÄ›zce a v poloÅ¾ce {\tt vzad} je adresa pÅ™edchozÃ­ho prvku. ZaÄÃ¡tek,
+resp. konec Å™etÄ›zce mÃ¡ prÃ¡zdnou poloÅ¾ku {\tt vzad}, resp. {\tt vpÅ™ed}.
 
 \begin{samepage}
 \begin{priklad}
-Napøíklad pro $U=\mathbb{N}, m=10, h(x) = x \bmod 10$, ha¹ujeme posloupnost
+NapÅ™Ã­klad pro $U=\mathbb{N}, m=10, h(x) = x \bmod 10$, haÅ¡ujeme posloupnost
 10, 50, 21, 60: 
 
 \vspace{5mm}
 \begin{tabular}{|l|l|l|l|}
 \hline
-& klíè& {\tt vpøed}& {\tt vzad}\\
+& klÃ­Ä& {\tt vpÅ™ed}& {\tt vzad}\\
 \hline
 0& 10& 5& \\
 1& 21& & \\
@@ -347,27 +347,27 @@ Napøíklad pro $U=\mathbb{N}, m=10, h(x) = x \bmod 10$, ha¹ujeme posloupnost
 \end{samepage}
 \vspace{5mm}
 
-MEMBER(x) je jednoduchı - od $h(x)$-tého místa procházíme øetìzec prvkù a¾
-na konec a v pøípadì nalezení prvku operaci ukonèíme.
+MEMBER(x) je jednoduchÃ½ - od $h(x)$-tÃ©ho mÃ­sta prochÃ¡zÃ­me Å™etÄ›zec prvkÅ¯ aÅ¾
+na konec a v pÅ™Ã­padÄ› nalezenÃ­ prvku operaci ukonÄÃ­me.
 
-Pøi INSERT musíme zjistit, zda $h(x)$-tı øetìzec zaèíná na $h(x)$-tém
-místì\footnote{To je jednoduché - pokud prvek na $h(x)$-tém místì má
-nulovı ukazatel {\tt vzad}, pak je zaèátkem $h(x)$-tého øetìzce.}.
-Pokud ano, prvek pøidáme do $h(x)$-tého øetìzce,
-pokud ne, pøemístíme prvek na $h(x)$-tém místì na jiné volné místo,
-upravíme {\tt vpøed} a {\tt vzad} a prvek vlo¾íme na $h(x)$-té místo.
+PÅ™i INSERT musÃ­me zjistit, zda $h(x)$-tÃ½ Å™etÄ›zec zaÄÃ­nÃ¡ na $h(x)$-tÃ©m
+mÃ­stÄ›\footnote{To je jednoduchÃ© - pokud prvek na $h(x)$-tÃ©m mÃ­stÄ› mÃ¡
+nulovÃ½ ukazatel {\tt vzad}, pak je zaÄÃ¡tkem $h(x)$-tÃ©ho Å™etÄ›zce.}.
+Pokud ano, prvek pÅ™idÃ¡me do $h(x)$-tÃ©ho Å™etÄ›zce,
+pokud ne, pÅ™emÃ­stÃ­me prvek na $h(x)$-tÃ©m mÃ­stÄ› na jinÃ© volnÃ© mÃ­sto,
+upravÃ­me {\tt vpÅ™ed} a {\tt vzad} a prvek vloÅ¾Ã­me na $h(x)$-tÃ© mÃ­sto.
 
 % vynuceny zlom stranky, nechtel si dat rict pomoci samepage
 \pagebreak
 
 \begin{samepage}
 \begin{priklad}
-Tabulka z pøedchozího pøíkladu po INSERT(53) bude vypadat takto: 
+Tabulka z pÅ™edchozÃ­ho pÅ™Ã­kladu po INSERT(53) bude vypadat takto: 
 
 \vspace{5mm}
 \begin{tabular}{|l|l|l|l|}
 \hline
-& klíè& {\tt vpøed}& {\tt vzad}\\
+& klÃ­Ä& {\tt vpÅ™ed}& {\tt vzad}\\
 \hline
 0& 10& 5& \\
 1& 21& & \\
@@ -385,41 +385,41 @@ Tabulka z pøedchozího pøíkladu po INSERT(53) bude vypadat takto:
 \end{samepage}
 \vspace{5mm}
 
-Pøi DELETE musíme testovat, zda odstraòovanı prvek není na 1. místì
-svého øetìzce
-a pokud ano a øetìzec má více prvkù, musíme pøesunout jinı prvek z
-tohoto øetìzce na místo odstraòovaného prvku.
+PÅ™i DELETE musÃ­me testovat, zda odstraÅˆovanÃ½ prvek nenÃ­ na 1. mÃ­stÄ›
+svÃ©ho Å™etÄ›zce
+a pokud ano a Å™etÄ›zec mÃ¡ vÃ­ce prvkÅ¯, musÃ­me pÅ™esunout jinÃ½ prvek z
+tohoto Å™etÄ›zce na mÃ­sto odstraÅˆovanÃ©ho prvku.
 
-Jak zjistíme, ¾e jinı prvek $y$ patøí tam, kde je ulo¾en? 
-\mnote{Tady mám zmatek. Zavést lep¹í znaèení.}
-Spoèítat $h(y)$
-mù¾e bıt relativnì pomalé. Pokud {\tt T[i].vzad} nìkam ukazuje, pak
-víme, ¾e $h(y) \ne h(x)$.
+Jak zjistÃ­me, Å¾e jinÃ½ prvek $y$ patÅ™Ã­ tam, kde je uloÅ¾en? 
+\mnote{Tady mÃ¡m zmatek. ZavÃ©st lepÅ¡Ã­ znaÄenÃ­.}
+SpoÄÃ­tat $h(y)$
+mÅ¯Å¾e bÃ½t relativnÄ› pomalÃ©. Pokud {\tt T[i].vzad} nÄ›kam ukazuje, pak
+vÃ­me, Å¾e $h(y) \ne h(x)$.
 
 
 % --------------------------------------------------------------------------
-\section{Ha¹ování se dvìma ukazateli}
+\section{HaÅ¡ovÃ¡nÃ­ se dvÄ›ma ukazateli}
 
-Pøi ha¹ování s pøesuny ztrácíme èas právì tìmi pøesuny, obzvlá¹tì,
-kdy¾ jsou záznamy velké. To motivuje následující implementaci 
-ha¹ování s øetìzci.
+PÅ™i haÅ¡ovÃ¡nÃ­ s pÅ™esuny ztrÃ¡cÃ­me Äas prÃ¡vÄ› tÄ›mi pÅ™esuny, obzvlÃ¡Å¡tÄ›,
+kdyÅ¾ jsou zÃ¡znamy velkÃ©. To motivuje nÃ¡sledujÃ­cÃ­ implementaci 
+haÅ¡ovÃ¡nÃ­ s Å™etÄ›zci.
 
-Pou¾ijeme dva ukazatele, {\tt vpøed} a {\tt zaèátek}:
+PouÅ¾ijeme dva ukazatele, {\tt vpÅ™ed} a {\tt zaÄÃ¡tek}:
 \begin{itemize}
-  \item {\tt T[i].vpøed} je index následujícího prvku v øetìzci, 
-  	kterı je zde ulo¾en. (Nemusí to bıt øetìzec s $h(x)=i$.)
-  \item {\tt T[i].zaèátek} je index zaèátku øetìzce, kterı obsahuje
-  	prvky, jejich¾ $h(x)=i$.
+  \item {\tt T[i].vpÅ™ed} je index nÃ¡sledujÃ­cÃ­ho prvku v Å™etÄ›zci, 
+  	kterÃ½ je zde uloÅ¾en. (NemusÃ­ to bÃ½t Å™etÄ›zec s $h(x)=i$.)
+  \item {\tt T[i].zaÄÃ¡tek} je index zaÄÃ¡tku Å™etÄ›zce, kterÃ½ obsahuje
+  	prvky, jejichÅ¾ $h(x)=i$.
 \end{itemize}
 
 \begin{priklad}
-Nech» $h(x) = x \bmod 10$. Ukládáme prvky 50, 90, 31, 60:
+NechÅ¥ $h(x) = x \bmod 10$. UklÃ¡dÃ¡me prvky 50, 90, 31, 60:
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|l|l|}
 \hline
-& klíè& vpøed& zaèátek\\
+& klÃ­Ä& vpÅ™ed& zaÄÃ¡tek\\
 \hline
 0& 50& 3& 0\\
 1& 31& & 1\\
@@ -440,13 +440,13 @@ Nech» $h(x) = x \bmod 10$. Ukládáme prvky 50, 90, 31, 60:
 \pagebreak
 
 \begin{samepage}
-Pøidáme 42, 72, 45:
+PÅ™idÃ¡me 42, 72, 45:
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|l|l|}
 \hline
-& klíè& vpøed& zaèátek\\
+& klÃ­Ä& vpÅ™ed& zaÄÃ¡tek\\
 \hline
 0& 50& 3& 0\\
 1& 31& & 1\\
@@ -465,24 +465,24 @@ Pøidáme 42, 72, 45:
 
 
 % --------------------------------------------------------------------------
-\section{Ha¹ování s lineárním pøidáváním}
+\section{HaÅ¡ovÃ¡nÃ­ s lineÃ¡rnÃ­m pÅ™idÃ¡vÃ¡nÃ­m}
 
-Jde to i bez ukazatelù.
+Jde to i bez ukazatelÅ¯.
 
-Je dáno $m$ míst, která tvoøí tabulku. Pokud je pøíslu¹né políèko ji¾
-zaplnìno, hledáme cyklicky první volné následující místo a tam
-zapí¹eme. Vhodné pro málo zaplnìnou tabulku ($<60\%$, pro $80\%$ 
-vy¾aduje u¾ hodnì èasu). Témìø nemo¾né DELETE: buï oznaèit místo jako smazané, nebo
-celé pøeha¹ovat. 
+Je dÃ¡no $m$ mÃ­st, kterÃ¡ tvoÅ™Ã­ tabulku. Pokud je pÅ™Ã­sluÅ¡nÃ© polÃ­Äko jiÅ¾
+zaplnÄ›no, hledÃ¡me cyklicky prvnÃ­ volnÃ© nÃ¡sledujÃ­cÃ­ mÃ­sto a tam
+zapÃ­Å¡eme. VhodnÃ© pro mÃ¡lo zaplnÄ›nou tabulku ($<60\%$, pro $80\%$ 
+vyÅ¾aduje uÅ¾ hodnÄ› Äasu). TÃ©mÄ›Å™ nemoÅ¾nÃ© DELETE: buÄ oznaÄit mÃ­sto jako smazanÃ©, nebo
+celÃ© pÅ™ehaÅ¡ovat. 
 
-%\subsection{Oèekávanı poèet testù}
-%(Jenom citace vìty z Knutha, dk na cvièení)
+%\subsection{OÄekÃ¡vanÃ½ poÄet testÅ¯}
+%(Jenom citace vÄ›ty z Knutha, dk na cviÄenÃ­)
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|}
 \hline
-& klíè\\
+& klÃ­Ä\\
 \hline
 0& 120\\
 1& 51\\
@@ -499,13 +499,13 @@ celé pøeha¹ovat.
 
 \vspace{8mm}
 
-Pøidáme 40, 98, 62, 108:
+PÅ™idÃ¡me 40, 98, 62, 108:
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|}
 \hline
-& klíè\\
+& klÃ­Ä\\
 \hline
 0& 120\\
 1& 51\\
@@ -522,20 +522,20 @@ Pøidáme 40, 98, 62, 108:
 
 
 % --------------------------------------------------------------------------
-\section{Ha¹ování se dvìma funkcemi (otevøené h., h. s otevøenou adresací)}
+\section{HaÅ¡ovÃ¡nÃ­ se dvÄ›ma funkcemi (otevÅ™enÃ© h., h. s otevÅ™enou adresacÃ­)}
 
-Pou¾ijeme dvì ha¹ovací funkce, $h_1$ a $h_2$, je zde v¹ak úèelné pøedpokládat, 
-¾e $h_2(i)$ a $m$ jsou nesoudìlné pro ka¾dé $i\in U$. Pøi INSERTu pak hledáme
-nejmen¹í $j$ takové, ¾e $T[h_1(x) + j h_2(x)]$ je volné.
+PouÅ¾ijeme dvÄ› haÅ¡ovacÃ­ funkce, $h_1$ a $h_2$, je zde vÅ¡ak ÃºÄelnÃ© pÅ™edpoklÃ¡dat, 
+Å¾e $h_2(i)$ a $m$ jsou nesoudÄ›lnÃ© pro kaÅ¾dÃ© $i\in U$. PÅ™i INSERTu pak hledÃ¡me
+nejmenÅ¡Ã­ $j$ takovÃ©, Å¾e $T[h_1(x) + j h_2(x)]$ je volnÃ©.
 
 \begin{priklad}
-Mìjme $h_1(x) = x \bmod 10$
+MÄ›jme $h_1(x) = x \bmod 10$
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|}
 \hline
-& klíè\\
+& klÃ­Ä\\
 \hline
 0& 10\\
 1& 31\\
@@ -552,17 +552,17 @@ Mìjme $h_1(x) = x \bmod 10$
 
 \vspace{5mm}
 
-INSERT(100): $h_1(100)=0$ a pøedpokládejme, ¾e $h_2(100)=3$. Volné
-místo najdeme pro $i=1$.
+INSERT(100): $h_1(100)=0$ a pÅ™edpoklÃ¡dejme, Å¾e $h_2(100)=3$. VolnÃ©
+mÃ­sto najdeme pro $i=1$.
 
-INSERT(70): $h_1(70)=0$ a pøedpokládejme, ¾e $h_2(70)=1$. Volné
-místo najdeme pro $i=2$.
+INSERT(70): $h_1(70)=0$ a pÅ™edpoklÃ¡dejme, Å¾e $h_2(70)=1$. VolnÃ©
+mÃ­sto najdeme pro $i=2$.
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|}
 \hline
-& klíè\\
+& klÃ­Ä\\
 \hline
 0& 10\\
 1& 31\\
@@ -580,98 +580,98 @@ místo najdeme pro $i=2$.
 
 \vspace{5mm}
 
-Neuvedli jsme explicitní vzorec pro $h_2$. Její sestavení je toti¾
-slo¾itìj¹í. V¹imnìte si, ¾e nemù¾eme vzít $h_2(100)=4$. V¹echny
-hodnoty $h_2$ toti¾ musí bıt nesoudìlné s velikostí tabulky.
+Neuvedli jsme explicitnÃ­ vzorec pro $h_2$. JejÃ­ sestavenÃ­ je totiÅ¾
+sloÅ¾itÄ›jÅ¡Ã­. VÅ¡imnÄ›te si, Å¾e nemÅ¯Å¾eme vzÃ­t $h_2(100)=4$. VÅ¡echny
+hodnoty $h_2$ totiÅ¾ musÃ­ bÃ½t nesoudÄ›lnÃ© s velikostÃ­ tabulky.
 
 \def\xx{
-Napø.: $h(i) = i \bmod 10$, \( h_1(i) = \begin{cases}
-1 &\text{kdy¾}\ i \equiv 1 \pmod 3 \\
-3 &\text{kdy¾}\ i \equiv 0 \pmod 3 \\
-7 &\text{kdy¾}\ i \equiv 2 \pmod 3
+NapÅ™.: $h(i) = i \bmod 10$, \( h_1(i) = \begin{cases}
+1 &\text{kdyÅ¾}\ i \equiv 1 \pmod 3 \\
+3 &\text{kdyÅ¾}\ i \equiv 0 \pmod 3 \\
+7 &\text{kdyÅ¾}\ i \equiv 2 \pmod 3
 \end{cases}
 \)
 }
 
 \subsection{Algoritmus INSERT}
-% \mnote{Je¹tì rozmyslet znaèení a sjednotit zápis algoritmù}
+% \mnote{JeÅ¡tÄ› rozmyslet znaÄenÃ­ a sjednotit zÃ¡pis algoritmÅ¯}
 
 viz algoritmus \ref{alg:hash1.2fce.insert}.
 
 \begin{algorithm}[!htb]
-\caption{INSERT pro ha¹ování se dvìma funkcemi}
+\caption{INSERT pro haÅ¡ovÃ¡nÃ­ se dvÄ›ma funkcemi}
 \label{alg:hash1.2fce.insert}
 INSERT(x)
 \begin{enumerate}
 \item 
- spoèti $i=h_1(x)$
+ spoÄti $i=h_1(x)$
 \item
- kdy¾ tam $x$ je, pak skonèi\\
- kdy¾ je místo prázdné, vlo¾ tam $x$ a skonèi
+ kdyÅ¾ tam $x$ je, pak skonÄi\\
+ kdyÅ¾ je mÃ­sto prÃ¡zdnÃ©, vloÅ¾ tam $x$ a skonÄi
 \item 
  \begin{algorithmic}
- \IF {$i$-té místo obsazeno prvkem $\ne x$}
- \STATE spoèti $h_2(x)$
+ \IF {$i$-tÃ© mÃ­sto obsazeno prvkem $\ne x$}
+ \STATE spoÄti $h_2(x)$
  \STATE $k = (h_1(x)+h_2(x)) \bmod m$
- \WHILE {$k$-té místo je obsazené prvkem $\ne x$ a $i\ne k$}
+ \WHILE {$k$-tÃ© mÃ­sto je obsazenÃ© prvkem $\ne x$ a $i\ne k$}
    \STATE \quad $k = (k+h_2(x)) \bmod m$
  \ENDWHILE
  \ENDIF
  \end{algorithmic}
 \item
- kdy¾ je $k$-té místo obsazené prvkem $x$, pak nedìlej nic,\\ 
- kdy¾ $i=k$, pak ohla¹ pøeplnìno, jinak vlo¾ $x$ na
- $k$-té místo
+ kdyÅ¾ je $k$-tÃ© mÃ­sto obsazenÃ© prvkem $x$, pak nedÄ›lej nic,\\ 
+ kdyÅ¾ $i=k$, pak ohlaÅ¡ pÅ™eplnÄ›no, jinak vloÅ¾ $x$ na
+ $k$-tÃ© mÃ­sto
 \end{enumerate}
 \end{algorithm}
 
 
-Test $k\ne i$ v kroku 3 brání zacyklení algoritmu. Tento problém má 
-alternativní øe¹ení, nedovolíme vlo¾ení posledního prvku (místo testu v  
-cyklu si pamatujeme údaje navíc). Analogické problémy nastávají 
-u ha¹ování s lineárním pøidáváním. 
+Test $k\ne i$ v kroku 3 brÃ¡nÃ­ zacyklenÃ­ algoritmu. Tento problÃ©m mÃ¡ 
+alternativnÃ­ Å™eÅ¡enÃ­, nedovolÃ­me vloÅ¾enÃ­ poslednÃ­ho prvku (mÃ­sto testu v  
+cyklu si pamatujeme Ãºdaje navÃ­c). AnalogickÃ© problÃ©my nastÃ¡vajÃ­ 
+u haÅ¡ovÃ¡nÃ­ s lineÃ¡rnÃ­m pÅ™idÃ¡vÃ¡nÃ­m. 
 
-Tato metoda pracuje dobøe a¾ do 90\% zaplnìní.
+Tato metoda pracuje dobÅ™e aÅ¾ do 90\% zaplnÄ›nÃ­.
 
-\subsection{Oèekávanı poèet testù}
+\subsection{OÄekÃ¡vanÃ½ poÄet testÅ¯}
 
-Pøedpokládáme, ¾e posloupnost $h_1(x), h_1(x)+h_2(x), h_1(x)+2h_2(x), \dots$
-je náhodná, tedy ¾e pro ka¾dé $x$ mají v¹echny permutace øádkù tabulky stejnou
-pravdìpodobnost, ¾e se stanou touto posloupností.
+PÅ™edpoklÃ¡dÃ¡me, Å¾e posloupnost $h_1(x), h_1(x)+h_2(x), h_1(x)+2h_2(x), \dots$
+je nÃ¡hodnÃ¡, tedy Å¾e pro kaÅ¾dÃ© $x$ majÃ­ vÅ¡echny permutace Å™Ã¡dkÅ¯ tabulky stejnou
+pravdÄ›podobnost, Å¾e se stanou touto posloupnostÃ­.
 
-\subsubsection{pøi neúspì¹ném vyhledávání}
+\subsubsection{pÅ™i neÃºspÄ›Å¡nÃ©m vyhledÃ¡vÃ¡nÃ­}
 
-Oznaèíme jej $C(n,m)$, kde $n$ je velikost reprezentované mno¾iny a
-$m$ je velikost ha¹ovací tabulky.
+OznaÄÃ­me jej $C(n,m)$, kde $n$ je velikost reprezentovanÃ© mnoÅ¾iny a
+$m$ je velikost haÅ¡ovacÃ­ tabulky.
 
-Buï $q_j(n,m)$ pravdìpodobnost, ¾e v tabulce velikosti $m$ s ulo¾enou
-mno¾inou velikosti $n$ jsou pøi INSERT(x) obsazená místa
-$h_1(x)+ih_2(x)$ pro $i=0..j-1$ (tedy øetìzec má alespoò $j$ prvkù).
+BuÄ $q_j(n,m)$ pravdÄ›podobnost, Å¾e v tabulce velikosti $m$ s uloÅ¾enou
+mnoÅ¾inou velikosti $n$ jsou pÅ™i INSERT(x) obsazenÃ¡ mÃ­sta
+$h_1(x)+ih_2(x)$ pro $i=0..j-1$ (tedy Å™etÄ›zec mÃ¡ alespoÅˆ $j$ prvkÅ¯).
 
 \begin{multline}
 C(n,m)	= \sum_{j=0}^n (j+1)(q_j(n,m) - q_{j+1}(n,m) \\
 	=(\sum_{j=0}^n q_j(n,m) ) - (n+1) q_{n+1}(n,m)
 	= \sum_{j=0}^n q_j(n,m)
 \end{multline}
-Proto¾e
+ProtoÅ¾e
 \begin{equation}
 q_j(n,m) = \frac nm \frac{n-1}{m-1} \cdots \frac{n-j+1}{m-j+1}
 	=  \frac nm q_{j-1}(n-1, m-1)
 \end{equation}
 
-dostaneme po dosazení:
+dostaneme po dosazenÃ­:
 \begin{multline}
 \ldots	= 1 + \sum_{j=1}^\infty \frac nm q_{j-1}(n-1, m-1)
 	= 1 + \frac nm \sum_{j=1}^\infty q_{j-1}(n-1, m-1) \\
 	= 1 + \frac nm C(n-1, m-1)
 \end{multline}
 
-Øe¹ením tohoto rekurentního vzorce je
+Å˜eÅ¡enÃ­m tohoto rekurentnÃ­ho vzorce je
 
 \begin{equation}
 C(n,m) = \frac{m+1}{m-n+1}, 
 \end{equation}
-co¾ doká¾eme indukcí:
+coÅ¾ dokÃ¡Å¾eme indukcÃ­:
 \begin{multline}
 C(n,m)	= 1 + \frac nm C(n-1, m-1) \\
 	= 1 + \frac nm \frac{m}{m-n+1} = \frac{m-n+1+n}{m-n+1} 
@@ -679,10 +679,10 @@ C(n,m)	= 1 + \frac nm C(n-1, m-1) \\
 \approx   \frac 1{1-\alpha}
 \end{multline}
 
-\subsubsection{pøi úspì¹ném vyhledávání}
+\subsubsection{pÅ™i ÃºspÄ›Å¡nÃ©m vyhledÃ¡vÃ¡nÃ­}
 
-Souèet oèekávanıch testù v¹ech INSERTù pøes vytváøení reprezentované
-mno¾iny dìlenı velikostí mno¾iny.
+SouÄet oÄekÃ¡vanÃ½ch testÅ¯ vÅ¡ech INSERTÅ¯ pÅ™es vytvÃ¡Å™enÃ­ reprezentovanÃ©
+mnoÅ¾iny dÄ›lenÃ½ velikostÃ­ mnoÅ¾iny.
 \begin{multline}
 = \frac 1n	\sum_{i=0}^{n-1} C(i, m)
 = \frac 1n	\sum_{i=0}^{n-1} \frac{m+1}{m-i+1}
@@ -693,8 +693,8 @@ mno¾iny dìlenı velikostí mno¾iny.
 \approx \frac 1\alpha \ln \frac 1{1-\alpha}
 \end{multline}
 
-Následující tabulka dává oèekávanou dobu vyhledávání pro rùzné 
-zaplnìní ha¹ovací tabulky.
+NÃ¡sledujÃ­cÃ­ tabulka dÃ¡vÃ¡ oÄekÃ¡vanou dobu vyhledÃ¡vÃ¡nÃ­ pro rÅ¯znÃ© 
+zaplnÄ›nÃ­ haÅ¡ovacÃ­ tabulky.
 
 \vspace{5mm}
 
@@ -709,30 +709,30 @@ $\frac 1\alpha \ln \frac 1{1-\alpha}$
 \end{tabular}}
 
 % --------------------------------------------------------------------------
-\section{Srùstající ha¹ování (standardní: LISCH a EISCH)}
+\section{SrÅ¯stajÃ­cÃ­ haÅ¡ovÃ¡nÃ­ (standardnÃ­: LISCH a EISCH)}
 
-\mnote{XXX doplnit odhady pro úspì¹nı/neúspì¹nı pøípad pro EISCH, LISCH, ..
+\mnote{XXX doplnit odhady pro ÃºspÄ›Å¡nÃ½/neÃºspÄ›Å¡nÃ½ pÅ™Ã­pad pro EISCH, LISCH, ..
 z 2003/2004.}
 
-Dal¹í metodou jak øe¹it kolize je neseparovat øetìzce. To znamená, ¾e v
-jednom øetìzci se nyní mohou nacházet prvky, které mají rùzné hodnoty
-ha¹ovací funkce. Proto se této metodì øíká \emph{srùstající ha¹ování}.
-Øetìzce se nepøesouvají, v tabulce tedy nemusí bıt obsa¾ena informace 
-kde zaèíná danı øetìzec.
+DalÅ¡Ã­ metodou jak Å™eÅ¡it kolize je neseparovat Å™etÄ›zce. To znamenÃ¡, Å¾e v
+jednom Å™etÄ›zci se nynÃ­ mohou nachÃ¡zet prvky, kterÃ© majÃ­ rÅ¯znÃ© hodnoty
+haÅ¡ovacÃ­ funkce. Proto se tÃ©to metodÄ› Å™Ã­kÃ¡ \emph{srÅ¯stajÃ­cÃ­ haÅ¡ovÃ¡nÃ­}.
+Å˜etÄ›zce se nepÅ™esouvajÃ­, v tabulce tedy nemusÃ­ bÃ½t obsaÅ¾ena informace 
+kde zaÄÃ­nÃ¡ danÃ½ Å™etÄ›zec.
 
-Tabulka má dvì polo¾ky: klíè a adresu následujícího prvku ({\tt vpøed}). 
-Prvek $s \in S$ je reprezentován v øetìzci, kterı pokraèuje v místì $h(s)$.
+Tabulka mÃ¡ dvÄ› poloÅ¾ky: klÃ­Ä a adresu nÃ¡sledujÃ­cÃ­ho prvku ({\tt vpÅ™ed}). 
+Prvek $s \in S$ je reprezentovÃ¡n v Å™etÄ›zci, kterÃ½ pokraÄuje v mÃ­stÄ› $h(s)$.
 
 \begin{priklad}
 \label{priklad:srust.hash}
-Opìt pou¾ijeme ha¹ovací funkci $h(x) = x \mod 10$.
-V následující tabulce jsou srostlé øetìzce pro hodnoty 0 a 3 funkce $h$:
+OpÄ›t pouÅ¾ijeme haÅ¡ovacÃ­ funkci $h(x) = x \mod 10$.
+V nÃ¡sledujÃ­cÃ­ tabulce jsou srostlÃ© Å™etÄ›zce pro hodnoty 0 a 3 funkce $h$:
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|l|}
 \hline
-& klíè& {\tt vpøed}\\
+& klÃ­Ä& {\tt vpÅ™ed}\\
 \hline
 0& 10& 3\\
 1& 21& \\
@@ -755,34 +755,34 @@ V následující tabulce jsou srostlé øetìzce pro hodnoty 0 a 3 funkce $h$:
 viz algoritmus \ref{alg:hash1.srust.insert}
 
 \begin{algorithm}[!htb]
-\caption{INSERT pro srùstající ha¹ování}
+\caption{INSERT pro srÅ¯stajÃ­cÃ­ haÅ¡ovÃ¡nÃ­}
 \label{alg:hash1.srust.insert}
 INSERT(x)
 \begin{enumerate}
 \item
- spoèti $i=h(x)$
+ spoÄti $i=h(x)$
 \item
- prohledej øetìzec zaèínající na místì $i$ a pokud nenajde¹ $x$,
- pøidej ho do tabulky a pøipoj ho do toho øetìzce.
+ prohledej Å™etÄ›zec zaÄÃ­najÃ­cÃ­ na mÃ­stÄ› $i$ a pokud nenajdeÅ¡ $x$,
+ pÅ™idej ho do tabulky a pÅ™ipoj ho do toho Å™etÄ›zce.
 \end{enumerate}
 \end{algorithm}
 
-Kam do toho øetìzce máme pøipojit novı prvek? (To je jiná otázka, ne¾
-které volné místo zvolit.) Metoda LISCH (\emph{late insert standard 
-coalesced hashing}) ho pøipojí na poslední místo øetìzce, 
+Kam do toho Å™etÄ›zce mÃ¡me pÅ™ipojit novÃ½ prvek? (To je jinÃ¡ otÃ¡zka, neÅ¾
+kterÃ© volnÃ© mÃ­sto zvolit.) Metoda LISCH (\emph{late insert standard 
+coalesced hashing}) ho pÅ™ipojÃ­ na poslednÃ­ mÃ­sto Å™etÄ›zce, 
 metoda EISCH (\emph{early insert standard coalesced hashing}) 
-ho pøipojí hned za $h(x)$-té místo.
+ho pÅ™ipojÃ­ hned za $h(x)$-tÃ© mÃ­sto.
 
 \begin{priklad}
-Po provedení operací
-LISCH INSERT(103), EISCH INSERT(94) bude tabulka z pøíkladu
+Po provedenÃ­ operacÃ­
+LISCH INSERT(103), EISCH INSERT(94) bude tabulka z pÅ™Ã­kladu
 \ref{priklad:srust.hash} vypadat takto:
 
 \vspace{5mm}
 
 \begin{tabular}{|l|l|l|}
 \hline
-& klíè& {\tt vpøed}\\
+& klÃ­Ä& {\tt vpÅ™ed}\\
 \hline
 0& 10& 3\\
 1& 21& \\
@@ -801,9 +801,9 @@ LISCH INSERT(103), EISCH INSERT(94) bude tabulka z pøíkladu
 \vspace{5mm}
 
 \begin{pozn}
-Pøi úspì¹ném vyhledání je EISCH asi o 15\% rychlej¹í ne¾ LISCH. (Pøi
-neúspì¹ném jsou samozøejmì shodné, proto¾e v obou pøípadech je nutné 
-projít celı øetìzec.)
+PÅ™i ÃºspÄ›Å¡nÃ©m vyhledÃ¡nÃ­ je EISCH asi o 15\% rychlejÅ¡Ã­ neÅ¾ LISCH. (PÅ™i
+neÃºspÄ›Å¡nÃ©m jsou samozÅ™ejmÄ› shodnÃ©, protoÅ¾e v obou pÅ™Ã­padech je nutnÃ© 
+projÃ­t celÃ½ Å™etÄ›zec.)
 \end{pozn}
 
 % XXX co s timto ?
@@ -811,31 +811,31 @@ projít celı øetìzec.)
 \subsection{Algoritmus MEMBER}
 \subsection{Algoritmus INSERT LISCH}
 \subsection{Algoritmus INSERT EISCH}
-\subsection{Oèekávanı poèet testù}
-(Jenom citace vìty z~\cite{Vitter-Chen})
+\subsection{OÄekÃ¡vanÃ½ poÄet testÅ¯}
+(Jenom citace vÄ›ty z~\cite{Vitter-Chen})
 }
 
 % --------------------------------------------------------------------------
-\section{Srùstající ha¹ování s pomocnou pamìtí (obecné: LICH, EICH, VICH)}
+\section{SrÅ¯stajÃ­cÃ­ haÅ¡ovÃ¡nÃ­ s pomocnou pamÄ›tÃ­ (obecnÃ©: LICH, EICH, VICH)}
 
-Standardní srùstající ha¹ování má tu nevıhodu, ¾e se pøi vìt¹ím
-zaplnìní tabulky mohou vytvoøit dlouhé øetìzce. Tabulku tedy prodlou¾íme o
+StandardnÃ­ srÅ¯stajÃ­cÃ­ haÅ¡ovÃ¡nÃ­ mÃ¡ tu nevÃ½hodu, Å¾e se pÅ™i vÄ›tÅ¡Ã­m
+zaplnÄ›nÃ­ tabulky mohou vytvoÅ™it dlouhÃ© Å™etÄ›zce. Tabulku tedy prodlouÅ¾Ã­me o
 % tady bylo {\uv sklep} ale nejak to nefunguje XXX
-pomocnou pamìt (tzv. \emph{sklep}), do které se nedostane ha¹ovací funkce, a
-kolidující prvky pøidáváme odspodu. Øetìzce tedy srostou a¾ po
-zaplnìní sklepa.
+pomocnou pamÄ›t (tzv. \emph{sklep}), do kterÃ© se nedostane haÅ¡ovacÃ­ funkce, a
+kolidujÃ­cÃ­ prvky pÅ™idÃ¡vÃ¡me odspodu. Å˜etÄ›zce tedy srostou aÅ¾ po
+zaplnÄ›nÃ­ sklepa.
 
-Opìt existují varianty pøipojení nového prvku do øetìzce: LICH a EICH
-jsou analogické k LISCH a EISCH. VICH (\emph{variable insert coalesced
-hashing}) pøipojuje na konec øetìzce, jestli¾e øetìzec konèí ve sklepì,
-jinak na místo, kde øetìzec opustil sklep.
+OpÄ›t existujÃ­ varianty pÅ™ipojenÃ­ novÃ©ho prvku do Å™etÄ›zce: LICH a EICH
+jsou analogickÃ© k LISCH a EISCH. VICH (\emph{variable insert coalesced
+hashing}) pÅ™ipojuje na konec Å™etÄ›zce, jestliÅ¾e Å™etÄ›zec konÄÃ­ ve sklepÄ›,
+jinak na mÃ­sto, kde Å™etÄ›zec opustil sklep.
 
 % opet, samepage nefunguje
 \pagebreak
 
 \begin{samepage}
 \begin{priklad}
-Provedeme operaci INSERT pro následující posloupnost prvkù:
+Provedeme operaci INSERT pro nÃ¡sledujÃ­cÃ­ posloupnost prvkÅ¯:
 10, 41, 60, 70, 71, 90, 69, 40, 79. Tabulka pak bude vypadat takto:
 
 % XXX \newcommand{\x}[1]{(#1)}
@@ -847,7 +847,7 @@ Provedeme operaci INSERT pro následující posloupnost prvkù:
    \multicolumn{2}{|c||}{EICH}&
    \multicolumn{2}{|c|}{VICH}\\
 \hline
- & klíè& {\tt vpøed} & klíè& {\tt vpøed} & klíè& {\tt vpøed}\\
+ & klÃ­Ä& {\tt vpÅ™ed} & klÃ­Ä& {\tt vpÅ™ed} & klÃ­Ä& {\tt vpÅ™ed}\\
 \hline
 0&	10& 12&		10& (12)(11)(9)7& 10& 12\\
 1&	41& 10&		41& 10&		41& 10\\
@@ -868,14 +868,14 @@ Provedeme operaci INSERT pro následující posloupnost prvkù:
 
 \vspace{5mm}
 
-Sklep je od "hlavní èásti" tabulky odli¹en èarou.
+Sklep je od "hlavnÃ­ ÄÃ¡sti" tabulky odliÅ¡en Äarou.
 \end{priklad}
 \end{samepage}
 
 \def\xx{%commented out
 \begin{tabular}{|l|l|l|}
 \hline
-& klíè& {\tt vpøed}\\
+& klÃ­Ä& {\tt vpÅ™ed}\\
 \hline
 0& 10& 10\\
 1& 41& 12\\
@@ -901,24 +901,24 @@ Sklep je od "hlavní èásti" tabulky odli¹en èarou.
 viz algoritmus \ref{alg:hash1.srust.pomoc.delete}
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro srùstající ha¹ování s pomocnou pamìtí}
+\caption{DELETE pro srÅ¯stajÃ­cÃ­ haÅ¡ovÃ¡nÃ­ s pomocnou pamÄ›tÃ­}
 \label{alg:hash1.srust.pomoc.delete}
 \begin{enumerate}
-\item spoèítáme $h(x)$ a prohledáme øetìzec zaèínající na adrese $h(x)$. \\
-kdy¾ neobsahuje $x$ $\rightarrow$ konec.
-\item kdy¾ $x$ je na adrese $h(x)$ a v øetìzci následuje prvek v pomocné èásti
-tabulky (sklepì) - odstraníme $x$. Prvek, kterı následuje za $x$ pøesuneme 
-na místo $h(x)$ a uvolníme jeho místo - konec.
-\item $x$ je ve sklepì - zjístíme, zda se nachází v øetìzci mimo sklep prvek
-s ha¹ovací hodnotou $h(x)$ - pokud neexistuje, pøesuneme poslední prvek v
-øetìzci, kterı je ve sklepì na místo $x$ a místo posledního prvku uvolníme.
+\item spoÄÃ­tÃ¡me $h(x)$ a prohledÃ¡me Å™etÄ›zec zaÄÃ­najÃ­cÃ­ na adrese $h(x)$. \\
+kdyÅ¾ neobsahuje $x$ $\rightarrow$ konec.
+\item kdyÅ¾ $x$ je na adrese $h(x)$ a v Å™etÄ›zci nÃ¡sleduje prvek v pomocnÃ© ÄÃ¡sti
+tabulky (sklepÄ›) - odstranÃ­me $x$. Prvek, kterÃ½ nÃ¡sleduje za $x$ pÅ™esuneme 
+na mÃ­sto $h(x)$ a uvolnÃ­me jeho mÃ­sto - konec.
+\item $x$ je ve sklepÄ› - zjÃ­stÃ­me, zda se nachÃ¡zÃ­ v Å™etÄ›zci mimo sklep prvek
+s haÅ¡ovacÃ­ hodnotou $h(x)$ - pokud neexistuje, pÅ™esuneme poslednÃ­ prvek v
+Å™etÄ›zci, kterÃ½ je ve sklepÄ› na mÃ­sto $x$ a mÃ­sto poslednÃ­ho prvku uvolnÃ­me.
 \par
-Kdy¾ takovı prvek existuje, vezmeme první prvek s touto vlastností.
-Oznaème ho $y$, pak $y$ pøeneseme na místo $x$ a budeme chtít uvolnit místo
-prvku $y$. (obraznì øeèeno $x$ a $y$ v øetìzci prohodíme)
-\item $x$ je v èásti, kam mù¾e ha¹ovací funkce a øetezec v této èásti
-pokraèuje. pak $x$ odstraníme a prvky za $x$ zaha¹ujeme do tabulky v poøadí
-jak se do ní ukládaly a pokud vzniká kolize, umístíme je zpátky na místo,
+KdyÅ¾ takovÃ½ prvek existuje, vezmeme prvnÃ­ prvek s touto vlastnostÃ­.
+OznaÄme ho $y$, pak $y$ pÅ™eneseme na mÃ­sto $x$ a budeme chtÃ­t uvolnit mÃ­sto
+prvku $y$. (obraznÄ› Å™eÄeno $x$ a $y$ v Å™etÄ›zci prohodÃ­me)
+\item $x$ je v ÄÃ¡sti, kam mÅ¯Å¾e haÅ¡ovacÃ­ funkce a Å™etezec v tÃ©to ÄÃ¡sti
+pokraÄuje. pak $x$ odstranÃ­me a prvky za $x$ zahaÅ¡ujeme do tabulky v poÅ™adÃ­
+jak se do nÃ­ uklÃ¡daly a pokud vznikÃ¡ kolize, umÃ­stÃ­me je zpÃ¡tky na mÃ­sto,
 kde byly.
 \end{enumerate}
 \end{algorithm}
@@ -927,27 +927,27 @@ kde byly.
 \pagebreak
 
 \begin{priklad}
-Pou¾ijeme ha¹ovací funkci $h(x) = x \mod 10$
+PouÅ¾ijeme haÅ¡ovacÃ­ funkci $h(x) = x \mod 10$
 
 Provedeme operaci DELETE na prvky 41, 42.
 \mnote{? 42 v puv. tabulce nebylo XXX sehnat puvodni priklad}
 
 \begin{itemize}
 \item metoda LICH: \\
-odstraníme prvky 62,78,82,52 z øetìzce a provedeme postupnì 
+odstranÃ­me prvky 62,78,82,52 z Å™etÄ›zce a provedeme postupnÄ› 
 INSERT: 62,78,82,52
 
 \item metoda VICH: \\
-odstraníme 62,78,82,52 a provedeme INSERT: 82,62,78,52.
-pokud bychom provedli INSERT 82,62,52,78, pak bychom nepoznali, v jakém to
-bylo v tabulce poøadí.
+odstranÃ­me 62,78,82,52 a provedeme INSERT: 82,62,78,52.
+pokud bychom provedli INSERT 82,62,52,78, pak bychom nepoznali, v jakÃ©m to
+bylo v tabulce poÅ™adÃ­.
 \end{itemize}
 
 \vspace{5mm}
 
 \begin{tabular}{|l||l|l|}
 \hline
- & klíè& {\tt vpøed} \\
+ & klÃ­Ä& {\tt vpÅ™ed} \\
 \hline
 0&	& \\
 1&	11& 10\\
@@ -970,74 +970,74 @@ bylo v tabulce poøadí.
 \vspace{5mm}
 
 
-\subsection{Srovnávací graf}
+\subsection{SrovnÃ¡vacÃ­ graf}
 
 XXX
-\mnote{Nascanovat obrázek z Vittera a Chena~\cite{Vitter-Chen}}
+\mnote{Nascanovat obrÃ¡zek z Vittera a Chena~\cite{Vitter-Chen}}
 
 
 % --------------------------------------------------------------------------
-\section{Srovnání metod}
+\section{SrovnÃ¡nÃ­ metod}
 
-Zde uvádíme porovnání podle poètu testù, proto¾e to se dá
-{\em vypoèítat}. Doba bìhu se musí {\em mìøit}.
+Zde uvÃ¡dÃ­me porovnÃ¡nÃ­ podle poÄtu testÅ¯, protoÅ¾e to se dÃ¡
+{\em vypoÄÃ­tat}. Doba bÄ›hu se musÃ­ {\em mÄ›Å™it}.
 
-\subsection{Poøadí podle neúspì¹ného pøípadu}
+\subsection{PoÅ™adÃ­ podle neÃºspÄ›Å¡nÃ©ho pÅ™Ã­padu}
 
 \begin{samepage}
-V neúspì¹ném pøípadì:
+V neÃºspÄ›Å¡nÃ©m pÅ™Ã­padÄ›:
 \begin{enumerate}
-\item h. s uspoøádanımi øetìzci (nejlep¹í)
-\item h. s pøesuny
-\item VICH=LICH a h. se 2 ukazateli (VICH je lep¹í a¾ do $\alpha=3/4$)
+\item h. s uspoÅ™Ã¡danÃ½mi Å™etÄ›zci (nejlepÅ¡Ã­)
+\item h. s pÅ™esuny
+\item VICH=LICH a h. se 2 ukazateli (VICH je lepÅ¡Ã­ aÅ¾ do $\alpha=3/4$)
 \item EICH
-\item LISCH=EISCH (a¾ sem je v¹e $O(1)$)
+\item LISCH=EISCH (aÅ¾ sem je vÅ¡e $O(1)$)
 \item h. se 2 funkcemi
-\item h. s lineárním pøidáváním (nejhor¹í)
+\item h. s lineÃ¡rnÃ­m pÅ™idÃ¡vÃ¡nÃ­m (nejhorÅ¡Ã­)
 \end{enumerate}
 \end{samepage}
 
 
-\subsection{Poèet testù pro zaplnìnou tabulku}
+\subsection{PoÄet testÅ¯ pro zaplnÄ›nou tabulku}
 
-Poèet testù pro úplnì zaplnìnou tabulku ($m=n$ nebo $m=n-1$)
+PoÄet testÅ¯ pro ÃºplnÄ› zaplnÄ›nou tabulku ($m=n$ nebo $m=n-1$)
 
 \vspace{5mm}
 
-\mnote{co znamenají èísla v pravém sloupci ?}
+\mnote{co znamenajÃ­ ÄÃ­sla v pravÃ©m sloupci ?}
 \begin{tabular}{|l|l|}
 \hline
 typ	& XXX \\
 \hline
-h. s pøesuny&		1.5\\
+h. s pÅ™esuny&		1.5\\
 h. se 2 ukazateli&	1.6\\
 VICH=LICH&		1.8\\
 EICH&			1.92\\
 LISCH=EISCH&		2.1\\
 \hline
 h. se 2 funkcemi&	$n$\\
-h. s lineárním pøidáváním&$n$\\
+h. s lineÃ¡rnÃ­m pÅ™idÃ¡vÃ¡nÃ­m&$n$\\
 \hline
 \end{tabular}
 
 %\vspace{5mm}
 %\bigskip
 
-\subsection{Poèet testù vyjádøenı vzorcem}
+\subsection{PoÄet testÅ¯ vyjÃ¡dÅ™enÃ½ vzorcem}
 
 \begin{tabular}{|l|l|l|}
 \hline
-typ &úspì¹né vyhledání &neúspì¹né hledání\\
+typ &ÃºspÄ›Å¡nÃ© vyhledÃ¡nÃ­ &neÃºspÄ›Å¡nÃ© hledÃ¡nÃ­\\
 \hline
-s øetìzci &$ 1+\frac\alpha2 $ &$e^{-\alpha} + \alpha$\\
-s uspoøádanımi øetìzci &$ 1+\frac\alpha2 $ &
+s Å™etÄ›zci &$ 1+\frac\alpha2 $ &$e^{-\alpha} + \alpha$\\
+s uspoÅ™Ã¡danÃ½mi Å™etÄ›zci &$ 1+\frac\alpha2 $ &
 	$e^{-\alpha} + 1 + \frac\alpha2 - \frac1\alpha (1-e^\alpha)$\\
-s pøemis»ováním &$ 1+\frac\alpha2 $ &$e^{-\alpha} + \alpha$\\
+s pÅ™emisÅ¥ovÃ¡nÃ­m &$ 1+\frac\alpha2 $ &$e^{-\alpha} + \alpha$\\
 se 2 ukazateli &$ 1 + \frac\alpha2 + \frac{\alpha^2}2 $ &
 	$1 + \frac{\alpha^2}2 + \alpha + e^{-\alpha}(2+\alpha) - 2$\\
-s lineárním pøidáváním &$\frac12 (1 + \frac1{1-\alpha})$ &
+s lineÃ¡rnÃ­m pÅ™idÃ¡vÃ¡nÃ­m &$\frac12 (1 + \frac1{1-\alpha})$ &
 	$\frac12 (1 + {(\frac1{1-\alpha})}^2 )$\\
-dvojité ha¹ování &$\frac 1\alpha \ln \frac 1{1-\alpha}$ &$\frac 1{1-\alpha}$\\
+dvojitÃ© haÅ¡ovÃ¡nÃ­ &$\frac 1\alpha \ln \frac 1{1-\alpha}$ &$\frac 1{1-\alpha}$\\
 LISCH &\(\begin{aligned}
 	 1 + \frac 1{8\alpha} (e^{2\alpha}-1-2\alpha)\\ + \frac14 \alpha
 	\end{aligned}
@@ -1051,46 +1051,46 @@ EISCH &$\frac 1\alpha (e^\alpha - 1)$&
 \vspace{10mm}
 
 % mimo tabulku, jinak to je hnus
-LICH úspì¹né: 
+LICH ÃºspÄ›Å¡nÃ©: 
  \(
  \begin{cases}
   1+ \frac \alpha{2\beta}
-	&\text{kdy¾ } \alpha \leq \lambda\beta\\
+	&\text{kdyÅ¾ } \alpha \leq \lambda\beta\\
   1
   +\frac\beta{8\alpha}(e^{2(\alpha/\beta-\lambda)}-1-2(\alpha/\beta-\lambda))\\
   \qquad \times (3 - \frac2\beta + 2\lambda)\\
   \quad + \frac14 (\frac\alpha\beta + \lambda)
   + \frac\lambda4 (1 - \frac{\lambda\beta}\alpha)
-	&\text{kdy¾ } \alpha \geq \lambda\beta
+	&\text{kdyÅ¾ } \alpha \geq \lambda\beta
  \end{cases}
  \)
 
-LICH neúspì¹né: 
+LICH neÃºspÄ›Å¡nÃ©: 
  \(
  \begin{cases}
 	e^{-\alpha/\beta} + \frac\alpha\beta 
-		&\text{kdy¾ } \alpha \leq \lambda\beta\\
+		&\text{kdyÅ¾ } \alpha \leq \lambda\beta\\
 	\frac1\beta
 	+ \frac14 (e^{2(\alpha/\beta-\lambda)}-1)(3 - \frac2\beta + 2\lambda)\\
 	\quad - \frac12 (\alpha/\beta - \lambda)
-		&\text{kdy¾ } \alpha \geq \lambda\beta 
+		&\text{kdyÅ¾ } \alpha \geq \lambda\beta 
  \end{cases}
  \),
 
-kde $\beta = \frac m{m'}$ je podíl adresové èásti tabulky na její
-celkové velikosti
-a $\lambda$ je jediné nezáporné øe¹ení rovnice 
+kde $\beta = \frac m{m'}$ je podÃ­l adresovÃ© ÄÃ¡sti tabulky na jejÃ­
+celkovÃ© velikosti
+a $\lambda$ je jedinÃ© nezÃ¡pornÃ© Å™eÅ¡enÃ­ rovnice 
 $e^{-\lambda} + \lambda = \frac1\beta$.
 
 
 % --------------------------------------------------------------------------
-\section{Pøeha¹ovávání}
+\section{PÅ™ehaÅ¡ovÃ¡vÃ¡nÃ­}
 
-V pøedchozích metodách jsme narazili na pøípady, ¾e pøi velkém
-zaplnìní tabulky je nutné ji pøeha¹ovat. Zde si uká¾eme metodu, jak se to
-dìlá.
+V pÅ™edchozÃ­ch metodÃ¡ch jsme narazili na pÅ™Ã­pady, Å¾e pÅ™i velkÃ©m
+zaplnÄ›nÃ­ tabulky je nutnÃ© ji pÅ™ehaÅ¡ovat. Zde si ukÃ¡Å¾eme metodu, jak se to
+dÄ›lÃ¡.
 
-Máme ha¹ovací funkce: $h_0$ ha¹uje do tabulky velikosti $m = 2^0 m$,
+MÃ¡me haÅ¡ovacÃ­ funkce: $h_0$ haÅ¡uje do tabulky velikosti $m = 2^0 m$,
 $h_1$ do $2m = 2^1 m$, $h_2$ do $4m = 2^2 m$ \ldots, $h_i$ do $2^i
 m$.
 
@@ -1100,41 +1100,41 @@ m$.
 
 \begin{samepage}
 \noindent
-Mno¾inu $S$ reprezentujeme takto:
+MnoÅ¾inu $S$ reprezentujeme takto:
 
-Ulo¾ena je velikost $S$ a èíslo $i$ takové, ¾e
+UloÅ¾ena je velikost $S$ a ÄÃ­slo $i$ takovÃ©, Å¾e
 \begin{equation}
 \label{prehas}
 2^{i-2} m < |S| < 2^i m
 \end{equation}
-a S je zaha¹ována funkcí $h_i$.
+a S je zahaÅ¡ovÃ¡na funkcÃ­ $h_i$.
 \end{samepage}
 
 \subsection{MEMBER}
 
-MEMBER funguje normálnì, pøi INSERT a DELETE kontrolujeme poru¹ení
-podmínky \eqref{prehas} a pøípadnì pøeha¹ujeme pro $i \pm 1$:
+MEMBER funguje normÃ¡lnÄ›, pÅ™i INSERT a DELETE kontrolujeme poruÅ¡enÃ­
+podmÃ­nky \eqref{prehas} a pÅ™Ã­padnÄ› pÅ™ehaÅ¡ujeme pro $i \pm 1$:
 
 \subsection{INSERT}
 
-Provedeme operaci INSERT a kdy¾ máme pøidat prvek, testujeme,
-zda $|S|+1 < 2^i m$. Pokud nerovnost platí, dokonèíme INSERT. Pokud
-neplatí, zvìt¹íme $i$ o 1 a spoèítáme ulo¾ení $S \cup \{x\}$ vzhledem
-k nové ha¹ovací funkci $h_i$.
+Provedeme operaci INSERT a kdyÅ¾ mÃ¡me pÅ™idat prvek, testujeme,
+zda $|S|+1 < 2^i m$. Pokud nerovnost platÃ­, dokonÄÃ­me INSERT. Pokud
+neplatÃ­, zvÄ›tÅ¡Ã­me $i$ o 1 a spoÄÃ­tÃ¡me uloÅ¾enÃ­ $S \cup \{x\}$ vzhledem
+k novÃ© haÅ¡ovacÃ­ funkci $h_i$.
 
 \subsection{DELETE}
 
-Provedeme operaci DELETE a kdy¾ máme odstranit prvek, testujeme,
-zda $i>0$ a $|S|-1 = 2^{i-2} m$. Pokud rovnost neplatí, dokonèíme DELETE. Pokud
-platí, zmen¹íme $i$ o 1 a spoèítáme ulo¾ení $S - \{x\}$ vzhledem
-k nové ha¹ovací funkci $h_i$.
+Provedeme operaci DELETE a kdyÅ¾ mÃ¡me odstranit prvek, testujeme,
+zda $i>0$ a $|S|-1 = 2^{i-2} m$. Pokud rovnost neplatÃ­, dokonÄÃ­me DELETE. Pokud
+platÃ­, zmenÅ¡Ã­me $i$ o 1 a spoÄÃ­tÃ¡me uloÅ¾enÃ­ $S - \{x\}$ vzhledem
+k novÃ© haÅ¡ovacÃ­ funkci $h_i$.
 
-\subsection{Slo¾itost}
+\subsection{SloÅ¾itost}
 
-Tato metoda má malou amortizovanou slo¾itost. Kdy¾ se spoèítá ha¹ovací 
-tabulka pro novou ha¹ovací funkci $h_i$, pak obsahuje $2^{i-1}m$ prvkù a 
-proto je tøeba alespoò $2^{i-2}m$ úspì¹nıch operací DELETE nebo $2^{i-1}m$ 
-úspì¹nıch operací INSERT, abychom pøepoèítávali tabulku pro jinou ha¹ovací 
-funkci. Tedy amortizovaná slo¾itost pøepoèítávání tabulky je $O(1)$ (tato 
-metoda není vhodná pro práci v interaktivním re¾imu).
+Tato metoda mÃ¡ malou amortizovanou sloÅ¾itost. KdyÅ¾ se spoÄÃ­tÃ¡ haÅ¡ovacÃ­ 
+tabulka pro novou haÅ¡ovacÃ­ funkci $h_i$, pak obsahuje $2^{i-1}m$ prvkÅ¯ a 
+proto je tÅ™eba alespoÅˆ $2^{i-2}m$ ÃºspÄ›Å¡nÃ½ch operacÃ­ DELETE nebo $2^{i-1}m$ 
+ÃºspÄ›Å¡nÃ½ch operacÃ­ INSERT, abychom pÅ™epoÄÃ­tÃ¡vali tabulku pro jinou haÅ¡ovacÃ­ 
+funkci. Tedy amortizovanÃ¡ sloÅ¾itost pÅ™epoÄÃ­tÃ¡vÃ¡nÃ­ tabulky je $O(1)$ (tato 
+metoda nenÃ­ vhodnÃ¡ pro prÃ¡ci v interaktivnÃ­m reÅ¾imu).
 

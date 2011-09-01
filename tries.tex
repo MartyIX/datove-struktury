@@ -1,87 +1,87 @@
-% Souèást skript na Datové struktury. Viz main.tex
+% SouÄÃ¡st skript na DatovÃ© struktury. Viz main.tex
 \markright{$ $Id$ $}
 
 \chapter{Trie}
 
-\emph{Trie}\footnote{Název \emph{trie} pochází z anglického 
-"re{\bf trie}val", tedy vyzvednutí. Názory na to, jak vyslovovat 
-"trie" se rùzní. V èe¹tinì se zpravidla vyslovuje tak jak se pí¹e.} 
-je rovinná implementace slovníku.
+\emph{Trie}\footnote{NÃ¡zev \emph{trie} pochÃ¡zÃ­ z anglickÃ©ho 
+"re{\bf trie}val", tedy vyzvednutÃ­. NÃ¡zory na to, jak vyslovovat 
+"trie" se rÅ¯znÃ­. V ÄeÅ¡tinÄ› se zpravidla vyslovuje tak jak se pÃ­Å¡e.} 
+je rovinnÃ¡ implementace slovnÃ­ku.
 
-Máme abecedu $\Sigma$ velikosti $k$. Universum jsou v¹echna slova nad
-$\Sigma$ délky právì $l$ (nekoneènou mno¾inu si nemù¾eme dovolit a
-krat¹í slova doplníme zprava mezerami). Chceme reprezentovat mno¾inu
+MÃ¡me abecedu $\Sigma$ velikosti $k$. Universum jsou vÅ¡echna slova nad
+$\Sigma$ dÃ©lky prÃ¡vÄ› $l$ (nekoneÄnou mnoÅ¾inu si nemÅ¯Å¾eme dovolit a
+kratÅ¡Ã­ slova doplnÃ­me zprava mezerami). Chceme reprezentovat mnoÅ¾inu
 slov $S \subseteq U$.
 
 
 % --------------------------------------------------------------------------
 
-\section{Základní varianta}
+\section{ZÃ¡kladnÃ­ varianta}
 
 \begin{defn}
-\emph{Trie} nad $\Sigma$ je koneènı strom, jeho¾ ka¾dı vnitøní
-vrchol má právì $k$ synù, které jsou jednoznaènì ohodnoceny prvky $\Sigma$.
-Ka¾dému vnitønímu vrcholu trie odpovídá slovo nad $\Sigma$ délky
-nejvı¹e $l$: koøenu
-odpovídá prázdné slovo $\Lambda$; kdy¾ vrcholu $v$ odpovídá slovo
-$\alpha$, pak $v[a]$, synu $v$ ohodnocenému písmenem $a$, odpovídá
+\emph{Trie} nad $\Sigma$ je koneÄnÃ½ strom, jehoÅ¾ kaÅ¾dÃ½ vnitÅ™nÃ­
+vrchol mÃ¡ prÃ¡vÄ› $k$ synÅ¯, kterÃ© jsou jednoznaÄnÄ› ohodnoceny prvky $\Sigma$.
+KaÅ¾dÃ©mu vnitÅ™nÃ­mu vrcholu trie odpovÃ­dÃ¡ slovo nad $\Sigma$ dÃ©lky
+nejvÃ½Å¡e $l$: koÅ™enu
+odpovÃ­dÃ¡ prÃ¡zdnÃ© slovo $\Lambda$; kdyÅ¾ vrcholu $v$ odpovÃ­dÃ¡ slovo
+$\alpha$, pak $v[a]$, synu $v$ ohodnocenÃ©mu pÃ­smenem $a$, odpovÃ­dÃ¡
 slovo $\alpha a$.
 \end{defn}
 
 \newcommand{\Nal}{\textrm{Nal}}
 \begin{defn}
-Øekneme, ¾e trie nad $\Sigma$ \emph{reprezentuje mno¾inu} $S$, kdy¾:
+Å˜ekneme, Å¾e trie nad $\Sigma$ \emph{reprezentuje mnoÅ¾inu} $S$, kdyÅ¾:
 \begin{itemize}
-  \item Listùm je pøiøazena boolovská funkce nále¾ení \Nal: $\Nal(t)$ je
-  	true právì kdy¾ slovo, které odpovídá listu $t$, je v $S$.
-  \item (\emph{prefixová podmínka}) Kdy¾ $v$ je vnitøní vrchol trie 
-	odpovídající slovu $\alpha$, pak
-  	existuje $\beta \in S$ takové, ¾e $\alpha$ je prefix $\beta$.
-  \item Pro ka¾dé slovo $\alpha \in S$ existuje v trie list odpovídající
+  \item ListÅ¯m je pÅ™iÅ™azena boolovskÃ¡ funkce nÃ¡leÅ¾enÃ­ \Nal: $\Nal(t)$ je
+  	true prÃ¡vÄ› kdyÅ¾ slovo, kterÃ© odpovÃ­dÃ¡ listu $t$, je v $S$.
+  \item (\emph{prefixovÃ¡ podmÃ­nka}) KdyÅ¾ $v$ je vnitÅ™nÃ­ vrchol trie 
+	odpovÃ­dajÃ­cÃ­ slovu $\alpha$, pak
+  	existuje $\beta \in S$ takovÃ©, Å¾e $\alpha$ je prefix $\beta$.
+  \item Pro kaÅ¾dÃ© slovo $\alpha \in S$ existuje v trie list odpovÃ­dajÃ­cÃ­
   	$\alpha$.
 \end{itemize}
 \end{defn}
 
 % podle http://en.wikipedia.org/wiki/Trie
 \begin{pozn}
-Na rozdíl od binárního vyhledávacího stromu (viz kapitola~\ref{bvs},
-sekce~\ref{bvs:obecne}), ¾ádnı vrchol ve stromì neobsahuje ulo¾enı klíè,
-kterı reprezentuje. Namísto toho jeho pozice ve stromì udává klíè, kterı
-reprezentuje\footnote{Tato a následující poznámka jsou volnì pøevzaty z
+Na rozdÃ­l od binÃ¡rnÃ­ho vyhledÃ¡vacÃ­ho stromu (viz kapitola~\ref{bvs},
+sekce~\ref{bvs:obecne}), Å¾Ã¡dnÃ½ vrchol ve stromÄ› neobsahuje uloÅ¾enÃ½ klÃ­Ä,
+kterÃ½ reprezentuje. NamÃ­sto toho jeho pozice ve stromÄ› udÃ¡vÃ¡ klÃ­Ä, kterÃ½
+reprezentuje\footnote{Tato a nÃ¡sledujÃ­cÃ­ poznÃ¡mka jsou volnÄ› pÅ™evzaty z
 encyklopedie Wikipedia, heslo Trie.}. 
-Pouze nìkteré vrcholy ve stromì obsahují data - napø. pro
-implementaci slovníku s hesly by data ulo¾ená v listech obsahovala popis
-tohoho hesla\footnote{Napø. slovník spisovatelù, kde listy ve trie by
-odpovídaly jménùm jednotlivıch spisovatelù a data ulo¾ená v nich by 
-obsahovala seznam jejich dìl.}.
+Pouze nÄ›kterÃ© vrcholy ve stromÄ› obsahujÃ­ data - napÅ™. pro
+implementaci slovnÃ­ku s hesly by data uloÅ¾enÃ¡ v listech obsahovala popis
+tohoho hesla\footnote{NapÅ™. slovnÃ­k spisovatelÅ¯, kde listy ve trie by
+odpovÃ­daly jmÃ©nÅ¯m jednotlivÃ½ch spisovatelÅ¯ a data uloÅ¾enÃ¡ v nich by 
+obsahovala seznam jejich dÄ›l.}.
 \end{pozn}
 
 % podle http://en.wikipedia.org/wiki/Trie
 \begin{pozn}
-Proè jsou trie vıhodné ?
+ProÄ jsou trie vÃ½hodnÃ© ?
 
 \begin{itemize}
-  \item Vyhledávání klíèù je rychlej¹í ne¾ v BVS. Vyhledání klíèe délky
-  $m$ vy¾aduje pouze $O(m)$ èasu. Pro BVS je to $O(m^2)$ v nejhor¹ím pøípadì,
-  proto¾e se musí opakovanì porovnávat poèáteèní znaky hledaného slova.
-  Dal¹í vıhoda je pou¾ití indexace pomocí znakù v operaci MEMBER.
-  \item Trie zabírají ménì místa. Proto¾e nejsou klíèe v trie ulo¾eny
-  explicitnì, pro ulo¾ení jednoho klíèe je potøeba pouze amortizovanı
-  konstantní prostor.
-  \item Pomocí trie lze jednodu¹e provádìt operaci hledání nejdel¹ího 
-  prefixu\footnote{anglicky ``longest-prefix matching``}, kde potøebujeme
-  najít klíè, kterı má nejdel¹í shodnı prefix s hledanım
-  klíèem\footnote{To se hodí napøíklad pro implementace sí»ovıch
-  operaèních systémù, kde je potøeba provádìt tuto operaci pro
-  hledání v routovacích tabulkách nebo tabulkách pro pøeklad adres. 
-  V pøípadì smìrovacích tabulek se posílá paket na dal¹í "hop" podle 
-  cílové adresy. Routovací tabulka obsahuje záznamy, které udávají adresu
-  sítì a adresu zaøízení, na které posílat pakety pro tuto sí» - tzv.
-  "hop". Tento "hop" se vybírá tak, aby cílová adresa paketu mìla
-  co mo¾ná nejdel¹í shodnı prefix s nìjakou adresou sítì v routovací
+  \item VyhledÃ¡vÃ¡nÃ­ klÃ­ÄÅ¯ je rychlejÅ¡Ã­ neÅ¾ v BVS. VyhledÃ¡nÃ­ klÃ­Äe dÃ©lky
+  $m$ vyÅ¾aduje pouze $O(m)$ Äasu. Pro BVS je to $O(m^2)$ v nejhorÅ¡Ã­m pÅ™Ã­padÄ›,
+  protoÅ¾e se musÃ­ opakovanÄ› porovnÃ¡vat poÄÃ¡teÄnÃ­ znaky hledanÃ©ho slova.
+  DalÅ¡Ã­ vÃ½hoda je pouÅ¾itÃ­ indexace pomocÃ­ znakÅ¯ v operaci MEMBER.
+  \item Trie zabÃ­rajÃ­ mÃ©nÄ› mÃ­sta. ProtoÅ¾e nejsou klÃ­Äe v trie uloÅ¾eny
+  explicitnÄ›, pro uloÅ¾enÃ­ jednoho klÃ­Äe je potÅ™eba pouze amortizovanÃ½
+  konstantnÃ­ prostor.
+  \item PomocÃ­ trie lze jednoduÅ¡e provÃ¡dÄ›t operaci hledÃ¡nÃ­ nejdelÅ¡Ã­ho 
+  prefixu\footnote{anglicky ``longest-prefix matching``}, kde potÅ™ebujeme
+  najÃ­t klÃ­Ä, kterÃ½ mÃ¡ nejdelÅ¡Ã­ shodnÃ½ prefix s hledanÃ½m
+  klÃ­Äem\footnote{To se hodÃ­ napÅ™Ã­klad pro implementace sÃ­Å¥ovÃ½ch
+  operaÄnÃ­ch systÃ©mÅ¯, kde je potÅ™eba provÃ¡dÄ›t tuto operaci pro
+  hledÃ¡nÃ­ v routovacÃ­ch tabulkÃ¡ch nebo tabulkÃ¡ch pro pÅ™eklad adres. 
+  V pÅ™Ã­padÄ› smÄ›rovacÃ­ch tabulek se posÃ­lÃ¡ paket na dalÅ¡Ã­ "hop" podle 
+  cÃ­lovÃ© adresy. RoutovacÃ­ tabulka obsahuje zÃ¡znamy, kterÃ© udÃ¡vajÃ­ adresu
+  sÃ­tÄ› a adresu zaÅ™Ã­zenÃ­, na kterÃ© posÃ­lat pakety pro tuto sÃ­Å¥ - tzv.
+  "hop". Tento "hop" se vybÃ­rÃ¡ tak, aby cÃ­lovÃ¡ adresa paketu mÄ›la
+  co moÅ¾nÃ¡ nejdelÅ¡Ã­ shodnÃ½ prefix s nÄ›jakou adresou sÃ­tÄ› v routovacÃ­
   tabulce.}. 
-  Dále trie dovolují asociovat jednu hodnotu s mno¾inou klíèù, které mají
-  shodnı prefix\footnote{Tím, ¾e ulo¾íme data do vnitøních uzlù trie.}.
+  DÃ¡le trie dovolujÃ­ asociovat jednu hodnotu s mnoÅ¾inou klÃ­ÄÅ¯, kterÃ© majÃ­
+  shodnÃ½ prefix\footnote{TÃ­m, Å¾e uloÅ¾Ã­me data do vnitÅ™nÃ­ch uzlÅ¯ trie.}.
 \end{itemize}
 \end{pozn}
 
@@ -91,13 +91,13 @@ Proè jsou trie vıhodné ?
 viz algoritmus \ref{alg:trie.member}.
 
 \begin{algorithm}[!htb]
-\caption{MEMBER pro základní verzi trie}
+\caption{MEMBER pro zÃ¡kladnÃ­ verzi trie}
 \label{alg:trie.member}
 \begin{algorithmic}
-\STATE \COMMENT {vyhledání $x = x_1 \dots x_l$}
-\STATE $t := \text{koøen}$
+\STATE \COMMENT {vyhledÃ¡nÃ­ $x = x_1 \dots x_l$}
+\STATE $t := \text{koÅ™en}$
 \STATE $i := 1$
-\WHILE {$t \text{ není list}$}
+\WHILE {$t \text{ nenÃ­ list}$}
         \STATE $t := t[x_i]$ // sestup podle znaku $x_i$
         \STATE $i := i + 1$
 \ENDWHILE
@@ -106,12 +106,12 @@ viz algoritmus \ref{alg:trie.member}.
 \end{algorithmic}
 \end{algorithm}
 
-Na tomto algoritmu je zajímavé to, ¾e pou¾ívá jednotlivé znaky hledaného
-slova $x$ k indexaci v jednotlivıch vrcholech trie (viz øádek s
-komentáøem ve vıpisu algoritmu~\ref{alg:trie.member}.). To dovoluje najít
-vrchol do kterého se má pøi hledání sestoupit v èase $O(1)$. Tedy
-slo¾itost operace MEMBER je $O(l)$, proto¾e musíme projít nejvı¹e $l$
-vrcholù ne¾ dosáhneme listu (délka slov je nejvı¹e $l$).
+Na tomto algoritmu je zajÃ­mavÃ© to, Å¾e pouÅ¾Ã­vÃ¡ jednotlivÃ© znaky hledanÃ©ho
+slova $x$ k indexaci v jednotlivÃ½ch vrcholech trie (viz Å™Ã¡dek s
+komentÃ¡Å™em ve vÃ½pisu algoritmu~\ref{alg:trie.member}.). To dovoluje najÃ­t
+vrchol do kterÃ©ho se mÃ¡ pÅ™i hledÃ¡nÃ­ sestoupit v Äase $O(1)$. Tedy
+sloÅ¾itost operace MEMBER je $O(l)$, protoÅ¾e musÃ­me projÃ­t nejvÃ½Å¡e $l$
+vrcholÅ¯ neÅ¾ dosÃ¡hneme listu (dÃ©lka slov je nejvÃ½Å¡e $l$).
 
 % ..........................................................................
 \subsection{Algoritmus INSERT}
@@ -119,14 +119,14 @@ vrcholù ne¾ dosáhneme listu (délka slov je nejvı¹e $l$).
 viz algoritmus \ref{alg:trie.insert}.
 
 \begin{algorithm}[!htb]
-\caption{INSERT pro základní verzi trie}
+\caption{INSERT pro zÃ¡kladnÃ­ verzi trie}
 \label{alg:trie.insert}
 \begin{algorithmic}
-\STATE \COMMENT {vyhledej $x$ pomocí operace MEMBER(x)}
-\IF[trie nemusí bıt tak hluboké, jak potøebujeme] {\textbf{not} $\Nal(t)$}
+\STATE \COMMENT {vyhledej $x$ pomocÃ­ operace MEMBER(x)}
+\IF[trie nemusÃ­ bÃ½t tak hlubokÃ©, jak potÅ™ebujeme] {\textbf{not} $\Nal(t)$}
         \WHILE {$i \leq l$}
-                \STATE vrcholu $t$ pøidej $k$ listù ohodnocenıch
-                písmeny z $\Sigma$, jejich $\Nal := \textit{false}$
+                \STATE vrcholu $t$ pÅ™idej $k$ listÅ¯ ohodnocenÃ½ch
+                pÃ­smeny z $\Sigma$, jejich $\Nal := \textit{false}$
                 \STATE $t := t[x_i]$
                 \STATE $i := i + 1$
         \ENDWHILE
@@ -135,10 +135,10 @@ viz algoritmus \ref{alg:trie.insert}.
 \end{algorithmic}
 \end{algorithm}
 
-Pøi operaci INSERT se sestupuje a¾ na úroveò délky slova, pøièem¾ se
-pøidávají nové úrovnì v pøípadì ¾e nejsou v trie pøítomny\footnote{Celkem 
-hezky si lze proces pøidávání novıch hladin v rámci jedné vìtve pøedstavit 
-tak, ¾e v ka¾dé hladinì, která je novì pøidaná, "vyroste smeták" s $k$ 
+PÅ™i operaci INSERT se sestupuje aÅ¾ na ÃºroveÅˆ dÃ©lky slova, pÅ™iÄemÅ¾ se
+pÅ™idÃ¡vajÃ­ novÃ© ÃºrovnÄ› v pÅ™Ã­padÄ› Å¾e nejsou v trie pÅ™Ã­tomny\footnote{Celkem 
+hezky si lze proces pÅ™idÃ¡vÃ¡nÃ­ novÃ½ch hladin v rÃ¡mci jednÃ© vÄ›tve pÅ™edstavit 
+tak, Å¾e v kaÅ¾dÃ© hladinÄ›, kterÃ¡ je novÄ› pÅ™idanÃ¡, "vyroste smetÃ¡k" s $k$ 
 vrcholy.}.
 
 % ..........................................................................
@@ -147,16 +147,16 @@ vrcholy.}.
 viz algoritmus \ref{alg:trie.delete}.
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro základní verzi trie}
+\caption{DELETE pro zÃ¡kladnÃ­ verzi trie}
 \label{alg:trie.delete}
 \begin{algorithmic}
-\STATE \COMMENT {vyhledej $x$ pomocí operace MEMBER(x)}
+\STATE \COMMENT {vyhledej $x$ pomocÃ­ operace MEMBER(x)}
 \IF {$\Nal(t)$}
         \STATE $\Nal(t) := \textit{false}$
         \STATE $t := \text{otec } t$
-        \STATE \COMMENT {opravíme prefixovou podmínku}
-        \WHILE {v¹ichni synové $t$ jsou listy s $\Nal = \textit{false}$}
-                \STATE zru¹ listy $t$
+        \STATE \COMMENT {opravÃ­me prefixovou podmÃ­nku}
+        \WHILE {vÅ¡ichni synovÃ© $t$ jsou listy s $\Nal = \textit{false}$}
+                \STATE zruÅ¡ listy $t$
                 \STATE $\Nal(t) := \textit{false}$
                 \STATE $t := \text{otec } t$
         \ENDWHILE
@@ -164,78 +164,78 @@ viz algoritmus \ref{alg:trie.delete}.
 \end{algorithmic}
 \end{algorithm}
 
-Analogicky k operaci INSERT dochází k ru¹ení hladin v rámci jedné vìtve
-v pøípadì ¾e v¹echny
-listy v hladinì mají hodnotu $\Nal = \textit{false}$.
+Analogicky k operaci INSERT dochÃ¡zÃ­ k ruÅ¡enÃ­ hladin v rÃ¡mci jednÃ© vÄ›tve
+v pÅ™Ã­padÄ› Å¾e vÅ¡echny
+listy v hladinÄ› majÃ­ hodnotu $\Nal = \textit{false}$.
 
-Pou¾ili jsme obrat $t := \text{otec } t$. To lze provést buï tak, ¾e
-se vrchol kromì svıch synù odkazuje i na svého otce a spotøebuje tak
-pamì» navíc, nebo se cesta z koøene do aktuálního vrcholu bìhem
-sestupu ve stromu pamatuje na zásobníku. Tento trik se pou¾ívá u 
-v¹ech stromovıch struktur.
+PouÅ¾ili jsme obrat $t := \text{otec } t$. To lze provÃ©st buÄ tak, Å¾e
+se vrchol kromÄ› svÃ½ch synÅ¯ odkazuje i na svÃ©ho otce a spotÅ™ebuje tak
+pamÄ›Å¥ navÃ­c, nebo se cesta z koÅ™ene do aktuÃ¡lnÃ­ho vrcholu bÄ›hem
+sestupu ve stromu pamatuje na zÃ¡sobnÃ­ku. Tento trik se pouÅ¾Ã­vÃ¡ u 
+vÅ¡ech stromovÃ½ch struktur.
 
 % ..........................................................................
-\subsection{Èasová a pamì»ová slo¾itost}
+\subsection{ÄŒasovÃ¡ a pamÄ›Å¥ovÃ¡ sloÅ¾itost}
 
-Jedna iterace cyklu zabere konstantní èas. Èas pro MEMBER je $O(l)$,
-èas pro INSERT a DELETE je $O(l k)$. Pamì»ová slo¾itost trie v nejhor¹ím
-pøípadì je poèet
-ulo¾enıch slov násobenı délkou cesty a poètem synù, tedy $O(|S| l k)$.
+Jedna iterace cyklu zabere konstantnÃ­ Äas. ÄŒas pro MEMBER je $O(l)$,
+Äas pro INSERT a DELETE je $O(l k)$. PamÄ›Å¥ovÃ¡ sloÅ¾itost trie v nejhorÅ¡Ã­m
+pÅ™Ã­padÄ› je poÄet
+uloÅ¾enÃ½ch slov nÃ¡sobenÃ½ dÃ©lkou cesty a poÄtem synÅ¯, tedy $O(|S| l k)$.
 
 \begin{pozn}
-V pøípadì, kdy S obsahuje (skoro) v¹echna slova délky $l$, tak mù¾e
-mít slo¾itost jen $O(|S|)$.
+V pÅ™Ã­padÄ›, kdy S obsahuje (skoro) vÅ¡echna slova dÃ©lky $l$, tak mÅ¯Å¾e
+mÃ­t sloÅ¾itost jen $O(|S|)$.
 \end{pozn}
 
 % --------------------------------------------------------------------------
-\section{Komprimované trie}
+\section{KomprimovanÃ© trie}
 
-Mìjme $\Sigma = \{0,1,2\}$, $l=7$.
+MÄ›jme $\Sigma = \{0,1,2\}$, $l=7$.
 $S = \{0202011, 0202012, 0202021, 1212102, 1212111, 1212121, 1212122\}$.
-Nekomprimované trie pro tuto mno¾inu je na obrázku \ref{fig:tries}.
-Vidíme, ¾e písmena na druhé a¾ páté pozici jsou v¾dy stejná a
+NekomprimovanÃ© trie pro tuto mnoÅ¾inu je na obrÃ¡zku \ref{fig:tries}.
+VidÃ­me, Å¾e pÃ­smena na druhÃ© aÅ¾ pÃ¡tÃ© pozici jsou vÅ¾dy stejnÃ¡ a
 % XXX \uv{prokousat} 
-pøedchozí algoritmy se jimi musí prokousat. Pøesnìji 
-øeèeno, prohlí¾ení vrcholu $v$, kterı má jediného 
-syna, kterı není list s hodnotou $\Nal = \textit{false}$, nepøiná¹í 
-¾ádnou kladnou informaci, proto¾e mno¾iny prvkù z $S$, 
-které jsou reprezentovány vrcholy v podstromu otce $v$ a v podstromu 
-vrcholu $v$ jsou stejné. To vedlo k idei tyto vrcholy ze stromu vynechat a
-tím zmen¹it (komprimovat) trie.  
+pÅ™edchozÃ­ algoritmy se jimi musÃ­ prokousat. PÅ™esnÄ›ji 
+Å™eÄeno, prohlÃ­Å¾enÃ­ vrcholu $v$, kterÃ½ mÃ¡ jedinÃ©ho 
+syna, kterÃ½ nenÃ­ list s hodnotou $\Nal = \textit{false}$, nepÅ™inÃ¡Å¡Ã­ 
+Å¾Ã¡dnou kladnou informaci, protoÅ¾e mnoÅ¾iny prvkÅ¯ z $S$, 
+kterÃ© jsou reprezentovÃ¡ny vrcholy v podstromu otce $v$ a v podstromu 
+vrcholu $v$ jsou stejnÃ©. To vedlo k idei tyto vrcholy ze stromu vynechat a
+tÃ­m zmenÅ¡it (komprimovat) trie.  
 
 \begin{figure}
 \centering\includegraphics{pics/tries}
-\caption{Nekomprimované trie. Èernì vyplnìné ètverce znázoòují listy,
-které odpovíadjí nìjakému slovu z (reprezentované) mno¾iny $S$. Tyto listy
-mají hodnotu funkce Nal \textit{true}. Bíle vyplnìné ètverce ¾ádnému slovu
-ze $S$ neodpovídají, mají tedy hodnotu Nal \textit{false}.}
+\caption{NekomprimovanÃ© trie. ÄŒernÄ› vyplnÄ›nÃ© Ätverce znÃ¡zoÅˆujÃ­ listy,
+kterÃ© odpovÃ­adjÃ­ nÄ›jakÃ©mu slovu z (reprezentovanÃ©) mnoÅ¾iny $S$. Tyto listy
+majÃ­ hodnotu funkce Nal \textit{true}. BÃ­le vyplnÄ›nÃ© Ätverce Å¾Ã¡dnÃ©mu slovu
+ze $S$ neodpovÃ­dajÃ­, majÃ­ tedy hodnotu Nal \textit{false}.}
 \label{fig:tries}
 \end{figure}
 
 \newcommand{\uro}{\textrm{uroven}}
-Ke ka¾dému vrcholu $v$ pøidáme funkci $\uro(v)$ vyjadøující èíslo úrovnì,
-ve které se $v$ nachází v pùvodním trie.
+Ke kaÅ¾dÃ©mu vrcholu $v$ pÅ™idÃ¡me funkci $\uro(v)$ vyjadÅ™ujÃ­cÃ­ ÄÃ­slo ÃºrovnÄ›,
+ve kterÃ© se $v$ nachÃ¡zÃ­ v pÅ¯vodnÃ­m trie.
 \newcommand{\slo}{\textrm{slovo}}
-Ke ka¾dému listu $v$ pøidáme funkci $\slo(v)$ --- slovo, které odpovídá $v$.
+Ke kaÅ¾dÃ©mu listu $v$ pÅ™idÃ¡me funkci $\slo(v)$ --- slovo, kterÃ© odpovÃ­dÃ¡ $v$.
 
-Nyní mù¾eme vynechávat vrcholy podle následujícího kritéria: 
-je-li $v$ vnitøní vrchol a v¹ichni jeho synové kromì $w$ jsou listy s
-$\Nal = \textit{false}$, pak $v$ vynech a zaøaï $w$ na jeho místo. Tento proces 
-opakujeme dokud trie obsahuje nìjakı vnitøní vrchol, jeho¾ v¹ichni synové 
-s vıjimkou jednoho jsou listy, pro nì¾ $\Nal = \textit{false}$. 
-V¹imnìte si, ¾e ka¾dı vnitøní vrchol má právì $k$ synù, které jsou 
-v jednoznaèné korespondenci s písmeny abecedy $\Sigma$.
+NynÃ­ mÅ¯Å¾eme vynechÃ¡vat vrcholy podle nÃ¡sledujÃ­cÃ­ho kritÃ©ria: 
+je-li $v$ vnitÅ™nÃ­ vrchol a vÅ¡ichni jeho synovÃ© kromÄ› $w$ jsou listy s
+$\Nal = \textit{false}$, pak $v$ vynech a zaÅ™aÄ $w$ na jeho mÃ­sto. Tento proces 
+opakujeme dokud trie obsahuje nÄ›jakÃ½ vnitÅ™nÃ­ vrchol, jehoÅ¾ vÅ¡ichni synovÃ© 
+s vÃ½jimkou jednoho jsou listy, pro nÄ›Å¾ $\Nal = \textit{false}$. 
+VÅ¡imnÄ›te si, Å¾e kaÅ¾dÃ½ vnitÅ™nÃ­ vrchol mÃ¡ prÃ¡vÄ› $k$ synÅ¯, kterÃ© jsou 
+v jednoznaÄnÃ© korespondenci s pÃ­smeny abecedy $\Sigma$.
 
 \begin{priklad}
-Nech» $\Sigma = \{0,1,2\}$, $l=3$.
+NechÅ¥ $\Sigma = \{0,1,2\}$, $l=3$.
 $S = \{ 001,102,010,211,212 \}$.
 
-Nekomprimovanı trie pro mno¾inu $S$ a jeho komprimovaná varianta je na
+NekomprimovanÃ½ trie pro mnoÅ¾inu $S$ a jeho komprimovanÃ¡ varianta je na
 obr. \ref{fig:tries.compr1}.
 
 \begin{figure}
 \centering\includegraphics{pics/trie-compr1}
-\caption{Komprimace trie. ©edá èísla v závorce znaèí hodnotu $uroven()$}
+\caption{Komprimace trie. Å edÃ¡ ÄÃ­sla v zÃ¡vorce znaÄÃ­ hodnotu $uroven()$}
 \label{fig:tries.compr1}
 \end{figure}
 
@@ -244,21 +244,21 @@ obr. \ref{fig:tries.compr1}.
 
 \begin{pozn}
 \mnote{Koubek 2002/2003}
-Komprimované trie je tvoøenı mno¾inou vrcholù, kde pro $\beta$ je
-$hladina(\beta) = |\beta|$ a otec $\beta$ je nejvìt¹í vlastní prefix,
-kterı patøí do trie + pøidané listy. Listy jsou prvky z S + slova $\beta
-a$, kde $\beta \in$ trie a $\beta a$ není prefixem ¾ádného slova v $S$. 
+KomprimovanÃ© trie je tvoÅ™enÃ½ mnoÅ¾inou vrcholÅ¯, kde pro $\beta$ je
+$hladina(\beta) = |\beta|$ a otec $\beta$ je nejvÄ›tÅ¡Ã­ vlastnÃ­ prefix,
+kterÃ½ patÅ™Ã­ do trie + pÅ™idanÃ© listy. Listy jsou prvky z S + slova $\beta
+a$, kde $\beta \in$ trie a $\beta a$ nenÃ­ prefixem Å¾Ã¡dnÃ©ho slova v $S$. 
 Pro prvky z $S$ je Nal = True, jinak false. 
-Platí $prvek(\gamma) = \gamma$ pro ka¾dı list.
+PlatÃ­ $prvek(\gamma) = \gamma$ pro kaÅ¾dÃ½ list.
 
-Kdy¾ $\beta \in$ trie a $a \in \Sigma \rightarrow$
+KdyÅ¾ $\beta \in$ trie a $a \in \Sigma \rightarrow$
 $\Bigl\{$
 \begin{tabular}{ll}
-$\beta a$ list, & je $a$-tım synem $\beta$ \\
-$\exists \delta \in S$, & ¾e $\beta a$ je prefixem $\delta$
+$\beta a$ list, & je $a$-tÃ½m synem $\beta$ \\
+$\exists \delta \in S$, & Å¾e $\beta a$ je prefixem $\delta$
 \end{tabular}
 
-Potom $a$-tı syn $\beta$ je nejkrat¹í prefix v mno¾inì trie v $S$, kterı
+Potom $a$-tÃ½ syn $\beta$ je nejkratÅ¡Ã­ prefix v mnoÅ¾inÄ› trie v $S$, kterÃ½
 obsahuje $\beta a$.
 \end{pozn}
 
@@ -268,21 +268,21 @@ obsahuje $\beta a$.
 Viz algoritmus \ref{alg:trie.k.mem}
 
 \begin{algorithm}[!htb]
-\caption{MEMBER pro komprimované trie}
+\caption{MEMBER pro komprimovanÃ© trie}
 \label{alg:trie.k.mem}
 \begin{algorithmic}
-\STATE \COMMENT {vyhledání $x = x_1 \ldots x_l$}
-\STATE $t := \text{koøen}$
-\WHILE {$t \text{ není list}$}
+\STATE \COMMENT {vyhledÃ¡nÃ­ $x = x_1 \ldots x_l$}
+\STATE $t := \text{koÅ™en}$
+\WHILE {$t \text{ nenÃ­ list}$}
         \STATE $i := \uro(t) + 1$
-        \STATE $t := t[x_i]$ // $x_i$-tı list
+        \STATE $t := t[x_i]$ // $x_i$-tÃ½ list
 \ENDWHILE
 \STATE \COMMENT {test}
 \STATE \textbf{return} $\Nal(t) \land \slo(t) = x$
 \end{algorithmic}
 \end{algorithm}
 
-% XXX zde \mnote{nìco chybí}
+% XXX zde \mnote{nÄ›co chybÃ­}
 
 % ..........................................................................
 \subsection{INSERT}
@@ -290,45 +290,45 @@ Viz algoritmus \ref{alg:trie.k.mem}
 Viz algoritmus \ref{alg:trie.k.ins}
 
 \begin{algorithm}
-\caption{INSERT pro komprimované trie}
+\caption{INSERT pro komprimovanÃ© trie}
 \label{alg:trie.k.ins}
 \begin{algorithmic}
 \STATE \COMMENT {vyhledej $x$}
 \IF {$\Nal(t) \land \slo(t) = x$}
-	\STATE \COMMENT {Trie u¾ obsahuje $x$, nedìlej nic.}
+	\STATE \COMMENT {Trie uÅ¾ obsahuje $x$, nedÄ›lej nic.}
 \ELSE
         \IF {$\slo(t) = x$}
-		\STATE \COMMENT {Trie obsahuje správnı list,
-		pouze nastav pøíznak. Napø. "0202010"}
+		\STATE \COMMENT {Trie obsahuje sprÃ¡vnÃ½ list,
+		pouze nastav pÅ™Ã­znak. NapÅ™. "0202010"}
                 \STATE $\Nal(t) := \textit{true}$
 	\ELSE
-		\STATE \COMMENT {Bude potøeba vlo¾it novı list.}
-		\STATE \COMMENT {Najdi, kam ho pøipojit.}
-                \STATE $\alpha$ := nejdel¹í spoleènı prefix slov
-		$x$ a $\slo(t)$. Délku $\alpha$ oznaème $|\alpha|$.
-                \STATE $v$ := vrchol na cestì z koøene do $t$ takovı,
-                ¾e $\uro(v)$ je nejvìt¹í, která je $\leq |\alpha|$
+		\STATE \COMMENT {Bude potÅ™eba vloÅ¾it novÃ½ list.}
+		\STATE \COMMENT {Najdi, kam ho pÅ™ipojit.}
+                \STATE $\alpha$ := nejdelÅ¡Ã­ spoleÄnÃ½ prefix slov
+		$x$ a $\slo(t)$. DÃ©lku $\alpha$ oznaÄme $|\alpha|$.
+                \STATE $v$ := vrchol na cestÄ› z koÅ™ene do $t$ takovÃ½,
+                Å¾e $\uro(v)$ je nejvÄ›tÅ¡Ã­, kterÃ¡ je $\leq |\alpha|$
                 \IF {$\uro(v) = |\alpha|$}
-                        \STATE \COMMENT {$v$ je otec nového listu}
+                        \STATE \COMMENT {$v$ je otec novÃ©ho listu}
 		\ELSE[$\uro(v) < |\alpha|$]
-                        \STATE \COMMENT {Bude potøeba vytvoøit
-			otce nového listu}
-                        \STATE $a$ := $\uro(v)+1$-ní písmeno $\alpha$
+                        \STATE \COMMENT {Bude potÅ™eba vytvoÅ™it
+			otce novÃ©ho listu}
+                        \STATE $a$ := $\uro(v)+1$-nÃ­ pÃ­smeno $\alpha$
                         \STATE $u := v[a]$
-                        \STATE \COMMENT {Mezi $v$ a $u$ vytvoø novı
-			vnitøní vrchol odpovídající slovu $\alpha$}
-                        \STATE $w$ := novı vrchol, $\uro(w) := |\alpha|$
+                        \STATE \COMMENT {Mezi $v$ a $u$ vytvoÅ™ novÃ½
+			vnitÅ™nÃ­ vrchol odpovÃ­dajÃ­cÃ­ slovu $\alpha$}
+                        \STATE $w$ := novÃ½ vrchol, $\uro(w) := |\alpha|$
                         \STATE $v[a] := w$
-                        \STATE $c$ := $|\alpha|+1$-ní písmeno $\slo(t)$
+                        \STATE $c$ := $|\alpha|+1$-nÃ­ pÃ­smeno $\slo(t)$
                         \STATE $w[c] := u$
                         \FORALL {$b \in \Sigma, b \neq c$}
-                             \STATE $z$ := novı vrchol, $\uro(z) := |\alpha|+1, \Nal(z) := \textit{false}, \slo(z) := \alpha b$, 
+                             \STATE $z$ := novÃ½ vrchol, $\uro(z) := |\alpha|+1, \Nal(z) := \textit{false}, \slo(z) := \alpha b$, 
                              \STATE $w[b] := z$
                         \ENDFOR
                         \STATE $v := w$
                 \ENDIF
-		\STATE \COMMENT {Správnému listu pøiøaï $x$}
-		\STATE $d$ := $|\alpha|+1$-ní písmeno $x$
+		\STATE \COMMENT {SprÃ¡vnÃ©mu listu pÅ™iÅ™aÄ $x$}
+		\STATE $d$ := $|\alpha|+1$-nÃ­ pÃ­smeno $x$
                 \STATE $s := v[d]$
                 \STATE $\uro(s) := l, \Nal(s) := \textit{true}, \slo(s) := x$
         \ENDIF
@@ -342,7 +342,7 @@ Viz algoritmus \ref{alg:trie.k.ins}
 Viz algoritmus \ref{alg:trie.k.del}
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro komprimované trie}
+\caption{DELETE pro komprimovanÃ© trie}
 \label{alg:trie.k.del}
 \begin{algorithmic}
 \STATE \COMMENT {vyhledej $x$}
@@ -350,62 +350,62 @@ Viz algoritmus \ref{alg:trie.k.del}
         \STATE $u$ := otec $t$
         \STATE $i := \uro(u)$
         \STATE $\Nal(t) := \textit{false}$
-        \STATE $\uro(t) := i+1$, $\slo(t)$ := prefix slova $x$ délky $i+1$
-        \STATE \COMMENT {vrchol $u$ má alespoò jednoho syna, kterı není list s $\Nal = \textit{false}$}
-        \IF {v¹ichni synové $u$ kromì syna $w$ jsou listy s $\Nal = \textit{false}$}
+        \STATE $\uro(t) := i+1$, $\slo(t)$ := prefix slova $x$ dÃ©lky $i+1$
+        \STATE \COMMENT {vrchol $u$ mÃ¡ alespoÅˆ jednoho syna, kterÃ½ nenÃ­ list s $\Nal = \textit{false}$}
+        \IF {vÅ¡ichni synovÃ© $u$ kromÄ› syna $w$ jsou listy s $\Nal = \textit{false}$}
                 \STATE $v$ := otec $u$
-                \STATE sma¾ $u$ a v¹echny syny $u$ kromì $w$
+                \STATE smaÅ¾ $u$ a vÅ¡echny syny $u$ kromÄ› $w$
                 \STATE $j := \uro(v) + 1$
-                \STATE $v[x_j] := w$ // $x_j$-tı syn $v$ je $w$
+                \STATE $v[x_j] := w$ // $x_j$-tÃ½ syn $v$ je $w$
         \ENDIF
 \ENDIF  
 \end{algorithmic}
 \end{algorithm}
 
 % ..........................................................................
-\subsection{Èasová a pamì»ová slo¾itost}
+\subsection{ÄŒasovÃ¡ a pamÄ›Å¥ovÃ¡ sloÅ¾itost}
 
-Pamì»ová slo¾itost takto komprimovanıch trie je $O(nk)$, kde 
+PamÄ›Å¥ovÃ¡ sloÅ¾itost takto komprimovanÃ½ch trie je $O(nk)$, kde 
 % oprava by Ladislav Prosek O(nl + kl) -> O(nk)
-$n$ je velikost reprezentované mno¾iny. (maximálnì $n-1$ vnitøních vrcholù,
-ka¾dı s polem délky $k$).
-Èasová slo¾itost operace MEMBER je v nejhor¹ím
-pøípadì $O(l)$, pro INSERT a DELETE je to $O(l+k)$. 
-(mù¾e bıt nutné pøidat/odebrat jeden vnitøní vrchol).
+$n$ je velikost reprezentovanÃ© mnoÅ¾iny. (maximÃ¡lnÄ› $n-1$ vnitÅ™nÃ­ch vrcholÅ¯,
+kaÅ¾dÃ½ s polem dÃ©lky $k$).
+ÄŒasovÃ¡ sloÅ¾itost operace MEMBER je v nejhorÅ¡Ã­m
+pÅ™Ã­padÄ› $O(l)$, pro INSERT a DELETE je to $O(l+k)$. 
+(mÅ¯Å¾e bÃ½t nutnÃ© pÅ™idat/odebrat jeden vnitÅ™nÃ­ vrchol).
 % oprava slozitosti v nejhorsim pripade by Ladislav Prosek 
 
-V prùmìrném pøípadì (za pøedpokladu rovnomìrného
-rozlo¾ení vstupních dat) je to oèekávaná hloubka trie. Tu
-teï spoèítáme.
+V prÅ¯mÄ›rnÃ©m pÅ™Ã­padÄ› (za pÅ™edpokladu rovnomÄ›rnÃ©ho
+rozloÅ¾enÃ­ vstupnÃ­ch dat) je to oÄekÃ¡vanÃ¡ hloubka trie. Tu
+teÄ spoÄÃ­tÃ¡me.
 
-Nech»
+NechÅ¥
 \[
-q_d = \pr(\text{trie má hloubku alespoò $d$})
+q_d = \pr(\text{trie mÃ¡ hloubku alespoÅˆ $d$})
 \]
-Oèekávaná hloubka trie reprezentující $n$ slov je
+OÄekÃ¡vanÃ¡ hloubka trie reprezentujÃ­cÃ­ $n$ slov je
 \[
 E_n = \sum_{d=0}^\infty d (q_d - q_{d+1}) = \sum_{d=0}^\infty q_d
 \]
-Kdy¾ funkce $\text{pref}_{d-1}$, pøiøazující slovu 
-$\alpha$ jeho prefix délky $d-1$, je na mno¾inì $S$ prostá,
-pak trie reprezentující mno¾inu $S$ má hloubku nejvı¹e $d$.
-Spoèítáme poèet mno¾in o velikosti $n$, na nich¾ je funkce $\text{pref}_{d-1}$ 
-prostá. Tyto mno¾iny získáme tak, ¾e vybereme $n$ prefixù délky $d-1$
-a ka¾dı doplníme v¹emi sufixy délky $l-d+1$. Proto tìchto mno¾in je
+KdyÅ¾ funkce $\text{pref}_{d-1}$, pÅ™iÅ™azujÃ­cÃ­ slovu 
+$\alpha$ jeho prefix dÃ©lky $d-1$, je na mnoÅ¾inÄ› $S$ prostÃ¡,
+pak trie reprezentujÃ­cÃ­ mnoÅ¾inu $S$ mÃ¡ hloubku nejvÃ½Å¡e $d$.
+SpoÄÃ­tÃ¡me poÄet mnoÅ¾in o velikosti $n$, na nichÅ¾ je funkce $\text{pref}_{d-1}$ 
+prostÃ¡. Tyto mnoÅ¾iny zÃ­skÃ¡me tak, Å¾e vybereme $n$ prefixÅ¯ dÃ©lky $d-1$
+a kaÅ¾dÃ½ doplnÃ­me vÅ¡emi sufixy dÃ©lky $l-d+1$. Proto tÄ›chto mnoÅ¾in je
 \[
 \binom{k^{d-1}}{n} k^{n (l-d+1)}.
 \]
-Proto¾e v¹ech podmno¾in velikosti $n$ je $\binom{k^l}{n}$ dostáváme, ¾e 
+ProtoÅ¾e vÅ¡ech podmnoÅ¾in velikosti $n$ je $\binom{k^l}{n}$ dostÃ¡vÃ¡me, Å¾e 
 \begin{align*}  
 q_d 
  &\leq 1 - \frac{\binom{k^{d-1}}{n} k^{n (l-d+1)}}{\binom{k^l}{n}} 
-\Biggl\} \text{pravdìpodobnost} \\
+\Biggl\} \text{pravdÄ›podobnost} \\
  &\leq 1 - \frac{k^{d-1}(k^{d-1}-1)\dots(k^{d-1}-(n-1)) k^{n(l-d+1)}}{k^{ln}}\\
  &   = 1 - \prod_{i=0}^{n-1} \left( 1 - \frac{i}{k^{d-1}} \right) \\
  &\leq 1 - \exp\left( \frac{-n^2}{k^{d-1}} \right)\\
  &\leq \frac{n^2}{k^{d-1}},
 \end{align*}
-ponìvad¾
+ponÄ›vadÅ¾
 \begin{align*}
                   \prod_{i=0}^{n-1}    \left( 1 - \frac{i}{k^{d-1}} \right)
  &   = \exp\left( \sum_{i=0}^{n-1} \ln \left( 1 - \frac{i}{k^{d-1}} \right)
@@ -414,9 +414,9 @@ ponìvad¾
 	   \right)\\
  &   = \exp\left( \frac{-n^2}{k^{d-1}} \right),
 \end{align*} 
-(u¾ijte integrální kriterium a substituci $x = k^{d-1}(1-t)$) a 
+(uÅ¾ijte integrÃ¡lnÃ­ kriterium a substituci $x = k^{d-1}(1-t)$) a 
 $e^x - 1 \geq x$ (odtud $1 - e^x \leq -x$). 
-Tedy pro $c = 2\lceil \log_kn\rceil$ dostáváme
+Tedy pro $c = 2\lceil \log_kn\rceil$ dostÃ¡vÃ¡me
 
 \begin{align*}
 E_n
@@ -428,41 +428,41 @@ E_n
  & = 2\lceil\log_kn\rceil + \frac{k}{k-1}.
 \end{align*}
 
-Tedy oèekávanı èas operace MEMBER je $O(\log_k(n))$ ($O(\frac{\log n}{\log
+Tedy oÄekÃ¡vanÃ½ Äas operace MEMBER je $O(\log_k(n))$ ($O(\frac{\log n}{\log
 k})$)
 a $O(\log_k(n) + k)$ pro INSERT a DELETE
-\mnote{L.Pro¹ek: Mo¾ná v té oèekávané slo¾itosti by ¹lo +k zanedbat, ale
-ne na základì toho tvrzení, které dokazuje jen oèekávanou hloubku}
-pro komprimované trie (za pøedpokladù rovnomìrného rozlo¾ení vstupních dat) 
-Zde parametr $k$ vyjadøuje vztah mezi prostorovımi 
-a èasovımi nároky.
+\mnote{L.ProÅ¡ek: MoÅ¾nÃ¡ v tÃ© oÄekÃ¡vanÃ© sloÅ¾itosti by Å¡lo +k zanedbat, ale
+ne na zÃ¡kladÄ› toho tvrzenÃ­, kterÃ© dokazuje jen oÄekÃ¡vanou hloubku}
+pro komprimovanÃ© trie (za pÅ™edpokladÅ¯ rovnomÄ›rnÃ©ho rozloÅ¾enÃ­ vstupnÃ­ch dat) 
+Zde parametr $k$ vyjadÅ™uje vztah mezi prostorovÃ½mi 
+a ÄasovÃ½mi nÃ¡roky.
 
 % . . . .. . . .. .. .. . .  . .. .. .. . . ..  ..  .... . . .. . .. . .
 % nasledujici sekci (jeste kompr. trie atd.) dopsal Vladimir Kotal, 2003
 
 \begin{algorithm}[!htb]
-	\caption{INSERT pro komprimované trie, analogie \ref{alg:trie.k.ins} (verze Koubek 2002)}
+	\caption{INSERT pro komprimovanÃ© trie, analogie \ref{alg:trie.k.ins} (verze Koubek 2002)}
 \label{alg:trie.k.ins_unk}
 \begin{algorithmic}
 \STATE INSERT($x=x_1, ..., x_l$)
-\STATE $t$ $\leftarrow$ koøen
+\STATE $t$ $\leftarrow$ koÅ™en
 \WHILE {$t$ neni list}
-  \STATE i $\leftarrow$ hladina($t$), $t$ $\leftarrow$ $(a_{i+1})$-ní syn $t$
+  \STATE i $\leftarrow$ hladina($t$), $t$ $\leftarrow$ $(a_{i+1})$-nÃ­ syn $t$
 \ENDWHILE
 \IF {prvek($t$) neni prefix $x$}
-  \STATE $\beta$ = nejvìt¹í spoleènı prefix $x$ a prvek(t)
+  \STATE $\beta$ = nejvÄ›tÅ¡Ã­ spoleÄnÃ½ prefix $x$ a prvek(t)
   \STATE $\beta a$ = prefix $\alpha$
   \STATE $\beta b$ = prefix prvek($t$)
   \STATE while $hladina(t) > |beta|$ do t $\leftarrow$ otec(t) done
   \IF {$hladina(t) < |\beta|$}
-    \STATE vytvoøíme novı vrchol $w$, jeho¾ synové, kromì $b$-tého syna budou listy s
+    \STATE vytvoÅ™Ã­me novÃ½ vrchol $w$, jehoÅ¾ synovÃ©, kromÄ› $b$-tÃ©ho syna budou listy s
     \STATE funkcemi Nal = false
     \STATE $prvek(t) = \beta$ + oznaceni syna
     \STATE $hladina(w) = |\beta|, \beta = (a_1, ..., a_i)$
-    \STATE necht $v = a_{hladina(t) + 1}$ - tı syn t, b-tı syn w je v
-    \STATE $w = a_{hladina(t)+1}$-tı syn t
+    \STATE necht $v = a_{hladina(t) + 1}$ - tÃ½ syn t, b-tÃ½ syn w je v
+    \STATE $w = a_{hladina(t)+1}$-tÃ½ syn t
   \ENDIF
-  \STATE z $\leftarrow$ a-tı syn $t$, Nal($z$) = true, prvek($z$) = $x$
+  \STATE z $\leftarrow$ a-tÃ½ syn $t$, Nal($z$) = true, prvek($z$) = $x$
 \ELSE
   \STATE Nal(t) = true, prvek(t) = $x$
 \ENDIF
@@ -472,30 +472,30 @@ a èasovımi nároky.
 
 \mnote{XXX dalsi neznamy algoritmus z prednasky 2002}
 \begin{algorithm}[!htb]
-\caption{DELETE pro komprimované trie (?)}
+\caption{DELETE pro komprimovanÃ© trie (?)}
 \label{alg:trie.k.del_unk}
 DELETE($x=x_1, ..., x_l$)
 \begin{algorithmic}
-\STATE t $\leftarrow$ koøen
+\STATE t $\leftarrow$ koÅ™en
 \WHILE {t neni list}
   \STATE i $\leftarrow$ hladina(t), t $\leftarrow$ $(a_{i+1}$-ni syn t
 \ENDWHILE
 \IF {Nal(t) = true a prvek(t) = j} 
   \STATE Nal(t) = false
   \STATE v $\leftarrow$ otec(t)
-  \STATE prvek(t) $\leftarrow$ prefix prvek(t) o délce hladina v+1
+  \STATE prvek(t) $\leftarrow$ prefix prvek(t) o dÃ©lce hladina v+1
   \IF {vsichni synove vrchovlu v az na jednoho jsou listy s Nal = false}
     \STATE w $\leftarrow$ syn(v), ktery je bud list s Nal(w) = true nebo neni list
-    \STATE necht v je a-tı ($a_i$-ty ???) syn svého otce, v sma¾eme a sma¾eme
-    \STATE v¹echny syny $v \neq w$
-    \STATE w $\leftarrow$ a-tı ($a_i$-tı ???) syn otce v
+    \STATE necht v je a-tÃ½ ($a_i$-ty ???) syn svÃ©ho otce, v smaÅ¾eme a smaÅ¾eme
+    \STATE vÅ¡echny syny $v \neq w$
+    \STATE w $\leftarrow$ a-tÃ½ ($a_i$-tÃ½ ???) syn otce v
   \ENDIF
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
 
 
-\section{Je¹tì komprimovanìj¹í trie}
+\section{JeÅ¡tÄ› komprimovanÄ›jÅ¡Ã­ trie}
 
 % XXX dopsat !
 \begin{priklad}
@@ -503,11 +503,11 @@ DELETE($x=x_1, ..., x_l$)
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/trie-compr2}
-\caption{Nekomprimovanı trie pro pøíklad \ref{example.trie.yetmorecompr}}
+\caption{NekomprimovanÃ½ trie pro pÅ™Ã­klad \ref{example.trie.yetmorecompr}}
 \label{fig.trie.compr}
 \end{figure}
 
-Mìjme komprimovanı trie z obr. \ref{fig.trie.compr}
+MÄ›jme komprimovanÃ½ trie z obr. \ref{fig.trie.compr}
 a jeho matici: 
 
 \hspace{5mm}
@@ -526,15 +526,15 @@ c & 120 & 121 & NIL \\
 
 \hspace{5mm}
 
-Chceme se zbavit polo¾ek NIL v matici reprezentující trie. Dal¹í komprese
-dosáhneme pomocí vektorù $hod$ (vektor hodnot) a $rd$. Tyto vektory budou
-reprezentovat pùvodní matici.
+Chceme se zbavit poloÅ¾ek NIL v matici reprezentujÃ­cÃ­ trie. DalÅ¡Ã­ komprese
+dosÃ¡hneme pomocÃ­ vektorÅ¯ $hod$ (vektor hodnot) a $rd$. Tyto vektory budou
+reprezentovat pÅ¯vodnÃ­ matici.
 
 \mnote{co znamena $rd$ ?}
 
 \subsection{Popis $A$ a $rd$}
 
-Zpìt k na¹emu pøíkladu:
+ZpÄ›t k naÅ¡emu pÅ™Ã­kladu:
 
 \begin{enumerate}
 \item
@@ -575,54 +575,54 @@ Zpìt k na¹emu pøíkladu:
 \end{enumerate} 
 %  \hspace{5mm}
 
-Øádek $i$ zaèíná na místì $rd(i)$ a musí bıt splnìna podmínka: \\
-Kdy¾ $M_{i,j} \neq NIL \neq M_{i',j'}$, pak $rd(i) + j \neq rd(i') + j'$ \\
-Kdy¾ na místì hod chceme zapsat prvek $\neq NIL$ a NIL, pak zapí¹eme prvek
+Å˜Ã¡dek $i$ zaÄÃ­nÃ¡ na mÃ­stÄ› $rd(i)$ a musÃ­ bÃ½t splnÄ›na podmÃ­nka: \\
+KdyÅ¾ $M_{i,j} \neq NIL \neq M_{i',j'}$, pak $rd(i) + j \neq rd(i') + j'$ \\
+KdyÅ¾ na mÃ­stÄ› hod chceme zapsat prvek $\neq NIL$ a NIL, pak zapÃ­Å¡eme prvek
 $\neq NIL$.
 
 % ------------------------------------------------------------------------
 
-\subsection{Algoritmus pro hledání rd a hod}
+\subsection{Algoritmus pro hledÃ¡nÃ­ rd a hod}
 
 % XXX r x s
-Nech» $M$ je matice typu $r x s$, má $m$ vıznamnıch míst $\neq$ NIL.
+NechÅ¥ $M$ je matice typu $r x s$, mÃ¡ $m$ vÃ½znamnÃ½ch mÃ­st $\neq$ NIL.
 
 \begin{itemize}
-\item pro ka¾dı øádek nalezneme poèet míst $\neq$ NIL
-\item setøídíme øádky Bucketsortem, tak ¾e rádky s~vìt¹ím poètem míst
- $\neq$ NIL pøedcházejí øádky s men¹ím poètem míst $\neq$ NIL
-\item procházíme øádky v daném setøídìní a pro ka¾dı øádek $i$ nalezneme
-  nejmen¹í èíslo $rd(i)$, ¾e nedochází ke kolizi s pøedchozími øádky (tj.
-  kdy¾ $M_{i',j'} \neq NIL \neq M_{i,j}$) a øádek $i'$ byl zaøazen, pak
+\item pro kaÅ¾dÃ½ Å™Ã¡dek nalezneme poÄet mÃ­st $\neq$ NIL
+\item setÅ™Ã­dÃ­me Å™Ã¡dky Bucketsortem, tak Å¾e rÃ¡dky s~vÄ›tÅ¡Ã­m poÄtem mÃ­st
+ $\neq$ NIL pÅ™edchÃ¡zejÃ­ Å™Ã¡dky s menÅ¡Ã­m poÄtem mÃ­st $\neq$ NIL
+\item prochÃ¡zÃ­me Å™Ã¡dky v danÃ©m setÅ™Ã­dÄ›nÃ­ a pro kaÅ¾dÃ½ Å™Ã¡dek $i$ nalezneme
+  nejmenÅ¡Ã­ ÄÃ­slo $rd(i)$, Å¾e nedochÃ¡zÃ­ ke kolizi s pÅ™edchozÃ­mi Å™Ã¡dky (tj.
+  kdyÅ¾ $M_{i',j'} \neq NIL \neq M_{i,j}$) a Å™Ã¡dek $i'$ byl zaÅ™azen, pak
   $rd(i) + j \neq rd(i') + j'$.
-  Pak $M_{i,j} \neq NIL$ je ulo¾eno ve vektoru hod na místì $rd(i)+j$.
+  Pak $M_{i,j} \neq NIL$ je uloÅ¾eno ve vektoru hod na mÃ­stÄ› $rd(i)+j$.
 \end{itemize}
 
-$m(l)$ - poèet míst $\neq$ NIL v øádcích s poètem míst $\geq l+1 \neq NIL$.
+$m(l)$ - poÄet mÃ­st $\neq$ NIL v Å™Ã¡dcÃ­ch s poÄtem mÃ­st $\geq l+1 \neq NIL$.
 
 \begin{theorem}
-Kdy¾ $m(l)(l+1) \leq m$ pro ka¾dé $l$, pak $rd(i) < m$ pro ka¾dı øádek $i$
-a algoritmus vy¾aduje èas $O(rsm)$.
+KdyÅ¾ $m(l)(l+1) \leq m$ pro kaÅ¾dÃ© $l$, pak $rd(i) < m$ pro kaÅ¾dÃ½ Å™Ã¡dek $i$
+a algoritmus vyÅ¾aduje Äas $O(rsm)$.
 \end{theorem}
 
 \begin{proof}
-Pøedpokládejme, ¾e hledáme rd pro øádek $i$, kterı má l míst $\neq NIL$. \\
-ve vektoru hod je obsazeno ménì ne¾ $m(l-1)$ míst. \\ 
-zkou¹íme $rd(i)=1,2,...$ \\
-$rd(i) = 1,2,...$ je zakázané, kdy¾ vznikne kolize. \\
-tj. $\exists$ øádek $i'$ pøedcházející a $\exists j,j'$ takové, ¾e
+PÅ™edpoklÃ¡dejme, Å¾e hledÃ¡me rd pro Å™Ã¡dek $i$, kterÃ½ mÃ¡ l mÃ­st $\neq NIL$. \\
+ve vektoru hod je obsazeno mÃ©nÄ› neÅ¾ $m(l-1)$ mÃ­st. \\ 
+zkouÅ¡Ã­me $rd(i)=1,2,...$ \\
+$rd(i) = 1,2,...$ je zakÃ¡zanÃ©, kdyÅ¾ vznikne kolize. \\
+tj. $\exists$ Å™Ã¡dek $i'$ pÅ™edchÃ¡zejÃ­cÃ­ a $\exists j,j'$ takovÃ©, Å¾e
 $M_{i',j'} \neq NIL \neq M_{i,j}$ 
 a platilo by $rd(i') + j' = rd(i) + j$.
-$\rightarrow$ tìchto mo¾ností je $< lm(l-1) \leq m$. \\
-$O(rs)$ - zjistíme pro ka¾dı øádek poèet míst $\neq NIL$. \\
-$O(m+r)$ - tøídìní Bucketsortem \\
+$\rightarrow$ tÄ›chto moÅ¾nostÃ­ je $< lm(l-1) \leq m$. \\
+$O(rs)$ - zjistÃ­me pro kaÅ¾dÃ½ Å™Ã¡dek poÄet mÃ­st $\neq NIL$. \\
+$O(m+r)$ - tÅ™Ã­dÄ›nÃ­ Bucketsortem \\
 $O(mrs)$ - krok 2
 \end{proof}
 
-%jedna mo¾nost
+%jedna moÅ¾nost
 %% XXX obr. matice
 %M = 
-%$\rightarrow$ budeme mít moc øádkù - nevhodné
+%$\rightarrow$ budeme mÃ­t moc Å™Ã¡dkÅ¯ - nevhodnÃ©
 
 \begin{priklad}
 XXX nejaky komentar \\
@@ -673,9 +673,9 @@ a & 102 & NIL & c \\
 
 \hspace{3mm}
 
-(pøehodili jsme pouze øádky)
+(pÅ™ehodili jsme pouze Å™Ã¡dky)
 
-$sl$ - vektor posunutıch sloupcù
+$sl$ - vektor posunutÃ½ch sloupcÅ¯
 
 \begin{itemize}
 \item $sl(0) = 0$
@@ -701,11 +701,11 @@ $zac = (6,0,6,3,6)$ \\
 $hod = (120, 211, 212, 102, a, b, 210, 121, c)$
 \end{tabular}
 
-Kdy¾ $M(i,j)$ je vıznamné místo, pak $M(i,j) = hod(zac(i+sl(j)) + j)$.
+KdyÅ¾ $M(i,j)$ je vÃ½znamnÃ© mÃ­sto, pak $M(i,j) = hod(zac(i+sl(j)) + j)$.
 
-\subsection{Vertikální posun sloupcù}
+\subsection{VertikÃ¡lnÃ­ posun sloupcÅ¯}
 
-$cd$ - vektor sloupcového posunutí, slou¾í k zápisu transformace
+$cd$ - vektor sloupcovÃ©ho posunutÃ­, slouÅ¾Ã­ k zÃ¡pisu transformace
 
 \vspace{5mm}
 
@@ -741,71 +741,71 @@ hod & 120 & 211 & 212 & 102 & a & b & 210 & 121 & c \\
 
 \end{priklad}
 
-Jak najdeme nazpátek místa ? Platí, kdy¾ $M_{i,j} \neq NIL$, pak
+Jak najdeme nazpÃ¡tek mÃ­sta ? PlatÃ­, kdyÅ¾ $M_{i,j} \neq NIL$, pak
 $hod(rd(i+cd(j)+j)) = M_{i,j}$
-\mnote{je ten vzorec správnì ?}
+\mnote{je ten vzorec sprÃ¡vnÄ› ?}
 
 \par
-{\em znaèení:} 
+{\em znaÄenÃ­:} 
 \begin{itemize}
-\item f(-,-) je fce dvou promìnnıch 
-\item $B_j$ matice posunutıch prvních sloupcù 
-\item $m_j$ poèet míst $\neq NIL$ v $B_j$ 
-\item $m_j(l)$ poèet míst $\neq NIL$ v øádcích matice $B_j$, které mají aspoò l+1 míst $\neq NIL$
+\item f(-,-) je fce dvou promÄ›nnÃ½ch 
+\item $B_j$ matice posunutÃ½ch prvnÃ­ch sloupcÅ¯ 
+\item $m_j$ poÄet mÃ­st $\neq NIL$ v $B_j$ 
+\item $m_j(l)$ poÄet mÃ­st $\neq NIL$ v Å™Ã¡dcÃ­ch matice $B_j$, kterÃ© majÃ­ aspoÅˆ l+1 mÃ­st $\neq NIL$
 \end{itemize}
 \par
 
-Budeme chtít, aby $\forall j \forall l$ platilo $m_j(l) \leq
+Budeme chtÃ­t, aby $\forall j \forall l$ platilo $m_j(l) \leq
 \frac{m}{f(l,m_j)}$. \\
-Okrajové podmínky na f: f musí splòovat:
+OkrajovÃ© podmÃ­nky na f: f musÃ­ splÅˆovat:
 \begin{itemize}
-\item $\forall$ l platí $f(l,m) \geq l+1$
-\item$\forall$ j platí $f(0,m_j) \leq \frac{m}{m_j}$
+\item $\forall$ l platÃ­ $f(l,m) \geq l+1$
+\item$\forall$ j platÃ­ $f(0,m_j) \leq \frac{m}{m_j}$
 \end{itemize}
 
-\subsubsection{Algoritmus na posunutí sloupcù}
+\subsubsection{Algoritmus na posunutÃ­ sloupcÅ¯}
 
 \begin{enumerate}
-\item Pro ka¾dı sloupec v poøadí $0,1,...$ nalezneme nejmen¹í $cd(j)$ 
-takové, aby matice $B_j$ splòovala 
+\item Pro kaÅ¾dÃ½ sloupec v poÅ™adÃ­ $0,1,...$ nalezneme nejmenÅ¡Ã­ $cd(j)$ 
+takovÃ©, aby matice $B_j$ splÅˆovala 
 $\forall l$ $m_j(l) \leq \frac{m}{f(l,m_j)}$
-(ka¾dı sloupec posunujeme dokud nesplòuje podmínku) 
-\item Na získanou matici $B = B_s$ pak pou¾ijeme pøedchozí algoritmus. 
+(kaÅ¾dÃ½ sloupec posunujeme dokud nesplÅˆuje podmÃ­nku) 
+\item Na zÃ­skanou matici $B = B_s$ pak pouÅ¾ijeme pÅ™edchozÃ­ algoritmus. 
 \end{enumerate}
 
-Platí $m(l) = m_s(l) \leq \frac{m}{f(l,m)} \leq \frac{m}{l+1}$. \\
-Hledáme hodnotu $cd(j)$ a pøedpokládáme, ¾e pro nìjakou hodnotu 
-$cd(j)$ není splnìna
-podmínka pro $l$, tj. platí $m_j(l) > \frac{m}{f(l,m)}$
+PlatÃ­ $m(l) = m_s(l) \leq \frac{m}{f(l,m)} \leq \frac{m}{l+1}$. \\
+HledÃ¡me hodnotu $cd(j)$ a pÅ™edpoklÃ¡dÃ¡me, Å¾e pro nÄ›jakou hodnotu 
+$cd(j)$ nenÃ­ splnÄ›na
+podmÃ­nka pro $l$, tj. platÃ­ $m_j(l) > \frac{m}{f(l,m)}$
 ... platila pro $B_{j-1}, tj. m_{j-1}(l) \leq \frac{m}{f(l,m_{j-1})}$
 \par
 Z toho plyne $m_j(l) - m_{j-1}(l) > \frac{m}{f(l,m_j)} -
 \frac{m}{f(l,m_{j-1}}$.
 \par
 
-Jak roste èíslo $m_j(l)$ ? 
+Jak roste ÄÃ­slo $m_j(l)$ ? 
 \begin{enumerate}
-\item v matici $B_{j-1}$ existuje øádek s aspoò $l+1$ místy $\neq NIL$ 
-a s tímto øádkem se støetne místo $\neq NIL$ (v $j$-tém sloupci 
+\item v matici $B_{j-1}$ existuje Å™Ã¡dek s aspoÅˆ $l+1$ mÃ­sty $\neq NIL$ 
+a s tÃ­mto Å™Ã¡dkem se stÅ™etne mÃ­sto $\neq NIL$ (v $j$-tÃ©m sloupci 
 $\leftarrow m_{j-1}(l)$
 vzroste o $1$)
-\item v matici $B_{j-1}$ existuje øádek s $l$ místy $\neq NIL$ a s tímto
-øádkem se støetne místo $\neq NIL$ v $j$-tém sloupci. Pak $m_{j-1}(l)$
+\item v matici $B_{j-1}$ existuje Å™Ã¡dek s $l$ mÃ­sty $\neq NIL$ a s tÃ­mto
+Å™Ã¡dkem se stÅ™etne mÃ­sto $\neq NIL$ v $j$-tÃ©m sloupci. Pak $m_{j-1}(l)$
 vzroste o $l+1$.
 \end{enumerate}
 
-støet - øádek v $B_{j-1}$ s aspoò $l$ místy $\neq NIL$ a místo $\neq NIL$
-v $j$-tém sloupci. Aby nebyla splnìna podmínka pro l, musí bıt poèet støetù
+stÅ™et - Å™Ã¡dek v $B_{j-1}$ s aspoÅˆ $l$ mÃ­sty $\neq NIL$ a mÃ­sto $\neq NIL$
+v $j$-tÃ©m sloupci. Aby nebyla splnÄ›na podmÃ­nka pro l, musÃ­ bÃ½t poÄet stÅ™etÅ¯
 pro danou hodnotu $cd(j)$
-bıt aspoò 
+bÃ½t aspoÅˆ 
 $$\frac{\frac{m}{f(l,m_j)} - \frac{m}{f(l,m_{j-1})}}{l+1}$$
 \par
-V matici $B_{j-1}$ je nejvı¹e $\frac{m_{j-1}(l-1)}{l} \leq \frac{m}{l
-f(l-1,m_{j-1}}$ øádkù s aspoò $l$ místy $\neq NIL$, v j-tém sloupci je $m_j -
-m_{j-1}$ míst $\neq NIL$. \\
+V matici $B_{j-1}$ je nejvÃ½Å¡e $\frac{m_{j-1}(l-1)}{l} \leq \frac{m}{l
+f(l-1,m_{j-1}}$ Å™Ã¡dkÅ¯ s aspoÅˆ $l$ mÃ­sty $\neq NIL$, v j-tÃ©m sloupci je $m_j -
+m_{j-1}$ mÃ­st $\neq NIL$. \\
 \par
 
-Podmínka pro $l$ mù¾e zakázat nejvı¹e 
+PodmÃ­nka pro $l$ mÅ¯Å¾e zakÃ¡zat nejvÃ½Å¡e 
 \begin{multline}\bigparens
 \frac{ \frac{m(m_j - m_{j-1})}{l f(l-1,m_{j-1}} }
   { \frac{ \frac{m}{f(l,m_j} - \frac{m}{f(l,m_{j-1}} }{l+1} } 
@@ -815,53 +815,53 @@ Podmínka pro $l$ mù¾e zakázat nejvı¹e
 \end{multline}
 \par
 
-Staèí nám sèítat pøes hodnoty $l$ takové, ¾e \\
-$m m_{j-1}(l) \leq l+1$ tj. pøes 
+StaÄÃ­ nÃ¡m sÄÃ­tat pÅ™es hodnoty $l$ takovÃ©, Å¾e \\
+$m m_{j-1}(l) \leq l+1$ tj. pÅ™es 
 $l \leq l_0 = min\{l; \frac{m}{f(l,m_{j-1}} < l\}$, \\
 $m_{j-1}(l) \leq \frac{m}{f(l,m_{j-1})} \leq l+1$.
 
-Celkovı poèet zakázanıch hodnot $cd$ je men¹í ne¾ 
+CelkovÃ½ poÄet zakÃ¡zanÃ½ch hodnot $cd$ je menÅ¡Ã­ neÅ¾ 
 \begin{multline}
 \label{odh-zak-hodnot}\bigparens
 \sum_{l=0}^{l_0} \frac{l+1}{l} \frac{(m_j - m_{j-1})}{
 \frac{f(l,m_{j-1}}{f(l,m_j)} - 1} \frac{f(l,m_{j-1}}{f(l-1,m_{j-1}}
 \end{multline}
 
-Zvolíme $f(l,m_j) = 2^{l(2 - \frac{m_j}{m})}$.
+ZvolÃ­me $f(l,m_j) = 2^{l(2 - \frac{m_j}{m})}$.
 
 \begin{pozn}
-Jeliko¾ se $f$ vyskytuje v sumì jen v podílech, vıraz se zjednodu¹¹í,
-zvolíme-li $f(l, m_j) = 2^{g(l, m_j)}$, kde g je nìjaká vhodná funkce.
-Dosadíme-li, mù¾eme si v¹imnout, ¾e dostaneme v exponentech rozdíly 
+JelikoÅ¾ se $f$ vyskytuje v sumÄ› jen v podÃ­lech, vÃ½raz se zjednoduÅ¡Å¡Ã­,
+zvolÃ­me-li $f(l, m_j) = 2^{g(l, m_j)}$, kde g je nÄ›jakÃ¡ vhodnÃ¡ funkce.
+DosadÃ­me-li, mÅ¯Å¾eme si vÅ¡imnout, Å¾e dostaneme v exponentech rozdÃ­ly 
 $g(l, m_{j-1}) - g(l, m_j) a g(l, m_{j-1}) - g(l - 1, m_{j-1})$,
-které vznikly vhodnou pøedchozí úpravou vırazu.
+kterÃ© vznikly vhodnou pÅ™edchozÃ­ Ãºpravou vÃ½razu.
 
-(... suma z Mehlhorna na stranì 10, tøetí suma od spoda ...)
+(... suma z Mehlhorna na stranÄ› 10, tÅ™etÃ­ suma od spoda ...)
 \par
 
-Teï se lze zbavit $-1$ ve jmenovateli pou¾itím nerovnosti 
+TeÄ se lze zbavit $-1$ ve jmenovateli pouÅ¾itÃ­m nerovnosti 
 $2^x - 1 = e^{x\ln2} - 1 \geq x\ln2$.
 
-(... suma z Mehlhorna na stranì 10, druhá suma od spoda ...)
+(... suma z Mehlhorna na stranÄ› 10, druhÃ¡ suma od spoda ...)
 \par
-Dal¹ím pozorovaním zjistíme, ¾e v takto získanıch rozdílech se mìní
-jenom jedna promìnná. \\
-Vıraz se dále zjednodu¹¹í, bude-li $g(l, m_j) = h(l)k(m_j), kde h(l), k(m_j)$
-budou vhodné lineární funkce. \\
-U funkce k linearitou vyu¾ijeme rozdílu $m_{j-1} - m_j$ v èitateli, kterı
-teï mù¾eme zkrátit.
+DalÅ¡Ã­m pozorovanÃ­m zjistÃ­me, Å¾e v takto zÃ­skanÃ½ch rozdÃ­lech se mÄ›nÃ­
+jenom jedna promÄ›nnÃ¡. \\
+VÃ½raz se dÃ¡le zjednoduÅ¡Å¡Ã­, bude-li $g(l, m_j) = h(l)k(m_j), kde h(l), k(m_j)$
+budou vhodnÃ© lineÃ¡rnÃ­ funkce. \\
+U funkce k linearitou vyuÅ¾ijeme rozdÃ­lu $m_{j-1} - m_j$ v Äitateli, kterÃ½
+teÄ mÅ¯Å¾eme zkrÃ¡tit.
 
-(... suma z Mehlhorna na stranì 10, první suma od spoda ...)
+(... suma z Mehlhorna na stranÄ› 10, prvnÃ­ suma od spoda ...)
 \par
-Dal¹ími heuristikami a s vyu¾itím okrajovıch podmínek pro $f$ nakonec
-zjistíme, ¾e dobrou volbou jsou funkce $h(l) = l, k(m_j) = 2 - \frac {m_j}m.$
+DalÅ¡Ã­mi heuristikami a s vyuÅ¾itÃ­m okrajovÃ½ch podmÃ­nek pro $f$ nakonec
+zjistÃ­me, Å¾e dobrou volbou jsou funkce $h(l) = l, k(m_j) = 2 - \frac {m_j}m.$
 \end{pozn}
  
-Takto definovaná f splòuje okrajové podmínky: \\
+Takto definovanÃ¡ f splÅˆuje okrajovÃ© podmÃ­nky: \\
 $f(l,m) = 2^l \geq l+1$ $\forall l=0,1,...$ \\
 $f(0,m_j) = 1 \leq \frac{m}{m_j}$ $\forall j=0,1,...,s$
 
-dosadíme do odhadu \ref{odh-zak-hodnot} a dostaneme 
+dosadÃ­me do odhadu \ref{odh-zak-hodnot} a dostaneme 
 
 \begin{multline}
 \sum_{l=1}^{l_0} 
@@ -870,14 +870,14 @@ dosadíme do odhadu \ref{odh-zak-hodnot} a dostaneme
     {(m_j - m_{j-1})}
     { 2^{l ( \frac{m_j}{m} - \frac{m_{j-1}}{m} ) }}
   2^{( 2 - \frac{m_{j-1}}{m} )} \leq \\
-\text{vyu¾ijeme, ¾e $2^x - 1 \geq x ln(2)$} \\
+\text{vyuÅ¾ijeme, Å¾e $2^x - 1 \geq x ln(2)$} \\
 \sum_{l=1}^{l_0} 
   \frac{l+1}{l} 
   \frac{(m_j - m_{j-1})}{l( \frac{m_j}{m} - \frac{m_{j-1}}{m} )} 4 = \\
 \frac{4m}{ln(2)} \sum_{l=1}^{l_0} 
   \frac{l+1}{l^2} = \frac{4m}{ln(2)} (\sum_{l=1}^{l_0} \frac{1}{l} +
   \sum_{l=1}^{l_0} \frac{1}{l^2}) \leq \\
-\text{integrální kriterium} \\
+\text{integrÃ¡lnÃ­ kriterium} \\
 \frac{4m}{ln(2)} (1 + ln(l_0)) + \frac{\pi^2}{6} \leq 4m \log_2(l_0) +
 15.3m \\
 \text{odhadneme $l_0$: } 
@@ -885,24 +885,24 @@ l_0 = min\{l; \frac{m}{f(l,m_{j-1}} < l\} \rightarrow l_0 < \log(m) \\
 \text{pak } \leq 4m\log \log m) + 15.3m
 \end{multline}
 
-Celı algoritmus spoèítá ulo¾ení matice $M$ typu $r \times s$ do vektorù  \\
+CelÃ½ algoritmus spoÄÃ­tÃ¡ uloÅ¾enÃ­ matice $M$ typu $r \times s$ do vektorÅ¯  \\
 $cd$ - dimenze $s$, \\
 $rd$ - dimenze $4m\log \log m) + 15.3m + r$, \\
 $hod$ dimenze $m+s$, \\
-pøitom hodnoty $cd(j) < 4m\log \log m) + 15.3m$ a $rd(i) < m$.
+pÅ™itom hodnoty $cd(j) < 4m\log \log m) + 15.3m$ a $rd(i) < m$.
 \par
-Èas potøebnı k vıpoètu je $O(sr(m \log \log(m))^2)$, kde $m$ je poèet míst $\neq
+ÄŒas potÅ™ebnÃ½ k vÃ½poÄtu je $O(sr(m \log \log(m))^2)$, kde $m$ je poÄet mÃ­st $\neq
 NIL$ v matici $M$.
 
 
-\subsection{Úsporné ulo¾ení øídkého vektoru}
+\subsection{ÃšspornÃ© uloÅ¾enÃ­ Å™Ã­dkÃ©ho vektoru}
 
-Máme vektor v dimenze $n \cdot d$ (rozdìlenı na $n$ blokù velikosti $d$)
-a $i_0 < i_1 < ... < i_{t-1}$ jsou v¹echny
-indexy $i$ takové, ¾e $v(i) \neq 0$. \\
-Vytvoøíme vektor $cv$ dimenze $t$, $cv(j)=v(i_j)$. \\
-Ná¹ úkol - pro dané l zjistit, zda $l = i_j$ a pøípadnì nalézt toto $j$. \\
-Sestavíme vektor $base$ dimenze $n$:
+MÃ¡me vektor v dimenze $n \cdot d$ (rozdÄ›lenÃ½ na $n$ blokÅ¯ velikosti $d$)
+a $i_0 < i_1 < ... < i_{t-1}$ jsou vÅ¡echny
+indexy $i$ takovÃ©, Å¾e $v(i) \neq 0$. \\
+VytvoÅ™Ã­me vektor $cv$ dimenze $t$, $cv(j)=v(i_j)$. \\
+NÃ¡Å¡ Ãºkol - pro danÃ© l zjistit, zda $l = i_j$ a pÅ™Ã­padnÄ› nalÃ©zt toto $j$. \\
+SestavÃ­me vektor $base$ dimenze $n$:
 
 \vspace{1mm}
 
@@ -911,7 +911,7 @@ ${\rm base(j) = }$
 $\Bigl\{$
 \begin{tabular}{ll}
 -1 & $i_k$ {\tt div} $d \neq j$, $\forall k=0,1,...,t-1$ \\
-$min\{l; i_l {\tt div} d = j\}$ & $\exists l$, ¾e $i_l$ {\tt div} $d = j$ \\
+$min\{l; i_l {\tt div} d = j\}$ & $\exists l$, Å¾e $i_l$ {\tt div} $d = j$ \\
 \end{tabular}
 % \right. 
 
@@ -931,14 +931,14 @@ $l-base(j)$ & $i_l = jd+k$ \\
 
 \vspace{2mm}
 
-Nyní ulo¾íme matici $offset$ do vektoru $off$ dimenze $n$
-tak, ¾e z ka¾dého øádku vytvoøíme èíslo $v$ soustavì o základu $d+1$: \\
+NynÃ­ uloÅ¾Ã­me matici $offset$ do vektoru $off$ dimenze $n$
+tak, Å¾e z kaÅ¾dÃ©ho Å™Ã¡dku vytvoÅ™Ã­me ÄÃ­slo $v$ soustavÄ› o zÃ¡kladu $d+1$: \\
 
 off(j) = $\sum_{k=0}^{d-1}(offset(j,k) + 1)(d+1)^k$ \\
-potøebujeme $base(dim n)$, $off(dim n)$ \\
-smysluplné kdy¾ $d \ll n$ a $t < n$ (napø. $d = \log \log n)$)
+potÅ™ebujeme $base(dim n)$, $off(dim n)$ \\
+smysluplnÃ© kdyÅ¾ $d \ll n$ a $t < n$ (napÅ™. $d = \log \log n)$)
 
-Platí následující vztahy: 
+PlatÃ­ nÃ¡sledujÃ­cÃ­ vztahy: 
 \begin{enumerate}
 \item $v(h) = 0 \leftrightarrow offset(h {\tt div} d, h \bmod d) = -1$
 \item $v(h) = 1 \rightarrow h = base(h {\tt div} d) + offset(h {\tt div} d, h
@@ -947,8 +947,8 @@ Platí následující vztahy:
 \end{enumerate}
 \par
 
-pro dané $i$ - nalezení hodnoty $v(i)$
-kdy¾ $base(i {\tt div } d) = -1$, pak $v(i) = 0$ \\
+pro danÃ© $i$ - nalezenÃ­ hodnoty $v(i)$
+kdyÅ¾ $base(i {\tt div } d) = -1$, pak $v(i) = 0$ \\
 $base(i {\tt div } d) \neq -1$, pak $k = i \bmod d$ \\
 $j = i {\tt div } d$ \\
 $l = off(j) {\tt div } (d+1)^k$ \\
@@ -956,8 +956,8 @@ $l = l \bmod (d+1)$ \\
 $l = l - 1 + base(j)$ \\
 $v(i) = cv(l)$ \\
 
-Lze pou¾ít pro malé $t$ a $(d+1)^d$ v rozsahu velikosti registru - vhodné
-napø. pro $d \approx \log \log n)$.
+Lze pouÅ¾Ã­t pro malÃ© $t$ a $(d+1)^d$ v rozsahu velikosti registru - vhodnÃ©
+napÅ™. pro $d \approx \log \log n)$.
 
 \begin{priklad}
 XXX uvod k prikladu

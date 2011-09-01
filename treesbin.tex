@@ -1,34 +1,34 @@
-% Souèást skript na Datové struktury. Viz main.tex
+% SouÄÃ¡st skript na DatovÃ© struktury. Viz main.tex
 \markright{$ $Id$ $}
 
 
-\chapter{Binární vyhledávací stromy}
+\chapter{BinÃ¡rnÃ­ vyhledÃ¡vacÃ­ stromy}
 \label{bvs}
 % --------------------------------------------------------------------------
 % by Vladimir Kotal, 2004
 
 
 % ..........................................................................
-\section{Obecnì}
+\section{ObecnÄ›}
 \label{bvs:obecne}
 
 \begin{defn}
-\emph{Binární vyhledávací strom} reprezentující mno¾inu $S$ je takovı 
-binární strom, ¾e 
+\emph{BinÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom} reprezentujÃ­cÃ­ mnoÅ¾inu $S$ je takovÃ½ 
+binÃ¡rnÃ­ strom, Å¾e 
 
 \begin{enumerate}
-\item ka¾dı vnitøní vrchol má dva syny, levého a pravého
-\item existuje jednoznaèná korespondence mezi vrcholy $S$ a vnitøními 
+\item kaÅ¾dÃ½ vnitÅ™nÃ­ vrchol mÃ¡ dva syny, levÃ©ho a pravÃ©ho
+\item existuje jednoznaÄnÃ¡ korespondence mezi vrcholy $S$ a vnitÅ™nÃ­mi 
 vrcholy stromu
-\item pro ka¾dı vnitøní vrchol $v$ platí, ¾e vnitøní vrcholy $v$ podstromu 
-jeho levého syna reprezentují prvky men¹í ne¾ reprezentuje $v$ a vnitøní 
-vrcholy v podstromu jeho pravého syna reprezentují prvky vìt¹í ne¾ 
+\item pro kaÅ¾dÃ½ vnitÅ™nÃ­ vrchol $v$ platÃ­, Å¾e vnitÅ™nÃ­ vrcholy $v$ podstromu 
+jeho levÃ©ho syna reprezentujÃ­ prvky menÅ¡Ã­ neÅ¾ reprezentuje $v$ a vnitÅ™nÃ­ 
+vrcholy v podstromu jeho pravÃ©ho syna reprezentujÃ­ prvky vÄ›tÅ¡Ã­ neÅ¾ 
 reprezentuje vrchol $v$.
 \end{enumerate}
 \end{defn}
 
 \begin{pozn}
-Nech»
+NechÅ¥
 
 $$
 S = \{ s_1 < s_2 < ... < s_n \}
@@ -37,43 +37,43 @@ $$
 s_0 = - \infty, s_{n+1} = \infty
 $$
 
-Pak $i$-tı list (ve smyslu zleva doprava) reprezentuje interval 
+Pak $i$-tÃ½ list (ve smyslu zleva doprava) reprezentuje interval 
 $<s_{i-1}, s_i>$.
 \end{pozn}
 
 \begin{priklad}
-Nech» $S = \{ 1, 7, 12, 15, 24, 81 \}$. Binární vyhledávací strom
-reprezentující mno¾inu $S$ je na obr.~\ref{fig.bvs.example}.
-\mnote{Strom na obr.~\ref{fig.bvs.example} není mo¾ná nejlep¹í pøíklad,
-proto¾e BVS mohou vypadat více nepravidelnì - na rozdíl od haldy
-\emph{nemusí} mít v¹echny uzly umístìny co mo¾ná nejvíce "vlevo".}
+NechÅ¥ $S = \{ 1, 7, 12, 15, 24, 81 \}$. BinÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom
+reprezentujÃ­cÃ­ mnoÅ¾inu $S$ je na obr.~\ref{fig.bvs.example}.
+\mnote{Strom na obr.~\ref{fig.bvs.example} nenÃ­ moÅ¾nÃ¡ nejlepÅ¡Ã­ pÅ™Ã­klad,
+protoÅ¾e BVS mohou vypadat vÃ­ce nepravidelnÄ› - na rozdÃ­l od haldy
+\emph{nemusÃ­} mÃ­t vÅ¡echny uzly umÃ­stÄ›ny co moÅ¾nÃ¡ nejvÃ­ce "vlevo".}
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/bvs}
-\caption{Pøíklad binárního vyhledávacího stromu}
+\caption{PÅ™Ã­klad binÃ¡rnÃ­ho vyhledÃ¡vacÃ­ho stromu}
 \label{fig.bvs.example}
 \end{figure}
 
 \end{priklad}
 
 \begin{pozn}
-V listech máme jen intervaly, ka¾dı vrchol implicitnì urèuje tyto
-intervaly. (viz obr.~\ref{fig.bvs.example}) Tato vazba je jednotlivımi
-operacemi udr¾ována.
+V listech mÃ¡me jen intervaly, kaÅ¾dÃ½ vrchol implicitnÄ› urÄuje tyto
+intervaly. (viz obr.~\ref{fig.bvs.example}) Tato vazba je jednotlivÃ½mi
+operacemi udrÅ¾ovÃ¡na.
 \end{pozn}
 
 \subsection{Algoritmus MEMBER}
 
 \begin{algorithm}[!htb]
-\caption{MEMBER pro binární vyhledávací stromy}
+\caption{MEMBER pro binÃ¡rnÃ­ vyhledÃ¡vacÃ­ stromy}
 \label{alg:btr.mem}
 \begin{algorithmic}
-\STATE $t \leftarrow$ koøen
-\WHILE {$t$ \text{není list a zároveò} $t$ \text{nereprezentuje} $x$} 
-\IF {$x >$ \text{prvek reprezentovanı} $t$}
-  \STATE $t \leftarrow$ pravı syn
+\STATE $t \leftarrow$ koÅ™en
+\WHILE {$t$ \text{nenÃ­ list a zÃ¡roveÅˆ} $t$ \text{nereprezentuje} $x$} 
+\IF {$x >$ \text{prvek reprezentovanÃ½} $t$}
+  \STATE $t \leftarrow$ pravÃ½ syn
 \ELSE 
-   \STATE $t \leftarrow$ levı syn $t$
+   \STATE $t \leftarrow$ levÃ½ syn $t$
 \ENDIF
 \ENDWHILE
 \end{algorithmic}
@@ -83,148 +83,148 @@ operacemi udr¾ována.
 \subsection{Algoritmus INSERT}
 
 \mnote{tohle je pouze pokus o alg. 
-XXX dopsat podle nìjakého dùvìryhodného zdroje !}
+XXX dopsat podle nÄ›jakÃ©ho dÅ¯vÄ›ryhodnÃ©ho zdroje !}
 \begin{enumerate}
-  \item najdi list kam patøí $x$ ($x_{i-1} < x < x_i$)
-  \item udìlej z nìj vnitøní vrchol s hodnotou $x$
-  \item pøidej mu dva syny s intervaly $<x_{i-1}, x> , <x, x_i>$
-  \item uprav strukturální podmínku na strom
+  \item najdi list kam patÅ™Ã­ $x$ ($x_{i-1} < x < x_i$)
+  \item udÄ›lej z nÄ›j vnitÅ™nÃ­ vrchol s hodnotou $x$
+  \item pÅ™idej mu dva syny s intervaly $<x_{i-1}, x> , <x, x_i>$
+  \item uprav strukturÃ¡lnÃ­ podmÃ­nku na strom
 \end{enumerate}
 
 
 \subsection{Algoritmus DELETE}
 
-DELETE(x) provedeme následovnì: 
+DELETE(x) provedeme nÃ¡sledovnÄ›: 
 
 \begin{enumerate}
-  \item nalezneme $x$ (vrchol reprezentující $x$)
-  \item pokud jeden jeho syn je list, pak odstraníme vrchol + syna, kterı je
-    list, druhı syn nahradí odstranìnı vrchol
-\mnote{co kdy¾ oba synové jsou listy ?}
-  \item pokud ¾ádnı jeho syn není list, pak:
-    nalezneme vrchol $u$, reprezentující nejmen¹í prvek v $S$ vìt¹í ne¾ $x$.
-    levı syn tohoto vrcholu je list.
-    pøemístíme prvek reprezentovanı tímto vrcholem do vrcholu
-    reprezentujícího $x$ odstraníme $u$ a jeho levého syna, pravého syna
-    $u$ dáme na místo $u$.
+  \item nalezneme $x$ (vrchol reprezentujÃ­cÃ­ $x$)
+  \item pokud jeden jeho syn je list, pak odstranÃ­me vrchol + syna, kterÃ½ je
+    list, druhÃ½ syn nahradÃ­ odstranÄ›nÃ½ vrchol
+\mnote{co kdyÅ¾ oba synovÃ© jsou listy ?}
+  \item pokud Å¾Ã¡dnÃ½ jeho syn nenÃ­ list, pak:
+    nalezneme vrchol $u$, reprezentujÃ­cÃ­ nejmenÅ¡Ã­ prvek v $S$ vÄ›tÅ¡Ã­ neÅ¾ $x$.
+    levÃ½ syn tohoto vrcholu je list.
+    pÅ™emÃ­stÃ­me prvek reprezentovanÃ½ tÃ­mto vrcholem do vrcholu
+    reprezentujÃ­cÃ­ho $x$ odstranÃ­me $u$ a jeho levÃ©ho syna, pravÃ©ho syna
+    $u$ dÃ¡me na mÃ­sto $u$.
 \end{enumerate}
 
-Jak nalezneme vrchol reprezentující nejmen¹í prvek v $S$ vìt¹í ne¾ $x$ ?
-Jsme ve vrcholu $t$ reprezentujícím $x$ a hledáme vrchol $u$:
+Jak nalezneme vrchol reprezentujÃ­cÃ­ nejmenÅ¡Ã­ prvek v $S$ vÄ›tÅ¡Ã­ neÅ¾ $x$ ?
+Jsme ve vrcholu $t$ reprezentujÃ­cÃ­m $x$ a hledÃ¡me vrchol $u$:
 \begin{algorithmic}
-\STATE $u \leftarrow$ pravı syn $t$
-\WHILE {\text{levı syn} $u \neq list$}
-   \STATE $u \leftarrow$ levı syn $u$
+\STATE $u \leftarrow$ pravÃ½ syn $t$
+\WHILE {\text{levÃ½ syn} $u \neq list$}
+   \STATE $u \leftarrow$ levÃ½ syn $u$
 \ENDWHILE
 \end{algorithmic}
 
-Èas pro operace MEMBER, INSERT a DELETE v binárním vyhledávacím stromì je
+ÄŒas pro operace MEMBER, INSERT a DELETE v binÃ¡rnÃ­m vyhledÃ¡vacÃ­m stromÄ› je
 \\
-$O(\text{délka stromu}) = O(\text{vı¹ka stromu})$.
+$O(\text{dÃ©lka stromu}) = O(\text{vÃ½Å¡ka stromu})$.
 
 % --------------------------------------------------------------------------
-\section{Optimální binární vyhledávací stromy}
+\section{OptimÃ¡lnÃ­ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ stromy}
 
-Budeme chtít reprezentaci binárního vyhledávacího stromu takovou, ¾e 
-bude optimalizovaná vzhledem k operaci MEMBER za pøedpokladu, ¾e známe
-pravdìpodobnost provedení této operace na jednotlivé vrcholy stromu.
+Budeme chtÃ­t reprezentaci binÃ¡rnÃ­ho vyhledÃ¡vacÃ­ho stromu takovou, Å¾e 
+bude optimalizovanÃ¡ vzhledem k operaci MEMBER za pÅ™edpokladu, Å¾e znÃ¡me
+pravdÄ›podobnost provedenÃ­ tÃ©to operace na jednotlivÃ© vrcholy stromu.
 
-\subsection{Co je to optimální binární vyhledávací strom}
+\subsection{Co je to optimÃ¡lnÃ­ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom}
 
-Prvky jsou ulo¾eny ve vnitøních vrcholech stromu. 
+Prvky jsou uloÅ¾eny ve vnitÅ™nÃ­ch vrcholech stromu. 
 Listy jsou intervaly $(-\infty, x_1)$, $(x_1, x_2)$, 
-$\ldots$, $(x_n, \infty)$. Listy nemusíme implicitnì
-ve stromì zaznamenávat.
-U optimálních stromù dále pøedpokládáme, ¾e známe pravdìpodobnosti 
-operací $Access(x)$. 
+$\ldots$, $(x_n, \infty)$. Listy nemusÃ­me implicitnÄ›
+ve stromÄ› zaznamenÃ¡vat.
+U optimÃ¡lnÃ­ch stromÅ¯ dÃ¡le pÅ™edpoklÃ¡dÃ¡me, Å¾e znÃ¡me pravdÄ›podobnosti 
+operacÃ­ $Access(x)$. 
 
 \subsection{Algoritmus konstrukce}
 
-Dána mno¾ina $S = \{x_1 < x_2 < ... < x_n \}$, provádí se pouze operace
-MEMBER(x) a jsou dány pravdìpodobnosti 
+DÃ¡na mnoÅ¾ina $S = \{x_1 < x_2 < ... < x_n \}$, provÃ¡dÃ­ se pouze operace
+MEMBER(x) a jsou dÃ¡ny pravdÄ›podobnosti 
 $\alpha_1, ..., \alpha_n, \beta_0, ..., \beta_n$, kde 
 \begin{itemize}
-\mnote{P znaèí pravdìpodobnost}
-\item $\alpha_i = P($provádìla se operace $MEMBER(x_i))$
-\item $\beta_i = P($provádìla se operace $MEMBER(x)$ pro 
+\mnote{P znaÄÃ­ pravdÄ›podobnost}
+\item $\alpha_i = P($provÃ¡dÄ›la se operace $MEMBER(x_i))$
+\item $\beta_i = P($provÃ¡dÄ›la se operace $MEMBER(x)$ pro 
    $x \in <x_i, x_{i+1}>)$
 \end{itemize}
 
 kde $x_0 = - \infty, x_{n+1} = \infty$.
 \par
-Tedy jsou dány pravdìpodobnosti pøístupu k vnitøním vrcholùm a k listùm.
+Tedy jsou dÃ¡ny pravdÄ›podobnosti pÅ™Ã­stupu k vnitÅ™nÃ­m vrcholÅ¯m a k listÅ¯m.
 \par
 
-Chceme nalézt binární vyhledávací strom reprezentující $S$ takovı, ¾e
-operace MEMBER má nejmen¹í oèekávanı èas.
+Chceme nalÃ©zt binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom reprezentujÃ­cÃ­ $S$ takovÃ½, Å¾e
+operace MEMBER mÃ¡ nejmenÅ¡Ã­ oÄekÃ¡vanÃ½ Äas.
 \par
-Oèekávanı èas operace MEMBER je $\sum_{i=1}^{n} \alpha_i(a_i + 1) +
+OÄekÃ¡vanÃ½ Äas operace MEMBER je $\sum_{i=1}^{n} \alpha_i(a_i + 1) +
 \sum_{i=0}^{n} \beta_i b_i$, kde 
-\mnote{oèekávaná hodnota = støední hodnota náhodné velièiny; n.v. s
-diskrétním rozdìlením má stø. hodnotu $\sum x_i p_i$}
-$a_i$ je hloubka prvku reprezentujícího prvek $x_i$, $b_i$ je hloubka
-listu reprezentujícího interval $<x_i, x_{i+1}>$.
+\mnote{oÄekÃ¡vanÃ¡ hodnota = stÅ™ednÃ­ hodnota nÃ¡hodnÃ© veliÄiny; n.v. s
+diskrÃ©tnÃ­m rozdÄ›lenÃ­m mÃ¡ stÅ™. hodnotu $\sum x_i p_i$}
+$a_i$ je hloubka prvku reprezentujÃ­cÃ­ho prvek $x_i$, $b_i$ je hloubka
+listu reprezentujÃ­cÃ­ho interval $<x_i, x_{i+1}>$.
 \par
 
-\subsubsection{Zobecníme úlohu:}
+\subsubsection{ZobecnÃ­me Ãºlohu:}
 
-\mnote{XXX sjednotit indexy a závorky - buï $c(i,j)$ nebo $c_{i,j}$}
-Dána mno¾ina $S = \{x_1 < x_2 < ... < x_n \}$ a ohodnocení $\alpha_i$ prvku
+\mnote{XXX sjednotit indexy a zÃ¡vorky - buÄ $c(i,j)$ nebo $c_{i,j}$}
+DÃ¡na mnoÅ¾ina $S = \{x_1 < x_2 < ... < x_n \}$ a ohodnocenÃ­ $\alpha_i$ prvku
 $x_i$ a $\beta_i$ intervalu $(x_i,x_{i+1})$.
-Chceme zkonstruovat binární vyhledávací strom T reprezentující S takovı,
-¾e $hod(T)= \sum_{i=1}^{n} \alpha_i(a_i + 1) + \sum_{i=0}^{n} \beta_i b_i$
-je minimální. \\
-T je pak optimální binární vyhledávací strom.
-Pro $1 \leq i \leq j \leq n$, $U_{i,j}$ je úloha nalézt optimální binární
-vyhledávací strom pro $S_{i,j} = {x_i < x_{i+1} < ... < x_j}$ a hodnoty 
+Chceme zkonstruovat binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom T reprezentujÃ­cÃ­ S takovÃ½,
+Å¾e $hod(T)= \sum_{i=1}^{n} \alpha_i(a_i + 1) + \sum_{i=0}^{n} \beta_i b_i$
+je minimÃ¡lnÃ­. \\
+T je pak optimÃ¡lnÃ­ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom.
+Pro $1 \leq i \leq j \leq n$, $U_{i,j}$ je Ãºloha nalÃ©zt optimÃ¡lnÃ­ binÃ¡rnÃ­
+vyhledÃ¡vacÃ­ strom pro $S_{i,j} = {x_i < x_{i+1} < ... < x_j}$ a hodnoty 
 $\alpha_i, \alpha_{i+1}, ..., \alpha_j, \beta_{i-1}, \beta_i, ..., \beta_j$.
 
 \par
 \begin{pozorov}
 \label{obvs-poz1}
-% Pozorování 1: 
-Nech» T je strom reprezentující mno¾inu $S_{i,j}$ a koøen T
-hodnotí prvek $x_k$ pro $i \leq k \leq j$. Nech» $T_l$ je podstrom levého
-syna koøene, $T_p$ je podstrom pravého syna koøene. Pak: \\
+% PozorovÃ¡nÃ­ 1: 
+NechÅ¥ T je strom reprezentujÃ­cÃ­ mnoÅ¾inu $S_{i,j}$ a koÅ™en T
+hodnotÃ­ prvek $x_k$ pro $i \leq k \leq j$. NechÅ¥ $T_l$ je podstrom levÃ©ho
+syna koÅ™ene, $T_p$ je podstrom pravÃ©ho syna koÅ™ene. Pak: \\
 $hod(T) = hot(T_l) + hod(T_p) + \sum_{l=i}^{j} \alpha_l + \sum_{l=i-1}^{j}
 \beta_l$ \\
-$T_l$ reprezentuje mno¾inu $S_{i,k-1}$ a $T_p$ reprezentuje mno¾inu $S_{k+1,j}$.
+$T_l$ reprezentuje mnoÅ¾inu $S_{i,k-1}$ a $T_p$ reprezentuje mnoÅ¾inu $S_{k+1,j}$.
 \end{pozorov}
 
 \par
 \begin{pozorov}
-% Pozorování 2: 
-Nech» platí pøedpoklady pozorování
-% Pozorování 1 
+% PozorovÃ¡nÃ­ 2: 
+NechÅ¥ platÃ­ pÅ™edpoklady pozorovÃ¡nÃ­
+% PozorovÃ¡nÃ­ 1 
 \ref{obvs-poz1}
-a nech» T je optimální
-binární vyhledávací strom pro $S_{i,j}$. Pak $T_l$ je optimální
-binární vyhledávací strom pro $S_{i,k-1}$ a $T_p$ je optimální
-binární vyhledávací strom pro $S_{k+1,j}$.
+a nechÅ¥ T je optimÃ¡lnÃ­
+binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom pro $S_{i,j}$. Pak $T_l$ je optimÃ¡lnÃ­
+binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom pro $S_{i,k-1}$ a $T_p$ je optimÃ¡lnÃ­
+binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom pro $S_{k+1,j}$.
 \end{pozorov}
 
 \par
 \begin{pozorov}
-% Pozorování 3: 
-Kdy¾ známe $hod(T_{k,k'})$ pro opt. bin. vyhl. strom
-reprezentující mno¾inu $S_{k,k'}$ kde $i \leq k \leq k' \leq j$ a $k'-k <
+% PozorovÃ¡nÃ­ 3: 
+KdyÅ¾ znÃ¡me $hod(T_{k,k'})$ pro opt. bin. vyhl. strom
+reprezentujÃ­cÃ­ mnoÅ¾inu $S_{k,k'}$ kde $i \leq k \leq k' \leq j$ a $k'-k <
 j-i$, pak $hod(T_{i,j})$ pro opt. bin. vyhl. strom je \\
 $$
 \sum_{l=i}^{j} \alpha_l + \sum_{l=i-1}^{j} \beta_l + min\{hod(T_{i,k-1}) +
 hod(T_{k+1,j}), i \leq k \leq j\}
 $$
-Kdy¾ 
+KdyÅ¾ 
 $$
 hod(T_{i,k-1}) + hod(T_{k+1,j})
 \leq min\{hod(T_{i,k'-1}) + hod(T_{k'+1,j}), i \leq k' \leq j\}
 $$
 pak $\exists$ opt. bin. vyhl. strom pro $S_{i,j}$,
-jeho¾ koøen reprezentuje $x_k$.
+jehoÅ¾ koÅ™en reprezentuje $x_k$.
 \end{pozorov}
 
 \par
-Systematicky spoèítáme $w_{i,j} = \sum_{l=i}^{j} \alpha_l + \sum_{l=i-1}^{j}
-\beta_l$ pro v¹echny $1 \leq i \leq j \leq n$. Inicializujeme matice H,K
+Systematicky spoÄÃ­tÃ¡me $w_{i,j} = \sum_{l=i}^{j} \alpha_l + \sum_{l=i-1}^{j}
+\beta_l$ pro vÅ¡echny $1 \leq i \leq j \leq n$. Inicializujeme matice H,K
 typu $n x n, H = K = 0$.
 \mnote{XXX typu n krat n}
 
@@ -235,11 +235,11 @@ typu $n x n, H = K = 0$.
 \end{algorithmic}
 
 $H_{i,j}$ pro $i \leq j$ bude $H_{i,j} = hod(T_{i,j})$ pro opt. bin. vyhl.
-strom reprezentující $S_{i,j}$ a $K_{i,j}$ bude index prvku
-reprezentovaného v koøeni $T_{i,j}$.
+strom reprezentujÃ­cÃ­ $S_{i,j}$ a $K_{i,j}$ bude index prvku
+reprezentovanÃ©ho v koÅ™eni $T_{i,j}$.
 
 \begin{algorithm}[!htb]
-\caption{Vıpoèet matic H, K}
+\caption{VÃ½poÄet matic H, K}
 \label{alg:obvs.puv}
 \begin{algorithmic}
 \FOR {every $i=1,2,..,n$}
@@ -266,8 +266,8 @@ reprezentovaného v koøeni $T_{i,j}$.
 \end{algorithm}
 
 \begin{theorem}
-Uvedenı algoritmus \ref{alg:obvs.puv} spoèítá korektnì matice $H$ a $K$ 
-v èase $O(n^3)$ a vy¾aduje $O(n^2)$ pamìti.
+UvedenÃ½ algoritmus \ref{alg:obvs.puv} spoÄÃ­tÃ¡ korektnÄ› matice $H$ a $K$ 
+v Äase $O(n^3)$ a vyÅ¾aduje $O(n^2)$ pamÄ›ti.
 \end{theorem}
 
 $K_{i,j} \leq K_{i,j+1} \leq K_{i+1,j+1}$
@@ -276,31 +276,31 @@ $K_{i,j} \leq K_{i,j+1} \leq K_{i+1,j+1}$
 
 \subsubsection{Konstrukce opt. bin. vyhl, stromu ze znalosti matice $K$}
 \begin{itemize}
-\item koøen stromu bude $x_{K(1,n)}$.
-\item podstrom levého syna bude optim. strom pro $S_{1,K(1,n)-1}$
-\item podstrom pravého syna bude optim. strom pro $S_{K(1,n)+1,n}$
+\item koÅ™en stromu bude $x_{K(1,n)}$.
+\item podstrom levÃ©ho syna bude optim. strom pro $S_{1,K(1,n)-1}$
+\item podstrom pravÃ©ho syna bude optim. strom pro $S_{K(1,n)+1,n}$
 \end{itemize}
 
-To nám dává rekurzivní algoritmus pro vıstavbu opt. bin. vyhl. stromu z
-matice $K$, strom takto zkonstruujeme v èase $O(n)$.
+To nÃ¡m dÃ¡vÃ¡ rekurzivnÃ­ algoritmus pro vÃ½stavbu opt. bin. vyhl. stromu z
+matice $K$, strom takto zkonstruujeme v Äase $O(n)$.
 
 
 % --------------------------------------
-\subsection{Sní¾ení slo¾itosti z kubické na kvadratickou}
+\subsection{SnÃ­Å¾enÃ­ sloÅ¾itosti z kubickÃ© na kvadratickou}
 
-XXX slouèit s èástí pøedch subsekce
+XXX slouÄit s ÄÃ¡stÃ­ pÅ™edch subsekce
 
-Chceme sní¾it ryhchlost konstrukce opt. bin. vyhl. stromu z kubické na
-kvadratickou. Pro tento úkol pou¾ijeme \emph{kvadratické programování}. 
-Pomocí této techniky lze modifikovat algoritmus pro konstrukci optimální
-BVS tak, ¾e bude mít místo slo¾itosti $O(n^3)$ slo¾itost $O(n^2)$.
+Chceme snÃ­Å¾it ryhchlost konstrukce opt. bin. vyhl. stromu z kubickÃ© na
+kvadratickou. Pro tento Ãºkol pouÅ¾ijeme \emph{kvadratickÃ© programovÃ¡nÃ­}. 
+PomocÃ­ tÃ©to techniky lze modifikovat algoritmus pro konstrukci optimÃ¡lnÃ­
+BVS tak, Å¾e bude mÃ­t mÃ­sto sloÅ¾itosti $O(n^3)$ sloÅ¾itost $O(n^2)$.
 
-Algoritmus~\ref{alg:obvs.puv} pro vıpoèet $H$ a $K$ jsme modifikovali tak,
-¾e øádky (1),(2),(3) jsme nahradili øádky (1'),(2'),(3'). Tím vznikl
+Algoritmus~\ref{alg:obvs.puv} pro vÃ½poÄet $H$ a $K$ jsme modifikovali tak,
+Å¾e Å™Ã¡dky (1),(2),(3) jsme nahradili Å™Ã¡dky (1'),(2'),(3'). TÃ­m vznikl
 algoritmus~\ref{alg:obvs.modif}.
 
 \begin{algorithm}[!htb]
-\caption{Modifikovanı algoritmus pro vıpoèet matic H, K}
+\caption{ModifikovanÃ½ algoritmus pro vÃ½poÄet matic H, K}
 \label{alg:obvs.modif}
 \begin{algorithmic}
 \FOR {every $i=1,2,..,n$}
@@ -326,22 +326,22 @@ algoritmus~\ref{alg:obvs.modif}.
 \end{algorithmic}
 \end{algorithm}
 
-Modifikovanı algoritmus: Tøetí vnoøenı cyklus vy¾aduje èas 
-$O(K_{i+1,j+1} - K_{i,j})$. Tedy druhı vnoøenı cyklus vy¾aduje èas 
+ModifikovanÃ½ algoritmus: TÅ™etÃ­ vnoÅ™enÃ½ cyklus vyÅ¾aduje Äas 
+$O(K_{i+1,j+1} - K_{i,j})$. Tedy druhÃ½ vnoÅ™enÃ½ cyklus vyÅ¾aduje Äas 
 $O(K_{2,2+j} - K_{1,1+j} + K_{3,3+j} - K_{2,2+j} + K_{4,4+j} - K_{3,3+j} +
 ... + K_{n-j,n} - K_{n-j-1,n-1}) = O(K_{n-j,n}) = O(n)$.
 
 \begin{theorem}
-Za pøedpokladu $K_{i,j} \leq K_{i,j+1} \leq K_{i+1,j+1}$ pro ka¾dé 
-$1 \leq i \leq j \leq n - 1$ modifikovanı algoritmus korektnì spoèítá
-matice $H$ a $K$ v èase $O(n^2)$ a vy¾aduje pamì» $O(n^2)$.
+Za pÅ™edpokladu $K_{i,j} \leq K_{i,j+1} \leq K_{i+1,j+1}$ pro kaÅ¾dÃ© 
+$1 \leq i \leq j \leq n - 1$ modifikovanÃ½ algoritmus korektnÄ› spoÄÃ­tÃ¡
+matice $H$ a $K$ v Äase $O(n^2)$ a vyÅ¾aduje pamÄ›Å¥ $O(n^2)$.
 \end{theorem}
 
 
 
 \par
-Vstup: dána èísla $w(i,j), 1 \leq i \leq j \leq n$\\
-Vıstup: definujeme  $c(i,j) = $
+Vstup: dÃ¡na ÄÃ­sla $w(i,j), 1 \leq i \leq j \leq n$\\
+VÃ½stup: definujeme  $c(i,j) = $
  \(
  \begin{cases}
  	0
@@ -351,30 +351,30 @@ Vıstup: definujeme  $c(i,j) = $
  \end{cases}
  \)
 
-Úkolem je tedy nalézt èísla $c(i,j)$.
-Èísla $c(i,j)$ budou tvoøit vıstup algoritmu. Kdy¾ pou¾ijeme modifikaci
-algoritmu pro hledání opt. bin. vyhl. stromu, pak spoèítáme $c(i,j)$ v
-èase $O(n^3)$.
+Ãškolem je tedy nalÃ©zt ÄÃ­sla $c(i,j)$.
+ÄŒÃ­sla $c(i,j)$ budou tvoÅ™it vÃ½stup algoritmu. KdyÅ¾ pouÅ¾ijeme modifikaci
+algoritmu pro hledÃ¡nÃ­ opt. bin. vyhl. stromu, pak spoÄÃ­tÃ¡me $c(i,j)$ v
+Äase $O(n^3)$.
 \par
 
 \begin{defn}
-$K(i,j) = min\{l, l=i+1, ..., j \text{ a platí }
+$K(i,j) = min\{l, l=i+1, ..., j \text{ a platÃ­ }
 c(i,l-1) + c(l,j) \leq c(i,k-1) + c(k,j) \forall k = i+1, ...,j\}$ 
 \end{defn}
 
-Kdy¾ $K(i,j) \leq K(i,j+1) \leq K(i+1,j+1)$ pro $i \leq j$, pak lze pou¾ít
-algoritmus vy¾adující èas $O(n^2)$. (tj. mù¾eme pou¾ít rychlej¹í
-modifikaci algoritmu pro hledání opt. bin. vyhl. stromu a
-spoèítáme $c(i,j)$ v èase $O(n^2)$)
+KdyÅ¾ $K(i,j) \leq K(i,j+1) \leq K(i+1,j+1)$ pro $i \leq j$, pak lze pouÅ¾Ã­t
+algoritmus vyÅ¾adujÃ­cÃ­ Äas $O(n^2)$. (tj. mÅ¯Å¾eme pouÅ¾Ã­t rychlejÅ¡Ã­
+modifikaci algoritmu pro hledÃ¡nÃ­ opt. bin. vyhl. stromu a
+spoÄÃ­tÃ¡me $c(i,j)$ v Äase $O(n^2)$)
 
 \begin{pozn}
-Vztah kvadratického programování a hledání opt. bin. vyhl. stromu:
-Polo¾me $w(i,j) = \sum_{l=i}^{j} \alpha_l + \sum_{l=i-1}^{j} \beta_l$, pak
+Vztah kvadratickÃ©ho programovÃ¡nÃ­ a hledÃ¡nÃ­ opt. bin. vyhl. stromu:
+PoloÅ¾me $w(i,j) = \sum_{l=i}^{j} \alpha_l + \sum_{l=i-1}^{j} \beta_l$, pak
 $c(i,j) = H_{i+1,j}$.
 \end{pozn}
 
 \par
-Chceme ukázat, ¾e kdy¾ platí
+Chceme ukÃ¡zat, Å¾e kdyÅ¾ platÃ­
 
 \begin{itemize}
 \item (A) $w(i,j) \leq w(i',j')$ pro $i' \leq i \leq j \ leq j'$ 
@@ -382,43 +382,43 @@ Chceme ukázat, ¾e kdy¾ platí
 $i \leq i' \leq j \ leq j'$ 
 \end{itemize}
 
-pak platí 
+pak platÃ­ 
 $K(i,j) \leq K(i,j+1) \leq K(i+1,j+1)$ pro $1 \leq i \leq j$.
 
 \begin{lemma}
-Za uvedenıch pøedpokladù platí \\
+Za uvedenÃ½ch pÅ™edpokladÅ¯ platÃ­ \\
 $c(i,j) + c(i',j') \leq c(i,j') + c(i',j)$ pro $i \leq i' \leq j \ \leq j'$ 
 \end{lemma}
 
 \begin{proof}
-indukcí dle $j'-i$: \\
-platí: kdy¾ $i = i'$ nebo $j = j'$, pak triviálnì platí \\
+indukcÃ­ dle $j'-i$: \\
+platÃ­: kdyÅ¾ $i = i'$ nebo $j = j'$, pak triviÃ¡lnÄ› platÃ­ \\
 $c(i,j) + c(i',j') \leq c(i,j') + c(i',j)$ 
 
-iniciální krok: kdy¾ $j'-i \leq 0$, pak platí buï $i = i'$ nebo $j = j'$. \\
-indukèní krok: pøedpokládejme, ¾e nerovnost platí, kdy¾ $j'-i < n$ a
-nech» $j'-i = n$, kde $n \geq 2$.
+iniciÃ¡lnÃ­ krok: kdyÅ¾ $j'-i \leq 0$, pak platÃ­ buÄ $i = i'$ nebo $j = j'$. \\
+indukÄnÃ­ krok: pÅ™edpoklÃ¡dejme, Å¾e nerovnost platÃ­, kdyÅ¾ $j'-i < n$ a
+nechÅ¥ $j'-i = n$, kde $n \geq 2$.
 
 \begin{enumerate}
 % 1)
-\item $j = i'$ pak máme dokázat, ¾e \\
-$c(i,j) + c(j,j') \leq c(i,j')$. oznaème $K(i,j') = l$.
+\item $j = i'$ pak mÃ¡me dokÃ¡zat, Å¾e \\
+$c(i,j) + c(j,j') \leq c(i,j')$. oznaÄme $K(i,j') = l$.
 
 \begin{enumerate}
 \item
 (1a)
 $l \leq j$ pak $c(i,j) + c(j,j') \stackrel{\text{z def } c(i,j)}{\leq} w(i,j) + c(i,l-1) + c(l,j)+ c(j,j')
-\stackrel{\text{z (A) a ind. pøedp.}}{\leq} w(i,j') + c(i,l-1) = c(i,j)$  \\
-víme, ¾e $i < l \leq j$, tedy $j'-l < j'-i$. \\
-$\Rightarrow$ (1a) platí.
+\stackrel{\text{z (A) a ind. pÅ™edp.}}{\leq} w(i,j') + c(i,l-1) = c(i,j)$  \\
+vÃ­me, Å¾e $i < l \leq j$, tedy $j'-l < j'-i$. \\
+$\Rightarrow$ (1a) platÃ­.
 \item
-(1b) $l \geq j$, dùkaz stejnı jako pro 1a. \\
-$\Rightarrow$ 1 platí.
+(1b) $l \geq j$, dÅ¯kaz stejnÃ½ jako pro 1a. \\
+$\Rightarrow$ 1 platÃ­.
 \end{enumerate}
 
 % 2)
 \item $j > j'$ \\
-oznaème $k = K(i,j'), l = K(i',j)$ \\
+oznaÄme $k = K(i,j'), l = K(i',j)$ \\
 
 \begin{enumerate}
 \item (2a) $l \leq k$, pak $i' < l < \leq j, i < k < j \leq j'$ \\
@@ -429,9 +429,9 @@ oznaème $k = K(i,j'), l = K(i',j)$ \\
 \stackrel{\text{podle (B)}}{\leq} 
 &w(i,j') + w(i',j) + c(i,k-1) + c(i',l-1) + c(l,j) + c(k,j') =
 \end{align*}
-\mnote{$c(i,k-1) + c(i',l-1)$ jsme dostali z ind. pøedp.}
+\mnote{$c(i,k-1) + c(i',l-1)$ jsme dostali z ind. pÅ™edp.}
 
-víme, ¾e $i \leq i' \leq l-1 \leq k-1$ a $k-1-i < j'-i$. \\
+vÃ­me, Å¾e $i \leq i' \leq l-1 \leq k-1$ a $k-1-i < j'-i$. \\
 Potom 
 
 \begin{align*}
@@ -439,53 +439,53 @@ Potom
 = &c(i,j') + c(i',j)
 \end{align*}
 
-\item (2b) $k \leq l$ dùkaz je analogickı jako pro (2a).
+\item (2b) $k \leq l$ dÅ¯kaz je analogickÃ½ jako pro (2a).
 \end{enumerate}
-$\Rightarrow$ 2 platí.
+$\Rightarrow$ 2 platÃ­.
 \end{enumerate}
-$\Rightarrow$ lemma je dokázané.
+$\Rightarrow$ lemma je dokÃ¡zanÃ©.
 \end{proof}
 
 \begin{lemma}
-Kdy¾ $c(i,j) + c(i',j') \leq c(i,j') + c(i',j)$ pro $i \leq i' \leq j \leq
-j'$, pak platí \\
+KdyÅ¾ $c(i,j) + c(i',j') \leq c(i,j') + c(i',j)$ pro $i \leq i' \leq j \leq
+j'$, pak platÃ­ \\
 $K(i,j) \leq K(i,j+1) \leq K(i+1,j+1)$
 \end{lemma}
 
 \begin{proof}
-Uká¾eme, ¾e platí $K(i,j) \leq K(i,j+1)$, dùkaz druhé nerovnosti je
-analogickı. \\
-Abychom dokázali $(i,j) \leq K(i,j+1)$, tak staèí ukázat, ¾e platí \\
+UkÃ¡Å¾eme, Å¾e platÃ­ $K(i,j) \leq K(i,j+1)$, dÅ¯kaz druhÃ© nerovnosti je
+analogickÃ½. \\
+Abychom dokÃ¡zali $(i,j) \leq K(i,j+1)$, tak staÄÃ­ ukÃ¡zat, Å¾e platÃ­ \\
 $c(i,k-1) + c(k,j) <  c(i,k'-1) + c(k',j)$ pak
 $c(i,k-1) + c(k,j+1) <  c(i,k'-1) + c(k',j+1)$ pro $i < k' < k \leq j$.
 
-po¾adovaná nerovnost plyne z této nerovnosti: \\
+poÅ¾adovanÃ¡ nerovnost plyne z tÃ©to nerovnosti: \\
 \begin{align*}
 &c(i,k'-1) + c(k',j) - c(i,k-1) - c(k,j) \\
 \stackrel{c(i,k'-1) > 0}{\leq} 
 &c(i,k'-1) + c(k',j+1) - c(i,k-1) - c(k,j+1)
 \end{align*}
 
-skonèili jsme s triky, upravíme nerovnost a vyjde to: \\
+skonÄili jsme s triky, upravÃ­me nerovnost a vyjde to: \\
 \begin{align*}
 &c(i,k'-1) + c(k',j) + c(i,k-1) + c(k,j+1) \\
 \leq &c(i,k'-1) + c(k',j+1) + c(i,k-1) + c(k',j+1) 
 \end{align*}
 
 $c(k',j) + c(k,j+1) \leq c(k',j+1) + c(k,j)$
-platí $k' < k \leq j \leq j+1$ ... nerovnost platí dle pøedpokladu
-(polo¾íme i = k', i'=k, j=j, j'=j+1)
-\mnote{XXX pokud se divíte $j=j$, nedivte se, znamená to, ¾e j z 1. èásti se
-rovná j z druhé èásti :) chce to lep¹í znaèení}
+platÃ­ $k' < k \leq j \leq j+1$ ... nerovnost platÃ­ dle pÅ™edpokladu
+(poloÅ¾Ã­me i = k', i'=k, j=j, j'=j+1)
+\mnote{XXX pokud se divÃ­te $j=j$, nedivte se, znamenÃ¡ to, Å¾e j z 1. ÄÃ¡sti se
+rovnÃ¡ j z druhÃ© ÄÃ¡sti :) chce to lepÅ¡Ã­ znaÄenÃ­}
 \end{proof}
 
 
 % --------------------------------------------------------------------------
-\section{Skorooptimální binární vyhledávací stromy}
+\section{SkorooptimÃ¡lnÃ­ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ stromy}
 
-% Jenom ¾e existují, lineární konstrukce. Aha --- viz cvièení.
+% Jenom Å¾e existujÃ­, lineÃ¡rnÃ­ konstrukce. Aha --- viz cviÄenÃ­.
 
-% \mnote{referát by Ladislav Strojil}
+% \mnote{referÃ¡t by Ladislav Strojil}
 \newtheorem{fakt}{Fakt}
 
 \renewcommand{\labelenumi}{\arabic{enumi})}
@@ -495,83 +495,83 @@ rovná j z druhé èásti :) chce to lep¹í znaèení}
 % ji nahoru k bin. opt. vyhl. stromum
 % V. Kotal, 2004
 
-\begin{defn} Nech» $S=\{x_1 < x_2 < \ldots < x_n\}$ 
-a nech» $\beta_i$ (resp. $\alpha_j$) je prav\-dì\-po\-dob\-nost operace 
+\begin{defn} NechÅ¥ $S=\{x_1 < x_2 < \ldots < x_n\}$ 
+a nechÅ¥ $\beta_i$ (resp. $\alpha_j$) je prav\-dÄ›\-po\-dob\-nost operace 
 $Access(a,S)$, kde $a=x_i$ (resp. $x_j < a < x_{j+1}$) pro $1 \leq i \leq n$ 
 (resp. $0 \leq j \leq n$).
 Potom $\beta_i\geq0$, $\alpha_i\geq0$ a $\sum{\beta_i}+\sum{\alpha_i}=1$. 
-(2n+1)-tice $(\alpha_0,\beta_1,\alpha_1,\ldots,\beta_n,\alpha_n)$ se nazıvá 
-\emph{rozdìlení (pravdìpodobnosti) pøístupu}.
+(2n+1)-tice $(\alpha_0,\beta_1,\alpha_1,\ldots,\beta_n,\alpha_n)$ se nazÃ½vÃ¡ 
+\emph{rozdÄ›lenÃ­ (pravdÄ›podobnosti) pÅ™Ã­stupu}.
 \end{defn}
 
-Strom potom konstruujeme rekurzí tak, aby \emph{prùmìrná vá¾ená cesta} 
-ve stro\-mì byla co nejkrat¹í.
+Strom potom konstruujeme rekurzÃ­ tak, aby \emph{prÅ¯mÄ›rnÃ¡ vÃ¡Å¾enÃ¡ cesta} 
+ve stro\-mÄ› byla co nejkratÅ¡Ã­.
 \par
 
-Takovı strom lze konstruovat pomocí rekurzivního vıpoètu zkou¹ením v¹ech 
-kandidátù na koøen. To lze v èase $O(n^2)$, proto¾e volba koøene jednoznaènì urèuje 
-prvky pravého i levého podstromu (nebo» se jedná o vyhledávací strom).
-Takovı strom lze konstruovat pomocí rekurzivního vıpoètu zkou¹ením v¹ech 
-kandidátù na koøen. To lze v èase $O(n^2)$, proto¾e volba koøene jednoznaènì urèuje 
-prvky pravého i levého podstromu (nebo» se jedná o vyhledávací strom).
-\subsection{Aproximace optimálních stromù}
+TakovÃ½ strom lze konstruovat pomocÃ­ rekurzivnÃ­ho vÃ½poÄtu zkouÅ¡enÃ­m vÅ¡ech 
+kandidÃ¡tÅ¯ na koÅ™en. To lze v Äase $O(n^2)$, protoÅ¾e volba koÅ™ene jednoznaÄnÄ› urÄuje 
+prvky pravÃ©ho i levÃ©ho podstromu (neboÅ¥ se jednÃ¡ o vyhledÃ¡vacÃ­ strom).
+TakovÃ½ strom lze konstruovat pomocÃ­ rekurzivnÃ­ho vÃ½poÄtu zkouÅ¡enÃ­m vÅ¡ech 
+kandidÃ¡tÅ¯ na koÅ™en. To lze v Äase $O(n^2)$, protoÅ¾e volba koÅ™ene jednoznaÄnÄ› urÄuje 
+prvky pravÃ©ho i levÃ©ho podstromu (neboÅ¥ se jednÃ¡ o vyhledÃ¡vacÃ­ strom).
+\subsection{Aproximace optimÃ¡lnÃ­ch stromÅ¯}
 
 \par
-Pøi konstrukci se budeme sna¾it volbou koøene podstromu rozdìlit prvky na dvì stejnì pravdìpodobné mno¾iny.
+PÅ™i konstrukci se budeme snaÅ¾it volbou koÅ™ene podstromu rozdÄ›lit prvky na dvÄ› stejnÄ› pravdÄ›podobnÃ© mnoÅ¾iny.
 
-Uva¾ujme následující situaci. $S=\{x_1, x_2, x_3, x_4\}$ s pravdìpodobnostmi pøí\-stu\-pu
+UvaÅ¾ujme nÃ¡sledujÃ­cÃ­ situaci. $S=\{x_1, x_2, x_3, x_4\}$ s pravdÄ›podobnostmi pÅ™Ã­\-stu\-pu
 ($\alpha_0$, $\beta_1$, $\alpha_1$, $\beta_2$, $\alpha_2$, $\beta_3$, $\alpha_3$, $\beta_4$, $\alpha_4$) = 
 $(\frac{1}{6},\frac{1}{24},0,\frac{ 1}{8},0,\frac{ 1}{8},\frac{ 1}{8}, 0,\frac{ 5}{12})$.
 
 \par
-Doporuèuji si pøedstavit uvedené body na reálné ose tak, ¾e $\alpha_0$ je v bodì $0$, $\alpha_4$ v bodì $1$.
+DoporuÄuji si pÅ™edstavit uvedenÃ© body na reÃ¡lnÃ© ose tak, Å¾e $\alpha_0$ je v bodÄ› $0$, $\alpha_4$ v bodÄ› $1$.
 
 \par
-Bod $\frac{1}{2}$ padne buï do $\beta_i$ nebo do $\alpha_j$ pro nìjaké $i$, resp. $j$. V prvním pøípadì zvolíme $x_i$ jako 
-koøen stromu, jinak volíme mezi $x_j$ a $x_{j+1}$, podle toho, zda $\frac{1}{2}$ le¾í v levé nebo pravé polovinì $\alpha_j$. 
+Bod $\frac{1}{2}$ padne buÄ do $\beta_i$ nebo do $\alpha_j$ pro nÄ›jakÃ© $i$, resp. $j$. V prvnÃ­m pÅ™Ã­padÄ› zvolÃ­me $x_i$ jako 
+koÅ™en stromu, jinak volÃ­me mezi $x_j$ a $x_{j+1}$, podle toho, zda $\frac{1}{2}$ leÅ¾Ã­ v levÃ© nebo pravÃ© polovinÄ› $\alpha_j$. 
 
 \par
-V na¹em pøípadì volíme $x_3$ jako koøen stromu.
+V naÅ¡em pÅ™Ã­padÄ› volÃ­me $x_3$ jako koÅ™en stromu.
 
 \par
-Pro rozhodnutí o koøenu levého podstromu vrchol, kterı popsanım zpù\-sobem odpovídá bodu $\frac{1}{4}$. Tento postup není toto¾nı s postupem, 
+Pro rozhodnutÃ­ o koÅ™enu levÃ©ho podstromu vrchol, kterÃ½ popsanÃ½m zpÅ¯\-sobem odpovÃ­dÃ¡ bodu $\frac{1}{4}$. Tento postup nenÃ­ totoÅ¾nÃ½ s postupem, 
 kdy se bere bod $\frac{1}{2}$ v 
-novì vzniklé podúloze, proto¾e pøi konstrukci podstromu bychom zanedbali èást intervalu $\alpha_3$.
+novÄ› vzniklÃ© podÃºloze, protoÅ¾e pÅ™i konstrukci podstromu bychom zanedbali ÄÃ¡st intervalu $\alpha_3$.
 
-\subsection{Podrobnìj¹í popis naznaèené metody}
+\subsection{PodrobnÄ›jÅ¡Ã­ popis naznaÄenÃ© metody}
 
-Nech» 
+NechÅ¥ 
 \begin{equation} 
 s_0 = \frac{\alpha_0}{2} \\ s_i = s_{i-1} + \frac{\alpha_{i-1}}{2} + \beta_i + \frac{\alpha_i}{2}.
 \end{equation}
 
 \par
-Uvìdomte si, ¾e $s_i$ jsou støedy intervalù pøíslu¹ejících "neúspì¹nému
-vy\-hle\-dá\-vá\-ní", tj. $(x_i,x_{i+1})$.
+UvÄ›domte si, Å¾e $s_i$ jsou stÅ™edy intervalÅ¯ pÅ™Ã­sluÅ¡ejÃ­cÃ­ch "neÃºspÄ›Å¡nÃ©mu
+vy\-hle\-dÃ¡\-vÃ¡\-nÃ­", tj. $(x_i,x_{i+1})$.
 
 \par
-Volání funkce $construct\_tree(0,n,0,1)$ vytvoøí skoro optimální
-vyhledávací strom dle popsané metody.
+VolÃ¡nÃ­ funkce $construct\_tree(0,n,0,1)$ vytvoÅ™Ã­ skoro optimÃ¡lnÃ­
+vyhledÃ¡vacÃ­ strom dle popsanÃ© metody.
 
 \ \newline
 \oops{procedure} contruct\_tree(i,j,cut,l)
 
-\emph{Poznámka: Pøedpokládáme, ¾e parametry volané funkce splòují následující podmínky.}
+\emph{PoznÃ¡mka: PÅ™edpoklÃ¡dÃ¡me, Å¾e parametry volanÃ© funkce splÅˆujÃ­ nÃ¡sledujÃ­cÃ­ podmÃ­nky.}
 \begin{enumerate}
-\item $i$ a $j$ jsou celá èísla taková, ¾e $0 \leq i < j \leq n$
-\item $l$ je celé èíslo, $l \geq 0$
-\item $cut=\sum_{p=1}^{l-1}{x_p 2^{-p}}$, kde $x_p \in \{0, 1\}$ pro v¹echna $p$
+\item $i$ a $j$ jsou celÃ¡ ÄÃ­sla takovÃ¡, Å¾e $0 \leq i < j \leq n$
+\item $l$ je celÃ© ÄÃ­slo, $l \geq 0$
+\item $cut=\sum_{p=1}^{l-1}{x_p 2^{-p}}$, kde $x_p \in \{0, 1\}$ pro vÅ¡echna $p$
 \item $cut \leq s_i \leq s_j \leq cut + 2^{-l+1}$
 \end{enumerate}
-\emph{Volání $construct\_tree(i,j,,)$ vytvoøí binární vyhledávací strom pro vrcholy $i+1, \ldots, j$ a listy $i, \ldots, j$.}
+\emph{VolÃ¡nÃ­ $construct\_tree(i,j,,)$ vytvoÅ™Ã­ binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom pro vrcholy $i+1, \ldots, j$ a listy $i, \ldots, j$.}
 
 \oops{begin}
 
-\ \ \ \oops{if} $i+1=j$ (pøípad A) \oops{return} koøen=j, levı list=i, pravı list=j;
+\ \ \ \oops{if} $i+1=j$ (pÅ™Ã­pad A) \oops{return} koÅ™en=j, levÃ½ list=i, pravÃ½ list=j;
 
 \ \ \ \ \ \oops{else}
 
-\ \ \ \ \ \ \ \ najdi k takové, ¾e
+\ \ \ \ \ \ \ \ najdi k takovÃ©, Å¾e
 
 \ \ \ \ \ \ \ \ 5) $i < k \leq j$
 
@@ -579,139 +579,139 @@ vyhledávací strom dle popsané metody.
 
 \ \ \ \ \ \ \ \ 7) $k = j$ nebo $s_{k} \geq cut + 2^{-l}$
 
-\ \ \ \ \ \ \ \ \emph{Takové $k$ v¾dy existuje, proto¾e parametry funkce splòují podmínku 4.}
+\ \ \ \ \ \ \ \ \emph{TakovÃ© $k$ vÅ¾dy existuje, protoÅ¾e parametry funkce splÅˆujÃ­ podmÃ­nku 4.}
 
-\ \ \ \ \ \ \ \ \oops{if} $k = i + 1$ (pøípad B) \oops{return}
+\ \ \ \ \ \ \ \ \oops{if} $k = i + 1$ (pÅ™Ã­pad B) \oops{return}
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ koøen=i+1
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ koÅ™en=i+1
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levı list=i
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levÃ½ list=i
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pravı list=\oops{construct\_tree}(i+1,j,cut+$2^{-l}$,l+1);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pravÃ½ list=\oops{construct\_tree}(i+1,j,cut+$2^{-l}$,l+1);
 
-\ \ \ \ \ \ \ \ \oops{if} $k = j$ (pøípad C) \oops{return} 
+\ \ \ \ \ \ \ \ \oops{if} $k = j$ (pÅ™Ã­pad C) \oops{return} 
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ koøen=j
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ koÅ™en=j
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levı list=\oops{construct\_tree}(i,j-1,cut,l+1)
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levÃ½ list=\oops{construct\_tree}(i,j-1,cut,l+1)
 	
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pravı list=j;
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pravÃ½ list=j;
 
-\ \ \ \ \ \ \ \ \oops{if} $i + 1 < k < j$ (pøípad D) \oops{return}
+\ \ \ \ \ \ \ \ \oops{if} $i + 1 < k < j$ (pÅ™Ã­pad D) \oops{return}
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ koøen=k
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ koÅ™en=k
 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levı list=\oops{construct\_tree}(i,k-1,cut,l+1)
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ levÃ½ list=\oops{construct\_tree}(i,k-1,cut,l+1)
 	
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pravı list=\oops{construct\_tree}(k,j,cut+$2^{-l}$,l+1);
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pravÃ½ list=\oops{construct\_tree}(k,j,cut+$2^{-l}$,l+1);
 
 \oops{end}
 
 
 \begin{theorem}
-Nech» $b_i$ je hloubka vrcholu $x_i$ a $a_j$ je hloubka listu $(x_j,x_{j+1})$ ve stromì $T_{BB}$ vytvoøeném funkcí 
+NechÅ¥ $b_i$ je hloubka vrcholu $x_i$ a $a_j$ je hloubka listu $(x_j,x_{j+1})$ ve stromÄ› $T_{BB}$ vytvoÅ™enÃ©m funkcÃ­ 
 \oops{construct\_tree}(0,n,0,1). Potom
 
 $b_i \leq \lfloor \log{1/\beta_i}\rfloor$, $a_j \leq \lfloor \log{1/\alpha_j}\rfloor + 2$ 
 \end{theorem}
 
 \begin{proof}
-\emph{Vìta øíká, ¾e hloubka vrcholu roste s klesající pravdìpodobností pøístupu k tomuto vrcholu.}
+\emph{VÄ›ta Å™Ã­kÃ¡, Å¾e hloubka vrcholu roste s klesajÃ­cÃ­ pravdÄ›podobnostÃ­ pÅ™Ã­stupu k tomuto vrcholu.}
 
-Plyne z následujících faktù.
+Plyne z nÃ¡sledujÃ­cÃ­ch faktÅ¯.
 \end{proof}
 
 \begin{fakt}
-Jestli¾e hodnoty parametrù funkce \oops{construct\_tree} splòují 
-podmínky 1-4 a $i + 1 \neq j$, potom k splòující po¾adované podmínky existuje 
-a hodnoty parametrù rekurzivních volání \oops{construct\_tree} splòuji 1-4.
+JestliÅ¾e hodnoty parametrÅ¯ funkce \oops{construct\_tree} splÅˆujÃ­ 
+podmÃ­nky 1-4 a $i + 1 \neq j$, potom k splÅˆujÃ­cÃ­ poÅ¾adovanÃ© podmÃ­nky existuje 
+a hodnoty parametrÅ¯ rekurzivnÃ­ch volÃ¡nÃ­ \oops{construct\_tree} splÅˆuji 1-4.
 \end{fakt}
 
 \begin{proof} 
 \ \par
-Pøedpokládejme, ¾e parametry splòují 1 -- 4 a $i + 1 \neq j$. 
-Potom zøejmì platí $cut \leq s_j \leq cut + 2^{-l+1}$. Pro spor pøedpokládejme, 
-¾e neexistuje neexistuje ¾ádné $k$, $i < k \leq j$, pro které 
+PÅ™edpoklÃ¡dejme, Å¾e parametry splÅˆujÃ­ 1 -- 4 a $i + 1 \neq j$. 
+Potom zÅ™ejmÄ› platÃ­ $cut \leq s_j \leq cut + 2^{-l+1}$. Pro spor pÅ™edpoklÃ¡dejme, 
+Å¾e neexistuje neexistuje Å¾Ã¡dnÃ© $k$, $i < k \leq j$, pro kterÃ© 
 by platilo $s_{k-1} \leq cut+2^{-l}$ a $s_{k} \geq cut+2^{-l}$. 
 
-Potom ov¹em buï pro v¹echna $k$ taková, ¾e $i < k \leq j$, 
-platí $s_{k} < cut+2^{-l}$ nebo 
-pro v¹echna $k$ taková, ¾e $i < k \leq j$, platí $s_{k-1} > cut+2^{-l}$.
+Potom ovÅ¡em buÄ pro vÅ¡echna $k$ takovÃ¡, Å¾e $i < k \leq j$, 
+platÃ­ $s_{k} < cut+2^{-l}$ nebo 
+pro vÅ¡echna $k$ takovÃ¡, Å¾e $i < k \leq j$, platÃ­ $s_{k-1} > cut+2^{-l}$.
 
 \par
-V prvním pøípadì $k = j$ odpovídá po¾adovanım podmínkám, 
-v druhém jim odpovídá $k = i + 1$. Tedy $k$ v¾dy existuje.
+V prvnÃ­m pÅ™Ã­padÄ› $k = j$ odpovÃ­dÃ¡ poÅ¾adovanÃ½m podmÃ­nkÃ¡m, 
+v druhÃ©m jim odpovÃ­dÃ¡ $k = i + 1$. Tedy $k$ vÅ¾dy existuje.
 
 \par
-Zbıvá ukázat, ¾e nové parametry volání funkce splòují po¾adované 
-pod\-mín\-ky. To ale plyne z toho, ¾e $k$ splòuje 5-7 a  $i+1 \neq j$.
+ZbÃ½vÃ¡ ukÃ¡zat, Å¾e novÃ© parametry volÃ¡nÃ­ funkce splÅˆujÃ­ poÅ¾adovanÃ© 
+pod\-mÃ­n\-ky. To ale plyne z toho, Å¾e $k$ splÅˆuje 5-7 a  $i+1 \neq j$.
 \end{proof}
 
 \begin{fakt}
-Hodnoty parametrù v¹ech volání \oops{construct\_tree} splòují podmínky 1-4.
+Hodnoty parametrÅ¯ vÅ¡ech volÃ¡nÃ­ \oops{construct\_tree} splÅˆujÃ­ podmÃ­nky 1-4.
 \end{fakt}
 \begin{proof} 
-Indukcí. \oops{construct\_tree}(0, n, 0, 1) splòuje 1-4 a pomocí pøedchozího faktu.
+IndukcÃ­. \oops{construct\_tree}(0, n, 0, 1) splÅˆuje 1-4 a pomocÃ­ pÅ™edchozÃ­ho faktu.
 \end{proof}
 
-Øekneme, ¾e vrchol $h$ (resp. list $h$) je vytvoøen voláním 
-\oops{construct\_tree}(i, j, cut, l), jestli¾e $h = j$ (resp. $h =j$ nebo $h = i$) a 
-byl proveden pøípad A, nebo $h = i + 1$ (resp. $h = i$) a byl proveden pøípad B, 
-nebo $h = j$ a byl proveden pøípad C, nebo  $h = k$ 
-a byl proveden pøípad D.
+Å˜ekneme, Å¾e vrchol $h$ (resp. list $h$) je vytvoÅ™en volÃ¡nÃ­m 
+\oops{construct\_tree}(i, j, cut, l), jestliÅ¾e $h = j$ (resp. $h =j$ nebo $h = i$) a 
+byl proveden pÅ™Ã­pad A, nebo $h = i + 1$ (resp. $h = i$) a byl proveden pÅ™Ã­pad B, 
+nebo $h = j$ a byl proveden pÅ™Ã­pad C, nebo  $h = k$ 
+a byl proveden pÅ™Ã­pad D.
 
 \par
-Dále nìch» $b_i$ je hloubka vrcholu $i$ a $a_j$ hloubka listu $j$ ve 
-stromì vráceném $construct\_tree(0,n,0,1)$.
+DÃ¡le nÄ›chÅ¥ $b_i$ je hloubka vrcholu $i$ a $a_j$ hloubka listu $j$ ve 
+stromÄ› vrÃ¡cenÃ©m $construct\_tree(0,n,0,1)$.
 
 \begin{fakt}
-Je-li vrchol $h$ (resp. list $h$) vytvoøen voláním 
+Je-li vrchol $h$ (resp. list $h$) vytvoÅ™en volÃ¡nÃ­m 
 $construct\_tree(i,j,cut,l)$, potom $b_h + 1 = l$ (resp. $a_h = l$).
 \end{fakt}
 \begin{proof}
-Indukcí podle $l$. 
+IndukcÃ­ podle $l$. 
 \end{proof}
 \begin{fakt}
-Je-li vrchol $h$ (resp. list $h$) vytvoøen voláním 
+Je-li vrchol $h$ (resp. list $h$) vytvoÅ™en volÃ¡nÃ­m 
 $construct\_tree(i,j,cut,l)$, potom $\beta_h \leq 2^{-l+1}$ (resp. $\alpha_h \leq 2^{-l+2}$).
 \end{fakt}
 \begin{proof}
-Parametry splòují 4 a tedy
+Parametry splÅˆujÃ­ 4 a tedy
 $2^{l+1} \geq s_j - s_i = (\alpha_i + \alpha_j)/2 + \beta_{i+1} + \alpha_{i+1} + \ldots + \beta_j \geq \beta_h$ (resp. $\alpha_h/2$)
 \end{proof}
 
-\begin{proof}[vìty]
-Z faktù 3 a 4 obdr¾íme $\beta_h \leq 2^{-b_h}$ a $\alpha_h \leq 2^{-a_h+2}$. 
-Zlogaritmováním a pøevedením na celoèíselné hodnoty dostáváme tvrzení vìty.
+\begin{proof}[vÄ›ty]
+Z faktÅ¯ 3 a 4 obdrÅ¾Ã­me $\beta_h \leq 2^{-b_h}$ a $\alpha_h \leq 2^{-a_h+2}$. 
+ZlogaritmovÃ¡nÃ­m a pÅ™evedenÃ­m na celoÄÃ­selnÃ© hodnoty dostÃ¡vÃ¡me tvrzenÃ­ vÄ›ty.
 \end{proof}
 
 \par
-Vìty 1 a 2 ukazují, ¾e hloubka vrcholu je pøibli¾nì rovna logaritmu 
-pøe\-vrá\-ce\-né hodnoty prav\-dì\-po\-dob\-nosti pøístupu k tomuto vrcholu.
+VÄ›ty 1 a 2 ukazujÃ­, Å¾e hloubka vrcholu je pÅ™ibliÅ¾nÄ› rovna logaritmu 
+pÅ™e\-vrÃ¡\-ce\-nÃ© hodnoty prav\-dÄ›\-po\-dob\-nosti pÅ™Ã­stupu k tomuto vrcholu.
 
 \begin{defn}
-Nech» $(\gamma_1,\gamma_2, \ldots, \gamma_n)$ je diskrétní rozdìlení 
-pravdìpodobnosti. Potom se funkce 
+NechÅ¥ $(\gamma_1,\gamma_2, \ldots, \gamma_n)$ je diskrÃ©tnÃ­ rozdÄ›lenÃ­ 
+pravdÄ›podobnosti. Potom se funkce 
 $H(\gamma_1,\gamma_2, \ldots, \gamma_n) = - \sum_{i = 1}^{n}\gamma_i\log{\gamma_i}$ 
-nazıvá entropie rozdìlení.
+nazÃ½vÃ¡ entropie rozdÄ›lenÃ­.
 \end{defn}
 
 \par
-Pov¹imnìte si, ¾e entropie nezále¾í na vytvoøeném stromì, 
-jenom na prav\-dì\-po\-dob\-nostech pøístupu. 
+PovÅ¡imnÄ›te si, Å¾e entropie nezÃ¡leÅ¾Ã­ na vytvoÅ™enÃ©m stromÄ›, 
+jenom na prav\-dÄ›\-po\-dob\-nostech pÅ™Ã­stupu. 
 
 \begin{theorem}
-Nech» $P_{BB}$ je vá¾ená délka cesty zkonstruovaného stromu. Potom
+NechÅ¥ $P_{BB}$ je vÃ¡Å¾enÃ¡ dÃ©lka cesty zkonstruovanÃ©ho stromu. Potom
 
 \begin{eqnarray} 
 \nonumber P_{BB} \leq \sum{\beta_i} \lfloor\log{1/\beta_i}\rfloor + \sum{\alpha_j} \lfloor\log{1/\alpha_j}\rfloor + 1 + \sum{\alpha_j} \leq
 \\ \leq H(\alpha_0,\beta_1,\alpha_1,\ldots,\beta_n,\alpha_n) + 1 + \sum{\alpha_j}
 \end{eqnarray} 
 \end{theorem}
-Navíc
+NavÃ­c
 \begin{theorem}
-Nech» $P_{BB}$ je vá¾ená délka cesty zkonstruovaného stromu a nech» 
-$P_{opt}$ je vá¾ená délka cesty v optimálním stromu. ($B = \sum\beta_i$) 
+NechÅ¥ $P_{BB}$ je vÃ¡Å¾enÃ¡ dÃ©lka cesty zkonstruovanÃ©ho stromu a nechÅ¥ 
+$P_{opt}$ je vÃ¡Å¾enÃ¡ dÃ©lka cesty v optimÃ¡lnÃ­m stromu. ($B = \sum\beta_i$) 
 Potom 
 \begin{enumerate}
 \item $\max\{\frac{H-dB}{\log{(2+2^{-d})}}; d \in \mathbf{R}\} \leq P_{opt} \leq P_{BB} \leq H + 1 + \sum{\alpha_j}$
@@ -720,33 +720,33 @@ Potom
 
 \end{theorem}
 \begin{proof}
-Plyne z vìty 5 (pùvodní èíslování, viz \cite{mehlhorn}, strana 175) a vìty 2.
+Plyne z vÄ›ty 5 (pÅ¯vodnÃ­ ÄÃ­slovÃ¡nÃ­, viz \cite{mehlhorn}, strana 175) a vÄ›ty 2.
 \end{proof}
 
-Je to jenom slo¾ité poèítání, jde o to, ¾e dovedeme odhadnout, 
-jak velká dovede bıt ta vá¾ená cesta v námi vytvoøeném stromì.
+Je to jenom sloÅ¾itÃ© poÄÃ­tÃ¡nÃ­, jde o to, Å¾e dovedeme odhadnout, 
+jak velkÃ¡ dovede bÃ½t ta vÃ¡Å¾enÃ¡ cesta v nÃ¡mi vytvoÅ™enÃ©m stromÄ›.
 
-$P_{BB} - P_{opt} \leq \log P_{opt}$, co¾ je pøibli¾nì $log H$.
+$P_{BB} - P_{opt} \leq \log P_{opt}$, coÅ¾ je pÅ™ibliÅ¾nÄ› $log H$.
 
-\subsection{Èasová slo¾itost}
+\subsection{ÄŒasovÃ¡ sloÅ¾itost}
 
-Pro sestrojení stromu s jedním vrcholem potøebuje metoda konstatní èas, tj. $T(1)=c_1$.
+Pro sestrojenÃ­ stromu s jednÃ­m vrcholem potÅ™ebuje metoda konstatnÃ­ Äas, tj. $T(1)=c_1$.
 
-Pro $n > 1$ je potøeba najít $k$ a dojde a¾ ke dvìma rekurzivním 
-voláním \oops{construct\_tree}.
-Nech» $T(m,n)$ je èas potøebnı pro nalezení $k$, kde $m = k - i$ 
-(tj. vzdálenost k od poèátku zkoumaného úseku).
-\oops{construct\_tree} je voláno maximálnì dvakrát, v pøípadì D první 
-volání sestrojí strom s $k - 1 - i = m - 1$ 
-vrcholy a druhé volání strom s $j - k = n - m$.
+Pro $n > 1$ je potÅ™eba najÃ­t $k$ a dojde aÅ¾ ke dvÄ›ma rekurzivnÃ­m 
+volÃ¡nÃ­m \oops{construct\_tree}.
+NechÅ¥ $T(m,n)$ je Äas potÅ™ebnÃ½ pro nalezenÃ­ $k$, kde $m = k - i$ 
+(tj. vzdÃ¡lenost k od poÄÃ¡tku zkoumanÃ©ho Ãºseku).
+\oops{construct\_tree} je volÃ¡no maximÃ¡lnÄ› dvakrÃ¡t, v pÅ™Ã­padÄ› D prvnÃ­ 
+volÃ¡nÃ­ sestrojÃ­ strom s $k - 1 - i = m - 1$ 
+vrcholy a druhÃ© volÃ¡nÃ­ strom s $j - k = n - m$.
 
 Tedy $T(n) \leq \max(T(m-1) + T(n-m) + T_S(n,m) + c_2)$.
 
-Zde $c_2$ je konstanta mìøící slo¾itost pøedávání parametrù.
+Zde $c_2$ je konstanta mÄ›Å™Ã­cÃ­ sloÅ¾itost pÅ™edÃ¡vÃ¡nÃ­ parametrÅ¯.
 
-Dodefinujeme-li $T(0) = 0$, potom uvedená nerovnost platí i pro pøípady 
-B a C. Zavedeme-li dále konvenci $T_S(1,m) = 0$ a 
-$c = max(c_1, c_2)$, dotáváme zjednodu¹enı vıraz:
+Dodefinujeme-li $T(0) = 0$, potom uvedenÃ¡ nerovnost platÃ­ i pro pÅ™Ã­pady 
+B a C. Zavedeme-li dÃ¡le konvenci $T_S(1,m) = 0$ a 
+$c = max(c_1, c_2)$, dotÃ¡vÃ¡me zjednoduÅ¡enÃ½ vÃ½raz:
 
 \begin{equation} 
 T(0) = 0 \\
@@ -754,84 +754,84 @@ T(n) \leq \max_{1 \leq m < n}(T(m-1) + T(n-m) + T_S(n,m) + c)
 \end{equation} 
 
 
-\subsection{Hledání $k$}
+\subsection{HledÃ¡nÃ­ $k$}
 
-Èíslo $k$ mù¾eme hledat binárním vyhledáváním (pùlení intervalu), 
-ale vısledná èasová slo¾itost by byla $O(n\log n)$
+ÄŒÃ­slo $k$ mÅ¯Å¾eme hledat binÃ¡rnÃ­m vyhledÃ¡vÃ¡nÃ­m (pÅ¯lenÃ­ intervalu), 
+ale vÃ½slednÃ¡ ÄasovÃ¡ sloÅ¾itost by byla $O(n\log n)$
 
-Principiální problém s vyhledáváním pomocí pùlení intervalu je, 
-¾e nám nalezení $k$ trvá dlouho i v pøípadì, ¾e je blízko
-$i$ nebo $j$ a tedy neredukuje velikost podúlohy podstatnım zpùsobem.
+PrincipiÃ¡lnÃ­ problÃ©m s vyhledÃ¡vÃ¡nÃ­m pomocÃ­ pÅ¯lenÃ­ intervalu je, 
+Å¾e nÃ¡m nalezenÃ­ $k$ trvÃ¡ dlouho i v pÅ™Ã­padÄ›, Å¾e je blÃ­zko
+$i$ nebo $j$ a tedy neredukuje velikost podÃºlohy podstatnÃ½m zpÅ¯sobem.
 
-Øe¹ením je kombinace exponenciálního a binárního vyhledávání. 
-Tím do\-sáh\-ne\-me toho, ¾e $k$, která jsou blízko krajním 
-bodùm intervalu, nalezneme rychleji.
+Å˜eÅ¡enÃ­m je kombinace exponenciÃ¡lnÃ­ho a binÃ¡rnÃ­ho vyhledÃ¡vÃ¡nÃ­. 
+TÃ­m do\-sÃ¡h\-ne\-me toho, Å¾e $k$, kterÃ¡ jsou blÃ­zko krajnÃ­m 
+bodÅ¯m intervalu, nalezneme rychleji.
 
-Budeme vyhledávat od koncù intervalu, ale ne v konstatních krocících.
+Budeme vyhledÃ¡vat od koncÅ¯ intervalu, ale ne v konstatnÃ­ch krocÃ­cÃ­ch.
 
-$1)$ Porovnáme $s_r$ s $cut + 2^{-l}$, kde $r = \lfloor(i + 1 + j) / 2\rfloor$. 
+$1)$ PorovnÃ¡me $s_r$ s $cut + 2^{-l}$, kde $r = \lfloor(i + 1 + j) / 2\rfloor$. 
 Je-li $s_r \geq cut + 2^{-l}$, potom $k \in \{i + 1, \ldots, r\}$. 
 Je-li $s_r \leq cut + 2^{-l}$, potom $k \in \{r, \ldots, j\}$. 
-V dal¹ím budeme pøedpokládat, ¾e $k \in \{i + 1, \ldots, r\}$. 
+V dalÅ¡Ã­m budeme pÅ™edpoklÃ¡dat, Å¾e $k \in \{i + 1, \ldots, r\}$. 
 
-Tento krok trvá konstantní èas.
+Tento krok trvÃ¡ konstantnÃ­ Äas.
 
-$2)$ Nalezneme nejmen¹í $t$, $t = 0, 1, 2, \ldots$, takové, ¾e $s_{i+2^t} \geq cut + 2^{-l}$.
-Nazvìme jej $t_0$. $t_0$ lze nalézt v èase $d_2(t_0 + 1)$ pro nìjakou konstantu $d_2$.
+$2)$ Nalezneme nejmenÅ¡Ã­ $t$, $t = 0, 1, 2, \ldots$, takovÃ©, Å¾e $s_{i+2^t} \geq cut + 2^{-l}$.
+NazvÄ›me jej $t_0$. $t_0$ lze nalÃ©zt v Äase $d_2(t_0 + 1)$ pro nÄ›jakou konstantu $d_2$.
 
 Potom $i + 2^{t_0-1} < k \leq i + 2^{t_0}$, tj. $2^{t_0} \geq k - i = m > 2^{t_0-1}$ a odtud $\log m > t_0 - 1$. 
-Tedy trvání kroku 2 je omezené $d_2(2 + \log m)$.
+Tedy trvÃ¡nÃ­ kroku 2 je omezenÃ© $d_2(2 + \log m)$.
 
-$3)$ Binárním vyhledáváním na intervalu 
-$i + 2^{t_0-1} + 1, \ldots, i + 2^{t_0}$ zjistíme pøesnou hodnotu $k$.
+$3)$ BinÃ¡rnÃ­m vyhledÃ¡vÃ¡nÃ­m na intervalu 
+$i + 2^{t_0-1} + 1, \ldots, i + 2^{t_0}$ zjistÃ­me pÅ™esnou hodnotu $k$.
 
 Tohle zabere $d_3(\log(2^{t_0} - 2^{t_0-1}) + 1) = d_3 t_0 < d_3(1 + \log m)$ 
-(pro nìjakou konstantu $d_3$).
+(pro nÄ›jakou konstantu $d_3$).
 
 Tedy pro $i < k \leq \lfloor(i + 1 + j) / 2\rfloor$ nalezneme $k$ 
-v èase men¹ím ne¾ $d_3(1 + \log m)$. Zde se $m = k -i$. Symetricky lze $k$
-nalézt v èase $\leq d(1 + \log(n - m + 1))$, v pøípadì, ¾e $\lfloor(i + 1 + j) / 2\rfloor < k$.
+v Äase menÅ¡Ã­m neÅ¾ $d_3(1 + \log m)$. Zde se $m = k -i$. Symetricky lze $k$
+nalÃ©zt v Äase $\leq d(1 + \log(n - m + 1))$, v pÅ™Ã­padÄ›, Å¾e $\lfloor(i + 1 + j) / 2\rfloor < k$.
 
 Tedy $T_S(n,m) = d(1 + \log \min(m, n - m + 1))$
 
-Dostáváme pro \oops{construct\_tree} následující rekurzivní vztah.
+DostÃ¡vÃ¡me pro \oops{construct\_tree} nÃ¡sledujÃ­cÃ­ rekurzivnÃ­ vztah.
 \begin{eqnarray} 
 \nonumber && T(0) = 0  \\
 \nonumber && T(n) = \max_{1 \leq m < n}(T(m-1) + T(n-m) + d(1 + \log \min(m, n - m + 1)) + c)
 \end{eqnarray} 
 
 \begin{theorem}
-Je-li vyhledávání $k$ implementováno pomocí uvedené kombinace exponenciálního 
-a binárního vyhledávání, potom $T(n) = O(n)$.
+Je-li vyhledÃ¡vÃ¡nÃ­ $k$ implementovÃ¡no pomocÃ­ uvedenÃ© kombinace exponenciÃ¡lnÃ­ho 
+a binÃ¡rnÃ­ho vyhledÃ¡vÃ¡nÃ­, potom $T(n) = O(n)$.
 \end{theorem}
 
 \begin{proof}
-Indukcí podle $n$ uká¾eme $T(n) \leq (2d + c)n - d\log(n + 1)$.
+IndukcÃ­ podle $n$ ukÃ¡Å¾eme $T(n) \leq (2d + c)n - d\log(n + 1)$.
 
-Pro $n=0$ vztah zøejmì platí.
+Pro $n=0$ vztah zÅ™ejmÄ› platÃ­.
 
-Pro $n > 0$ máme 
+Pro $n > 0$ mÃ¡me 
 \begin{equation} 
 T(n) = \max_{1 \leq m < n}(T(m-1) + T(n-m) +  d(1 + \log \min(m, n - m + 1)) + d + c) 
 \end{equation} 
 
-Tedy podle symetrie vırazu v $m - 1$ a $n - m$ dostáváme:
+Tedy podle symetrie vÃ½razu v $m - 1$ a $n - m$ dostÃ¡vÃ¡me:
 \begin{equation} 
 T(n) \leq \max_{1 \leq m < (n+1)/2}(T(m-1) + T(n-m) +  d\log m + d + c)
 \end{equation} 
 
-Podle indukèního pøedpokladu dostáváme
+Podle indukÄnÃ­ho pÅ™edpokladu dostÃ¡vÃ¡me
 \begin{eqnarray} 
 \nonumber T(n) & \leq & \max_{1 \leq m < (n+1)/2}((2d+c)(m-1+n-m)- \\ && -\ d(\log m + \log(n-m+1)) + d \log m + (d +c))
 \end{eqnarray} 
 
-Co¾ se rovná
+CoÅ¾ se rovnÃ¡
 \begin{equation} 
 (2d+c)n + \max_{1 \leq m < (n+1)/2}(-d(1 + \log m - m + 1))
 \end{equation} 
 
-Vıraz v závorce je v¾dy men¹í ne¾ nula a je nejvìt¹í pro 
-$m = (n + 1) / 2$. Tedy dostáváme následující nerovnost:
+VÃ½raz v zÃ¡vorce je vÅ¾dy menÅ¡Ã­ neÅ¾ nula a je nejvÄ›tÅ¡Ã­ pro 
+$m = (n + 1) / 2$. Tedy dostÃ¡vÃ¡me nÃ¡sledujÃ­cÃ­ nerovnost:
 \begin{equation} 
 T(n) \leq (2d+c)n - d(1 + \log(n+1)/2) = (2d+c)n - d\log(n+1) 
 \end{equation} 
@@ -841,54 +841,54 @@ T(n) \leq (2d+c)n - d(1 + \log(n+1)/2) = (2d+c)n - d\log(n+1)
 % --------------------------------------------------------------------------
 \section{AVL stromy}
 
-Binární vyhledávací stromy jsou pomìrnì pøíjemné jednoduchou implementací
-operací nad nimi, ale není pøitom nijak omezena jejich hloubka. Mù¾e se
-tedy stát, ¾e strom mù¾e vypadat spí¹e jako seznam, a èasová slo¾itost
-operací bude tedy lineární. Pokud bychom v¹ak chtìli, aby mìl strom co
-nejmen¹í vı¹ku (vzdálenost listù od koøene by se mohla li¹it maximálnì o
-jednièku), byly by operace INSERT a DELETE nároèné. Rozumnım
-kopmromisem mohou bıt právì AVL-stromy.
+BinÃ¡rnÃ­ vyhledÃ¡vacÃ­ stromy jsou pomÄ›rnÄ› pÅ™Ã­jemnÃ© jednoduchou implementacÃ­
+operacÃ­ nad nimi, ale nenÃ­ pÅ™itom nijak omezena jejich hloubka. MÅ¯Å¾e se
+tedy stÃ¡t, Å¾e strom mÅ¯Å¾e vypadat spÃ­Å¡e jako seznam, a ÄasovÃ¡ sloÅ¾itost
+operacÃ­ bude tedy lineÃ¡rnÃ­. Pokud bychom vÅ¡ak chtÄ›li, aby mÄ›l strom co
+nejmenÅ¡Ã­ vÃ½Å¡ku (vzdÃ¡lenost listÅ¯ od koÅ™ene by se mohla liÅ¡it maximÃ¡lnÄ› o
+jedniÄku), byly by operace INSERT a DELETE nÃ¡roÄnÃ©. RozumnÃ½m
+kopmromisem mohou bÃ½t prÃ¡vÄ› AVL-stromy.
 
-AVL stromy jsou nazvané podle jmen jejich tvùrcù ({\bf A}del'son-{\bf V}elskii 
-a {\bf L}andis). Pùvodní èlánek o AVL stromech lze nalézt v~\cite{AVL-trees}.
+AVL stromy jsou nazvanÃ© podle jmen jejich tvÅ¯rcÅ¯ ({\bf A}del'son-{\bf V}elskii 
+a {\bf L}andis). PÅ¯vodnÃ­ ÄlÃ¡nek o AVL stromech lze nalÃ©zt v~\cite{AVL-trees}.
 % Adison-Vesley-Landis. 
 
 \begin{defn}
-Nech» $v$ je vnitøní vrchol stromu T. Potom 
+NechÅ¥ $v$ je vnitÅ™nÃ­ vrchol stromu T. Potom 
 \begin{itemize}
-  \item $l(v)$ je délka nejdel¹í cesty z $v$ do listu v podstromu 
-  	levého syna $v$.
-  \item $p(v)$ je délka nejdel¹í cesty z $v$ do listu v podstromu 
-  	pravého syna $v$. 
+  \item $l(v)$ je dÃ©lka nejdelÅ¡Ã­ cesty z $v$ do listu v podstromu 
+  	levÃ©ho syna $v$.
+  \item $p(v)$ je dÃ©lka nejdelÅ¡Ã­ cesty z $v$ do listu v podstromu 
+  	pravÃ©ho syna $v$. 
 \end{itemize}
-Pokud takovı podstrom neexistuje, polo¾me $l(v)$ resp. $p(v)$ rovno $-1$.
-Dále oznaème $b(v) = l(v) - p(v)$. Vrchol $v$ nazveme \emph{vyvá¾enı}, 
-jestli¾e $b(v)$ nabıvá hodnot $-1$, $0$ nebo $1$.
+Pokud takovÃ½ podstrom neexistuje, poloÅ¾me $l(v)$ resp. $p(v)$ rovno $-1$.
+DÃ¡le oznaÄme $b(v) = l(v) - p(v)$. Vrchol $v$ nazveme \emph{vyvÃ¡Å¾enÃ½}, 
+jestliÅ¾e $b(v)$ nabÃ½vÃ¡ hodnot $-1$, $0$ nebo $1$.
 \end{defn}
 
 \begin{defn}
 \label{avl:definice}
-AVL strom je binární vyhledávací strom takovı, ¾e pro ka¾dı vnitøní vrchol
-$v$ platí $l(v) - p(v) \in \{-1,0,1\}$.
+AVL strom je binÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom takovÃ½, Å¾e pro kaÅ¾dÃ½ vnitÅ™nÃ­ vrchol
+$v$ platÃ­ $l(v) - p(v) \in \{-1,0,1\}$.
 \end{defn}
 
 \begin{pozn}
-AVL stromy jsou jen jednou z mo¾ností jak vyva¾ovat stromy. 
-\emph{Dokonale vyvá¾ené stromy} stanovují podmínku, ¾e pro ka¾dı uzel ve
-stromu platí, ¾e \emph{poèty} uzlù v levém a pravém podstromu tohoto 
-uzlu se li¹í nejvı¹e o jednièku. AVL stromy tento po¾adavek zeslabují
-tak, ¾e vy¾adují, aby se \emph{vı¹ky} levého a pravého podstromu libovolného
-vrcholu li¹ily nejvı¹e o jednièku\footnote{Platí, ¾e ka¾dı dokonale
-vyvá¾enı strom je zároveò AVL stromem. Opaèné tvrzení neplatí.}.
-Úvod do vyvá¾enıch binárních stromù lze nalézt napø. v~\cite{Topfer}.
+AVL stromy jsou jen jednou z moÅ¾nostÃ­ jak vyvaÅ¾ovat stromy. 
+\emph{Dokonale vyvÃ¡Å¾enÃ© stromy} stanovujÃ­ podmÃ­nku, Å¾e pro kaÅ¾dÃ½ uzel ve
+stromu platÃ­, Å¾e \emph{poÄty} uzlÅ¯ v levÃ©m a pravÃ©m podstromu tohoto 
+uzlu se liÅ¡Ã­ nejvÃ½Å¡e o jedniÄku. AVL stromy tento poÅ¾adavek zeslabujÃ­
+tak, Å¾e vyÅ¾adujÃ­, aby se \emph{vÃ½Å¡ky} levÃ©ho a pravÃ©ho podstromu libovolnÃ©ho
+vrcholu liÅ¡ily nejvÃ½Å¡e o jedniÄku\footnote{PlatÃ­, Å¾e kaÅ¾dÃ½ dokonale
+vyvÃ¡Å¾enÃ½ strom je zÃ¡roveÅˆ AVL stromem. OpaÄnÃ© tvrzenÃ­ neplatÃ­.}.
+Ãšvod do vyvÃ¡Å¾enÃ½ch binÃ¡rnÃ­ch stromÅ¯ lze nalÃ©zt napÅ™. v~\cite{Topfer}.
 \end{pozn}
 
 \begin{theorem}
-AVL-strom o $n$ vrcholech má vı¹ku nejvı¹e $2 \log n$.
+AVL-strom o $n$ vrcholech mÃ¡ vÃ½Å¡ku nejvÃ½Å¡e $2 \log n$.
 \end{theorem}
 
 \begin{proof}
-Oznaème $N(h)$ minimální poèet vrcholù AVL stromu vı¹ky $h$. Mù¾eme tedy
+OznaÄme $N(h)$ minimÃ¡lnÃ­ poÄet vrcholÅ¯ AVL stromu vÃ½Å¡ky $h$. MÅ¯Å¾eme tedy
 $N(h)$ definovat takto:
 \begin{align*}
 &N(0) = 1 \\
@@ -896,10 +896,10 @@ $N(h)$ definovat takto:
 &N(h) = 1 + N(h-1) + N(h-2)
 \end{align*}
 
-Je zøejmé, ¾e platí $N(h) \geq 2 N(h-2)$ nebo $N(h-2) \leq N(h-1)$. 
+Je zÅ™ejmÃ©, Å¾e platÃ­ $N(h) \geq 2 N(h-2)$ nebo $N(h-2) \leq N(h-1)$. 
 
-Odtud dostaneme, ¾e $N(h) \geq 2^{h/2}$ a tedy
-$h \leq 2 \log N(h)$. Nerovnost $N(h) \geq 2^{h/2}$ doká¾eme indukcí:
+Odtud dostaneme, Å¾e $N(h) \geq 2^{h/2}$ a tedy
+$h \leq 2 \log N(h)$. Nerovnost $N(h) \geq 2^{h/2}$ dokÃ¡Å¾eme indukcÃ­:
 
 \begin{enumerate}
   \item $N(0) = 1 \geq 2^{0/2} = 1$ \\
@@ -907,19 +907,19 @@ $h \leq 2 \log N(h)$. Nerovnost $N(h) \geq 2^{h/2}$ doká¾eme indukcí:
   \item $N(h) \geq 2 N(h-2) \geq 2 \cdot 2^{h/(2-1)} = 2^{h/2}$
 \end{enumerate}
 
-V¹echny vrcholy AVL stromu jsou tedy vyvá¾ené. Nevyvá¾ené vrcholy mohou
-vzniknout pøi operacích INSERT a DELETE. Pøi tom se mù¾e hodnota $b(v)$
-zmìnit maximálnì o jednièku. Hodnota $b(v)$ nevyvá¾eného vrcholu bude tedy
+VÅ¡echny vrcholy AVL stromu jsou tedy vyvÃ¡Å¾enÃ©. NevyvÃ¡Å¾enÃ© vrcholy mohou
+vzniknout pÅ™i operacÃ­ch INSERT a DELETE. PÅ™i tom se mÅ¯Å¾e hodnota $b(v)$
+zmÄ›nit maximÃ¡lnÄ› o jedniÄku. Hodnota $b(v)$ nevyvÃ¡Å¾enÃ©ho vrcholu bude tedy
 $-2$ nebo $2$.
 \end{proof}
 
 
 \subsection{Algoritmus INSERT}
 
-Vlo¾ení nového vrcholu do AVL-stromu se provádí stejnì jako v
-nevyva¾ovanıch binárních vyhledávacích stromech. Pøi tom se v¹ak u
-nìkterıch vrcholù mù¾e poru¹it podmínka na vyvá¾enost. Mìjme 
-strom na obrázku~\ref{avltree}.
+VloÅ¾enÃ­ novÃ©ho vrcholu do AVL-stromu se provÃ¡dÃ­ stejnÄ› jako v
+nevyvaÅ¾ovanÃ½ch binÃ¡rnÃ­ch vyhledÃ¡vacÃ­ch stromech. PÅ™i tom se vÅ¡ak u
+nÄ›kterÃ½ch vrcholÅ¯ mÅ¯Å¾e poruÅ¡it podmÃ­nka na vyvÃ¡Å¾enost. MÄ›jme 
+strom na obrÃ¡zku~\ref{avltree}.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/avl}
@@ -927,10 +927,10 @@ strom na obrázku~\ref{avltree}.
 \label{avltree}
 \end{figure}
 
-V tomto stromì jsou vı¹ky podstromù $T_1$, $T_2$ a $T_3$ stejné. 
-Pokud pøi vlo¾ení
-nového vrcholu do podstromu T1 vzroste vı¹ka tohoto podstromu, bude vrchol
-$x$ nevyvá¾enı. Jeho vyvá¾ení se v¹ak provede jednodu¹e pomocí 
+V tomto stromÄ› jsou vÃ½Å¡ky podstromÅ¯ $T_1$, $T_2$ a $T_3$ stejnÃ©. 
+Pokud pÅ™i vloÅ¾enÃ­
+novÃ©ho vrcholu do podstromu T1 vzroste vÃ½Å¡ka tohoto podstromu, bude vrchol
+$x$ nevyvÃ¡Å¾enÃ½. Jeho vyvÃ¡Å¾enÃ­ se vÅ¡ak provede jednoduÅ¡e pomocÃ­ 
 tzv.~LL-rotace. (viz~obr.~\ref{avl-ll})
 
 \begin{figure}[!htb]
@@ -939,8 +939,8 @@ tzv.~LL-rotace. (viz~obr.~\ref{avl-ll})
 \label{avl-ll}
 \end{figure}
 
-Pokud bychom v¹ak chtìli novı vrchol vlo¾it do $T_2$ a vı¹ka tohoto podstromu
-by vzrostla, byl by opìt vrchol $x$ nevyvá¾enı. To se mù¾e napravit pomocí
+Pokud bychom vÅ¡ak chtÄ›li novÃ½ vrchol vloÅ¾it do $T_2$ a vÃ½Å¡ka tohoto podstromu
+by vzrostla, byl by opÄ›t vrchol $x$ nevyvÃ¡Å¾enÃ½. To se mÅ¯Å¾e napravit pomocÃ­
 LR-rotace. (viz~obr.~\ref{avl-lr})
 
 \begin{figure}[!htb]
@@ -949,54 +949,54 @@ LR-rotace. (viz~obr.~\ref{avl-lr})
 \label{avl-lr}
 \end{figure}
 
-Poznamenejme, ¾e na vyvá¾enost nemá vliv, zda jsme vrchol vlo¾ili do
+Poznamenejme, Å¾e na vyvÃ¡Å¾enost nemÃ¡ vliv, zda jsme vrchol vloÅ¾ili do
 $T_{2}'$,
-nebo do $T_{2}"$. Pøi vkládání nového vrcholu do pravého podstromu vrcholu
-$x$ se pro vyvá¾ení pou¾ívají rotace RR-rotace a RL-rotace, které jsou 
-symetrické k ji¾ uvedenım rotacím.
+nebo do $T_{2}"$. PÅ™i vklÃ¡dÃ¡nÃ­ novÃ©ho vrcholu do pravÃ©ho podstromu vrcholu
+$x$ se pro vyvÃ¡Å¾enÃ­ pouÅ¾Ã­vajÃ­ rotace RR-rotace a RL-rotace, kterÃ© jsou 
+symetrickÃ© k jiÅ¾ uvedenÃ½m rotacÃ­m.
 
 \begin{samepage}
-LL-rotaci a RR-rotaci se také nìkdy øíká jednoduchá rotace, kde¾to
-LR-rotaci a RL-rotaci se øíká dvojitá rotace. V¹imnìte si, ¾e po rotaci je
-vı¹ka podstromu, se kterım se rotace provádìla, stejná jako jeho vı¹ka
-pøed vlo¾ením nového vrcholu. Tedy po rotaci není naru¹ena vyvá¾enost
-nìjakého pøedka. Staèí tedy vyvá¾it ten nevyvá¾enı vrchol, kterı je ve
-stromu nejní¾e. Pokusme se nyní charakterizovat ten vrchol, kterı je tøeba
-vyvá¾it. Samozøejmì, ¾e vrchol $x$ le¾í na cestì od koøene k pøidanému
-vrcholu a platí:
+LL-rotaci a RR-rotaci se takÃ© nÄ›kdy Å™Ã­kÃ¡ jednoduchÃ¡ rotace, kdeÅ¾to
+LR-rotaci a RL-rotaci se Å™Ã­kÃ¡ dvojitÃ¡ rotace. VÅ¡imnÄ›te si, Å¾e po rotaci je
+vÃ½Å¡ka podstromu, se kterÃ½m se rotace provÃ¡dÄ›la, stejnÃ¡ jako jeho vÃ½Å¡ka
+pÅ™ed vloÅ¾enÃ­m novÃ©ho vrcholu. Tedy po rotaci nenÃ­ naruÅ¡ena vyvÃ¡Å¾enost
+nÄ›jakÃ©ho pÅ™edka. StaÄÃ­ tedy vyvÃ¡Å¾it ten nevyvÃ¡Å¾enÃ½ vrchol, kterÃ½ je ve
+stromu nejnÃ­Å¾e. Pokusme se nynÃ­ charakterizovat ten vrchol, kterÃ½ je tÅ™eba
+vyvÃ¡Å¾it. SamozÅ™ejmÄ›, Å¾e vrchol $x$ leÅ¾Ã­ na cestÄ› od koÅ™ene k pÅ™idanÃ©mu
+vrcholu a platÃ­:
 \begin{itemize}
-\item buï $b(x)=1$ a novı vrchol je pøidáván vlevo od $x$
-\item nebo $b(x)=-1$ a novı vrchol je pøidáván vpravo od $x$
+\item buÄ $b(x)=1$ a novÃ½ vrchol je pÅ™idÃ¡vÃ¡n vlevo od $x$
+\item nebo $b(x)=-1$ a novÃ½ vrchol je pÅ™idÃ¡vÃ¡n vpravo od $x$
 \end{itemize}
 \end{samepage}
 
-Navíc pro ka¾dı vrchol $y$ na cestì od $x$ do pøidaného listu je $b(y)=0$,
-nebo» jinak by byl sám nevyvá¾enı, nebo by nezmìnil svou vı¹ku a tedy 
-by nebylo tøeba vyva¾ovat ani $x$.
+NavÃ­c pro kaÅ¾dÃ½ vrchol $y$ na cestÄ› od $x$ do pÅ™idanÃ©ho listu je $b(y)=0$,
+neboÅ¥ jinak by byl sÃ¡m nevyvÃ¡Å¾enÃ½, nebo by nezmÄ›nil svou vÃ½Å¡ku a tedy 
+by nebylo tÅ™eba vyvaÅ¾ovat ani $x$.
 
-Operace INSERT je formálnì popsána algoritmem~\ref{alg:avl.ins}.
+Operace INSERT je formÃ¡lnÄ› popsÃ¡na algoritmem~\ref{alg:avl.ins}.
 
 \begin{algorithm}[!htb]
 \caption{INSERT pro AVL stromy}
 \label{alg:avl.ins}
 \begin{algorithmic}
 \STATE INSERT($c$)
-\STATE $r \leftarrow$ koøen
+\STATE $r \leftarrow$ koÅ™en
 \WHILE {$r$ != NIL} 
-\IF {$\text{prvek reprezentovanı } r = c$}
+\IF {$\text{prvek reprezentovanÃ½ } r = c$}
   \STATE END
 \ENDIF
 \IF {$balance(r)$ != $0$}
    \STATE $x := r$
 \ENDIF
-\IF {$\text{prvek reprezentovanı } r > c$}
+\IF {$\text{prvek reprezentovanÃ½ } r > c$}
   \STATE $r := left(r)$
 \ELSE
   \STATE $r := right(r)$
 \ENDIF
 \ENDWHILE
-\STATE \COMMENT {vlo¾ení nového vrcholu}
-\STATE $r := \text{novı vrchol}$
+\STATE \COMMENT {vloÅ¾enÃ­ novÃ©ho vrcholu}
+\STATE $r := \text{novÃ½ vrchol}$
 \STATE $key(r):=c$
 \STATE $b(r):=0$
 \STATE $left(r):=nil$
@@ -1011,13 +1011,13 @@ Operace INSERT je formálnì popsána algoritmem~\ref{alg:avl.ins}.
 \caption{VYVAZUJ pro AVL stromy}
 \label{alg:avl.bal}
 \begin{algorithmic}
-\STATE \COMMENT {úprava balance (staèí od $x$ do vlo¾eného listu)}
+\STATE \COMMENT {Ãºprava balance (staÄÃ­ od $x$ do vloÅ¾enÃ©ho listu)}
 \WHILE {$r$ != NIL} 
-  \IF {$\text{prvek reprezentovanı } r > c$}
+  \IF {$\text{prvek reprezentovanÃ½ } r > c$}
         \STATE $balance(r) := balance(r) + 1$
         \STATE $r:=left(r)$
   \ENDIF
-  \IF {$\text{prvek reprezentovanı } r < c$}
+  \IF {$\text{prvek reprezentovanÃ½ } r < c$}
         \STATE $balance(r) := balance(r) - 1$
         \STATE $r := right(r)$
   \ELSE
@@ -1025,14 +1025,14 @@ Operace INSERT je formálnì popsána algoritmem~\ref{alg:avl.ins}.
   \ENDIF
 \ENDWHILE
 \IF {$balance(x) = 2$}
-  \IF {$\text{prvek reprezentovanı } left(x) > c$}
+  \IF {$\text{prvek reprezentovanÃ½ } left(x) > c$}
         \STATE LL-rotace
   \ELSE
         \STATE LR-rotace
   \ENDIF
 \ENDIF
 \IF {$balance(x) = -2$}
-  \IF {$\text{prvek reprezentovanı } right(x) < c$}
+  \IF {$\text{prvek reprezentovanÃ½ } right(x) < c$}
         \STATE RR-rotace
   \ELSE
         \STATE RL-rotace
@@ -1045,45 +1045,45 @@ Operace INSERT je formálnì popsána algoritmem~\ref{alg:avl.ins}.
 
 \subsection{Algoritmus DELETE}
 
-Ubírání vrcholù z AVL-stromu se provádí stejnì jako u nevyvá¾enıch
-binárních vyhledávacích stromù. To znamená, ¾e se ubíranı vrchol nahradí
-nejpravìj¹ím vrcholem levého podstromu nebo nejlevìj¹ím vrcholem pravého
-podstromu\footnote{To je klasickı postup operace DELETE pro BVS popsanı
+UbÃ­rÃ¡nÃ­ vrcholÅ¯ z AVL-stromu se provÃ¡dÃ­ stejnÄ› jako u nevyvÃ¡Å¾enÃ½ch
+binÃ¡rnÃ­ch vyhledÃ¡vacÃ­ch stromÅ¯. To znamenÃ¡, Å¾e se ubÃ­ranÃ½ vrchol nahradÃ­
+nejpravÄ›jÅ¡Ã­m vrcholem levÃ©ho podstromu nebo nejlevÄ›jÅ¡Ã­m vrcholem pravÃ©ho
+podstromu\footnote{To je klasickÃ½ postup operace DELETE pro BVS popsanÃ½
 v~\cite{Topfer}, str.~70.}. 
-Pøi tom se samozøejmì mohou také nìkteré vrcholy stát
-nevyvá¾enımi. To se opìt øe¹í pomocí rotací.
+PÅ™i tom se samozÅ™ejmÄ› mohou takÃ© nÄ›kterÃ© vrcholy stÃ¡t
+nevyvÃ¡Å¾enÃ½mi. To se opÄ›t Å™eÅ¡Ã­ pomocÃ­ rotacÃ­.
 
 \begin{algorithm}[!htb]
 \caption{DELETE pro AVL stromy}
 \label{alg:avl.del}
 \begin{algorithmic}
 \STATE DELETE($x$)
-\STATE $r \leftarrow$ otec vrcholu reprezentovaného $x$
-\STATE \COMMENT {vrcholu $left:=r$ jsme odebrali levého syna}
+\STATE $r \leftarrow$ otec vrcholu reprezentovanÃ©ho $x$
+\STATE \COMMENT {vrcholu $left:=r$ jsme odebrali levÃ©ho syna}
 \WHILE {$r != NIL$}
-\STATE \COMMENT {Prochází vrcholy od otce ubraného vrcholu ke koøeni}
+\STATE \COMMENT {ProchÃ¡zÃ­ vrcholy od otce ubranÃ©ho vrcholu ke koÅ™eni}
   \IF {$left$}
         \IF {$b(r) = 0$}
-		\STATE \COMMENT {Vrchol $r$ je stále vyvá¾enı a vı¹ka jeho podstromu se nezmìnila}
+		\STATE \COMMENT {Vrchol $r$ je stÃ¡le vyvÃ¡Å¾enÃ½ a vÃ½Å¡ka jeho podstromu se nezmÄ›nila}
                 \STATE $b(r) := -1$
         \ENDIF
         \IF {$b(r) = 1$}
-		\STATE \COMMENT {Vrchol $r$ je stále vyvá¾enı, ale vı¹ka jeho podstromu se sní¾ila}
+		\STATE \COMMENT {Vrchol $r$ je stÃ¡le vyvÃ¡Å¾enÃ½, ale vÃ½Å¡ka jeho podstromu se snÃ­Å¾ila}
                 \STATE $b(r) := 0$
-	\STATE \COMMENT {Je tøeba vyva¾ovat}
+	\STATE \COMMENT {Je tÅ™eba vyvaÅ¾ovat}
         \ELSE                            
                 \STATE VYVAZUJ\_RIGHT(right($r$))
         \ENDIF
   \ELSE
         \IF {$b(r)=0$}
-		\STATE \COMMENT {Vrchol $r$ je stále vyvá¾enı a vı¹ka jeho podstromu se nezmìnila}
+		\STATE \COMMENT {Vrchol $r$ je stÃ¡le vyvÃ¡Å¾enÃ½ a vÃ½Å¡ka jeho podstromu se nezmÄ›nila}
                 \STATE $b(r)=1$                  
                 \STATE END
 	\ENDIF
         \IF {$b(r)=-1$}
-		\STATE \COMMENT {Vrchol $r$ je stále vyvá¾enı, ale vı¹ka jeho podstromu se sní¾ila}
+		\STATE \COMMENT {Vrchol $r$ je stÃ¡le vyvÃ¡Å¾enÃ½, ale vÃ½Å¡ka jeho podstromu se snÃ­Å¾ila}
                 \STATE $b(r):=0$
-		\STATE \COMMENT {Je tøeba vyva¾ovat}
+		\STATE \COMMENT {Je tÅ™eba vyvaÅ¾ovat}
         \ELSE
 		\STATE VYVAZUJ\_LEFT(left($r$))
         \ENDIF
@@ -1097,8 +1097,8 @@ nevyvá¾enımi. To se opìt øe¹í pomocí rotací.
 %\end{samepage}
 
 %\begin{samepage}
-Operace DELETE je formálnì popsána algoritmem~\ref{alg:avl.del}.
-V algoritmu se pou¾ívají dvì procedury pro vyva¾ování popsané v
+Operace DELETE je formÃ¡lnÄ› popsÃ¡na algoritmem~\ref{alg:avl.del}.
+V algoritmu se pouÅ¾Ã­vajÃ­ dvÄ› procedury pro vyvaÅ¾ovÃ¡nÃ­ popsanÃ© v
 algoritmech~\ref{alg:avl.del.vyvazuj.right}~a~\ref{alg:avl.del.vyvazuj.left}.
 
 \begin{algorithm}[!htb]
@@ -1110,7 +1110,7 @@ algoritmech~\ref{alg:avl.del.vyvazuj.right}~a~\ref{alg:avl.del.vyvazuj.left}.
         \STATE RR-rotace
 	\STATE END
 \ENDIF        
-		\STATE \COMMENT {Vı¹ka podstromu se nezmìnila}
+		\STATE \COMMENT {VÃ½Å¡ka podstromu se nezmÄ›nila}
 \IF {$b(x) = -1$}
         \STATE RR-rotace
 \ELSE
@@ -1126,7 +1126,7 @@ algoritmech~\ref{alg:avl.del.vyvazuj.right}~a~\ref{alg:avl.del.vyvazuj.left}.
 \STATE VYVAZUJ\_LEFT(x)
 \IF {$b(x) = 0$}
         \STATE LL-rotace
-		\STATE \COMMENT {Vı¹ka podstromu se nezmìnila}
+		\STATE \COMMENT {VÃ½Å¡ka podstromu se nezmÄ›nila}
         \STATE END             
 \ENDIF
 \IF {$b(x) = 1$}
@@ -1140,11 +1140,11 @@ algoritmech~\ref{alg:avl.del.vyvazuj.right}~a~\ref{alg:avl.del.vyvazuj.left}.
 
 
 %\begin{samepage}
-Problém je, ¾e ne pøi v¹ech rotacích se zachovává vı¹ka podstromu, jak
-tomu bylo u operace INSERT. Proto se zde vyva¾ování neomezí pouze na jeden
-vrchol. Pøi operaci DELETE se mù¾e provést a¾ $\log n$ rotací. Ka¾dopádnì
-slo¾itost operace DELETE je stejnì jako slo¾itost operace INSERT $O(\log n)$.
-\mnote{XXX dokázat max. poèet rotací pøi DELETE}
+ProblÃ©m je, Å¾e ne pÅ™i vÅ¡ech rotacÃ­ch se zachovÃ¡vÃ¡ vÃ½Å¡ka podstromu, jak
+tomu bylo u operace INSERT. Proto se zde vyvaÅ¾ovÃ¡nÃ­ neomezÃ­ pouze na jeden
+vrchol. PÅ™i operaci DELETE se mÅ¯Å¾e provÃ©st aÅ¾ $\log n$ rotacÃ­. KaÅ¾dopÃ¡dnÄ›
+sloÅ¾itost operace DELETE je stejnÄ› jako sloÅ¾itost operace INSERT $O(\log n)$.
+\mnote{XXX dokÃ¡zat max. poÄet rotacÃ­ pÅ™i DELETE}
 
 % tohle by melo flushnout floats
 % dalsi varianta:
@@ -1154,119 +1154,119 @@ slo¾itost operace DELETE je stejnì jako slo¾itost operace INSERT $O(\log n)$.
 \FloatBarrier
 
 % --------------------------------------------------------------------------
-\section{Èervenoèerné stromy}
+\section{ÄŒervenoÄernÃ© stromy}
 
 \begin{defn}
-Binární vyhledávací strom T se nazıvá \emph{èervenoèernı}, jestli¾e ka¾dı 
-vrchol je obarven èervenì nebo èernì a platí následující podmínky:
+BinÃ¡rnÃ­ vyhledÃ¡vacÃ­ strom T se nazÃ½vÃ¡ \emph{ÄervenoÄernÃ½}, jestliÅ¾e kaÅ¾dÃ½ 
+vrchol je obarven ÄervenÄ› nebo ÄernÄ› a platÃ­ nÃ¡sledujÃ­cÃ­ podmÃ­nky:
 \begin{enumerate}
-\item Listy jsou èerné.
-\item Pokud má èervenı vrchol otce, je otec èernı.
-\item V¹echny cesty z koøene do listu mají stejnı poèet èernıch vrcholù.
+\item Listy jsou ÄernÃ©.
+\item Pokud mÃ¡ ÄervenÃ½ vrchol otce, je otec ÄernÃ½.
+\item VÅ¡echny cesty z koÅ™ene do listu majÃ­ stejnÃ½ poÄet ÄernÃ½ch vrcholÅ¯.
 \end{enumerate}
 \end{defn}
 
-\mnote{nejdel¹í cesta je max. 2$\times$ del¹í ne¾ nejkrat¹í}
+\mnote{nejdelÅ¡Ã­ cesta je max. 2$\times$ delÅ¡Ã­ neÅ¾ nejkratÅ¡Ã­}
 
 \begin{theorem} % XXX tvrzeni
-Pro binární vyhledávací èervenoèerné stromy reprezentující mno¾inu $S$,
-$|S| = n$ platí, ¾e jejich hloubka je $O(\log n)$.
+Pro binÃ¡rnÃ­ vyhledÃ¡vacÃ­ ÄervenoÄernÃ© stromy reprezentujÃ­cÃ­ mnoÅ¾inu $S$,
+$|S| = n$ platÃ­, Å¾e jejich hloubka je $O(\log n)$.
 \end{theorem}
 
 \begin{proof}
-je-li $k$ poèet èernıch vrcholù na cestì z koøene do listu, pak
+je-li $k$ poÄet ÄernÃ½ch vrcholÅ¯ na cestÄ› z koÅ™ene do listu, pak
 \[
 2^k -1 \leq |S| \leq 2^{2k} -1
 \]
-To plyne z toho, ¾e cesta z koøene do listu se mù¾e skládat v extrémních
-pøípadech buï z k èernıch vrcholù, pak je poèet vnitøních vrcholù stromu
-$1 + 2 + ... + 2^{k-1} = 2^k - 1$ nebo z cesty, kde se støídají èerné a
-èervené vrcholy, pak je poèet vnitøních vrcholù $1 + 2 + ... + 2^{2k-1} =
+To plyne z toho, Å¾e cesta z koÅ™ene do listu se mÅ¯Å¾e sklÃ¡dat v extrÃ©mnÃ­ch
+pÅ™Ã­padech buÄ z k ÄernÃ½ch vrcholÅ¯, pak je poÄet vnitÅ™nÃ­ch vrcholÅ¯ stromu
+$1 + 2 + ... + 2^{k-1} = 2^k - 1$ nebo z cesty, kde se stÅ™Ã­dajÃ­ ÄernÃ© a
+ÄervenÃ© vrcholy, pak je poÄet vnitÅ™nÃ­ch vrcholÅ¯ $1 + 2 + ... + 2^{2k-1} =
 2^2k - 1$.
-Tedy platí
+Tedy platÃ­
 \[
 k \leq \log_2 |S| +1 \leq 2k
 \]
-pøièem¾ prvky $S$ jsou reprezentovány pouze ve vnitøních vrcholech, ne
+pÅ™iÄemÅ¾ prvky $S$ jsou reprezentovÃ¡ny pouze ve vnitÅ™nÃ­ch vrcholech, ne
 v listech. 
-\mnote{to platí pro v¹echny bin. vyhl. stromy}
+\mnote{to platÃ­ pro vÅ¡echny bin. vyhl. stromy}
 \end{proof}
 
 
 \subsection{Operace INSERT}
-Uvedeme pouze odli¹nost od operace INSERT v obecném binárním
-vyhledávacím stromì.
+Uvedeme pouze odliÅ¡nost od operace INSERT v obecnÃ©m binÃ¡rnÃ­m
+vyhledÃ¡vacÃ­m stromÄ›.
 
-Situace: list $t$ se zmìnil na vnitøní vrchol reprezentující prvek $x$
-a pøidali jsme mu 2 listy.
+Situace: list $t$ se zmÄ›nil na vnitÅ™nÃ­ vrchol reprezentujÃ­cÃ­ prvek $x$
+a pÅ™idali jsme mu 2 listy.
 
-Vrchol $t$ obarvíme èervenì a jeho syny èernì. Podmínky 1 a 3 stále
-platí, ale podmínka 2 platit nemusí.
+Vrchol $t$ obarvÃ­me ÄervenÄ› a jeho syny ÄernÄ›. PodmÃ­nky 1 a 3 stÃ¡le
+platÃ­, ale podmÃ­nka 2 platit nemusÃ­.
 \begin{defn}
-Strom a jeho vrchol $(T,t)$ nazveme \emph{2-témìø èervenoèernı strom
-(2tèès),} jestli¾e platí
+Strom a jeho vrchol $(T,t)$ nazveme \emph{2-tÃ©mÄ›Å™ ÄervenoÄernÃ½ strom
+(2tÄÄs),} jestliÅ¾e platÃ­
 \begin{itemize}
-\item{1} Listy jsou èerné. {\it (nezmìnìno)}
-\item{2'} Pokud má èervenı vrchol \emph{rùznı od $t$} otce, je otec
-èernı.
-\mnote{Srovnej: Ka¾dı èervenı vrchol rùznı od $t$ má èerného otce.}
-\item{3} V¹echny cesty z koøene do listu mají stejnı poèet èernıch
-vrcholù. {\it (nezmìnìno)}
+\item{1} Listy jsou ÄernÃ©. {\it (nezmÄ›nÄ›no)}
+\item{2'} Pokud mÃ¡ ÄervenÃ½ vrchol \emph{rÅ¯znÃ½ od $t$} otce, je otec
+ÄernÃ½.
+\mnote{Srovnej: KaÅ¾dÃ½ ÄervenÃ½ vrchol rÅ¯znÃ½ od $t$ mÃ¡ ÄernÃ©ho otce.}
+\item{3} VÅ¡echny cesty z koÅ™ene do listu majÃ­ stejnÃ½ poÄet ÄernÃ½ch
+vrcholÅ¯. {\it (nezmÄ›nÄ›no)}
 \end{itemize}
 \end{defn}
 
 \begin{defn}
-Je-li vrchol $t$ èervenı a jeho otec je také èervenı, pak øekneme, ¾e
+Je-li vrchol $t$ ÄervenÃ½ a jeho otec je takÃ© ÄervenÃ½, pak Å™ekneme, Å¾e
 $t$ je \emph{porucha}.
 \end{defn}
 
 \begin{pozn}
-Poru¹e v 2tèès se také nìkdy øíká \emph{2-porucha}.
+PoruÅ¡e v 2tÄÄs se takÃ© nÄ›kdy Å™Ã­kÃ¡ \emph{2-porucha}.
 \end{pozn}
 
-Tedy nyní máme 2tèès $(T,t)$ Je-li $t$ porucha, pak ji musíme nìjak
-opravit. Situace je na obrázku~\ref{rbt-i}.
+Tedy nynÃ­ mÃ¡me 2tÄÄs $(T,t)$ Je-li $t$ porucha, pak ji musÃ­me nÄ›jak
+opravit. Situace je na obrÃ¡zku~\ref{rbt-i}.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-i}
-\caption{Obecná situace pøi INSERTu}
+\caption{ObecnÃ¡ situace pÅ™i INSERTu}
 \label{rbt-i}
 \end{figure}
 
-Nejprve zále¾í na tom, jakou barvu má $s$, strıc $t$:
+Nejprve zÃ¡leÅ¾Ã­ na tom, jakou barvu mÃ¡ $s$, strÃ½c $t$:
 \begin{enumerate}
-\item $s$ je èervenı. Pak pouze pøebarvíme $o$, $d$ a $s$ podle
-obrázku \ref{rbt-i1}.
-Podmínky 1 a 3 jsou splnìny. Nyní $d$ mù¾e bıt porucha, ov¹em posunutá o 2
-hladiny vı¹e. Vznikl 2tèès $(T,d)$.
+\item $s$ je ÄervenÃ½. Pak pouze pÅ™ebarvÃ­me $o$, $d$ a $s$ podle
+obrÃ¡zku \ref{rbt-i1}.
+PodmÃ­nky 1 a 3 jsou splnÄ›ny. NynÃ­ $d$ mÅ¯Å¾e bÃ½t porucha, ovÅ¡em posunutÃ¡ o 2
+hladiny vÃ½Å¡e. Vznikl 2tÄÄs $(T,d)$.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-i1}
-\caption{Oprava INSERTu pøebarvením}
+\caption{Oprava INSERTu pÅ™ebarvenÃ­m}
 \label{rbt-i1}
 \end{figure}
 
-\item $s$ je èernı. Zále¾í na tom, zda hodnota $t$ le¾í mezi hodnotami
-$o$ a $d$ nebo ne. Jinımi slovy, zda cesta $t$-$o$-$d$ obsahuje
-\emph{zatáèku}.
+\item $s$ je ÄernÃ½. ZÃ¡leÅ¾Ã­ na tom, zda hodnota $t$ leÅ¾Ã­ mezi hodnotami
+$o$ a $d$ nebo ne. JinÃ½mi slovy, zda cesta $t$-$o$-$d$ obsahuje
+\emph{zatÃ¡Äku}.
 \begin{enumerate}
-\item Bez zatáèky:
-Provedeme rotaci a pøebarvíme podle obrázku \ref{rbt-i2a}.
-Splnìny budou podmínky 1, 2 i 3, tedy máme èervenoèernı strom.
+\item Bez zatÃ¡Äky:
+Provedeme rotaci a pÅ™ebarvÃ­me podle obrÃ¡zku \ref{rbt-i2a}.
+SplnÄ›ny budou podmÃ­nky 1, 2 i 3, tedy mÃ¡me ÄervenoÄernÃ½ strom.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-i2a}
-\caption{Oprava INSERTu rotací a pøebarvením}
+\caption{Oprava INSERTu rotacÃ­ a pÅ™ebarvenÃ­m}
 \label{rbt-i2a}
 \end{figure}
 
-\item Se zatáèkou:
-Provedeme dvojitou rotaci a pøebarvíme podle obrázku \ref{rbt-i2b}.
-Splnìny budou podmínky 1, 2 i 3, opìt máme rovnou èervenoèernı strom.
+\item Se zatÃ¡Äkou:
+Provedeme dvojitou rotaci a pÅ™ebarvÃ­me podle obrÃ¡zku \ref{rbt-i2b}.
+SplnÄ›ny budou podmÃ­nky 1, 2 i 3, opÄ›t mÃ¡me rovnou ÄervenoÄernÃ½ strom.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-i2b}
-\caption{Oprava INSERTu dvojitou rotací a pøebarvením}
+\caption{Oprava INSERTu dvojitou rotacÃ­ a pÅ™ebarvenÃ­m}
 \label{rbt-i2b}
 \end{figure}
 
@@ -1274,111 +1274,111 @@ Splnìny budou podmínky 1, 2 i 3, opìt máme rovnou èervenoèernı strom.
 \end{enumerate}
 
 \subsection{Operace DELETE}
-Zatímco INSERT se pøíli¹ neli¹il od své obdoby u AVL stromù, operace
-DELETE u èervenoèernıch stromù je oproti AVL stromùm slo¾itìj¹í
-mentálnì, ov¹em jednodu¹¹í èasovì.
+ZatÃ­mco INSERT se pÅ™Ã­liÅ¡ neliÅ¡il od svÃ© obdoby u AVL stromÅ¯, operace
+DELETE u ÄervenoÄernÃ½ch stromÅ¯ je oproti AVL stromÅ¯m sloÅ¾itÄ›jÅ¡Ã­
+mentÃ¡lnÄ›, ovÅ¡em jednoduÅ¡Å¡Ã­ ÄasovÄ›.
 
-Situace: odstraòujeme vrchol $t$ (kterı nemusí reprezentovat
-odstraòovanı prvek --- viz DELETE v obecnıch binárních vyhledávacích
-stromech) a jeho syna, kterı je list.
+Situace: odstraÅˆujeme vrchol $t$ (kterÃ½ nemusÃ­ reprezentovat
+odstraÅˆovanÃ½ prvek --- viz DELETE v obecnÃ½ch binÃ¡rnÃ­ch vyhledÃ¡vacÃ­ch
+stromech) a jeho syna, kterÃ½ je list.
 
-Druhého syna $t$, $u$, dáme na místo smazaného $t$ a zaèerníme ho. Tím
-máme splnìné podmínky 1 a 2. Pokud byl ale $t$ èernı, chybí nám na
-cestách procházejících nyní vrcholem $u$ jeden èernı vrchol.
+DruhÃ©ho syna $t$, $u$, dÃ¡me na mÃ­sto smazanÃ©ho $t$ a zaÄernÃ­me ho. TÃ­m
+mÃ¡me splnÄ›nÃ© podmÃ­nky 1 a 2. Pokud byl ale $t$ ÄernÃ½, chybÃ­ nÃ¡m na
+cestÃ¡ch prochÃ¡zejÃ­cÃ­ch nynÃ­ vrcholem $u$ jeden ÄernÃ½ vrchol.
 \begin{defn}
-Strom a jeho vrchol $(T,u)$ nazveme \emph{3-témìø èervenoèernı strom
-(3tèès),} jestli¾e platí
+Strom a jeho vrchol $(T,u)$ nazveme \emph{3-tÃ©mÄ›Å™ ÄervenoÄernÃ½ strom
+(3tÄÄs),} jestliÅ¾e platÃ­
 \begin{itemize}
-\item{1} Listy jsou èerné. {\it (nezmìnìno)}
-\item{2} Pokud má èervenı vrchol otce, je otec èernı. {\it (nezmìnìno)}
+\item{1} Listy jsou ÄernÃ©. {\it (nezmÄ›nÄ›no)}
+\item{2} Pokud mÃ¡ ÄervenÃ½ vrchol otce, je otec ÄernÃ½. {\it (nezmÄ›nÄ›no)}
 \item{3'}
-V¹echny cesty z koøene do listu neprocházející $u$ mají stejnı poèet
-èernıch vrcholù, nech» je to $k$. 
-V¹echny cesty z koøene do listu   procházející $u$ mají stejnı poèet
-èernıch vrcholù, nech» je to $\ell$. 
-A platí $k-1 \leq \ell \leq k$.
+VÅ¡echny cesty z koÅ™ene do listu neprochÃ¡zejÃ­cÃ­ $u$ majÃ­ stejnÃ½ poÄet
+ÄernÃ½ch vrcholÅ¯, nechÅ¥ je to $k$. 
+VÅ¡echny cesty z koÅ™ene do listu   prochÃ¡zejÃ­cÃ­ $u$ majÃ­ stejnÃ½ poÄet
+ÄernÃ½ch vrcholÅ¯, nechÅ¥ je to $\ell$. 
+A platÃ­ $k-1 \leq \ell \leq k$.
 \end{itemize}
-Kdy¾ $u$ není koøen a $\ell < k$, pak øekneme, ¾e $u$ je \emph{porucha}.
+KdyÅ¾ $u$ nenÃ­ koÅ™en a $\ell < k$, pak Å™ekneme, Å¾e $u$ je \emph{porucha}.
 \end{defn}
 
 \begin{pozn}
-Takovému vrcholu v 3tèès se nìkdy øíká \emph{3-porucha}.
+TakovÃ©mu vrcholu v 3tÄÄs se nÄ›kdy Å™Ã­kÃ¡ \emph{3-porucha}.
 \end{pozn}
 
-Nech» vrchol $u$  je porucha. Pak mù¾eme pøedpokládat, ¾e je 
-obarven èernì, jinak bychom ho pøebarvili na èerno a tím by se porucha 
-odstranila a vznikl èervenoèernı strom.
+NechÅ¥ vrchol $u$  je porucha. Pak mÅ¯Å¾eme pÅ™edpoklÃ¡dat, Å¾e je 
+obarven ÄernÄ›, jinak bychom ho pÅ™ebarvili na Äerno a tÃ­m by se porucha 
+odstranila a vznikl ÄervenoÄernÃ½ strom.
 
-Situace: máme 3tèès $(T,u)$, $u$ je porucha s otcem $o$, bratrem $b$ a
-synovci $s1$, $s2$, viz obrázek \ref{rbt-d}.
+Situace: mÃ¡me 3tÄÄs $(T,u)$, $u$ je porucha s otcem $o$, bratrem $b$ a
+synovci $s1$, $s2$, viz obrÃ¡zek \ref{rbt-d}.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-d}
-\caption{Obecná situace pøi DELETE}
+\caption{ObecnÃ¡ situace pÅ™i DELETE}
 \label{rbt-d}
 \end{figure}
 
 \begin{samepage}
-Oprava zále¾í na barvì vrcholu $b$:
+Oprava zÃ¡leÅ¾Ã­ na barvÄ› vrcholu $b$:
 \begin{enumerate}
-\item Bratr je èernı. 
-Rozli¹ujeme dále 4 pøípady, z nich¾ jeden propaguje poruchu o hladinu
-vı¹ a ostatní skonèí s èervenoèernım stromem.
+\item Bratr je ÄernÃ½. 
+RozliÅ¡ujeme dÃ¡le 4 pÅ™Ã­pady, z nichÅ¾ jeden propaguje poruchu o hladinu
+vÃ½Å¡ a ostatnÃ­ skonÄÃ­ s ÄervenoÄernÃ½m stromem.
 
 \begin{enumerate}
-\item Otec i synovci jsou èerní.
-Pøebarvíme $b$ na èerveno, viz obrázek \ref{rbt-d1a}. Dostáváme 3tèès $(T,o)$,
-tedy porucha je o hladinu vı¹e.
+\item Otec i synovci jsou ÄernÃ­.
+PÅ™ebarvÃ­me $b$ na Äerveno, viz obrÃ¡zek \ref{rbt-d1a}. DostÃ¡vÃ¡me 3tÄÄs $(T,o)$,
+tedy porucha je o hladinu vÃ½Å¡e.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-d1a}
-\caption{Èásteèná oprava DELETE pøebarvením}
+\caption{ÄŒÃ¡steÄnÃ¡ oprava DELETE pÅ™ebarvenÃ­m}
 \label{rbt-d1a}
 \end{figure}
-\item \label{rbt-cd1b} Otec je èervenı, synovci èerní.
-Pøebarvíme otce a bratra podle obrázku \ref{rbt-d1b} a dostáváme
-èervenoèernı strom.
+\item \label{rbt-cd1b} Otec je ÄervenÃ½, synovci ÄernÃ­.
+PÅ™ebarvÃ­me otce a bratra podle obrÃ¡zku \ref{rbt-d1b} a dostÃ¡vÃ¡me
+ÄervenoÄernÃ½ strom.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-d1b}
-\caption{Oprava DELETE pøebarvením}
+\caption{Oprava DELETE pÅ™ebarvenÃ­m}
 \label{rbt-d1b}
 \end{figure}
-\item \label{rbt-cd1c} Synovec $s1$, jeho¾ hodnota le¾í mezi hodnotami
-otce a bratra, je èernı, druhı synovec je èervenı.
-Pøebarvíme a zrotujeme podle obrázku \ref{rbt-d1c}, barva otce se
-nemìní (tj., vrchol $b$ bude mít barvu, kterou pùvodnì mìl vrchol $o$).
-Dostáváme èervenoèernı strom.
+\item \label{rbt-cd1c} Synovec $s1$, jehoÅ¾ hodnota leÅ¾Ã­ mezi hodnotami
+otce a bratra, je ÄernÃ½, druhÃ½ synovec je ÄervenÃ½.
+PÅ™ebarvÃ­me a zrotujeme podle obrÃ¡zku \ref{rbt-d1c}, barva otce se
+nemÄ›nÃ­ (tj., vrchol $b$ bude mÃ­t barvu, kterou pÅ¯vodnÄ› mÄ›l vrchol $o$).
+DostÃ¡vÃ¡me ÄervenoÄernÃ½ strom.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-d1c}
-\caption{Oprava DELETE pøebarvením a rotací}
+\caption{Oprava DELETE pÅ™ebarvenÃ­m a rotacÃ­}
 \label{rbt-d1c}
 \end{figure}
-\item \label{rbt-cd1d} Synovec $s1$, jeho¾ hodnota le¾í mezi hodnotami
-otce a bratra, je èervenı, druhı synovec má libovolnou barvu.
-Pøebarvíme a dvojitì zrotujeme podle obrázku \ref{rbt-d1d} (tj., vrchol $s1$ 
-bude mít barvu, kterou pùvodnì mìl vrchol $o$ a barva vrcholu $s2$ se nezmìní).
-Dostáváme èervenoèernı strom.
+\item \label{rbt-cd1d} Synovec $s1$, jehoÅ¾ hodnota leÅ¾Ã­ mezi hodnotami
+otce a bratra, je ÄervenÃ½, druhÃ½ synovec mÃ¡ libovolnou barvu.
+PÅ™ebarvÃ­me a dvojitÄ› zrotujeme podle obrÃ¡zku \ref{rbt-d1d} (tj., vrchol $s1$ 
+bude mÃ­t barvu, kterou pÅ¯vodnÄ› mÄ›l vrchol $o$ a barva vrcholu $s2$ se nezmÄ›nÃ­).
+DostÃ¡vÃ¡me ÄervenoÄernÃ½ strom.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-d1d}
-\caption{Oprava DELETE pøebarvením a dvojitou rotací}
+\caption{Oprava DELETE pÅ™ebarvenÃ­m a dvojitou rotacÃ­}
 \label{rbt-d1d}
 \end{figure}
 
 \end{enumerate}
 
-\item Bratr je èervenı. Provedeme rotaci. 
-Dostaneme strom ve tvaru, kterı je na \ref{rbt-d2}.
-a aplikujeme pøedchozí pøípad è.1. \\
-Pøesto¾e to tak na první pohled nevypadá, máme vyhráno, proto¾e bratr 
-poruchy je èernı a otec èervenı, tedy pøí¹tí oprava bude pøípad \ref{rbt-cd1b}, \ref{rbt-cd1c}, nebo \ref{rbt-cd1d} a skonèíme s èervenoèernım 
+\item Bratr je ÄervenÃ½. Provedeme rotaci. 
+Dostaneme strom ve tvaru, kterÃ½ je na \ref{rbt-d2}.
+a aplikujeme pÅ™edchozÃ­ pÅ™Ã­pad Ä.1. \\
+PÅ™estoÅ¾e to tak na prvnÃ­ pohled nevypadÃ¡, mÃ¡me vyhrÃ¡no, protoÅ¾e bratr 
+poruchy je ÄernÃ½ a otec ÄervenÃ½, tedy pÅ™Ã­Å¡tÃ­ oprava bude pÅ™Ã­pad \ref{rbt-cd1b}, \ref{rbt-cd1c}, nebo \ref{rbt-cd1d} a skonÄÃ­me s ÄervenoÄernÃ½m 
 stromem.
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/rbt-d2}
-\caption{Èásteèná oprava DELETE pøebarvením a rotací}
+\caption{ÄŒÃ¡steÄnÃ¡ oprava DELETE pÅ™ebarvenÃ­m a rotacÃ­}
 \label{rbt-d2}
 \end{figure}
 
@@ -1386,47 +1386,47 @@ stromem.
 \end{samepage}
 
 
-\subsection{Závìry}
-Pro binární vyhledávací èervenoèerné stromy lze implementovat MEMBER,
-INSERT a DELETE tak, ¾e vy¾adují èas $O(\log n)$ a INSERT pou¾ívá
-nejvı¹e jednu (dvojitou) rotaci a DELETE pou¾ívá nejvı¹e dvì rotace
+\subsection{ZÃ¡vÄ›ry}
+Pro binÃ¡rnÃ­ vyhledÃ¡vacÃ­ ÄervenoÄernÃ© stromy lze implementovat MEMBER,
+INSERT a DELETE tak, Å¾e vyÅ¾adujÃ­ Äas $O(\log n)$ a INSERT pouÅ¾Ã­vÃ¡
+nejvÃ½Å¡e jednu (dvojitou) rotaci a DELETE pouÅ¾Ã­vÃ¡ nejvÃ½Å¡e dvÄ› rotace
 nebo rotaci a dvojitou rotaci. 
 
-Jsou lep¹í ne¾ AVL stromy, které pøi DELETE spotøebují a¾ $\log n$
-rotací. Oproti váhovì vyvá¾enım stromùm i proti AVL stromùm jsou 
-èervenoèerné stromy jen
-konstantnì lep¹í, ale i to je dobré. Pøi pou¾ití binárních vyhledávacích 
-stromù ve vıpoèetní geometrii nese informaci i rozlo¾ení prvkù ve stromì, 
-a tato informace se musí po provedení rotace nebo dvojité rotace aktualizovat. 
-To znamená prohledání celého stromu a tedy èas $O(n)$ za ka¾dou rotaci a 
-dvojitou rotaci navíc. Pro tyto problémy jsou èervenoèerné stromy obzvlá¹tì 
-vhodné, proto¾e minimalizují poèet pou¾itıch rotací a dvojitıch 
-rotací\footnote{Èervenoèerné stromy se pou¾ívají napøíklad ve 
+Jsou lepÅ¡Ã­ neÅ¾ AVL stromy, kterÃ© pÅ™i DELETE spotÅ™ebujÃ­ aÅ¾ $\log n$
+rotacÃ­. Oproti vÃ¡hovÄ› vyvÃ¡Å¾enÃ½m stromÅ¯m i proti AVL stromÅ¯m jsou 
+ÄervenoÄernÃ© stromy jen
+konstantnÄ› lepÅ¡Ã­, ale i to je dobrÃ©. PÅ™i pouÅ¾itÃ­ binÃ¡rnÃ­ch vyhledÃ¡vacÃ­ch 
+stromÅ¯ ve vÃ½poÄetnÃ­ geometrii nese informaci i rozloÅ¾enÃ­ prvkÅ¯ ve stromÄ›, 
+a tato informace se musÃ­ po provedenÃ­ rotace nebo dvojitÃ© rotace aktualizovat. 
+To znamenÃ¡ prohledÃ¡nÃ­ celÃ©ho stromu a tedy Äas $O(n)$ za kaÅ¾dou rotaci a 
+dvojitou rotaci navÃ­c. Pro tyto problÃ©my jsou ÄervenoÄernÃ© stromy obzvlÃ¡Å¡tÄ› 
+vhodnÃ©, protoÅ¾e minimalizujÃ­ poÄet pouÅ¾itÃ½ch rotacÃ­ a dvojitÃ½ch 
+rotacÃ­\footnote{ÄŒervenoÄernÃ© stromy se pouÅ¾Ã­vajÃ­ napÅ™Ã­klad ve 
 \href{http://www.sgi.com/tech/stl/}%
-standardní ¹ablonové knihovnì jazyka C++ od SGI, 
-která je zahrnuta do GCC. Máte-li Linux, zkuste se podívat do
+standardnÃ­ Å¡ablonovÃ© knihovnÄ› jazyka C++ od SGI, 
+kterÃ¡ je zahrnuta do GCC. MÃ¡te-li Linux, zkuste se podÃ­vat do
 \path{/usr/include/g++-2/stl\_tree.h}; 
-%pokud pou¾íváte OpenBSD, najdete
-%implementaci jak èervenoèernıch, tak splay stromù v
+%pokud pouÅ¾Ã­vÃ¡te OpenBSD, najdete
+%implementaci jak ÄervenoÄernÃ½ch, tak splay stromÅ¯ v
 %\path{/usr/include/sys/tree.h}.
-Co se tıèe "real-world" aplikací èerveno-èernıch stromù, je mo¾né zmínit
-packet filter (PF) v OpenBSD, kde se tyto stromy pou¾ívají k reprezentaci
-pravidel pro firewall. Pro firewally je èas vyhodnocení jednotlivıch
-paketù proti pravidlùm kritickı. Zajímavé je, ¾e pùvodní implementaci PF
-pou¾ívala AVL stromy. Èerveno-èerné stromy se ukázaly jako vıhodnìj¹í.
-Implementaci èerveno-èernıch stromù lze v OpenBSD najít v 
-\path{/usr/include/sys/tree.h} v podobì maker jazyka C. Tento soubor 
-obsahuje rovnì¾ makra pro implementaci Splay stromù.
-A pokud víte o podobnì dostupnıch implementacích jinıch
-datovıch struktur z téhle pøedná¹ky, sem s nimi !}.
+Co se tÃ½Äe "real-world" aplikacÃ­ Äerveno-ÄernÃ½ch stromÅ¯, je moÅ¾nÃ© zmÃ­nit
+packet filter (PF) v OpenBSD, kde se tyto stromy pouÅ¾Ã­vajÃ­ k reprezentaci
+pravidel pro firewall. Pro firewally je Äas vyhodnocenÃ­ jednotlivÃ½ch
+paketÅ¯ proti pravidlÅ¯m kritickÃ½. ZajÃ­mavÃ© je, Å¾e pÅ¯vodnÃ­ implementaci PF
+pouÅ¾Ã­vala AVL stromy. ÄŒerveno-ÄernÃ© stromy se ukÃ¡zaly jako vÃ½hodnÄ›jÅ¡Ã­.
+Implementaci Äerveno-ÄernÃ½ch stromÅ¯ lze v OpenBSD najÃ­t v 
+\path{/usr/include/sys/tree.h} v podobÄ› maker jazyka C. Tento soubor 
+obsahuje rovnÄ›Å¾ makra pro implementaci Splay stromÅ¯.
+A pokud vÃ­te o podobnÄ› dostupnÃ½ch implementacÃ­ch jinÃ½ch
+datovÃ½ch struktur z tÃ©hle pÅ™ednÃ¡Å¡ky, sem s nimi !}.
 
 \begin{pozn}
-Èervenoèerné stromy se pou¾ívají pøi implementaci $(2,4)$-stromù, se
-kterımi se seznámíme v dal¹í kapitole. Vrchol 
-se dvìma syny je nahrazen jedním èernım vrcholem, vrchol se tøemi syny 
-je nahrazen èernım vrcholem s jedním èervenım synem a vrchol se ètyømi 
-syny je nahrazen èernım vrcholem se dvìma syny. Pozor! Aktualizaèní 
-operace pro $(2,4)$-stromy neodpovídají aktualizaèním operacím na 
-èervenoèernıch stromech (i reprezentace prvkù je odli¹ná).
+ÄŒervenoÄernÃ© stromy se pouÅ¾Ã­vajÃ­ pÅ™i implementaci $(2,4)$-stromÅ¯, se
+kterÃ½mi se seznÃ¡mÃ­me v dalÅ¡Ã­ kapitole. Vrchol 
+se dvÄ›ma syny je nahrazen jednÃ­m ÄernÃ½m vrcholem, vrchol se tÅ™emi syny 
+je nahrazen ÄernÃ½m vrcholem s jednÃ­m ÄervenÃ½m synem a vrchol se ÄtyÅ™mi 
+syny je nahrazen ÄernÃ½m vrcholem se dvÄ›ma syny. Pozor! AktualizaÄnÃ­ 
+operace pro $(2,4)$-stromy neodpovÃ­dajÃ­ aktualizaÄnÃ­m operacÃ­m na 
+ÄervenoÄernÃ½ch stromech (i reprezentace prvkÅ¯ je odliÅ¡nÃ¡).
 \end{pozn}
 

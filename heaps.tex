@@ -4,90 +4,90 @@
 \chapter{Haldy}
 
 \begin{defn}
-Haldy jsou stromové struktury, které splòují 
+Haldy jsou stromovÃ© struktury, kterÃ© splÅˆujÃ­ 
 \begin{itemize}
-\item lokální podmínku na uspoøádání
-  - prvek reprezentující otce je men¹í ne¾ prvek reprezentovanı synem
+\item lokÃ¡lnÃ­ podmÃ­nku na uspoÅ™Ã¡dÃ¡nÃ­
+  - prvek reprezentujÃ­cÃ­ otce je menÅ¡Ã­ neÅ¾ prvek reprezentovanÃ½ synem
     apod.
 % oprava by M. Macok:
 % "strukturalni podminky" na stromy jsou podminky na tvar
 % stromu (event. lesu), podle kterejch se ty haldy rozdelujou na Fib.,
 % leftlist apod... neni tam nic o tom, jestli jsou synove vetsi/mensi
 % nez otcove apod., od toho je tam ta prvni podminka...
-\item strukturální podmínku na stromy, ze kterıch jsou vytvoøené 
+\item strukturÃ¡lnÃ­ podmÃ­nku na stromy, ze kterÃ½ch jsou vytvoÅ™enÃ© 
 \end{itemize}
 \end{defn}
 
 \begin{pozn}
-Podle tìchto podmínek se haldy rozdìlují na Fibonacciho, Leftist,
-d-regulární apod. (mohou se li¹it jak lokální, tak strukturální podmínkou)
+Podle tÄ›chto podmÃ­nek se haldy rozdÄ›lujÃ­ na Fibonacciho, Leftist,
+d-regulÃ¡rnÃ­ apod. (mohou se liÅ¡it jak lokÃ¡lnÃ­, tak strukturÃ¡lnÃ­ podmÃ­nkou)
 \end{pozn}
 
 % --------------------------------------------------------------------------
-\section{$d$-regulární haldy}
+\section{$d$-regulÃ¡rnÃ­ haldy}
 
 \begin{defn}
-d-regulární halda, $d$ celé èíslo $d \geq 2$ \\
-Je to strom $T$ takovı, ¾e existuje jednoznaèná korespondence mezi vrcholy
-stromù a prvky reprezentované mno¾iny a platí:
+d-regulÃ¡rnÃ­ halda, $d$ celÃ© ÄÃ­slo $d \geq 2$ \\
+Je to strom $T$ takovÃ½, Å¾e existuje jednoznaÄnÃ¡ korespondence mezi vrcholy
+stromÅ¯ a prvky reprezentovanÃ© mnoÅ¾iny a platÃ­:
 \begin{enumerate}
-\item strom $T$ splòuje strukturální podmínky:
+\item strom $T$ splÅˆuje strukturÃ¡lnÃ­ podmÃ­nky:
   \begin{itemize}
-    \item ka¾dı vrchol s vyjímkou nejvı¹e jednoho je buï list nebo má $d$ synù
-    \item ka¾dı vrchol má nejvı¹e $d$ synù
-    \item existuje oèíslování synù ka¾dého vrcholu tak, ¾e po oèíslování
-  	  prùchodem ¹íøky platí: \\
-	  kdy¾ vrchol není list, pak ka¾dı vrchol s men¹ím èíslem má $d$
-	  synù.
-	  %\footnote{Tato podmínka øíká jinımi slovy toto: V poslední
-	  %hladinì jsou v¹echny uzly umístìny co mo¾ná nejvíce "vlevo",
-	  %tzn. procházíme-li uzly pøedposlední hladiny zleva doprava,
-	  %nejprve má nìkolik z nich (popø. ¾ádnı) $d$ následníkù, pak mù¾e
-	  %bıt (ale nemusí) jeden uzel s jedním následníkem a zbıvající 
-	  %uzly pøedposlední hladiny následníky
-	  %nemají. (parafráze z~\cite{Topfer}, str.~79)}.
+    \item kaÅ¾dÃ½ vrchol s vyjÃ­mkou nejvÃ½Å¡e jednoho je buÄ list nebo mÃ¡ $d$ synÅ¯
+    \item kaÅ¾dÃ½ vrchol mÃ¡ nejvÃ½Å¡e $d$ synÅ¯
+    \item existuje oÄÃ­slovÃ¡nÃ­ synÅ¯ kaÅ¾dÃ©ho vrcholu tak, Å¾e po oÄÃ­slovÃ¡nÃ­
+  	  prÅ¯chodem do Å¡Ã­Å™ky platÃ­: \\
+	  kdyÅ¾ vrchol nenÃ­ list, pak kaÅ¾dÃ½ vrchol s menÅ¡Ã­m ÄÃ­slem mÃ¡ $d$
+	  synÅ¯.
+	  %\footnote{Tato podmÃ­nka Å™Ã­kÃ¡ jinÃ½mi slovy toto: V poslednÃ­
+	  %hladinÄ› jsou vÅ¡echny uzly umÃ­stÄ›ny co moÅ¾nÃ¡ nejvÃ­ce "vlevo",
+	  %tzn. prochÃ¡zÃ­me-li uzly pÅ™edposlednÃ­ hladiny zleva doprava,
+	  %nejprve mÃ¡ nÄ›kolik z nich (popÅ™. Å¾Ã¡dnÃ½) $d$ nÃ¡slednÃ­kÅ¯, pak mÅ¯Å¾e
+	  %bÃ½t (ale nemusÃ­) jeden uzel s jednÃ­m nÃ¡slednÃ­kem a zbÃ½vajÃ­cÃ­ 
+	  %uzly pÅ™edposlednÃ­ hladiny nÃ¡slednÃ­ky
+	  %nemajÃ­. (parafrÃ¡ze z~\cite{Topfer}, str.~79)}.
   \end{itemize}
-  \item podmínku na lokální uspoøádání: \\
-	kdy¾ $x$ je prvek pøiøazenı vrcholu $t$, pak otci($t$) je pøiøazen
-	prvek $\leq x$ pak po oèíslování prùchodem do ¹íøky platí:
-	kdy¾ vrchol má èíslo $i$, jeho synové mají èísla
+  \item podmÃ­nku na lokÃ¡lnÃ­ uspoÅ™Ã¡dÃ¡nÃ­: \\
+	kdyÅ¾ $x$ je prvek pÅ™iÅ™azenÃ½ vrcholu $t$, pak otci($t$) je pÅ™iÅ™azen
+	prvek $\leq x$ pak po oÄÃ­slovÃ¡nÃ­ prÅ¯chodem do Å¡Ã­Å™ky platÃ­:
+	kdyÅ¾ vrchol mÃ¡ ÄÃ­slo $i$, jeho synovÃ© majÃ­ ÄÃ­sla
 % oprava by M.Macok :
 % strana 70, prvni syn vrcholu neni na pozici d(i-1)+1 ale ..+2
-	$d(i-1)+2,d(i-1)+3,...,di+1$ a otec má èíslo 
+	$d(i-1)+2,d(i-1)+3,...,di+1$ a otec mÃ¡ ÄÃ­slo 
 	$\lceil\frac{i-1}{d}\rceil$.
 \end{enumerate}
 \end{defn}
 
 \begin{priklad}
-Pøíklad 3-regulární haldy je na obrázku~\ref{XXX}.
+PÅ™Ã­klad 3-regulÃ¡rnÃ­ haldy je na obrÃ¡zku~\ref{XXX}.
 
 \mnote{XXX chybi obr.}
 
-Kdy¾ takto oèíslované prvky dáme do pole, pak platí: kdy¾ je vrchol na
-$i$-tém místì, èísla synù jsou $3(i-1)+2, 3i, 3i+1$
-a otec je na $\lceil\frac{i-1}{3}\rceil$ místì v poli.
-to vyu¾ijeme pro implementaci polem - u¹etøíme místo.
+KdyÅ¾ takto oÄÃ­slovanÃ© prvky dÃ¡me do pole, pak platÃ­: kdyÅ¾ je vrchol na
+$i$-tÃ©m mÃ­stÄ›, ÄÃ­sla synÅ¯ jsou $3(i-1)+2, 3i, 3i+1$
+a otec je na $\lceil\frac{i-1}{3}\rceil$ mÃ­stÄ› v poli.
+to vyuÅ¾ijeme pro implementaci polem - uÅ¡etÅ™Ã­me mÃ­sto.
 \end{priklad}
 
 \begin{pozn}
-Nejpopulárnìj¹í jsou 2-reg. haldy, proto¾e synové i-tého vrcholu
-jsou na místech $2(i-1)+2=2i, 2(i-1)+3=2i + 1$, otec je na
+NejpopulÃ¡rnÄ›jÅ¡Ã­ jsou 2-reg. haldy, protoÅ¾e synovÃ© i-tÃ©ho vrcholu
+jsou na mÃ­stech $2(i-1)+2=2i, 2(i-1)+3=2i + 1$, otec je na
 $\lceil\frac{i-1}{2}\rceil + 1 = \lceil\frac{i}{2}\rceil$. 
-$\Rightarrow$ snadné poèítání (bitovı posun)
+$\Rightarrow$ snadnÃ© poÄÃ­tÃ¡nÃ­ (bitovÃ½ posun)
 \end{pozn}
 
 \subsection{Algoritmus UP}
 
-Operace UP($x$) srovná haldu smìrem nahoru.
+Operace UP($x$) srovnÃ¡ haldu smÄ›rem nahoru.
 
 \begin{algorithm}[!htb]
-\caption{UP pro d-regulární haldy}
+\caption{UP pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.up}
 \begin{algorithmic}
 \STATE A: 
-\IF {prvek reprezentovanı $x$ je $<$ prvek reprezentovanı otcem($x$)} 
-  \STATE $x$ a otce($x$) vymìníme 
-  \STATE pokraèujeme v A
+\IF {prvek reprezentovanÃ½ $x$ je $<$ prvek reprezentovanÃ½ otcem($x$)} 
+  \STATE $x$ a otce($x$) vymÄ›nÃ­me 
+  \STATE pokraÄujeme v A
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
@@ -96,31 +96,31 @@ Operace UP($x$) srovná haldu smìrem nahoru.
 \subsection{Algoritmus DOWN}
 
 \begin{algorithm}[!htb]
-\caption{DOWN pro d-regulární haldy}
+\caption{DOWN pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.down}
 \begin{algorithmic}
 \STATE A:
-\IF {prvek reprezentovanı $x >$ prvek reprezentovanı nìkterım synem $x$}
-  \STATE vymìníme $x$ a syna $x$, kterı reprezentuje nejmen¹í prvek,
-  \STATE pokraèujeme v A
+\IF {prvek reprezentovanÃ½ $x >$ prvek reprezentovanÃ½ nÄ›kterÃ½m synem $x$}
+  \STATE vymÄ›nÃ­me $x$ a syna $x$, kterÃ½ reprezentuje nejmenÅ¡Ã­ prvek,
+  \STATE pokraÄujeme v A
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
 
 \begin{pozn}
-Kdy¾ má hlada hloubku $h$, pak UP($x$) vy¾aduje èas $O(h)$, DOWN($x$) èas
+KdyÅ¾ mÃ¡ hlada hloubku $h$, pak UP($x$) vyÅ¾aduje Äas $O(h)$, DOWN($x$) Äas
 $O(dh)$.
 \end{pozn}
 
-\subsection{Operace na haldì}
+\subsection{Operace na haldÄ›}
 
 \subsubsection{INSERT}
 
 \begin{algorithm}[!htb]
-\caption{INSERT pro d-regulární haldy}
+\caption{INSERT pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.insert}
 \begin{algorithmic}
-\STATE pøidáme poslední list $t$ reprezentující $x$
+\STATE pÅ™idÃ¡me poslednÃ­ list $t$ reprezentujÃ­cÃ­ $x$
 \STATE UP($t$)
 \end{algorithmic}
 \end{algorithm}
@@ -128,10 +128,10 @@ $O(dh)$.
 \subsubsection{MIN}
 
 \begin{algorithm}[!htb]
-\caption{MIN pro d-regulární haldy}
+\caption{MIN pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.min}
 \begin{algorithmic}
-\STATE vrátí prvek reprezentovanı v koøeni
+\STATE vrÃ¡tÃ­ prvek reprezentovanÃ½ v koÅ™eni
 \end{algorithmic}
 \end{algorithm}
 
@@ -140,57 +140,57 @@ $O(dh)$.
 viz algoritmus~\ref{alg:heap.dreg.deletemin}.
 
 \begin{algorithm}[!htb]
-\caption{DELETEMIN pro d-regulární haldy}
+\caption{DELETEMIN pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.deletemin}
 \begin{algorithmic}
-\STATE prvek reprezentovanı posledním listem dáme do koøene
-\STATE odstraníme poslední list 
-\STATE DOWN(koøen)
+\STATE prvek reprezentovanÃ½ poslednÃ­m listem dÃ¡me do koÅ™ene
+\STATE odstranÃ­me poslednÃ­ list 
+\STATE DOWN(koÅ™en)
 \end{algorithmic}
 \end{algorithm}
 
 \subsubsection{DECREASEKEY$(x, \Delta)$}
 
-Provedení této operace pøedpokládá, ¾e musíme znát polohu vrcholu $t$
-reprezentujícího $x$, toto halda neumo¾òuje nalézt. 
+ProvedenÃ­ tÃ©to operace pÅ™edpoklÃ¡dÃ¡, Å¾e musÃ­me znÃ¡t polohu vrcholu $t$
+reprezentujÃ­cÃ­ho $x$, toto halda neumoÅ¾Åˆuje nalÃ©zt. 
 
 viz algoritmus~\ref{alg:heap.dreg.decrkey}.
 
 \begin{algorithm}[!htb]
-\caption{DECREASEKEY pro d-regulární haldy}
+\caption{DECREASEKEY pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.decrkey}
 \begin{algorithmic}
-\STATE zmìníme uspoøádání v bodì $x$ 
-\STATE UP($x$) mohl by bıt men¹í ne¾ jeho otec, proto provedeme UP 
+\STATE zmÄ›nÃ­me uspoÅ™Ã¡dÃ¡nÃ­ v bodÄ› $x$ 
+\STATE UP($x$) mohl by bÃ½t menÅ¡Ã­ neÅ¾ jeho otec, proto provedeme UP 
 \end{algorithmic}
 \end{algorithm}
 
 \subsubsection{INCREASEKEY$(x, \Delta)$}
 
-Musíme znát polohu vrcholu $t$ reprezentujícího $x$, 
-toto halda neumo¾òuje nalézt. 
+MusÃ­me znÃ¡t polohu vrcholu $t$ reprezentujÃ­cÃ­ho $x$, 
+toto halda neumoÅ¾Åˆuje nalÃ©zt. 
 viz algoritmus~\ref{alg:heap.dreg.incrkey}.
 
 \begin{algorithm}[!htb]
-\caption{INCREASEKEY pro d-regulární haldy}
+\caption{INCREASEKEY pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.incrkey}
 \begin{algorithmic}
-\STATE zmìníme uspoøádání v bodì $x$ 
+\STATE zmÄ›nÃ­me uspoÅ™Ã¡dÃ¡nÃ­ v bodÄ› $x$ 
 \STATE DOWN($x$)
 \end{algorithmic}
 \end{algorithm}
 
 \subsubsection{DELETE}
 
-Musíme znát polohu vrcholu $t$ reprezentujícího $x$, toto halda neumo¾òuje
-nalézt.
+MusÃ­me znÃ¡t polohu vrcholu $t$ reprezentujÃ­cÃ­ho $x$, toto halda neumoÅ¾Åˆuje
+nalÃ©zt.
 \par
-Vezmeme prvek $y$ reprezentovanı posledním listem, odstraníme poslední list,
-prvek $t$, kterı reprezentoval $x$ bude reprezentovat $y$.
+Vezmeme prvek $y$ reprezentovanÃ½ poslednÃ­m listem, odstranÃ­me poslednÃ­ list,
+prvek $t$, kterÃ½ reprezentoval $x$ bude reprezentovat $y$.
 
 
 \begin{algorithm}[!htb]
-\caption{DELETE pro d-regulární haldy}
+\caption{DELETE pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heap.dreg.delete}
 \begin{algorithmic}
 \IF {$y < x$} 
@@ -201,28 +201,28 @@ prvek $t$, kterı reprezentoval $x$ bude reprezentovat $y$.
 
 \subsection{Algoritmus MAKEHEAP}
 
-Dána prostá posloupnost $x_1, x_2, ..., x_n$.
-Chceme vytvoøit d-reg. haldu reprezentující mno¾inu 
-${ x_1, x_2, ..., x_n }$. Vezmeme "d-reg. strom" $T$ s vrcholy pøiøadíme
-prvky $x_1, x_2, ..., x_n$. Pro v¹echny vrcholy, které nejsou listy podle
-oèíslování v poøadí od nejvìt¹ího k nejmen¹ímu provedeme DOWN($t$).
+DÃ¡na prostÃ¡ posloupnost $x_1, x_2, ..., x_n$.
+Chceme vytvoÅ™it d-reg. haldu reprezentujÃ­cÃ­ mnoÅ¾inu 
+${ x_1, x_2, ..., x_n }$. Vezmeme "d-reg. strom" $T$ s vrcholy pÅ™iÅ™adÃ­me
+prvky $x_1, x_2, ..., x_n$. Pro vÅ¡echny vrcholy, kterÃ© nejsou listy podle
+oÄÃ­slovÃ¡nÃ­ v poÅ™adÃ­ od nejvÄ›tÅ¡Ã­ho k nejmenÅ¡Ã­mu provedeme DOWN($t$).
 \par
 
-\mnote{chybí obrázek}
+\mnote{chybÃ­ obrÃ¡zek}
 % XXX obr.
 
-Invariant: v okam¾iku, kdy provádím DOWN($t$), tak vrcholy, které
-reprezentující vìt¹í prvky splòují smìrem dolù podmínku 
+Invariant: v okamÅ¾iku, kdy provÃ¡dÃ­m DOWN($t$), tak vrcholy, kterÃ©
+reprezentujÃ­cÃ­ vÄ›tÅ¡Ã­ prvky splÅˆujÃ­ smÄ›rem dolÅ¯ podmÃ­nku 
 
-\subsection{Slo¾itost operací}
+\subsection{SloÅ¾itost operacÃ­}
 
-V d-reg. haldì reprezentující n-prvkovou mno¾inu implementace operací
-vy¾aduje èasy dané tabulkou:
+V d-reg. haldÄ› reprezentujÃ­cÃ­ n-prvkovou mnoÅ¾inu implementace operacÃ­
+vyÅ¾aduje Äasy danÃ© tabulkou:
 
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
-Operace & Slo¾itost \\
+Operace & SloÅ¾itost \\
 \hline
 MIN & O(1) \\
 INSERT, DECREASEKEY & $O(log_d(n))$ \\
@@ -232,49 +232,49 @@ DELETEMIN, INCREASEKEY, DELETE & $O(d \cdot log_d(n))$ \\
 \end{tabular}
 \end{center}
 
-Máme vrchol v $i$-té hladinì a "d-reg. strom" má hloubku $h$. 
-Kolik èasu potøebuje DOWN($t$) ?
+MÃ¡me vrchol v $i$-tÃ© hladinÄ› a "d-regulÃ¡rnÃ­ strom" mÃ¡ hloubku $h$. 
+Kolik Äasu potÅ™ebuje DOWN($t$) ?
 Je to $O(d(h-1))$.
 \par
-Poèet vrcholù v $i$-té hladinì je $di$. \\
-Èas MAKEHEAP je 
-$O(\sum{i=0}{h-1} d^id(h-i)) = O(dS)$, kde 
+PoÄet vrcholÅ¯ v $i$-tÃ© hladinÄ› je $di$. \\
+ÄŒas MAKEHEAP je 
+$O(\sum_{i=0}^{h-1} d^id(h-i)) = O(dS)$, kde 
 $$
-S = \sum{i=0}{h-1}d^i(h-i)
+S = \sum_{i=0}^{h-1} d^i(h-i)
 $$
 
-Budeme poèítat 
+Budeme poÄÃ­tat 
 \begin{multline}\bigparens
-dS - S = \sum{i=0}{h-1}d^{i+1}(h-i) - \sum{i=0}{h-1}d^{i}(h-i) = \\
-d^h - h + \sum{i=0}{h-1}d^{i}(h-i-(h-i-1)) = d^h - h\frac{d^h - 1}{d-1} \\
+dS - S = \sum_{i=0}^{h-1}d^{i+1}(h-i) - \sum_{i=0}^{h-1}d^{i}(h-i) = \\
+d^h - h + \sum_{i=0}^{h-1}d^{i}(h-i-(h-i-1)) = d^h - h\frac{d^h - 1}{d-1} \\
 \Rightarrow S = \frac{d^h - h}{d-1} + d\frac{d^{h-1} - 1}{(d-1)^2}, 
 h = log_d(n) \Rightarrow S \approx O(\frac{n}{d})
 \end{multline}
 
 
-\subsection{Dijkstrùv algoritmus}
+\subsection{DijkstrÅ¯v algoritmus}
 
-K èemu jsou d-reg. haldy dobré ? napø. pro implementaci Dijkstrova
+K Äemu jsou d-reg. haldy dobrÃ© ? napÅ™. pro implementaci Dijkstrova
 algoritmu.
 \par
 
 \begin{itemize}
-\item[Vstup:] orientovanı graf $(V,E)$, fce $c:E \rightarrow R^+$, vrchol $z$
-\item[Vıstup:] $d(v)$, $v \in V$ \\
-	$d(v)$ je délka nejkrat¹í cesty ze $z$ do $v$ \\
+\item[Vstup:] orientovanÃ½ graf $(V,E)$, fce $c:E \rightarrow R^+$, vrchol $z$
+\item[VÃ½stup:] $d(v)$, $v \in V$ \\
+	$d(v)$ je dÃ©lka nejkratÅ¡Ã­ cesty ze $z$ do $v$ \\
 \end{itemize}
 
 \begin{algorithm}[!htb]
-\caption{Dijkstrùv algoritmus pro d-regulární haldy}
+\caption{DijkstrÅ¯v algoritmus pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heaps.d-reg.dijkstra}
 \begin{algorithmic}
 \STATE $d(z) = 0, d(v) = \infty \forall v \in V, v \neq z, U = {z}$\\
 \WHILE {$U \neq \emptyset$}
-  \STATE vezmeme z $U$ prvek $u \in U$ s nejmen¹í hodnotou $d(u)$,
-    \STATE odstraníme ho z $U$.
+  \STATE vezmeme z $U$ prvek $u \in U$ s nejmenÅ¡Ã­ hodnotou $d(u)$,
+    \STATE odstranÃ­me ho z $U$.
   \FOR {$\forall(u,v) \in E$}
     \IF {$d(v) > d(u) + c(u,v)$} 
-       \STATE $d(v) = d(u) + c(u,v)$ , v pøidáme do  $U$
+       \STATE $d(v) = d(u) + c(u,v)$ , v pÅ™idÃ¡me do  $U$
     \ENDIF
   \ENDFOR
 \ENDWHILE
@@ -282,37 +282,37 @@ algoritmu.
 \end{algorithm}
 \par
 
-$U$ reprezentujeme pomocí d-reg. haldy. Pak èas Dijkstrova algoritmu je 
+$U$ reprezentujeme pomocÃ­ d-reg. haldy. Pak Äas Dijkstrova algoritmu je 
 $$
-O(|V| \cdot \text{èas na INSERT } + |V| \cdot 
-\text{èas na DELETEMIN } + |E| \cdot \text{èas na DESCREASEKEY}) 
+O(|V| \cdot \text{Äas na INSERT } + |V| \cdot 
+\text{Äas na DELETEMIN } + |E| \cdot \text{Äas na DESCREASEKEY}) 
 $$
 
-Kdy¾ $d = 2$, pak to je $O(|E|log_2(|V|))$
+KdyÅ¾ $d = 2$, pak to je $O(|E|log_2(|V|))$
 \par
-$d = max {\frac{|E|}{|V|}, 2}$, vyjde èas $O(|E|log_d(|V|))$ 
+$d = max {\frac{|E|}{|V|}, 2}$, vyjde Äas $O(|E|log_d(|V|))$ 
 \par
-Kdy¾ $\exists \epsilon$ , ¾e $|E| \geq c|V|^{1+\epsilon}$ pro nìjaké $c$,
-pak èas je $O(|E|)$. (graf je dostateènì hustı) \\
-$|E| \geq c|V|\log^{\epsilon} |V|$ pro nìjaké $c$, $\epsilon$, pak èas je
+KdyÅ¾ $\exists \epsilon$ , Å¾e $|E| \geq c|V|^{1+\epsilon}$ pro nÄ›jakÃ© $c$,
+pak Äas je $O(|E|)$. (graf je dostateÄnÄ› hustÃ½) \\
+$|E| \geq c|V|\log^{\epsilon} |V|$ pro nÄ›jakÃ© $c$, $\epsilon$, pak Äas je
 $O(|E|\log log |V|)$.
 \par
 
 
 \subsection{Heapsort}
 
-Tøídící algoritmus Heapsort je dal¹í aplikací d-regulárních hald.
+TÅ™Ã­dÃ­cÃ­ algoritmus Heapsort je dalÅ¡Ã­ aplikacÃ­ d-regulÃ¡rnÃ­ch hald.
 
 HEAPSORT - viz alg. \ref{alg:heaps.d-reg.heapsort} 
 
 \begin{itemize}
 % XXX odsadit vic doprava, aby nadpisy pro items nepresahovaly
-\item[Vstup:] prostá posloupnost prvkù $x_1, x_2, ..., x_n$
-\item[Vıstup:] uspoøádaná psl. prvkù $x_1, x_2, ..., x_n$
+\item[Vstup:] prostÃ¡ posloupnost prvkÅ¯ $x_1, x_2, ..., x_n$
+\item[VÃ½stup:] uspoÅ™Ã¡danÃ¡ psl. prvkÅ¯ $x_1, x_2, ..., x_n$
 \end{itemize}
 
 \begin{algorithm}[!htb]
-\caption{Heapsort pro d-regulární haldy}
+\caption{Heapsort pro d-regulÃ¡rnÃ­ haldy}
 \label{alg:heaps.d-reg.heapsort}
 \begin{algorithmic}
 \STATE MAKEHEAP($x_1, x_2, ..., x_n$)
@@ -326,58 +326,58 @@ HEAPSORT - viz alg. \ref{alg:heaps.d-reg.heapsort}
 \end{algorithm}
 
 \begin{pozn}
-Optimum pro d-reg. haldy je nìkde mezi $d=6$ a $d=7$.
+Optimum pro d-reg. haldy je nÄ›kde mezi $d=6$ a $d=7$.
 \end{pozn}
 
 % --------------------------------------------------------------------------
 \section{Leftist haldy}
 
 \begin{defn}
-Mìjme binární strom a pro ka¾dého syna máme urèeno, zda je levı nebo
-pravı. Pro vrchol v definujeme npl(v) jako délku nejkrat¹í cesty z v do
-vrcholu v podstromu v s nejvı¹e jedním synem. 
+MÄ›jme binÃ¡rnÃ­ strom a pro kaÅ¾dÃ©ho syna mÃ¡me urÄeno, zda je levÃ½ nebo
+pravÃ½. Pro vrchol v definujeme npl(v) jako dÃ©lku nejkratÅ¡Ã­ cesty z v do
+vrcholu v podstromu v s nejvÃ½Å¡e jednÃ­m synem. 
 
-Binární strom je LEFTIST, kdy¾ 
+BinÃ¡rnÃ­ strom je LEFTIST, kdyÅ¾ 
 \begin{itemize}
-\item[a)] kdy¾ vrchol $v$ má jednoho syna, pak je to levı syn
-\item[b)] kdy¾ vrchol $v$ má dva syny, pak 
-	$npl(\text{levého syna}) \geq npl(\text{pravého syna})$
+\item[a)] kdyÅ¾ vrchol $v$ mÃ¡ jednoho syna, pak je to levÃ½ syn
+\item[b)] kdyÅ¾ vrchol $v$ mÃ¡ dva syny, pak 
+	$npl(\text{levÃ©ho syna}) \geq npl(\text{pravÃ©ho syna})$
 \end{itemize}
 \end{defn}
 
 \begin{defn}
-Cesta $x_1, x_2, ..., x_n$ se nazıvá {\emph pravá}, kdy¾ $x_i$ je pravı syn
-$x_{i-1}$ pro $i=2,3,...,n$ a $x_n$ nemá pravého syna.
+Cesta $x_1, x_2, ..., x_n$ se nazÃ½vÃ¡ {\emph pravÃ¡}, kdyÅ¾ $x_i$ je pravÃ½ syn
+$x_{i-1}$ pro $i=2,3,...,n$ a $x_n$ nemÃ¡ pravÃ©ho syna.
 \end{defn}
 
 
 Vlastnosti: 
 \begin{enumerate}
-\item ka¾dı podstrom leftist stromu je leftist 
-\item délka pravé cesty z $\forall$ vrcholu $v$ je 
-$\leq log(\text{poèet vrcholù v podstromu vrcholu } v)$
+\item kaÅ¾dÃ½ podstrom leftist stromu je leftist 
+\item dÃ©lka pravÃ© cesty z $\forall$ vrcholu $v$ je 
+$\leq log(\text{poÄet vrcholÅ¯ v podstromu vrcholu } v)$
 \end{enumerate}
 
 \begin{defn}
-Letist halda reprezentující mno¾inu $S$ je leftist strom $T$ s $n$ vrcholy
-takovı, ¾e existuje jednoznaèná korespondence mez prvky $S$ a vrcholy
-$T$ taková, ¾e $\forall$ prvek pøiøazenı vrcholu $v \geq$ prvek pøiøazenı
+Letist halda reprezentujÃ­cÃ­ mnoÅ¾inu $S$ je leftist strom $T$ s $n$ vrcholy
+takovÃ½, Å¾e existuje jednoznaÄnÃ¡ korespondence mez prvky $S$ a vrcholy
+$T$ takovÃ¡, Å¾e $\forall$ prvek pÅ™iÅ™azenÃ½ vrcholu $v \geq$ prvek pÅ™iÅ™azenÃ½
 otci $v$.
 \end{defn}
 
 %\begin{pozn}
-%Podobné operaci JOIN v AVL stromech (ale...)
+%PodobnÃ© operaci JOIN v AVL stromech (ale...)
 % - v AVL stromech je operace JOIN ???
-%\mnote{XXX rozvést}
+%\mnote{XXX rozvÃ©st}
 %\end{pozn}
 
 \subsection{MERGE}
 
-Operace MERGE s argumenty $T_1, T_2$ pøedpokládá, ¾e 
-$T_1, T_2$ reprezentují disjunktní mno¾iny $S_1, S_2$.
-Vısledkem této operace je halda reprezentující $S_1 \cup S_2$.
+Operace MERGE s argumenty $T_1, T_2$ pÅ™edpoklÃ¡dÃ¡, Å¾e 
+$T_1, T_2$ reprezentujÃ­ disjunktnÃ­ mnoÅ¾iny $S_1, S_2$.
+VÃ½sledkem tÃ©to operace je halda reprezentujÃ­cÃ­ $S_1 \cup S_2$.
 
-Formální zápis viz algoritmus \ref{alg:heaps.leftist.merge}
+FormÃ¡lnÃ­ zÃ¡pis viz algoritmus \ref{alg:heaps.leftist.merge}
 
 \begin{algorithm}[!htb]
 \caption{MERGE pro leftist haldy}
@@ -390,21 +390,21 @@ Formální zápis viz algoritmus \ref{alg:heaps.leftist.merge}
 \IF {$T_2$ = 0}
   \STATE MERGE($T_1$, $T_2$) $\rightarrow T_1$ konec 
 \ENDIF
-\IF {koøen $T_2$ reprezentuje prvek $<$ prvek repr. koøenem $T_1$}
-  \STATE vymìníme $T_1$ a $T_2$
+\IF {koÅ™en $T_2$ reprezentuje prvek $<$ prvek repr. koÅ™enem $T_1$}
+  \STATE vymÄ›nÃ­me $T_1$ a $T_2$
 \ENDIF
-\STATE pravı syn koøene $T_1 \rightarrow$ MERGE($T_2$, podstrom pravého syna koøene $T_1$)
-\IF {npl(levého syna koøene $T_1$) $<$ npl(pravého syna koøene $T_1$)}
-  \STATE prohodím syny koøene $T_1$
+\STATE pravÃ½ syn koÅ™ene $T_1 \rightarrow$ MERGE($T_2$, podstrom pravÃ©ho syna koÅ™ene $T_1$)
+\IF {npl(levÃ©ho syna koÅ™ene $T_1$) $<$ npl(pravÃ©ho syna koÅ™ene $T_1$)}
+  \STATE prohodÃ­m syny koÅ™ene $T_1$
 \ENDIF
-\STATE npl(koøene $T_1$) = npl(pravého syna koøene $T_1$) + 1
+\STATE npl(koÅ™ene $T_1$) = npl(pravÃ©ho syna koÅ™ene $T_1$) + 1
 \STATE MERGE($T_1$, $T_2$) $\rightarrow T_1$ 
 \end{algorithmic}
 \end{algorithm}
 
 \begin{pozn}
-Èasová slo¾itost operace MERGE v leftist haldách je $O(log(n_1+n_2))$, kde
-$n_1, n_2$ jsou velikosti reprezentovanıch mno¾in.
+ÄŒasovÃ¡ sloÅ¾itost operace MERGE v leftist haldÃ¡ch je $O(log(n_1+n_2))$, kde
+$n_1, n_2$ jsou velikosti reprezentovanÃ½ch mnoÅ¾in.
 \end{pozn}
 
 \subsection{INSERT}
@@ -416,26 +416,26 @@ viz algoritmus \ref{alg:heaps.leftist.insert}
 \label{alg:heaps.leftist.insert}
 \begin{algorithmic}
 \STATE INSERT(x)
-\STATE vytvoøíme novou haldu $T_1$ reprezentující pouze prvek x
+\STATE vytvoÅ™Ã­me novou haldu $T_1$ reprezentujÃ­cÃ­ pouze prvek x
 \STATE T $\leftarrow$ MERGE($T_1$, $T_2$)
 \STATE DELETEMIN
-\STATE $T_1 \leftarrow$ podstrom levého syna koøene $T$
-\STATE $T_2 \leftarrow$ podstrom pravého syna koøene $T$
+\STATE $T_1 \leftarrow$ podstrom levÃ©ho syna koÅ™ene $T$
+\STATE $T_2 \leftarrow$ podstrom pravÃ©ho syna koÅ™ene $T$
 \STATE $T$ $\leftarrow$ MERGE($T_1$, $T_2$)
 \end{algorithmic}
 \end{algorithm}
 
 \begin{theorem}
-Operace MIN v leftist haldách vy¾aduje èas $O(1)$, operace MERGE, INSERT, a
-DELETEMIN vy¾adují èas $O(log n)$, kde $n$ je poèet prvkù ve vısledné haldì.
+Operace MIN v leftist haldÃ¡ch vyÅ¾aduje Äas $O(1)$, operace MERGE, INSERT, a
+DELETEMIN vyÅ¾adujÃ­ Äas $O(log n)$, kde $n$ je poÄet prvkÅ¯ ve vÃ½slednÃ© haldÄ›.
 \end{theorem}
 
 \begin{pozn}
 % XXX obr.
 \mnote{XXX obr.}
-Podíváme se jak vypadá vıslednı strom a podíváme se na vrcholy, se kterımi
-jsme nìco museli provádìt - tyto vrcholy le¾í na {\emph pravé cestì}, 
-tj. je jich omezenı poèet.
+PodÃ­vÃ¡me se jak vypadÃ¡ vÃ½slednÃ½ strom a podÃ­vÃ¡me se na vrcholy, se kterÃ½mi
+jsme nÄ›co museli provÃ¡dÄ›t - tyto vrcholy leÅ¾Ã­ na {\emph pravÃ© cestÄ›}, 
+tj. je jich omezenÃ½ poÄet.
 \end{pozn}
 
 \subsection{DECREASEKEY}
@@ -449,145 +449,145 @@ viz algoritmus \ref{alg:heaps.leftist.decreasekey}
 \STATE DECREASEKEY($x$)
 \STATE odtrhneme podstrom $T_1$ vrcholu $x$, $y$ $\rightarrow$ otec($x$)
 \STATE $T_2 = T - T_1$
-\STATE zmen¹íme ohodnocení koøene stromu $T_1$
-\IF {$y$ má jen pravého syna}
-  \STATE zmìníme tohoto syna na levého, $npl(y) = 0$
+\STATE zmenÅ¡Ã­me ohodnocenÃ­ koÅ™ene stromu $T_1$
+\IF {$y$ mÃ¡ jen pravÃ©ho syna}
+  \STATE zmÄ›nÃ­me tohoto syna na levÃ©ho, $npl(y) = 0$
 \ENDIF
 \STATE $y \rightarrow otec(y)$
-\WHILE {$npl(y) > min\{npl(\text{levı syn }y), npl(\text{pravı syn }y)\} + 1$}
-  \IF {$npl(\text{levého syna }y) < npl(\text{pravého syna }y)$}
-    \STATE prohodíme syny $y$
+\WHILE {$npl(y) > min\{npl(\text{levÃ½ syn }y), npl(\text{pravÃ½ syn }y)\} + 1$}
+  \IF {$npl(\text{levÃ©ho syna }y) < npl(\text{pravÃ©ho syna }y)$}
+    \STATE prohodÃ­me syny $y$
   \ENDIF
-  \STATE $npl(y) = npl(\text{pravého syna }y) + 1$, $y \rightarrow otec(y)$
+  \STATE $npl(y) = npl(\text{pravÃ©ho syna }y) + 1$, $y \rightarrow otec(y)$
 \ENDWHILE
 \STATE $T \leftarrow$ MERGE($T_1$, $T_2$)
 \end{algorithmic}
 \end{algorithm}
 
 \begin{pozn}
-$npl$, které jsem musel pøepisovat, je v¾dycky pravı syn.
+$npl$, kterÃ© jsem musel pÅ™episovat, je vÅ¾dycky pravÃ½ syn.
 \end{pozn}
 
 \begin{theorem}
-Operace DECREASEKEY, INCREASEKEY a DELETE vy¾adují v leftist
-haldách èas $O(log n)$. ($n$ je poèet prvkù vısledné reprez. mno¾iny)
+Operace DECREASEKEY, INCREASEKEY a DELETE vyÅ¾adujÃ­ v leftist
+haldÃ¡ch Äas $O(log n)$. ($n$ je poÄet prvkÅ¯ vÃ½slednÃ© reprez. mnoÅ¾iny)
 \end{theorem}
 
 
 % --------------------------------------------------------------------------
-\section{Binomiální haldy}
+\section{BinomiÃ¡lnÃ­ haldy}
 
 \begin{defn}
-\emph{Binomiální strom} $B_i$ je rekurzivnì definován jako strom 
-sestávající se z
-koøene a jeho dìtí $B_0, B_1, ..., B_{i-1}$. Ka¾dı strom má \emph{vlastnost
-haldy}, tj. pro ka¾dou stromovou hranu platí $\text{klíè otce} \leq
-\text{klíè syna}$.
+\emph{BinomiÃ¡lnÃ­ strom} $B_i$ je rekurzivnÄ› definovÃ¡n jako strom 
+sestÃ¡vajÃ­cÃ­ se z
+koÅ™ene a jeho dÄ›tÃ­ $B_0, B_1, ..., B_{i-1}$. KaÅ¾dÃ½ strom mÃ¡ \emph{vlastnost
+haldy}, tj. pro kaÅ¾dou stromovou hranu platÃ­ $\text{klÃ­Ä otce} \leq
+\text{klÃ­Ä syna}$.
 \end{defn}
 
 \begin{defn}
 \label{def.binomheap}
-\emph{Binomiální halda} je soubor stromù takovıch, ¾e
+\emph{BinomiÃ¡lnÃ­ halda} je soubor stromÅ¯ takovÃ½ch, Å¾e
 \begin{itemize}
-\item ka¾dı strom je izomorfní s nìjakım $B_i$
-\item ¾ádné dva stromy nejsou izomorfní
-\item existuje jednoznaèná korespondence mezi vrcholy reprezentované
-mno¾iny a vrcholy stromù taková, ¾e prvek odpovídající otci je men¹í ne¾
-prvek odpovídající vrcholu.
+\item kaÅ¾dÃ½ strom je izomorfnÃ­ s nÄ›jakÃ½m $B_i$
+\item Å¾Ã¡dnÃ© dva stromy nejsou izomorfnÃ­
+\item existuje jednoznaÄnÃ¡ korespondence mezi vrcholy reprezentovanÃ©
+mnoÅ¾iny a vrcholy stromÅ¯ takovÃ¡, Å¾e prvek odpovÃ­dajÃ­cÃ­ otci je menÅ¡Ã­ neÅ¾
+prvek odpovÃ­dajÃ­cÃ­ vrcholu.
 \end{itemize}
 \end{defn}
 
 \begin{pozn}
-Nejèastìji je binom. halda implementována jako pole ukazatelù, kde $i$-tı
-ukazatel ukazuje na koøen stromu $B_i$ nebo je NIL. To, jak dlouhé pole
-budeme potøebovat, je kardinální pro amortizovanu slo¾itost. Binární zápis
-èísla $n$ má délku $\lfloor log_2 n \rfloor$ $\Rightarrow$ stromy øádu
-vy¹¹ího ne¾ $\lfloor log_2 n \rfloor$ se nebudou vyskytovat. (jinak by mìl
-graf více ne¾ $n$ vrcholù)
+NejÄastÄ›ji je binom. halda implementovÃ¡na jako pole ukazatelÅ¯, kde $i$-tÃ½
+ukazatel ukazuje na koÅ™en stromu $B_i$ nebo je NIL. To, jak dlouhÃ© pole
+budeme potÅ™ebovat, je kardinÃ¡lnÃ­ pro amortizovanu sloÅ¾itost. BinÃ¡rnÃ­ zÃ¡pis
+ÄÃ­sla $n$ mÃ¡ dÃ©lku $\lfloor log_2 n \rfloor$ $\Rightarrow$ stromy Å™Ã¡du
+vyÅ¡Å¡Ã­ho neÅ¾ $\lfloor log_2 n \rfloor$ se nebudou vyskytovat. (jinak by mÄ›l
+graf vÃ­ce neÅ¾ $n$ vrcholÅ¯)
 
-Binomiální stromy rostou exponenciálnì spolu s øádem. (proto funguje
-amort. analıza)
+BinomiÃ¡lnÃ­ stromy rostou exponenciÃ¡lnÄ› spolu s Å™Ã¡dem. (proto funguje
+amort. analÃ½za)
 \end{pozn}
 
 \begin{pozn}
-Na binomiální strom se mù¾eme dívat i jinak: strom $B_i$ sestává ze 2
-kopií $B_{i-1}$ (viz obr. \ref{fig.heaps.binomial})
-a získá se z nich operací zvanou \emph{spojení}. 
-Binomiální haldy souvisí s binomiálním rozvojem èísel.
+Na binomiÃ¡lnÃ­ strom se mÅ¯Å¾eme dÃ­vat i jinak: strom $B_i$ sestÃ¡vÃ¡ ze 2
+kopiÃ­ $B_{i-1}$ (viz obr. \ref{fig.heaps.binomial})
+a zÃ­skÃ¡ se z nich operacÃ­ zvanou \emph{spojenÃ­}. 
+BinomiÃ¡lnÃ­ haldy souvisÃ­ s binomiÃ¡lnÃ­m rozvojem ÄÃ­sel.
 \end{pozn}
 
 \begin{algorithm}[!htb]
-\caption{Spojení dvou binomiálních stromù}
+\caption{SpojenÃ­ dvou binomiÃ¡lnÃ­ch stromÅ¯}
 \label{alg:heaps.binom.spoj}
 \begin{algorithmic}
 \STATE Spojeni($S_1$, $S_2$)
-\STATE $S_1, S_2$ jsou stromy izomorfní s $B_i$ pro nìjaké $i$
-\IF {prvek reprezentovanı koøenem $S_1 \leq$ prvek reprezentovanı koøenem $S_2$}
-  \STATE koøen $S_2$ se stane dal¹ím synem koøene $S_1$
+\STATE $S_1, S_2$ jsou stromy izomorfnÃ­ s $B_i$ pro nÄ›jakÃ© $i$
+\IF {prvek reprezentovanÃ½ koÅ™enem $S_1 \leq$ prvek reprezentovanÃ½ koÅ™enem $S_2$}
+  \STATE koÅ™en $S_2$ se stane dalÅ¡Ã­m synem koÅ™ene $S_1$
 \ELSE
-  \STATE koøen $S_1$ se stane dal¹ím synem koøene $S_2$
+  \STATE koÅ™en $S_1$ se stane dalÅ¡Ã­m synem koÅ™ene $S_2$
 \ENDIF
 \end{algorithmic}
 \end{algorithm}
 
 \begin{figure}[!htb]
 \centering\includegraphics{pics/binheaps}
-\caption{Binomiální stromy}
+\caption{BinomiÃ¡lnÃ­ stromy}
 \label{fig.heaps.binomial}
 \end{figure}
 
 \begin{tvrzeni}
-Binomiální halda je tvoøena binomiálními stromy $B_i$, které mají následující
+BinomiÃ¡lnÃ­ halda je tvoÅ™ena binomiÃ¡lnÃ­mi stromy $B_i$, kterÃ© majÃ­ nÃ¡sledujÃ­cÃ­
 vlastnosti: 
 \begin{itemize}
-\item $B_i$ má $2^i$ vrcholù
+\item $B_i$ mÃ¡ $2^i$ vrcholÅ¯
 \item hloubka $B_i$ je i
-\item koøen $B_i$ má i synù
-\item $\forall j < i$ existuje syn koøene $B_i$ takovı, ¾e 
-  jeho podstrom je izomorfní s $B_j$.
+\item koÅ™en $B_i$ mÃ¡ i synÅ¯
+\item $\forall j < i$ existuje syn koÅ™ene $B_i$ takovÃ½, Å¾e 
+  jeho podstrom je izomorfnÃ­ s $B_j$.
 \end{itemize}
 \end{tvrzeni}
 
 \begin{proof}
-indukcí pøes $i$ (elementární)
+indukcÃ­ pÅ™es $i$ (elementÃ¡rnÃ­)
 \end{proof}
 
 
 \subsection{MERGE}
 
 Algoritmus MERGE (viz algoritmus \ref{alg:heaps.binom.merge}) pracuje jako
-"binární sèítání" - 2 stromy $B_i$ (= 2 jednièky v øádu $i$) slije do
-$B{i-1}$ (= pøenos do $i+1$)
+"binÃ¡rnÃ­ sÄÃ­tÃ¡nÃ­" - 2 stromy $B_i$ (= 2 jedniÄky v Å™Ã¡du $i$) slije do
+$B{i-1}$ (= pÅ™enos do $i+1$)
 
-Pracuje v $O(\log_2 n)$ - nejvy¹¹í mo¾nı øád je $\lfloor \log_2 n \rfloor$.
-Toto je slo¾itost v nejhor¹ím pøípadì.
+Pracuje v $O(\log_2 n)$ - nejvyÅ¡Å¡Ã­ moÅ¾nÃ½ Å™Ã¡d je $\lfloor \log_2 n \rfloor$.
+Toto je sloÅ¾itost v nejhorÅ¡Ã­m pÅ™Ã­padÄ›.
 
-Ukazatel MIN nové haldy je nastaven na men¹í z MIN($h_1$), MIN($h_2$) - to
+Ukazatel MIN novÃ© haldy je nastaven na menÅ¡Ã­ z MIN($h_1$), MIN($h_2$) - to
 zabere $O(1)$.
 
 
 \begin{algorithm}[!htb]
-\caption{MERGE pro binomiální haldy}
+\caption{MERGE pro binomiÃ¡lnÃ­ haldy}
 \label{alg:heaps.binom.merge}
 \begin{algorithmic}
 \STATE MERGE($T_1$, $T_2$)
 \STATE ($T_1, T_2$ binom. haldy velikosti $n_1,n_2$)
 \STATE $P = 0, i = 0, T = 0$
 \WHILE {$i \leq log(n_1 + n_2)$}
-  \STATE $S_1$ je strom v $T_1$ izomorfní s $H_i$ (pokud neexistuje, tak $S_1=0$)
-  \STATE $S_1$ je strom v $T_1$ izomorfní s $H_i$ (pokud neexistuje, tak $S_1=0$)
+  \STATE $S_1$ je strom v $T_1$ izomorfnÃ­ s $H_i$ (pokud neexistuje, tak $S_1=0$)
+  \STATE $S_1$ je strom v $T_1$ izomorfnÃ­ s $H_i$ (pokud neexistuje, tak $S_1=0$)
   % XXX \CASE
      \IF {$S_1, S_2$, P = 0}
        \STATE neprovedeme nic
      \ENDIF
-     \IF {jeden strom z $S_1, S_2$, $P$ je neprázdnı} 
-        \STATE vlo¾ím tento strom do $T$, $P=0$
+     \IF {jeden strom z $S_1, S_2$, $P$ je neprÃ¡zdnÃ½} 
+        \STATE vloÅ¾Ã­m tento strom do $T$, $P=0$
      \ENDIF
-     \IF {dva stromy z $S_1, S_2$, $P$ jsou neprázdné}
-       \STATE spojím tyto stromy a vısledek vzlo¾ím do $P$
+     \IF {dva stromy z $S_1, S_2$, $P$ jsou neprÃ¡zdnÃ©}
+       \STATE spojÃ­m tyto stromy a vÃ½sledek vzloÅ¾Ã­m do $P$
      \ENDIF
-     \IF {v¹echny stromy z $S_1, S_2$, $P$ jsou neprázdné}
-       \STATE vlo¾ím do $T$, spojení $S_1, S_2$ vlo¾ím do $P$
+     \IF {vÅ¡echny stromy z $S_1, S_2$, $P$ jsou neprÃ¡zdnÃ©}
+       \STATE vloÅ¾Ã­m do $T$, spojenÃ­ $S_1, S_2$ vloÅ¾Ã­m do $P$
      \ENDIF
   % \ENDCASE
   \STATE $i = i + 1$
@@ -597,86 +597,86 @@ zabere $O(1)$.
 
 \begin{pozn}
 V algoritmu MERGE (viz algoritmus~\ref{alg:heaps.binom.merge}) 
-odpovídá $P$ pøenosu v binárním sèítání, $T$ je vısledná halda.
+odpovÃ­dÃ¡ $P$ pÅ™enosu v binÃ¡rnÃ­m sÄÃ­tÃ¡nÃ­, $T$ je vÃ½slednÃ¡ halda.
 \end{pozn}
 
 \subsection{MIN}
 
-MIN($h$) - prohledáme prvky reprezentované koøeny stromù a najdeme
-nejmen¹í. V praxi je pro ka¾dou haldu dr¾en ukazatel, ukazující na koøen
-reprezentující nejmen¹í prvek haldy. Tento ukazatel je obnovován pøi
+MIN($h$) - prohledÃ¡me prvky reprezentovanÃ© koÅ™eny stromÅ¯ a najdeme
+nejmenÅ¡Ã­. V praxi je pro kaÅ¾dou haldu drÅ¾en ukazatel, ukazujÃ­cÃ­ na koÅ™en
+reprezentujÃ­cÃ­ nejmenÅ¡Ã­ prvek haldy. Tento ukazatel je obnovovÃ¡n pÅ™i
 operaci DELETE\_MIN.
 
 
 \subsection{INSERT}
 
-Operace INSERT($h$,$i$) se provede pøíkazem MERGE($h$, MAKEHEAP($i$)).
-Tato operace je analogická s inkrementací binárního èítaèe.
+Operace INSERT($h$,$i$) se provede pÅ™Ã­kazem MERGE($h$, MAKEHEAP($i$)).
+Tato operace je analogickÃ¡ s inkrementacÃ­ binÃ¡rnÃ­ho ÄÃ­taÄe.
 
-Dijkstrùv algoritmus provádí na zaèátku $n$ operací INSERT, nám tedy nejde
-o jednotlivé operace, ale o posloupnost INSERTù.
+DijkstrÅ¯v algoritmus provÃ¡dÃ­ na zaÄÃ¡tku $n$ operacÃ­ INSERT, nÃ¡m tedy nejde
+o jednotlivÃ© operace, ale o posloupnost INSERTÅ¯.
 
 \begin{pozn}
-INSERT je stejnı jako v leftist haldách.
+INSERT je stejnÃ½ jako v leftist haldÃ¡ch.
 \end{pozn}
 
 \begin{theorem}
-Amortizovaná slo¾itost operace INSERT je $O(1)$.
+AmortizovanÃ¡ sloÅ¾itost operace INSERT je $O(1)$.
 \end{theorem}
 
 \begin{proof}
-Vyu¾ijeme úèetní metody: \\
-Algoritmus INSERT udr¾uje následující invariant: \\
-Ka¾dı binom. strom v haldì má na svém úètu 1 jednotku. (Ten, kterı
-pøestává bıt koøenem, zaplatí, ten kdo vyhrál, si 1 jednotku ponechal.)
-Pøi vytváøení stromu ji zaplatí operace, která strom vytvoøila: 
+VyuÅ¾ijeme ÃºÄetnÃ­ metody: \\
+Algoritmus INSERT udrÅ¾uje nÃ¡sledujÃ­cÃ­ invariant: \\
+KaÅ¾dÃ½ binom. strom v haldÄ› mÃ¡ na svÃ©m ÃºÄtu 1 jednotku. (Ten, kterÃ½
+pÅ™estÃ¡vÃ¡ bÃ½t koÅ™enem, zaplatÃ­, ten kdo vyhrÃ¡l, si 1 jednotku ponechal.)
+PÅ™i vytvÃ¡Å™enÃ­ stromu ji zaplatÃ­ operace, kterÃ¡ strom vytvoÅ™ila: 
 \begin{itemize}
-  \item MAKEHEAP vytvoøí 1 strom $\Rightarrow$ zaplatí 1
-  \item DELETE\_MIN vytvoøí $\leq log n$ stromù $\Rightarrow$ zaplatí
+  \item MAKEHEAP vytvoÅ™Ã­ 1 strom $\Rightarrow$ zaplatÃ­ 1
+  \item DELETE\_MIN vytvoÅ™Ã­ $\leq log n$ stromÅ¯ $\Rightarrow$ zaplatÃ­
   	$\leq log n$
 \end{itemize}
-Pokud INSERT spustí kaskádu slévání, pak je ka¾dé slití zaplaceno z úètu
-stromu, kterı danım slitím zanikne. (jeho koøen se stane synem)
+Pokud INSERT spustÃ­ kaskÃ¡du slÃ©vÃ¡nÃ­, pak je kaÅ¾dÃ© slitÃ­ zaplaceno z ÃºÄtu
+stromu, kterÃ½ danÃ½m slitÃ­m zanikne. (jeho koÅ™en se stane synem)
 \end{proof}
 
 
 \subsection{DELETEMIN}
 
 Operace DELETEMIN (viz algoritmus \ref{alg:heaps.binom.deletemin}) 
-je provedena tak, ¾e ze stromu $B_k$, na kterı ukazuje
-ukazatel MIN, utrhneme koøen. Tím vzniknou nové stromy $B_0, B_1, ...,
-B_{k-1}$, ze kterıch vytvoøíme novou haldu, nastavíme pro ni ukazatel MIN
-a zavoláme MERGE.
+je provedena tak, Å¾e ze stromu $B_k$, na kterÃ½ ukazuje
+ukazatel MIN, utrhneme koÅ™en. TÃ­m vzniknou novÃ© stromy $B_0, B_1, ...,
+B_{k-1}$, ze kterÃ½ch vytvoÅ™Ã­me novou haldu, nastavÃ­me pro ni ukazatel MIN
+a zavolÃ¡me MERGE.
 
-DELETEMIN pracuje v $O(log_2 n)$, proto¾e $k \leq log_2 n$. Toto je
-slo¾itost v nejhor¹ím pøípadì.
+DELETEMIN pracuje v $O(log_2 n)$, protoÅ¾e $k \leq log_2 n$. Toto je
+sloÅ¾itost v nejhorÅ¡Ã­m pÅ™Ã­padÄ›.
 
 \begin{algorithm}[!htb]
 \caption{DELETEMIN pro binom. haldu}
 \label{alg:heaps.binom.deletemin}
 \begin{algorithmic}
 \STATE DELETEMIN
-\STATE prohledáním prvkù reprezentovanıch koøeny stromù naleznu strom $S$,
-jeho¾ koøen reprezentuje nejmen¹í prvek
-\STATE $T_1 = T \ {S}, T_2$ je tvoøen podstormy v¹echn synù koøene S
-\STATE (tj. utrhnu koøen a zbytek dám do haldy) - 
-	je to halda díky vlastnosti 4
+\STATE prohledÃ¡nÃ­m prvkÅ¯ reprezentovanÃ½ch koÅ™eny stromÅ¯ naleznu strom $S$,
+jehoÅ¾ koÅ™en reprezentuje nejmenÅ¡Ã­ prvek
+\STATE $T_1 = T \ {S}, T_2$ je tvoÅ™en podstormy vÅ¡echn synÅ¯ koÅ™ene S
+\STATE (tj. utrhnu koÅ™en a zbytek dÃ¡m do haldy) - 
+	je to halda dÃ­ky vlastnosti 4
 \STATE $T \rightarrow$ MERGE($T_1, T_2$)
 \end{algorithmic}
 \end{algorithm}
 
 \begin{pozn}
-Operace DELETE se nedá rozumnì provést, museli bychom pøebudovat celı
+Operace DELETE se nedÃ¡ rozumnÄ› provÃ©st, museli bychom pÅ™ebudovat celÃ½
 strom.
 \end{pozn}
 
 \begin{theorem}
-Operace MERGE, INSERT, MIN, DELETEMIN a DECREASEKEY vy¾adují èas $O(log n)$.
-Operace INCREASEKEY vy¾aduje èas $O(log^2 n)$.
+Operace MERGE, INSERT, MIN, DELETEMIN a DECREASEKEY vyÅ¾adujÃ­ Äas $O(log n)$.
+Operace INCREASEKEY vyÅ¾aduje Äas $O(log^2 n)$.
 \end{theorem}
 
 %\begin{pozn}
-%Sèítání v binárních èíslech má slo¾itost $O(1)$.
+%SÄÃ­tÃ¡nÃ­ v binÃ¡rnÃ­ch ÄÃ­slech mÃ¡ sloÅ¾itost $O(1)$.
 %
 %\begin{tabular}{|l|}
 %\hline
@@ -687,108 +687,108 @@ Operace INCREASEKEY vy¾aduje èas $O(log^2 n)$.
 %\end{tabular}
 %\hspace{5mm}
 %
-%XXX amort. slo¾. \\
-%Neplatí nìco podobného pro binom. stromy ? Ano, pro operaci INSERT.
+%XXX amort. sloÅ¾. \\
+%NeplatÃ­ nÄ›co podobnÃ©ho pro binom. stromy ? Ano, pro operaci INSERT.
 %\end{pozn}
 
 \begin{pozn}
-MERGE zabírá dost èasu - musíme ho dìlat ?
+MERGE zabÃ­rÃ¡ dost Äasu - musÃ­me ho dÄ›lat ?
 \end{pozn}
 
 
-\subsection{Líná implementace binom. hald}
+\subsection{LÃ­nÃ¡ implementace binom. hald}
 
-Líná implementace vychází z toho, ¾e chceme operaci MERGE provádìt v èase
+LÃ­nÃ¡ implementace vychÃ¡zÃ­ z toho, Å¾e chceme operaci MERGE provÃ¡dÄ›t v Äase
 $O(1)$.
 
-Zmìníme definici - vynecháme podmínku 2 z definice \ref{def.binomheap}, 
-tj. teï v na¹í binom. haldì mohou bıt izomorfní stromy. (i kdy¾ jen
-doèasnì) Dal¹í zmìna
-spoèívá ve zmìnì reprezentace binomiální haldy - haldu reprezentujeme
-dvojitım kruhovım spojovım seznamem pøes koøeny stromù. (kruhovı spojovı
-seznam umo¾òuje pøidávání a odebírná prvkù v èase $O(1)$.)
+ZmÄ›nÃ­me definici - vynechÃ¡me podmÃ­nku 2 z definice \ref{def.binomheap}, 
+tj. teÄ v naÅ¡Ã­ binom. haldÄ› mohou bÃ½t izomorfnÃ­ stromy. (i kdyÅ¾ jen
+doÄasnÄ›) DalÅ¡Ã­ zmÄ›na
+spoÄÃ­vÃ¡ ve zmÄ›nÄ› reprezentace binomiÃ¡lnÃ­ haldy - haldu reprezentujeme
+dvojitÃ½m kruhovÃ½m spojovÃ½m seznamem pÅ™es koÅ™eny stromÅ¯. (kruhovÃ½ spojovÃ½
+seznam umoÅ¾Åˆuje pÅ™idÃ¡vÃ¡nÃ­ a odebÃ­rnÃ¡ prvkÅ¯ v Äase $O(1)$.)
 
-Operaci MERGE($T_1, T_2$) pak mù¾eme provést konkatenací seznamù $T_1$ a $T_2$.
-Jenom to by nefungovalo, musíme je¹tì zmìnit operace MIN, DELETEMIN.
+Operaci MERGE($T_1, T_2$) pak mÅ¯Å¾eme provÃ©st konkatenacÃ­ seznamÅ¯ $T_1$ a $T_2$.
+Jenom to by nefungovalo, musÃ­me jeÅ¡tÄ› zmÄ›nit operace MIN, DELETEMIN.
 
 \begin{algorithm}[!htb]
-\caption{DELETEMIN pro líné binom. haldy}
+\caption{DELETEMIN pro lÃ­nÃ© binom. haldy}
 \label{alg:heaps.binom-line.min}
 \begin{algorithmic}
 \STATE MIN
-\STATE pøi prohledávání prvkù reprezentovanıch koøeny stromù seøadíme
-stromy do mno¾in $Q_i$, $i=0,...,n$ , kde $Q_i$ je mno¾ina v¹ech stromù v
-$T$ izomorfních s $B_i$.
+\STATE pÅ™i prohledÃ¡vÃ¡nÃ­ prvkÅ¯ reprezentovanÃ½ch koÅ™eny stromÅ¯ seÅ™adÃ­me
+stromy do mnoÅ¾in $Q_i$, $i=0,...,n$ , kde $Q_i$ je mnoÅ¾ina vÅ¡ech stromÅ¯ v
+$T$ izomorfnÃ­ch s $B_i$.
 \STATE $i = 0, T = 0$
 \WHILE {$\exists Q_i \neq 0$}
   \WHILE {$|Q_i| > 1$}
-    \STATE vezmeme dva stromy z $Q_i$, spojíme je, vısledek dáme do $Q_{i+1}$
+    \STATE vezmeme dva stromy z $Q_i$, spojÃ­me je, vÃ½sledek dÃ¡me do $Q_{i+1}$
   \ENDWHILE
   \IF {$Q_i \neq 0$}
-    \STATE strom z $Q_i$ dám do $T$
+    \STATE strom z $Q_i$ dÃ¡m do $T$
   \ENDIF
   \STATE $i = i + 1$
 \ENDWHILE
 \end{algorithmic}
 \end{algorithm}
 
-DELETEMIN umístí stromy po odtr¾ení nejmen¹ího prvku do odpovídajících 
-mno¾in $Q_i$. (v mno¾inì $Q_i$ jsou stromy izomorfní s $B_i$)
-Poté provede \emph{konsolidaci} - upraví haldu do podoby, kdy je ka¾dı øád
-zastoupen nejvı¹e jedním stromem. 
+DELETEMIN umÃ­stÃ­ stromy po odtrÅ¾enÃ­ nejmenÅ¡Ã­ho prvku do odpovÃ­dajÃ­cÃ­ch 
+mnoÅ¾in $Q_i$. (v mnoÅ¾inÄ› $Q_i$ jsou stromy izomorfnÃ­ s $B_i$)
+PotÃ© provede \emph{konsolidaci} - upravÃ­ haldu do podoby, kdy je kaÅ¾dÃ½ Å™Ã¡d
+zastoupen nejvÃ½Å¡e jednÃ­m stromem. 
 
-Konsolidace bì¾í v $O(log n)$ plus vyèerpá úèty stromù, které zaniknou pøi
-slévání.
+Konsolidace bÄ›Å¾Ã­ v $O(log n)$ plus vyÄerpÃ¡ ÃºÄty stromÅ¯, kterÃ© zaniknou pÅ™i
+slÃ©vÃ¡nÃ­.
 
 \begin{samepage}
-Konsolidace probíhá takto:
+Konsolidace probÃ­hÃ¡ takto:
 \begin{enumerate}
-  \item vytvoøím pole délky $log n$, které je prázdné 
+  \item vytvoÅ™Ã­m pole dÃ©lky $log n$, kterÃ© je prÃ¡zdnÃ© 
   	$\Rightarrow$ $O(log n)$
-  \item procházím spojovı seznam vrcholù stromù v haldì 
-  	a jeden strom za druhım vyjmu a 
-  	dávám do pole vytvoøeného v kroku 1, pøièem¾ se v¾dy provede 
-	pøíslu¹né slití.
+  \item prochÃ¡zÃ­m spojovÃ½ seznam vrcholÅ¯ stromÅ¯ v haldÄ› 
+  	a jeden strom za druhÃ½m vyjmu a 
+  	dÃ¡vÃ¡m do pole vytvoÅ™enÃ©ho v kroku 1, pÅ™iÄemÅ¾ se vÅ¾dy provede 
+	pÅ™Ã­sluÅ¡nÃ© slitÃ­.
 	\begin{itemize}
-	  \item pokud strom zanikne, tak práci zaplatíme z jeho úètu
-	  \item pokud strom nezanikne, tak práci platíme z úètu
+	  \item pokud strom zanikne, tak prÃ¡ci zaplatÃ­me z jeho ÃºÄtu
+	  \item pokud strom nezanikne, tak prÃ¡ci platÃ­me z ÃºÄtu
 	  konsolidace $\rightarrow$ $O(log n)$
 	\end{itemize}
-  \item z pole vytvoøíme spojovı seznam $\rightarrow$ $O(log n)$
+  \item z pole vytvoÅ™Ã­me spojovÃ½ seznam $\rightarrow$ $O(log n)$
 \end{enumerate}
 \end{samepage}
 
 \begin{samepage}
-DELETEMIN tedy potøebuje
+DELETEMIN tedy potÅ™ebuje
 \begin{itemize}
-  \item $O(log n)$ do úètù novì vytvoøenıch stromù
-  \item $O(log n)$ na jejich zavedení do spojového seznamu
+  \item $O(log n)$ do ÃºÄtÅ¯ novÄ› vytvoÅ™enÃ½ch stromÅ¯
+  \item $O(log n)$ na jejich zavedenÃ­ do spojovÃ©ho seznamu
   \item $O(log n)$ na konsolidaci
 \end{itemize}
 \end{samepage}
 
-Pøi konsolidaci v¾dy zároveò vyhledáme nové minimum.
+PÅ™i konsolidaci vÅ¾dy zÃ¡roveÅˆ vyhledÃ¡me novÃ© minimum.
 
 \begin{theorem}
-Operace MERGE a INSERT pøi líné implementaci vy¾adují èas $O(1)$, operace
-DELETEMIN a MIN vy¾adují èas $O(\text{poèet stromù v haldì})$.
+Operace MERGE a INSERT pÅ™i lÃ­nÃ© implementaci vyÅ¾adujÃ­ Äas $O(1)$, operace
+DELETEMIN a MIN vyÅ¾adujÃ­ Äas $O(\text{poÄet stromÅ¯ v haldÄ›})$.
 \end{theorem}
 
 %\begin{pozn}
-%$bal(\text{konfigurace}) = \text{poèet v¹ech stromù ve v¹ech haldách v
+%$bal(\text{konfigurace}) = \text{poÄet vÅ¡ech stromÅ¯ ve vÅ¡ech haldÃ¡ch v
 %konfiguraci}$
 %\end{pozn}
 %
-%\subsubsection{Amort. slo¾.}
-%$\text{amort. slo¾.} = \text{èas pro operaci} + 
-%bal(\text{vısledné konfigurace}) - bal(\text{pùvodní konfigurace})$
+%\subsubsection{Amort. sloÅ¾.}
+%$\text{amort. sloÅ¾.} = \text{Äas pro operaci} + 
+%bal(\text{vÃ½slednÃ© konfigurace}) - bal(\text{pÅ¯vodnÃ­ konfigurace})$
 
 \vspace{5mm}
 
 \begin{center}
 \begin{tabular}{|l|l|}
 \hline
-Operace & Amort. slo¾itost \\
+Operace & Amort. sloÅ¾itost \\
 \hline
 MERGE & $O(1)$ \\
 INSERT & $O(1)$ \\
@@ -796,118 +796,118 @@ MIN & $O(log n)$ \\
 DELETEMIN & $O(log n)$ \\
 \hline
 \end{tabular}
-\tabcaption{Amortizovaná slo¾itost pro líné binomiální haldy}
+\tabcaption{AmortizovanÃ¡ sloÅ¾itost pro lÃ­nÃ© binomiÃ¡lnÃ­ haldy}
 \label{tab:binheaps.lazy.complexity}
 \end{center}
 
-% \subsection{Zobecnìné binomiální haldy}
+% \subsection{ZobecnÄ›nÃ© binomiÃ¡lnÃ­ haldy}
 
 % XXX
-% \mnote{pøedná¹elo se to tento rok (2004) vùbec ?}
+% \mnote{pÅ™ednÃ¡Å¡elo se to tento rok (2004) vÅ¯bec ?}
 
 % --------------------------------------------------------------------------
 \section{Fibonacciho haldy}
 
-Fibonacciho haldy vycházejí z binomiálních hald, formálnì se li¹í v podstatì
-pouze tím, ¾e v haldì povolíme i jiné stromy ne¾ binomiální. Toto nám
-umo¾ní implementaci operace DECREASE\_KEY, která nebyla v binomiálních
-haldách pøi zachování slo¾itosti ostatních operací mo¾ná.
+Fibonacciho haldy vychÃ¡zejÃ­ z binomiÃ¡lnÃ­ch hald, formÃ¡lnÄ› se liÅ¡Ã­ v podstatÄ›
+pouze tÃ­m, Å¾e v haldÄ› povolÃ­me i jinÃ© stromy neÅ¾ binomiÃ¡lnÃ­. Toto nÃ¡m
+umoÅ¾nÃ­ implementaci operace DECREASE\_KEY, kterÃ¡ nebyla v binomiÃ¡lnÃ­ch
+haldÃ¡ch pÅ™i zachovÃ¡nÃ­ sloÅ¾itosti ostatnÃ­ch operacÃ­ moÅ¾nÃ¡.
 
-Øád uzlu a stromu je definován jako u binomiálních hald. Slévání se
-provádí pouze mezi stromy stejného øádu.
+Å˜Ã¡d uzlu a stromu je definovÃ¡n jako u binomiÃ¡lnÃ­ch hald. SlÃ©vÃ¡nÃ­ se
+provÃ¡dÃ­ pouze mezi stromy stejnÃ©ho Å™Ã¡du.
 
 \subsection{MERGE, INSERT, EXTRACT\_MIN}
 
-Implementace operací MERGE($h_1$,$h_2$), INSERT($h$,$i$), EXTRACT\_MIN($h$) 
-je stejná jako u binomiálních hald v "líné" verzi.
+Implementace operacÃ­ MERGE($h_1$,$h_2$), INSERT($h$,$i$), EXTRACT\_MIN($h$) 
+je stejnÃ¡ jako u binomiÃ¡lnÃ­ch hald v "lÃ­nÃ©" verzi.
 
 \subsection{DECREASE\_KEY}
 
-DECREASE\_KEY provádí sní¾ení hodnoty klíèe pro danı prvek. To se dìje za
-cenu pøítomnosti jinıch ne¾ binomiálních stromù v haldì.
+DECREASE\_KEY provÃ¡dÃ­ snÃ­Å¾enÃ­ hodnoty klÃ­Äe pro danÃ½ prvek. To se dÄ›je za
+cenu pÅ™Ã­tomnosti jinÃ½ch neÅ¾ binomiÃ¡lnÃ­ch stromÅ¯ v haldÄ›.
 
 \begin{algorithm}[!htb]
 \caption{DECREASE\_KEY pro Fibonacciho haldy}
 \label{alg:heap.fib.decrease_key}
 DECREASE\_KEY($h$,$i$,$\delta$)
 \begin{enumerate}
-  \item sní¾ím klíè prvku $i$ o $\delta$
-  \item podstrom i s koøenem $i$ odøízneme a jako samostatnı strom ho
-        zavedeme haldy (tj. zaøadím do spojového seznamu koøenù stromù v
-	haldì) $\Rightarrow$ $O(1)$
-  \item Abychom udr¾eli stromy dostateènì "ko¹até"\footnote{nechceme 
-  	stromy typu "smeták" - tj. takovıch, které sestávají pouze 
-	z koøene a jeho synù, které jsou zároveò listy}
-  	tak od ka¾dého vrcholu $x$ mohou bıt odøíznuti nejvı¹e 2
-  	synové $\Rightarrow$ po odøíznutí 2. syna je odøíznut i sám vrchol $x$.
+  \item snÃ­Å¾Ã­m klÃ­Ä prvku $i$ o $\delta$
+  \item podstrom i s koÅ™enem $i$ odÅ™Ã­zneme a jako samostatnÃ½ strom ho
+        zavedeme haldy (tj. zaÅ™adÃ­m do spojovÃ©ho seznamu koÅ™enÅ¯ stromÅ¯ v
+	haldÄ›) $\Rightarrow$ $O(1)$
+  \item Abychom udrÅ¾eli stromy dostateÄnÄ› "koÅ¡atÃ©"\footnote{nechceme 
+  	stromy typu "smetÃ¡k" - tj. takovÃ½ch, kterÃ© sestÃ¡vajÃ­ pouze 
+	z koÅ™ene a jeho synÅ¯, kterÃ© jsou zÃ¡roveÅˆ listy}
+  	tak od kaÅ¾dÃ©ho vrcholu $x$ mohou bÃ½t odÅ™Ã­znuti nejvÃ½Å¡e 2
+  	synovÃ© $\Rightarrow$ po odÅ™Ã­znutÃ­ 2. syna je odÅ™Ã­znut i sÃ¡m vrchol $x$.
 \end{enumerate}
 \end{algorithm}
 
 \begin{figure} 
 \centering\includegraphics{pics/fibheaps}
-\caption{Poèty vrcholù stromù $F_0, F_1, ...$ tvoøí Fibonacciho
+\caption{PoÄty vrcholÅ¯ stromÅ¯ $F_0, F_1, ...$ tvoÅ™Ã­ Fibonacciho
 posloupnost.}
 \label{fig:heaps.fib.pocty.vrcholu}
 \end{figure}
 
 \begin{pozn}
-Pøesto¾e jedna operace DECREASE\_KEY mù¾e vyvolat kaskádu øezù, je její
-amortizovaná slo¾itost $O(1)$.
+PÅ™estoÅ¾e jedna operace DECREASE\_KEY mÅ¯Å¾e vyvolat kaskÃ¡du Å™ezÅ¯, je jejÃ­
+amortizovanÃ¡ sloÅ¾itost $O(1)$.
 \end{pozn}
 
 \begin{pozn}
-Pomocí \emph{úèetní metody}\footnote{Pro definici úèetní metody viz
-pøedná¹ky ze "\emph{Slo¾itosti a NP úplnosti}".}
-doká¾eme, ¾e to platí: \\
-Pøi odøezávání syna vrcholu $x$ zaplatí operace DECREASE\_KEY
+PomocÃ­ \emph{ÃºÄetnÃ­ metody}\footnote{Pro definici ÃºÄetnÃ­ metody viz
+pÅ™ednÃ¡Å¡ky ze "\emph{SloÅ¾itosti a NP Ãºplnosti}".}
+dokÃ¡Å¾eme, Å¾e to platÃ­: \\
+PÅ™i odÅ™ezÃ¡vÃ¡nÃ­ syna vrcholu $x$ zaplatÃ­ operace DECREASE\_KEY
 \begin{samepage}
 \begin{itemize}
-  \item 2 jednotky na úèet $x$
-  \item 1 jednotku na úèet vzniklého stromu
-  \item 1 jednotku za práci (odøíznutí a zaøazení)
+  \item 2 jednotky na ÃºÄet $x$
+  \item 1 jednotku na ÃºÄet vzniklÃ©ho stromu
+  \item 1 jednotku za prÃ¡ci (odÅ™Ã­znutÃ­ a zaÅ™azenÃ­)
 \end{itemize}
 \end{samepage}
 
-Pøi odøíznutí druhého syna jsou na úètu vrcholu $x$ 4 jednotky
+PÅ™i odÅ™Ã­znutÃ­ druhÃ©ho syna jsou na ÃºÄtu vrcholu $x$ 4 jednotky
 $\Rightarrow$ mohu zopakovat body 1) - 3).
 \end{pozn}
 
 \begin{theorem}
 \label{heaps.fib.theorem}
-Nejvy¹¹í øád stromu ve Fibonacciho haldì je $\lfloor log_\varphi n \rfloor =
-\Theta(log_2 n)$ pro nìjaké $\varphi > 1$.
+NejvyÅ¡Å¡Ã­ Å™Ã¡d stromu ve Fibonacciho haldÄ› je $\lfloor log_\varphi n \rfloor =
+\Theta(log_2 n)$ pro nÄ›jakÃ© $\varphi > 1$.
 \end{theorem}
 
 \begin{lemma}
 \label{heaps.fib.lemma}
-Nech» $x$ je vrchol a $y_1, ..., y_m$ jeho synové v poøadí, v jakém byli k
-$x$ sliti. Potom $\forall \in {1,...,m}$ je øád $y_i$ aspoò $i-2$.
+NechÅ¥ $x$ je vrchol a $y_1, ..., y_m$ jeho synovÃ© v poÅ™adÃ­, v jakÃ©m byli k
+$x$ sliti. Potom $\forall \in {1,...,m}$ je Å™Ã¡d $y_i$ aspoÅˆ $i-2$.
 \end{lemma}
 
 \begin{proof}
-V okam¾iku, kdy byl $y_i$ slit pod $x$, mìl $x$ øád $\geq i-1$.
-($y_1,...,y_{i-1}$ ji¾ v té chvíli byli synové $x$)
-V tomto okam¾iku byl také øád $y_{i-1} \geq i-1$. (sléváme pouze stromy
-stejného øádu) Od té doby mohl $y_i$ ztratit nejvı¹e jednoho syna, jinak
-by byl sám odøíznut a pøestal by bıt synem $x$. $\Rightarrow$ $y_i$ má øád
+V okamÅ¾iku, kdy byl $y_i$ slit pod $x$, mÄ›l $x$ Å™Ã¡d $\geq i-1$.
+($y_1,...,y_{i-1}$ jiÅ¾ v tÃ© chvÃ­li byli synovÃ© $x$)
+V tomto okamÅ¾iku byl takÃ© Å™Ã¡d $y_{i-1} \geq i-1$. (slÃ©vÃ¡me pouze stromy
+stejnÃ©ho Å™Ã¡du) Od tÃ© doby mohl $y_i$ ztratit nejvÃ½Å¡e jednoho syna, jinak
+by byl sÃ¡m odÅ™Ã­znut a pÅ™estal by bÃ½t synem $x$. $\Rightarrow$ $y_i$ mÃ¡ Å™Ã¡d
 $\geq i-2$. 
 \end{proof}
 
 \begin{proof}
-Dokazujeme vìtu \ref{heaps.fib.theorem}, která jinımi slovy øíká: 
-Strom øádu $i$ ve
-Fibonacciho haldì má velikost alespoò $\varphi^i$ pro nìjaké $\varphi >
+Dokazujeme vÄ›tu \ref{heaps.fib.theorem}, kterÃ¡ jinÃ½mi slovy Å™Ã­kÃ¡: 
+Strom Å™Ã¡du $i$ ve
+Fibonacciho haldÄ› mÃ¡ velikost alespoÅˆ $\varphi^i$ pro nÄ›jakÃ© $\varphi >
 1$.
 
-Nech» $F_j$ je nejmen¹í mo¾nı (tj. má oøezané podstromy na max. mo¾nou
-úroveò - byl z nich odøíznut 1 syn) strom øádu $j$ splòující tvrzení lemma
-\ref{heaps.fib.lemma} a nech» $|F_j| = f_j$. Pak
+NechÅ¥ $F_j$ je nejmenÅ¡Ã­ moÅ¾nÃ½ (tj. mÃ¡ oÅ™ezanÃ© podstromy na max. moÅ¾nou
+ÃºroveÅˆ - byl z nich odÅ™Ã­znut 1 syn) strom Å™Ã¡du $j$ splÅˆujÃ­cÃ­ tvrzenÃ­ lemma
+\ref{heaps.fib.lemma} a nechÅ¥ $|F_j| = f_j$. Pak
 
 \begin{enumerate}
-  \item $F_i$ vznikne "slitím" $F_{i-1}$ a $F_{i-2}$ $\Rightarrow$ 
+  \item $F_i$ vznikne "slitÃ­m" $F_{i-1}$ a $F_{i-2}$ $\Rightarrow$ 
   	$f_i = f_{i-1} + f_{i-2}$
   \item $f_i \geq \varphi^i$, kde 
-  	$\varphi = \frac{1+\sqrt 5}{2} \approx 1.618$ ... zlatı øez
+  	$\varphi = \frac{1+\sqrt 5}{2} \approx 1.618$ ... zlatÃ½ Å™ez
 \end{enumerate}
 
 \begin{itemize}
@@ -916,24 +916,24 @@ Nech» $F_j$ je nejmen¹í mo¾nı (tj. má oøezané podstromy na max. mo¾nou
 
   \begin{figure} 
   \centering\includegraphics{pics/fibheap}
-  \caption{K dùkazu vìty \ref{heaps.fib.theorem}}
+  \caption{K dÅ¯kazu vÄ›ty \ref{heaps.fib.theorem}}
   \label{fig:heaps.fib.proof}
   \end{figure}
 
-  Slití je nepøesnı termín - sléváme pouze stromy stejného øádu.
-  $F_{i-2}$ je vısledek DECREASE\_KEY. (tím se strom "oholil") Uøíznu
-  posledního syna, pod kterım je nejvìt¹í podstrom (abych dostal nejmen¹í
-  mo¾nı podstrom)
+  SlitÃ­ je nepÅ™esnÃ½ termÃ­n - slÃ©vÃ¡me pouze stromy stejnÃ©ho Å™Ã¡du.
+  $F_{i-2}$ je vÃ½sledek DECREASE\_KEY. (tÃ­m se strom "oholil") UÅ™Ã­znu
+  poslednÃ­ho syna, pod kterÃ½m je nejvÄ›tÅ¡Ã­ podstrom (abych dostal nejmenÅ¡Ã­
+  moÅ¾nÃ½ podstrom)
 
   \item[ad 2)]
-  $\varphi$ je kladı koøen rovnice $x^2 - x - 1 = 0$ \\
-  neboli platí $\varphi^2 = \varphi + 1$, $\varphi = \frac{1+\sqrt 5}{2}
+  $\varphi$ je kladÃ½ koÅ™en rovnice $x^2 - x - 1 = 0$ \\
+  neboli platÃ­ $\varphi^2 = \varphi + 1$, $\varphi = \frac{1+\sqrt 5}{2}
   \approx 1.618$ \\
-  doká¾eme indukcí: 
+  dokÃ¡Å¾eme indukcÃ­: 
     \begin{itemize}
       \item i = 0 : $f_0 = 1 \geq \varphi^0 = 1$
       \item i = 1 : $f_1 = 2 \geq \varphi^1 = 1.618$
-      \item indukèní krok: IP: $f_i \geq \varphi^i$, $f_{i+1} \geq
+      \item indukÄnÃ­ krok: IP: $f_i \geq \varphi^i$, $f_{i+1} \geq
       \varphi^{i+1}$ \\
         $f_{i+2} = f_{i+1} + f_i \geq \varphi^{i+1} + \varphi^i =
 	\varphi^i(\varphi + 1) = \varphi^{i+2}$
